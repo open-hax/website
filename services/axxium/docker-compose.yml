@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  axxium-db:
+    image: postgres:16-alpine
+    container_name: axxium-db
+    environment:
+      POSTGRES_USER: axxium
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-axxium_dev_password}
+      POSTGRES_DB: axxium
+    volumes:
+      - axxium-db-data:/var/lib/postgresql/data
+    ports:
+      - "${AXXIUM_DB_PORT:-5433}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U axxium -d axxium"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  axxium:
+    build:
+      context: ../../orgs/open-hax/axxium
+      dockerfile: Dockerfile
+    container_name: axxium
+    depends_on:
+      axxium-db:
+        condition: service_healthy
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+      DATABASE_URL: postgres://axxium:${POSTGRES_PASSWORD:-axxium_dev_password}@axxium-db:5432/axxium
+      JWT_SECRET: ${JWT_SECRET:-change_me_in_production}
+      JWT_ISSUER: ${JWT_ISSUER:-axxium}
+      JWT_AUDIENCE: ${JWT_AUDIENCE:-open-hax}
+      AXXIUM_PORT: ${AXXIUM_PORT:-3000}
+      AXXIUM_HOST: ${AXXIUM_HOST:-0.0.0.0}
+      AXXIUM_PUBLIC_BASE_URL: ${AXXIUM_PUBLIC_BASE_URL:-http://localhost:3000}
+      SESSION_COOKIE_NAME: ${SESSION_COOKIE_NAME:-axxium_session}
+      SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-false}
+      OAUTH_GITHUB_ENABLED: ${OAUTH_GITHUB_ENABLED:-false}
+      OAUTH_GITHUB_CLIENT_ID: ${OAUTH_GITHUB_CLIENT_ID:-}
+      OAUTH_GITHUB_CLIENT_SECRET: ${OAUTH_GITHUB_CLIENT_SECRET:-}
+      OAUTH_DISCORD_ENABLED: ${OAUTH_DISCORD_ENABLED:-false}
+      OAUTH_DISCORD_CLIENT_ID: ${OAUTH_DISCORD_CLIENT_ID:-}
+      OAUTH_DISCORD_CLIENT_SECRET: ${OAUTH_DISCORD_CLIENT_SECRET:-}
+    ports:
+      - "${AXXIUM_PORT:-3000}:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+volumes:
+  axxium-db-data:
