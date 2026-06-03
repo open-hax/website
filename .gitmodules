@@ -1599,3 +1599,7 @@
 [submodule "orgs/open-hax/axxium"]
 	path = orgs/open-hax/axxium
 	url = git@github.com:open-hax/axxium.git
+[submodule "orgs/open-hax/services"]
+	path = orgs/open-hax/services
+	url = https://github.com/open-hax/services.git
+	branch = main
