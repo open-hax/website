@@ -12,7 +12,7 @@ set -euo pipefail
 #
 # Options:
 #   --dry-run        Print intended actions only
-#   --include-REDACTED_SECRET   Include the current REDACTED_SECRET repo in addition to submodules
+#   --include-root   Include the current root repo in addition to submodules
 #   --require-check  Add an additional required status-check context (repeatable)
 #
 # Environment:
@@ -29,7 +29,7 @@ while [[ $# -gt 0 ]]; do
       DRY_RUN=1
       shift
       ;;
-    --include-REDACTED_SECRET)
+    --include-root)
       INCLUDE_ROOT=1
       shift
       ;;
@@ -77,7 +77,7 @@ resolve_submodule_slugs() {
   done | sort -u
 }
 
-resolve_REDACTED_SECRET_slug() {
+resolve_root_slug() {
   local url
   url=$(git remote get-url origin 2>/dev/null || true)
   [[ -z "$url" ]] && return 0
@@ -107,8 +107,8 @@ fetch_existing_protection() {
 merge_required_contexts() {
   python - <<'PY'
 import json, os
-existing_raw = REDACTED_SECRET'EXISTING_JSON', '').strip()
-requested = [c.strip() for c in REDACTED_SECRET'REQUESTED_CHECKS', '').split(',') if c.strip()]
+existing_raw = os.environ.get('EXISTING_JSON', '').strip()
+requested = [c.strip() for c in os.environ.get('REQUESTED_CHECKS', '').split(',') if c.strip()]
 merged = []
 seen = set()
 if existing_raw:
@@ -136,7 +136,7 @@ PY
 existing_strict_flag() {
   python - <<'PY'
 import json, os
-raw = REDACTED_SECRET'EXISTING_JSON', '').strip()
+raw = os.environ.get('EXISTING_JSON', '').strip()
 if not raw:
     print('false')
 else:
@@ -151,20 +151,25 @@ PY
 build_payload() {
   python - <<'PY'
 import json, os
-contexts = json.loads(REDACTED_SECRET'CONTEXTS_JSON'])
-strict = REDACTED_SECRET'STRICT_FLAG', 'false') == 'true'
+contexts = json.loads(os.environ['CONTEXTS_JSON'])
+strict = os.environ.get('STRICT_FLAG', 'false') == 'true'
 payload = {
     'enforce_admins': True,
-    'required_linear_history': True,
+    # Merges-only, audit-ledger policy: do NOT require linear history (rebases/
+    # squashes are unwanted; merge commits are the intended, immutable record).
+    'required_linear_history': False,
     'allow_force_pushes': False,
     'allow_deletions': False,
     'required_conversation_resolution': True,
     'restrictions': None,
     'required_status_checks': None,
+    # Solo maintainer: no required approving reviews (you can't self-approve).
+    # Enforcement is carried by required status checks (e.g. coderabbit-review-gate)
+    # plus required conversation resolution above.
     'required_pull_request_reviews': {
         'dismiss_stale_reviews': True,
         'require_code_owner_reviews': False,
-        'required_approving_review_count': 1,
+        'required_approving_review_count': 0,
         'require_last_push_approval': False,
     },
 }
@@ -202,7 +207,7 @@ main() {
   if [[ $INCLUDE_ROOT -eq 1 ]]; then
     while read -r slug; do
       [[ -n "$slug" ]] && slugs+=("$slug")
-    done < <(resolve_REDACTED_SECRET_slug)
+    done < <(resolve_root_slug)
   fi
 
   while read -r slug; do
