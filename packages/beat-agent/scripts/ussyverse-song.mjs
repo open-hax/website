@@ -1,4 +1,4 @@
-#!/usr/bin/env REDACTED_SECRET
+#!/usr/bin/env node
 /**
  * 🌌 USSYVERSE ANTHEM 🌌
  * A cosmic banger about the infinite multiverse of ussy.

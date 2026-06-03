@@ -275,10 +275,10 @@ Needed before migration:
 Blockers:
 - GPU runtime assumptions
 - host-specific model store mount
-- REDACTED_SECRET placement and GPU scheduling not yet specified
+- node placement and GPU scheduling not yet specified
 
 Needed before migration:
-- GPU REDACTED_SECRET policy
+- GPU node policy
 - storage policy for models
 - operational contract for scheduling and upgrades
 
@@ -345,7 +345,7 @@ A service must satisfy the following before it is considered ready for a maintai
 1. No full-workspace bind mount
 2. No `docker.sock`
 3. No `host.docker.internal`
-4. No reuse of REDACTED_SECRET external named Docker volumes
+4. No reuse of opaque external named Docker volumes
 5. Clear split between app container and local operator conveniences
 
 If a service fails the required gate, it stays Compose-first.

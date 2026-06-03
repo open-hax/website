@@ -1,4 +1,4 @@
-#!/usr/bin/env REDACTED_SECRET
+#!/usr/bin/env node
 (function(){
 var shadow$provide = {};
 
@@ -10,7 +10,7 @@ try {require('source-map-support').install();} catch (e) {console.warn('no "sour
 
 global.CLOSURE_NO_DEPS = true;
 
-global.CLOSURE_DEFINES = {"goog.DEBUG":true,"goog.LOCALE":"en","goog.TRANSPILE":"never","goog.ENABLE_DEBUG_LOADER":false,"cljs.core._STAR_target_STAR_":"REDACTED_SECRETjs"};
+global.CLOSURE_DEFINES = {"goog.DEBUG":true,"goog.LOCALE":"en","goog.TRANSPILE":"never","goog.ENABLE_DEBUG_LOADER":false,"cljs.core._STAR_target_STAR_":"nodejs"};
 
 var goog = global.goog = {};
 
@@ -152,9 +152,9 @@ goog.define = function(name, defaultValue) {
   if (!COMPILED) {
     var uncompiledDefines = goog.global.CLOSURE_UNCOMPILED_DEFINES;
     var defines = goog.global.CLOSURE_DEFINES;
-    if (uncompiledDefines && uncompiledDefines.REDACTED_SECRETType === undefined && Object.prototype.hasOwnProperty.call(uncompiledDefines, name)) {
+    if (uncompiledDefines && uncompiledDefines.nodeType === undefined && Object.prototype.hasOwnProperty.call(uncompiledDefines, name)) {
       value = uncompiledDefines[name];
-    } else if (defines && defines.REDACTED_SECRETType === undefined && Object.prototype.hasOwnProperty.call(defines, name)) {
+    } else if (defines && defines.nodeType === undefined && Object.prototype.hasOwnProperty.call(defines, name)) {
       value = defines[name];
     }
   }
@@ -617,11 +617,11 @@ goog.getMsg = function(str, opt_values, opt_options) {
 goog.getMsgWithFallback = function(a, b) {
   return a;
 };
-goog.exportSymbol = function(REDACTED_SECRETPath, object, objectToExportTo) {
-  goog.exportPath_(REDACTED_SECRETPath, object, true, objectToExportTo);
+goog.exportSymbol = function(publicPath, object, objectToExportTo) {
+  goog.exportPath_(publicPath, object, true, objectToExportTo);
 };
-goog.exportProperty = function(object, REDACTED_SECRETName, symbol) {
-  object[REDACTED_SECRETName] = symbol;
+goog.exportProperty = function(object, publicName, symbol) {
+  object[publicName] = symbol;
 };
 goog.inherits = function(childCtor, parentCtor) {
   function tempCtor() {
@@ -1370,7 +1370,7 @@ if (!COMPILED) {
 goog.provide = SHADOW_PROVIDE;
 goog.require = SHADOW_REQUIRE;
 SHADOW_IMPORT("goog.debug.error.js");
-SHADOW_IMPORT("goog.dom.REDACTED_SECRETtype.js");
+SHADOW_IMPORT("goog.dom.nodetype.js");
 SHADOW_IMPORT("goog.asserts.asserts.js");
 SHADOW_IMPORT("goog.reflect.reflect.js");
 SHADOW_IMPORT("goog.math.long.js");

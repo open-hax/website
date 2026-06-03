@@ -5,7 +5,7 @@ export const ETA_MU_FIVE_SECTION_CONTRACT_EDN = `(agent-output-contract
   (target
     (format :markdown)
     (ast :mdast)
-    (REDACTED_SECRET :document))
+    (root :document))
 
   (structure
     (section
@@ -14,7 +14,7 @@ export const ETA_MU_FIVE_SECTION_CONTRACT_EDN = `(agent-output-contract
       (required true)
       (order 1)
       (cardinality :one)
-      (allowed-REDACTED_SECRET-types [:paragraph :list :blockquote :code :table]))
+      (allowed-node-types [:paragraph :list :blockquote :code :table]))
 
     (section
       (id :section/evidence)
@@ -22,7 +22,7 @@ export const ETA_MU_FIVE_SECTION_CONTRACT_EDN = `(agent-output-contract
       (required true)
       (order 2)
       (cardinality :one)
-      (allowed-REDACTED_SECRET-types [:paragraph :list :blockquote :code :table]))
+      (allowed-node-types [:paragraph :list :blockquote :code :table]))
 
     (section
       (id :section/frames)
@@ -30,7 +30,7 @@ export const ETA_MU_FIVE_SECTION_CONTRACT_EDN = `(agent-output-contract
       (required true)
       (order 3)
       (cardinality :one)
-      (allowed-REDACTED_SECRET-types [:paragraph :list :blockquote]))
+      (allowed-node-types [:paragraph :list :blockquote]))
 
     (section
       (id :section/countermoves)
@@ -38,7 +38,7 @@ export const ETA_MU_FIVE_SECTION_CONTRACT_EDN = `(agent-output-contract
       (required true)
       (order 4)
       (cardinality :one)
-      (allowed-REDACTED_SECRET-types [:paragraph :list :blockquote]))
+      (allowed-node-types [:paragraph :list :blockquote]))
 
     (section
       (id :section/next)
@@ -46,7 +46,7 @@ export const ETA_MU_FIVE_SECTION_CONTRACT_EDN = `(agent-output-contract
       (required true)
       (order 5)
       (cardinality :one)
-      (allowed-REDACTED_SECRET-types [:paragraph :list])
+      (allowed-node-types [:paragraph :list])
       (local-rules [:rule/next-exactly-one-action])))
 
   (rules
@@ -66,9 +66,9 @@ export const ETA_MU_FIVE_SECTION_CONTRACT_EDN = `(agent-output-contract
       (check :heading-order))
 
     (rule
-      (id :rule/allowed-REDACTED_SECRET-types)
+      (id :rule/allowed-node-types)
       (kind :deterministic)
-      (check :REDACTED_SECRET-type-allowlist))
+      (check :node-type-allowlist))
 
     (rule
       (id :rule/frames-cardinality)

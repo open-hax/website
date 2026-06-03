@@ -6,8 +6,8 @@
   },
   "serviceDirectoryCounts": {
     "total": 30,
-    "REDACTED_SECRETOwned": 28,
-    "REDACTED_SECRETSubmodules": 1,
+    "rootOwned": 28,
+    "rootSubmodules": 1,
     "nestedGitPointers": 1,
     "symlinkAliases": 1
   },
@@ -15,7 +15,7 @@
     {
       "name": "api-gateway",
       "path": "services/api-gateway",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -27,7 +27,7 @@
     {
       "name": "auto-fork-tax",
       "path": "services/auto-fork-tax",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -39,7 +39,7 @@
     {
       "name": "cephalon-cljs",
       "path": "services/cephalon-cljs",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -51,7 +51,7 @@
     {
       "name": "cephalon-stack",
       "path": "services/cephalon-stack",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -63,7 +63,7 @@
     {
       "name": "eta-mu-truth-workbench",
       "path": "services/eta-mu-truth-workbench",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -75,7 +75,7 @@
     {
       "name": "host-fleet-dashboard",
       "path": "services/host-fleet-dashboard",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -87,7 +87,7 @@
     {
       "name": "janus",
       "path": "services/janus",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -113,7 +113,7 @@
     {
       "name": "mcp-devtools",
       "path": "services/mcp-devtools",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -125,7 +125,7 @@
     {
       "name": "mcp-exec",
       "path": "services/mcp-exec",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -137,7 +137,7 @@
     {
       "name": "mcp-files",
       "path": "services/mcp-files",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -149,7 +149,7 @@
     {
       "name": "mcp-fs-oauth",
       "path": "services/mcp-fs-oauth",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -161,7 +161,7 @@
     {
       "name": "mcp-github",
       "path": "services/mcp-github",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -173,7 +173,7 @@
     {
       "name": "mcp-ollama",
       "path": "services/mcp-ollama",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -185,7 +185,7 @@
     {
       "name": "mcp-process",
       "path": "services/mcp-process",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -197,7 +197,7 @@
     {
       "name": "mcp-sandboxes",
       "path": "services/mcp-sandboxes",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -209,7 +209,7 @@
     {
       "name": "mcp-social-publisher",
       "path": "services/mcp-social-publisher",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -221,7 +221,7 @@
     {
       "name": "mcp-stack",
       "path": "services/mcp-stack",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -233,7 +233,7 @@
     {
       "name": "mcp-tdd",
       "path": "services/mcp-tdd",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -245,7 +245,7 @@
     {
       "name": "mnemosyne",
       "path": "services/mnemosyne",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -257,7 +257,7 @@
     {
       "name": "ollama-stack",
       "path": "services/ollama-stack",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -269,7 +269,7 @@
     {
       "name": "open-hax-openai-proxy",
       "path": "services/open-hax-openai-proxy",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": true,
       "symlinkTarget": "services/proxx",
       "gitTop": "/home/err/devel",
@@ -283,7 +283,7 @@
     {
       "name": "opencode-compat",
       "path": "services/opencode-compat",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -295,7 +295,7 @@
     {
       "name": "opencode-indexer",
       "path": "services/opencode-indexer",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -307,7 +307,7 @@
     {
       "name": "opencode-stack",
       "path": "services/opencode-stack",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -319,7 +319,7 @@
     {
       "name": "openplanner",
       "path": "services/openplanner",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -331,7 +331,7 @@
     {
       "name": "proxx",
       "path": "services/proxx",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -339,13 +339,13 @@
       "directWorkflowFiles": [],
       "directPromotionFlow": false,
       "notes": [
-        "Runtime/deploy directory in the REDACTED_SECRET repo; matching source submodule with a full PR promotion flow exists at orgs/open-hax/proxx."
+        "Runtime/deploy directory in the root repo; matching source submodule with a full PR promotion flow exists at orgs/open-hax/proxx."
       ]
     },
     {
       "name": "radar-stack",
       "path": "services/radar-stack",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -357,7 +357,7 @@
     {
       "name": "vivgrid-openai-proxy",
       "path": "services/vivgrid-openai-proxy",
-      "classification": "REDACTED_SECRET-submodule",
+      "classification": "root-submodule",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel/services/vivgrid-openai-proxy",
@@ -365,13 +365,13 @@
       "directWorkflowFiles": [],
       "directPromotionFlow": false,
       "notes": [
-        "This is the only services/* path that is a REDACTED_SECRET git submodule."
+        "This is the only services/* path that is a root git submodule."
       ]
     },
     {
       "name": "voxx",
       "path": "services/voxx",
-      "classification": "REDACTED_SECRET-owned",
+      "classification": "root-owned",
       "isSymlink": false,
       "symlinkTarget": null,
       "gitTop": "/home/err/devel",
@@ -379,7 +379,7 @@
       "directWorkflowFiles": [],
       "directPromotionFlow": false,
       "notes": [
-        "Runtime/deploy directory in the REDACTED_SECRET repo; matching source submodule exists at orgs/open-hax/voxx but currently has main-only automation."
+        "Runtime/deploy directory in the root repo; matching source submodule exists at orgs/open-hax/voxx but currently has main-only automation."
       ]
     }
   ],
@@ -420,7 +420,7 @@
       "flowStatus": "none",
       "workflowFiles": [],
       "notes": [
-        "Standalone REDACTED_SECRET submodule with no .github/workflows directory in the checked-out repo."
+        "Standalone root submodule with no .github/workflows directory in the checked-out repo."
       ]
     },
     {

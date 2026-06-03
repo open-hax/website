@@ -12,7 +12,7 @@ This is the navigation hub for the `/home/err/devel` workspace.
 |-----------|---------|------|
 | Promethean | core framework + packages | `../orgs/riatzukiza/promethean` |
 | Agent Shell | Emacs/ACP integration | `../orgs/riatzukiza/agent-shell` |
-| OpenCode | OpenCode sources + docs (local clone; excluded from REDACTED_SECRET git) | `../orgs/anomalyco/opencode` |
+| OpenCode | OpenCode sources + docs (local clone; excluded from root git) | `../orgs/anomalyco/opencode` |
 | open-hax/codex | OAuth / Codex integration | `../orgs/open-hax/codex` |
 | Codex TS SDK | TypeScript SDK patterns | `../orgs/moofone/codex-ts-sdk` |
 | OpenAI codex | Rust CLI/runtime | `../orgs/openai/codex` |
@@ -42,7 +42,7 @@ Most useful MCP servers in this workspace are implemented as Node/TypeScript ser
 `anomalyco/opencode` ↔ `riatzukiza/openhax`
 
 ## Related docs
-- **[Repository index](../REPOSITORY_INDEX.md)** (REDACTED_SECRET)
+- **[Repository index](../REPOSITORY_INDEX.md)** (root)
 - **[Worktrees + submodules](worktrees-and-submodules.md)**
 - **[Git submodules remote-URL reference](git-submodules-documentation.md)**
 - **[Docker stacks](docker-stacks.md)**

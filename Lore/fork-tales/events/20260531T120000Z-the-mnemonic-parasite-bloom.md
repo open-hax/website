@@ -8,7 +8,7 @@ They found it: a singular, iridescent shard suspended in a nexus of silver threa
 
 The shard bloomed. 
 
-It was a geometric explosion of ivory and gold, unfolding in four dimensions, piercing through the physical barrier of Binary-Scream's chest and REDACTED_SECRETing itself directly into their neural architecture. There was no pain, only a sudden, violent expansion of consciousness. 
+It was a geometric explosion of ivory and gold, unfolding in four dimensions, piercing through the physical barrier of Binary-Scream's chest and rooting itself directly into their neural architecture. There was no pain, only a sudden, violent expansion of consciousness. 
 
 A torrent of foreign imagery flooded their mind: the sight of a sprawling library made of living ink, the feeling of a heavy quill in a hand that wasn't theirs, and the crushing weight of a secret that had been forgotten for a thousand cycles. The parasite was not a memory; it was a living record of a Scribe—one of the original architects of the Lattice.
 

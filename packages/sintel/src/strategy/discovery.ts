@@ -2,7 +2,7 @@
  * Discovery Strategies
  * 
  * Implementations of discovery strategies for different tiers.
- * - Passive: Observe existing REDACTED_SECRET data without interaction
+ * - Passive: Observe existing public data without interaction
  * - Bounded: Targeted active verification within defined bounds
  * - Unrestricted: Active discovery with broader scope
  */
@@ -15,7 +15,7 @@ import type { DiscoveryStrategy, DiscoveryTarget, RawEvidence } from '../observa
 // ============================================================================
 
 /**
- * Passive discovery observes existing REDACTED_SECRET data without interaction.
+ * Passive discovery observes existing public data without interaction.
  * Lowest risk but also lower freshness.
  */
 export class PassiveStrategy implements DiscoveryStrategy {

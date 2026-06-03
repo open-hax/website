@@ -1,4 +1,4 @@
-#!/usr/bin/env REDACTED_SECRET
+#!/usr/bin/env node
 
 /**
  * Component Pattern Analysis
@@ -40,60 +40,60 @@ function analyzeTsx(filePath, content) {
       tolerant: true
     });
     
-    walkAst(ast, (REDACTED_SECRET) => {
+    walkAst(ast, (node) => {
       // Component definitions (function declarations with JSX return)
-      if (REDACTED_SECRET.type === 'FunctionDeclaration' && REDACTED_SECRET.id?.name) {
-        const name = REDACTED_SECRET.id.name;
+      if (node.type === 'FunctionDeclaration' && node.id?.name) {
+        const name = node.id.name;
         // Heuristic: starts with uppercase = component
         if (name[0] === name[0].toUpperCase()) {
           components.defined.push({
             name,
             type: 'function',
-            loc: REDACTED_SECRET.loc?.start
+            loc: node.loc?.start
           });
         }
       }
       
       // Arrow function component assignments
-      if (REDACTED_SECRET.type === 'VariableDeclarator' && 
-          REDACTED_SECRET.id?.type === 'Identifier' &&
-          REDACTED_SECRET.init?.type === 'ArrowFunctionExpression') {
-        const name = REDACTED_SECRET.id.name;
+      if (node.type === 'VariableDeclarator' && 
+          node.id?.type === 'Identifier' &&
+          node.init?.type === 'ArrowFunctionExpression') {
+        const name = node.id.name;
         if (name[0] === name[0].toUpperCase()) {
           components.defined.push({
             name,
             type: 'arrow',
-            loc: REDACTED_SECRET.loc?.start
+            loc: node.loc?.start
           });
         }
       }
       
       // JSX elements used
-      if (REDACTED_SECRET.type === 'JSXElement' && REDACTED_SECRET.openingElement?.name) {
-        const elName = getJsxElementName(REDACTED_SECRET.openingElement.name);
+      if (node.type === 'JSXElement' && node.openingElement?.name) {
+        const elName = getJsxElementName(node.openingElement.name);
         if (elName) {
           // Filter out native HTML elements
           if (elName[0] === elName[0].toUpperCase()) {
             components.used.push({
               name: elName,
-              props: extractProps(REDACTED_SECRET.openingElement.attributes),
-              loc: REDACTED_SECRET.loc?.start
+              props: extractProps(node.openingElement.attributes),
+              loc: node.loc?.start
             });
           }
         }
       }
       
       // Import declarations
-      if (REDACTED_SECRET.type === 'ImportDeclaration' && REDACTED_SECRET.source?.value) {
-        const source = REDACTED_SECRET.source.value;
-        for (const spec of REDACTED_SECRET.specifiers || []) {
+      if (node.type === 'ImportDeclaration' && node.source?.value) {
+        const source = node.source.value;
+        for (const spec of node.specifiers || []) {
           if (spec.type === 'ImportDefaultSpecifier' || spec.type === 'ImportSpecifier') {
             const name = spec.local?.name || spec.imported?.name;
             if (name && name[0] === name[0].toUpperCase()) {
               components.imported.push({
                 name,
                 source,
-                loc: REDACTED_SECRET.loc?.start
+                loc: node.loc?.start
               });
             }
           }
@@ -101,15 +101,15 @@ function analyzeTsx(filePath, content) {
       }
       
       // Export declarations
-      if (REDACTED_SECRET.type === 'ExportNamedDeclaration') {
-        if (REDACTED_SECRET.declaration?.type === 'FunctionDeclaration' && REDACTED_SECRET.declaration.id?.name) {
-          const name = REDACTED_SECRET.declaration.id.name;
+      if (node.type === 'ExportNamedDeclaration') {
+        if (node.declaration?.type === 'FunctionDeclaration' && node.declaration.id?.name) {
+          const name = node.declaration.id.name;
           if (name[0] === name[0].toUpperCase()) {
             components.exported.push({ name, type: 'named' });
           }
         }
-        if (REDACTED_SECRET.declaration?.type === 'VariableDeclaration') {
-          for (const decl of REDACTED_SECRET.declaration.declarations || []) {
+        if (node.declaration?.type === 'VariableDeclaration') {
+          for (const decl of node.declaration.declarations || []) {
             if (decl.id?.type === 'Identifier') {
               const name = decl.id.name;
               if (name[0] === name[0].toUpperCase()) {
@@ -120,11 +120,11 @@ function analyzeTsx(filePath, content) {
         }
       }
       
-      if (REDACTED_SECRET.type === 'ExportDefaultDeclaration') {
-        if (REDACTED_SECRET.declaration?.type === 'Identifier') {
-          components.exported.push({ name: REDACTED_SECRET.declaration.name, type: 'default' });
-        } else if (REDACTED_SECRET.declaration?.type === 'FunctionDeclaration' && REDACTED_SECRET.declaration.id?.name) {
-          components.exported.push({ name: REDACTED_SECRET.declaration.id.name, type: 'default' });
+      if (node.type === 'ExportDefaultDeclaration') {
+        if (node.declaration?.type === 'Identifier') {
+          components.exported.push({ name: node.declaration.name, type: 'default' });
+        } else if (node.declaration?.type === 'FunctionDeclaration' && node.declaration.id?.name) {
+          components.exported.push({ name: node.declaration.id.name, type: 'default' });
         }
       }
     });
@@ -139,13 +139,13 @@ function analyzeTsx(filePath, content) {
 /**
  * Walk AST recursively
  */
-function walkAst(REDACTED_SECRET, visitor) {
-  if (!REDACTED_SECRET || typeof REDACTED_SECRET !== 'object') return;
+function walkAst(node, visitor) {
+  if (!node || typeof node !== 'object') return;
   
-  visitor(REDACTED_SECRET);
+  visitor(node);
   
-  for (const key of Object.keys(REDACTED_SECRET)) {
-    const child = REDACTED_SECRET[key];
+  for (const key of Object.keys(node)) {
+    const child = node[key];
     if (Array.isArray(child)) {
       for (const item of child) {
         walkAst(item, visitor);

@@ -32,7 +32,7 @@ Build a new project that provides the *lowest-level* UI for interacting with η�
 - No full general knowledge graph ontology.
 
 ## Inputs
-- `ημ.mounts.v1` JSON config (path relative to vault REDACTED_SECRET):
+- `ημ.mounts.v1` JSON config (path relative to vault root):
   - `.opencode/runtime/eta_mu_mounts.v1.json`
 - Mounted Markdown files.
 
@@ -60,7 +60,7 @@ Build a new project that provides the *lowest-level* UI for interacting with η�
    - `@workspace/eta-mu-truth` (truth ops log + derive view)
 2. Create new service:
    - `@workspace/eta-mu-truth-workbench` (HTTP API + static UI)
-3. Verify locally by pointing at a vault REDACTED_SECRET with mounts.
+3. Verify locally by pointing at a vault root with mounts.
 
 ## Definition of done
 - Service starts and serves UI.

@@ -1,9 +1,9 @@
 // GPL-3.0-only
 import fg from "fast-glob";
-import { spawn } from "REDACTED_SECRET:child_process";
-import { createWriteStream } from "REDACTED_SECRET:fs";
+import { spawn } from "node:child_process";
+import { createWriteStream } from "node:fs";
 import pc from "picocolors";
-import * as path from "REDACTED_SECRET:path";
+import * as path from "node:path";
 import mri from "minimist";
 
 function run(
@@ -68,13 +68,13 @@ function guessDialects(files: string[]): string[] {
 
 async function main() {
   const args = mri(process.argv.slice(2), {
-    string: ["REDACTED_SECRET", "prompt", "out"],
+    string: ["root", "prompt", "out"],
     default: { prompt: "build", out: "data/buildset.jsonl" },
   });
 
   // Validate inputs
-  if (!args.REDACTED_SECRET || typeof args.REDACTED_SECRET !== "string") {
-    console.error("Error: --REDACTED_SECRET is required and must be a string");
+  if (!args.root || typeof args.root !== "string") {
+    console.error("Error: --root is required and must be a string");
     process.exit(1);
   }
   if (!args.out || typeof args.out !== "string") {
@@ -95,13 +95,13 @@ async function main() {
     process.exit(1);
   }
 
-  const REDACTED_SECRETs = await fg([`${args.REDACTED_SECRET}/**/.git`], {
+  const roots = await fg([`${args.root}/**/.git`], {
     onlyDirectories: true,
     deep: 3,
   });
   const out = createWriteStream(args.out, { flags: "w" });
 
-  for (const gitdir of REDACTED_SECRETs) {
+  for (const gitdir of roots) {
     const repoRoot = path.dirname(gitdir);
     const files = await fg(["**/*.{clj,cljs,cljc,lisp,lsp,el,scm,rkt}"], {
       cwd: repoRoot,
@@ -119,7 +119,7 @@ async function main() {
         out.write(
           JSON.stringify({
             repo: path.basename(repoRoot),
-            REDACTED_SECRET: repoRoot,
+            root: repoRoot,
             prompt: args.prompt,
             status,
             dialects,

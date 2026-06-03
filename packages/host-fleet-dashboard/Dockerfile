@@ -1,4 +1,4 @@
-FROM REDACTED_SECRET:22-bookworm-slim
+FROM node:22-bookworm-slim
 
 WORKDIR /app
 
@@ -12,4 +12,4 @@ ENV HOST_FLEET_DASHBOARD_HOST=0.0.0.0 \
 
 EXPOSE 8791
 
-CMD ["REDACTED_SECRET", "src/index.js"]
+CMD ["node", "src/index.js"]

@@ -13,7 +13,7 @@ show_usage() {
 Usage: $(basename "$0") [OPTIONS] [TARGET_RANGE]
 
 Masscan wrapper for our-gpus Ollama discovery.
-Requires REDACTED_SECRET/sudo for raw socket access.
+Requires root/sudo for raw socket access.
 
 OPTIONS:
     -p, --port PORT      Target port (default: 11434)
@@ -80,7 +80,7 @@ if [[ -z "${TARGET}" ]]; then
 fi
 
 if [[ $EUID -ne 0 ]]; then
-    echo "Error: This script must be run as REDACTED_SECRET (sudo)"
+    echo "Error: This script must be run as root (sudo)"
     exit 1
 fi
 

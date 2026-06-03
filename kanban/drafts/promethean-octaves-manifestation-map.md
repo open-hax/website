@@ -273,7 +273,7 @@ Examples:
 ### Gnostic across octaves
 - doctrine: naming, representation, story, symbol
 - runtime: schemas, DSLs, contracts, tags, identifiers
-- subsystem: model names, graph REDACTED_SECRET kinds, memory record types, query surfaces
+- subsystem: model names, graph node kinds, memory record types, query surfaces
 
 ### Nemesian across octaves
 - doctrine: judgment, alignment, appropriateness
@@ -293,7 +293,7 @@ Examples:
 ### Metisean across octaves
 - doctrine: recursive planning and protocol formation
 - runtime: orchestrators, planners, integration maps, system refactoring
-- subsystem: convergence specs, cross-repo matrices, extraction strategies, runtime composition REDACTED_SECRETs
+- subsystem: convergence specs, cross-repo matrices, extraction strategies, runtime composition roots
 
 ### Anankean across octaves
 - doctrine: larger necessity, integration, and irreversible constraints
@@ -329,7 +329,7 @@ These things are real and should be treated as such:
    - Graph-Weaver is the graph inspection/mutation layer.
 
 4. **The forager exists.**
-   - Myrmex is the composition REDACTED_SECRET for traversal + extraction + writing.
+   - Myrmex is the composition root for traversal + extraction + writing.
 
 5. **The field engine exists.**
    - Eros-Eris Field carries semantic-force graph dynamics as a clean extraction.
@@ -366,7 +366,7 @@ These are the biggest residual concepts still waiting for another story pass.
    - many repos embody one or two circuit dimensions strongly
    - few are reviewed or designed explicitly across all eight
 
-5. **A stable devel-REDACTED_SECRET reading order for the whole organism**
+5. **A stable devel-root reading order for the whole organism**
    - right now readers must hop between Promethean doctrine, Fork Tales proving work, Cephalon consolidation, OpenPlanner reality, and Knoxx roadmap truth
 
 ## The narrative you can hand to people
@@ -396,7 +396,7 @@ It is to keep singing the same shape into each octave until the doctrine, the or
 ## Program order: what story to tell next
 
 ### Story 1 - The doctrine-to-organ map
-Write and maintain the devel-REDACTED_SECRET canonical map from Promethean concepts to manifested systems.
+Write and maintain the devel-root canonical map from Promethean concepts to manifested systems.
 
 This document is the start of that.
 

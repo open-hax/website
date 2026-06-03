@@ -129,7 +129,7 @@ Query scoping by org is **already largely implemented** across the Knoxx backend
 | Route | Has `with-request-context!` | Needs Fix |
 |-------|---------------------------|-----------|
 | `/api/lounge/messages` | ❌ No | Yes - should require auth |
-| `/api/config` | ❌ No | No - REDACTED_SECRET config OK |
+| `/api/config` | ❌ No | No - public config OK |
 | `/health` | ❌ No | No - health check OK |
 | `/v1/models` | ❌ No (uses API key) | Uses different auth |
 | `/v1/chat/completions` | ❌ No (uses API key) | Uses different auth |
@@ -137,7 +137,7 @@ Query scoping by org is **already largely implemented** across the Knoxx backend
 
 ### 3. Lounge Messages Not Scoped
 
-**Problem:** `/api/lounge/messages` is REDACTED_SECRET with no auth:
+**Problem:** `/api/lounge/messages` is public with no auth:
 
 ```clojure
 (route! app "GET" "/api/lounge/messages"

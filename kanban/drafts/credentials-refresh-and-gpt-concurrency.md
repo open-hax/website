@@ -41,7 +41,7 @@ High — current operator workflow is painful with hundreds of OpenAI accounts, 
    - Prevent GPT cross-provider latency overrides from leapfrogging OpenAI preference with VivGrid.
 3. **Credentials-page UX**
    - Add toolbar controls to refresh credentials data and trigger OpenAI OAuth refresh.
-   - Make the credentials page fixed-height with no body/REDACTED_SECRET overflow; only panel-level scroll regions should scroll.
+   - Make the credentials page fixed-height with no body/root overflow; only panel-level scroll regions should scroll.
    - Compact account cards and collapse lower-priority admin sections so more accounts fit on screen.
    - Ensure the dev web instance can talk to the dev API instance.
 4. **Verification**
@@ -79,7 +79,7 @@ High — current operator workflow is painful with hundreds of OpenAI accounts, 
 
 ## Definition of Done
 - A dedicated button on the credentials page can trigger OpenAI OAuth refresh across stored accounts.
-- The credentials page has no body/REDACTED_SECRET overflow at desktop sizes; scrolling happens inside page panels only.
+- The credentials page has no body/root overflow at desktop sizes; scrolling happens inside page panels only.
 - The credentials page is visibly denser, allowing more accounts per screen.
 - GPT traffic honors provider preference for OpenAI over VivGrid despite historical TTFT differences.
 - Refresh throughput is materially improved for large OpenAI account fleets.

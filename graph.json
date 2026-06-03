@@ -1,11 +1,11 @@
 {
   "graph": {
-    "REDACTED_SECRETs": {
+    "nodes": {
       "opencode-session-manager": {
         "name": "opencode-session-manager",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/pseudo/opencode-session-manager",
+          "root": "orgs/riatzukiza/promethean/pseudo/opencode-session-manager",
           "name": "opencode-session-manager",
           "tags": [
             "npm:private",
@@ -30,13 +30,13 @@
               "packageName": "@promethean/opencode-session-manager",
               "packageExports": {
                 ".": {
-                  "import": "./REDACTED_SECRET/js/main.js",
-                  "require": "./REDACTED_SECRET/js/main.js"
+                  "import": "./public/js/main.js",
+                  "require": "./public/js/main.js"
                 },
-                "./REDACTED_SECRET/*": "./REDACTED_SECRET/*",
-                "./*": "./REDACTED_SECRET/*"
+                "./public/*": "./public/*",
+                "./*": "./public/*"
               },
-              "packageMain": "REDACTED_SECRET/js/main.js",
+              "packageMain": "public/js/main.js",
               "isInPackageManagerWorkspaces": false
             }
           },
@@ -47,7 +47,7 @@
                 "script": "clean"
               },
               "metadata": {
-                "scriptContent": "rimraf REDACTED_SECRET/js",
+                "scriptContent": "rimraf public/js",
                 "runCommand": "bun run clean -- undefined"
               },
               "configurations": {},
@@ -107,7 +107,7 @@
                 "script": "start"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET REDACTED_SECRET/health.js",
+                "scriptContent": "node public/health.js",
                 "runCommand": "bun run start -- undefined"
               },
               "configurations": {},
@@ -178,7 +178,7 @@
               "parallelism": true
             }
           },
-          "$schema": "../../REDACTED_SECRET_modules/nx/schemas/project-schema.json",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
           "sourceRoot": "packages/opencode-session-manager/src",
           "projectType": "application",
           "implicitDependencies": []
@@ -188,7 +188,7 @@
         "name": "@promethean-os/semverguard",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/pipelines/semverguard",
+          "root": "orgs/riatzukiza/promethean/packages/pipelines/semverguard",
           "name": "@promethean-os/semverguard",
           "tags": [
             "npm:private"
@@ -290,7 +290,7 @@
         "name": "@promethean-os/image-link-generator",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/image-link-generator",
+          "root": "orgs/riatzukiza/promethean/packages/image-link-generator",
           "name": "@promethean-os/image-link-generator",
           "tags": [
             "npm:private"
@@ -363,7 +363,7 @@
         "name": "@promethean-os/readmeflow",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/pipelines/readmeflow",
+          "root": "orgs/riatzukiza/promethean/packages/pipelines/readmeflow",
           "name": "@promethean-os/readmeflow",
           "tags": [
             "npm:private"
@@ -491,7 +491,7 @@
         "name": "@promethean/enso-browser-gateway",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/enso-browser-gateway",
+          "root": "orgs/riatzukiza/promethean/packages/enso-browser-gateway",
           "name": "@promethean/enso-browser-gateway",
           "tags": [
             "npm:private"
@@ -514,7 +514,7 @@
                 "script": "dev"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET --env-file=../../.env src/server.mjs",
+                "scriptContent": "node --env-file=../../.env src/server.mjs",
                 "runCommand": "bun run dev -- undefined"
               },
               "configurations": {},
@@ -537,7 +537,7 @@
         "name": "file-indexer-service",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/file-indexer-service",
+          "root": "orgs/riatzukiza/promethean/packages/file-indexer-service",
           "name": "file-indexer-service",
           "tags": [
             "npm:private"
@@ -662,7 +662,7 @@
               "parallelism": true
             }
           },
-          "$schema": "../../REDACTED_SECRET_modules/nx/schemas/project-schema.json",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
           "sourceRoot": "src",
           "projectType": "library",
           "implicitDependencies": []
@@ -672,7 +672,7 @@
         "name": "@promethean-os/sonarflow",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/pipelines/sonarflow",
+          "root": "orgs/riatzukiza/promethean/packages/pipelines/sonarflow",
           "name": "@promethean-os/sonarflow",
           "tags": [
             "npm:private"
@@ -748,10 +748,10 @@
         "name": "mcp-dev-ui-frontend",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/mcp-dev-ui-frontend",
+          "root": "orgs/riatzukiza/promethean/packages/mcp-dev-ui-frontend",
           "name": "mcp-dev-ui-frontend",
           "tags": [
-            "npm:REDACTED_SECRET",
+            "npm:public",
             "npm:frontend",
             "npm:clojurescript",
             "npm:mcp",
@@ -883,7 +883,7 @@
               "parallelism": true
             }
           },
-          "$schema": "../../REDACTED_SECRET_modules/nx/schemas/project-schema.json",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
           "sourceRoot": "packages/mcp-dev-ui-frontend/src",
           "projectType": "library",
           "implicitDependencies": []
@@ -893,7 +893,7 @@
         "name": "@promethean-os/boardrev",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/pipelines/boardrev",
+          "root": "orgs/riatzukiza/promethean/packages/pipelines/boardrev",
           "name": "@promethean-os/boardrev",
           "tags": [
             "npm:private"
@@ -1138,7 +1138,7 @@
         "name": "@promethean-os/buildfix",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/pipelines/buildfix",
+          "root": "orgs/riatzukiza/promethean/packages/pipelines/buildfix",
           "name": "@promethean-os/buildfix",
           "tags": [
             "npm:private"
@@ -1304,7 +1304,7 @@
                 "script": "doc:report"
               },
               "metadata": {
-                "scriptContent": "pnpm build && REDACTED_SECRET ./dist/03-report.js",
+                "scriptContent": "pnpm build && node ./dist/03-report.js",
                 "runCommand": "bun run doc:report -- undefined"
               },
               "configurations": {},
@@ -1318,7 +1318,7 @@
         "name": "@promethean-os/codemods",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/pipelines/codemods",
+          "root": "orgs/riatzukiza/promethean/packages/pipelines/codemods",
           "name": "@promethean-os/codemods",
           "tags": [
             "npm:private"
@@ -1369,7 +1369,7 @@
                 "script": "mods:03-dry-run"
               },
               "metadata": {
-                "scriptContent": "tsx src/03-run.ts --mode dry --REDACTED_SECRET packages --report docs/agile/tasks/codemods",
+                "scriptContent": "tsx src/03-run.ts --mode dry --root packages --report docs/agile/tasks/codemods",
                 "runCommand": "bun run mods:03-dry-run -- undefined"
               },
               "configurations": {},
@@ -1381,7 +1381,7 @@
                 "script": "mods:03-apply"
               },
               "metadata": {
-                "scriptContent": "tsx src/03-run.ts --mode apply --REDACTED_SECRET packages --report docs/agile/tasks/codemods",
+                "scriptContent": "tsx src/03-run.ts --mode apply --root packages --report docs/agile/tasks/codemods",
                 "runCommand": "bun run mods:03-apply -- undefined"
               },
               "configurations": {},
@@ -1407,7 +1407,7 @@
         "name": "@promethean-os/codepack",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/pipelines/codepack",
+          "root": "orgs/riatzukiza/promethean/packages/pipelines/codepack",
           "name": "@promethean-os/codepack",
           "tags": [
             "npm:private"
@@ -1509,7 +1509,7 @@
         "name": "@promethean-os/simtasks",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/pipelines/simtask",
+          "root": "orgs/riatzukiza/promethean/packages/pipelines/simtask",
           "name": "@promethean-os/simtasks",
           "tags": [
             "npm:private"
@@ -1537,7 +1537,7 @@
                 "script": "sim:01-scan"
               },
               "metadata": {
-                "scriptContent": "tsx src/01-scan.ts --REDACTED_SECRET packages --tsconfig tsconfig.json",
+                "scriptContent": "tsx src/01-scan.ts --root packages --tsconfig tsconfig.json",
                 "runCommand": "bun run sim:01-scan -- undefined"
               },
               "configurations": {},
@@ -1611,7 +1611,7 @@
         "name": "@promethean-os/symdocs",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/pipelines/symdocs",
+          "root": "orgs/riatzukiza/promethean/packages/pipelines/symdocs",
           "name": "@promethean-os/symdocs",
           "tags": [
             "npm:private"
@@ -1638,7 +1638,7 @@
                 "script": "symdocs:01-scan"
               },
               "metadata": {
-                "scriptContent": "tsx src/01-scan.ts --REDACTED_SECRET packages --tsconfig tsconfig.json",
+                "scriptContent": "tsx src/01-scan.ts --root packages --tsconfig tsconfig.json",
                 "runCommand": "bun run symdocs:01-scan -- undefined"
               },
               "configurations": {},
@@ -1674,7 +1674,7 @@
                 "script": "symdocs:04-graph"
               },
               "metadata": {
-                "scriptContent": "tsx src/04-graph.ts --REDACTED_SECRET packages --out docs/packages --include-imports true --respect-manifest true --render-domain-graphs true --domain-depth 1 --rdeps-table true --max-rdeps-list 12",
+                "scriptContent": "tsx src/04-graph.ts --root packages --out docs/packages --include-imports true --respect-manifest true --render-domain-graphs true --domain-depth 1 --rdeps-table true --max-rdeps-list 12",
                 "runCommand": "bun run symdocs:04-graph -- undefined"
               },
               "configurations": {},
@@ -1700,10 +1700,10 @@
         "name": "@promethean-os/docops",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/pipelines/docops",
+          "root": "orgs/riatzukiza/promethean/packages/pipelines/docops",
           "name": "@promethean-os/docops",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {
@@ -1759,7 +1759,7 @@
         "name": "@promethean-os/frontend-service",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/frontend-service",
+          "root": "orgs/riatzukiza/promethean/packages/frontend-service",
           "name": "@promethean-os/frontend-service",
           "tags": [
             "npm:private"
@@ -1857,7 +1857,7 @@
                 "script": "start"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/index.js",
+                "scriptContent": "node dist/index.js",
                 "runCommand": "bun run start -- undefined"
               },
               "configurations": {},
@@ -1871,10 +1871,10 @@
         "name": "@promethean-os/piper",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/pipelines/piper",
+          "root": "orgs/riatzukiza/promethean/packages/pipelines/piper",
           "name": "@promethean-os/piper",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {
@@ -1939,7 +1939,7 @@
                 "script": "dev-ui"
               },
               "metadata": {
-                "scriptContent": "pnpm build && REDACTED_SECRET dist/dev-ui.js",
+                "scriptContent": "pnpm build && node dist/dev-ui.js",
                 "runCommand": "bun run dev-ui -- undefined"
               },
               "configurations": {},
@@ -1962,7 +1962,7 @@
         "name": "@promethean/duck-audio",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/duck/duck-audio",
+          "root": "orgs/riatzukiza/promethean/packages/duck/duck-audio",
           "name": "@promethean/duck-audio",
           "tags": [
             "npm:private"
@@ -2015,7 +2015,7 @@
         "name": "orgs-open-hax-codex",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "projects/orgs-open-hax-codex",
+          "root": "projects/orgs-open-hax-codex",
           "name": "orgs-open-hax-codex",
           "projectType": "application",
           "tags": [
@@ -2046,7 +2046,7 @@
         "name": "@promethean-os/promethean-cli",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/promethean-cli",
+          "root": "orgs/riatzukiza/promethean/packages/promethean-cli",
           "name": "@promethean-os/promethean-cli",
           "tags": [
             "npm:private"
@@ -2096,10 +2096,10 @@
         "name": "@promethean-os/eidolon-field",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/eidolon-field",
+          "root": "orgs/riatzukiza/promethean/packages/eidolon-field",
           "name": "@promethean-os/eidolon-field",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {
@@ -2121,7 +2121,7 @@
                 "script": "start"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET index.js",
+                "scriptContent": "node index.js",
                 "runCommand": "bun run start -- undefined"
               },
               "configurations": {},
@@ -2156,10 +2156,10 @@
         "name": "@promethean-os/enso-protocol",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/enso-protocol",
+          "root": "orgs/riatzukiza/promethean/packages/enso-protocol",
           "name": "@promethean-os/enso-protocol",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {},
@@ -2188,7 +2188,7 @@
         "name": "@promethean-os/openai-server",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/openai-server",
+          "root": "orgs/riatzukiza/promethean/packages/openai-server",
           "name": "@promethean-os/openai-server",
           "tags": [
             "npm:private"
@@ -2234,7 +2234,7 @@
         "name": "@promethean-os/ui-components",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/ui-components",
+          "root": "orgs/riatzukiza/promethean/packages/ui-components",
           "name": "@promethean-os/ui-components",
           "tags": [
             "npm:private"
@@ -2307,7 +2307,7 @@
         "name": "@promethean/duck-web",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/duck/duck-web",
+          "root": "orgs/riatzukiza/promethean/packages/duck/duck-web",
           "name": "@promethean/duck-web",
           "tags": [
             "npm:private"
@@ -2382,7 +2382,7 @@
         "name": "@promethean-os/auth-service",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/auth-service",
+          "root": "orgs/riatzukiza/promethean/packages/auth-service",
           "name": "@promethean-os/auth-service",
           "tags": [
             "npm:private"
@@ -2425,7 +2425,7 @@
                 "script": "start"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/src/index.js",
+                "scriptContent": "node dist/src/index.js",
                 "runCommand": "bun run start -- undefined"
               },
               "configurations": {},
@@ -2437,7 +2437,7 @@
                 "script": "start:dev"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET --loader ts-REDACTED_SECRET/esm src/index.ts",
+                "scriptContent": "node --loader ts-node/esm src/index.ts",
                 "runCommand": "bun run start:dev -- undefined"
               },
               "configurations": {},
@@ -2485,7 +2485,7 @@
                 "script": "test:integration"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET -e \"console.log('no integration tests for auth-service')\"",
+                "scriptContent": "node -e \"console.log('no integration tests for auth-service')\"",
                 "runCommand": "bun run test:integration -- undefined"
               },
               "configurations": {},
@@ -2497,7 +2497,7 @@
                 "script": "test:e2e"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET -e \"console.log('no e2e tests for auth-service')\"",
+                "scriptContent": "node -e \"console.log('no e2e tests for auth-service')\"",
                 "runCommand": "bun run test:e2e -- undefined"
               },
               "configurations": {},
@@ -2511,7 +2511,7 @@
         "name": "@promethean-os/cookbookflow",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/cookbookflow",
+          "root": "orgs/riatzukiza/promethean/packages/cookbookflow",
           "name": "@promethean-os/cookbookflow",
           "tags": [
             "npm:private"
@@ -2652,7 +2652,7 @@
         "name": "@promethean-os/file-indexer",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/file-indexer",
+          "root": "orgs/riatzukiza/promethean/packages/file-indexer",
           "name": "@promethean-os/file-indexer",
           "tags": [
             "npm:private"
@@ -2725,10 +2725,10 @@
         "name": "@promethean-os/file-watcher",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/file-watcher",
+          "root": "orgs/riatzukiza/promethean/packages/file-watcher",
           "name": "@promethean-os/file-watcher",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {
@@ -2766,7 +2766,7 @@
                 "script": "start"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/index.js",
+                "scriptContent": "node dist/index.js",
                 "runCommand": "bun run start -- undefined"
               },
               "configurations": {},
@@ -2778,7 +2778,7 @@
                 "script": "start:dev"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET --loader ts-REDACTED_SECRET/esm src/index.ts",
+                "scriptContent": "node --loader ts-node/esm src/index.ts",
                 "runCommand": "bun run start:dev -- undefined"
               },
               "configurations": {},
@@ -2837,10 +2837,10 @@
         "name": "@promethean-os/report-forge",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/report-forge",
+          "root": "orgs/riatzukiza/promethean/packages/report-forge",
           "name": "@promethean-os/report-forge",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {
@@ -2915,7 +2915,7 @@
         "name": "@promethean-os/apply-patch",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/apply-patch",
+          "root": "orgs/riatzukiza/promethean/packages/apply-patch",
           "name": "@promethean-os/apply-patch",
           "tags": [
             "npm:private"
@@ -2993,10 +2993,10 @@
         "name": "@promethean-os/level-cache",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/level-cache",
+          "root": "orgs/riatzukiza/promethean/packages/level-cache",
           "name": "@promethean-os/level-cache",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {
@@ -3046,10 +3046,10 @@
         "name": "@promethean-os/persistence",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/persistence",
+          "root": "orgs/riatzukiza/promethean/packages/persistence",
           "name": "@promethean-os/persistence",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {
@@ -3094,7 +3094,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -3141,7 +3141,7 @@
         "name": "@promethean-os/pm2-helpers",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/pm2-helpers",
+          "root": "orgs/riatzukiza/promethean/packages/pm2-helpers",
           "name": "@promethean-os/pm2-helpers",
           "tags": [
             "npm:private"
@@ -3214,10 +3214,10 @@
         "name": "@promethean-os/shadow-conf",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/shadow-conf",
+          "root": "orgs/riatzukiza/promethean/packages/shadow-conf",
           "name": "@promethean-os/shadow-conf",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {
@@ -3299,7 +3299,7 @@
         "name": "@promethean-os/compaction",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/compaction",
+          "root": "orgs/riatzukiza/promethean/packages/compaction",
           "name": "@promethean-os/compaction",
           "tags": [
             "npm:private"
@@ -3348,7 +3348,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -3398,7 +3398,7 @@
         "name": "@promethean-os/migrations",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/migrations",
+          "root": "orgs/riatzukiza/promethean/packages/migrations",
           "name": "@promethean-os/migrations",
           "tags": [
             "npm:private"
@@ -3447,7 +3447,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -3497,7 +3497,7 @@
         "name": "@promethean-os/monitoring",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/monitoring",
+          "root": "orgs/riatzukiza/promethean/packages/monitoring",
           "name": "@promethean-os/monitoring",
           "tags": [
             "npm:private"
@@ -3570,7 +3570,7 @@
         "name": "@promethean-os/projectors",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/projectors",
+          "root": "orgs/riatzukiza/promethean/packages/projectors",
           "name": "@promethean-os/projectors",
           "tags": [
             "npm:private"
@@ -3619,7 +3619,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -3669,7 +3669,7 @@
         "name": "@promethean-os/test-utils",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/test-utils",
+          "root": "orgs/riatzukiza/promethean/packages/test-utils",
           "name": "@promethean-os/test-utils",
           "tags": [
             "npm:private"
@@ -3742,7 +3742,7 @@
         "name": "@promethean-os/embedding",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/embedding",
+          "root": "orgs/riatzukiza/promethean/packages/embedding",
           "name": "@promethean-os/embedding",
           "tags": [
             "npm:private"
@@ -3800,7 +3800,7 @@
         "name": "@promethean-os/intention",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/intention",
+          "root": "orgs/riatzukiza/promethean/packages/intention",
           "name": "@promethean-os/intention",
           "tags": [
             "npm:private"
@@ -3849,7 +3849,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -3899,7 +3899,7 @@
         "name": "@promethean-os/providers",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/providers",
+          "root": "orgs/riatzukiza/promethean/packages/providers",
           "name": "@promethean-os/providers",
           "tags": [
             "npm:private"
@@ -3948,7 +3948,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -3998,7 +3998,7 @@
         "name": "@promethean-os/shadow-ui",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/shadow-ui",
+          "root": "orgs/riatzukiza/promethean/packages/shadow-ui",
           "name": "@promethean-os/shadow-ui",
           "tags": [
             "npm:private"
@@ -4027,7 +4027,7 @@
         "name": "@promethean-os/snapshots",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/snapshots",
+          "root": "orgs/riatzukiza/promethean/packages/snapshots",
           "name": "@promethean-os/snapshots",
           "tags": [
             "npm:private"
@@ -4076,7 +4076,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -4126,7 +4126,7 @@
         "name": "@promethean-os/web-utils",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/web-utils",
+          "root": "orgs/riatzukiza/promethean/packages/web-utils",
           "name": "@promethean-os/web-utils",
           "tags": [
             "npm:private"
@@ -4199,7 +4199,7 @@
         "name": "benchmark",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/benchmark",
+          "root": "orgs/riatzukiza/promethean/packages/benchmark",
           "name": "benchmark",
           "tags": [
             "npm:private"
@@ -4287,7 +4287,7 @@
                 "script": "benchmark"
               },
               "metadata": {
-                "scriptContent": "pnpm run build && REDACTED_SECRET dist/cli.js",
+                "scriptContent": "pnpm run build && node dist/cli.js",
                 "runCommand": "bun run benchmark -- undefined"
               },
               "configurations": {},
@@ -4299,7 +4299,7 @@
                 "script": "benchmark:compare"
               },
               "metadata": {
-                "scriptContent": "pnpm run build && REDACTED_SECRET dist/cli.js --compare",
+                "scriptContent": "pnpm run build && node dist/cli.js --compare",
                 "runCommand": "bun run benchmark:compare -- undefined"
               },
               "configurations": {},
@@ -4311,7 +4311,7 @@
                 "script": "benchmark:health"
               },
               "metadata": {
-                "scriptContent": "pnpm run build && REDACTED_SECRET dist/cli.js --health",
+                "scriptContent": "pnpm run build && node dist/cli.js --health",
                 "runCommand": "bun run benchmark:health -- undefined"
               },
               "configurations": {},
@@ -4323,7 +4323,7 @@
                 "script": "benchmark:list"
               },
               "metadata": {
-                "scriptContent": "pnpm run build && REDACTED_SECRET dist/cli.js --list",
+                "scriptContent": "pnpm run build && node dist/cli.js --list",
                 "runCommand": "bun run benchmark:list -- undefined"
               },
               "configurations": {},
@@ -4368,7 +4368,7 @@
               "parallelism": true
             }
           },
-          "$schema": "../../REDACTED_SECRET_modules/nx/schemas/project-schema.json",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
           "sourceRoot": "packages/benchmark/src",
           "projectType": "library",
           "implicitDependencies": []
@@ -4378,7 +4378,7 @@
         "name": "orgs-riatzukiza-riatzukiza-github-io",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "projects/orgs-riatzukiza-riatzukiza-github-io",
+          "root": "projects/orgs-riatzukiza-riatzukiza-github-io",
           "name": "orgs-riatzukiza-riatzukiza-github-io",
           "projectType": "application",
           "tags": [
@@ -4409,10 +4409,10 @@
         "name": "@promethean-os/cephalon",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/cephalon",
+          "root": "orgs/riatzukiza/promethean/packages/cephalon",
           "name": "@promethean-os/cephalon",
           "tags": [
-            "npm:REDACTED_SECRET",
+            "npm:public",
             "npm:discord",
             "npm:radio",
             "npm:bot",
@@ -4446,7 +4446,7 @@
                 "script": "start"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/index.js",
+                "scriptContent": "node dist/index.js",
                 "runCommand": "bun run start -- undefined"
               },
               "configurations": {},
@@ -4458,7 +4458,7 @@
                 "script": "coverage"
               },
               "metadata": {
-                "scriptContent": "pnpm run build && SKIP_NETWORK_TESTS=1 c8 ava --config ../../../config/ava.config.mjs \"tests/**/*.test.js\" --REDACTED_SECRET-arguments='--enable-source-maps'",
+                "scriptContent": "pnpm run build && SKIP_NETWORK_TESTS=1 c8 ava --config ../../../config/ava.config.mjs \"tests/**/*.test.js\" --node-arguments='--enable-source-maps'",
                 "runCommand": "bun run coverage -- undefined"
               },
               "configurations": {},
@@ -4482,7 +4482,7 @@
                 "script": "deploy"
               },
               "metadata": {
-                "scriptContent": "pnpm run build && REDACTED_SECRET --env-file=../../.env dist/util/deploy.js",
+                "scriptContent": "pnpm run build && node --env-file=../../.env dist/util/deploy.js",
                 "runCommand": "bun run deploy -- undefined"
               },
               "configurations": {},
@@ -4506,7 +4506,7 @@
                 "script": "start:dev"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET  --loader ts-REDACTED_SECRET/esm  src/index.ts",
+                "scriptContent": "node  --loader ts-node/esm  src/index.ts",
                 "runCommand": "bun run start:dev -- undefined"
               },
               "configurations": {},
@@ -4529,7 +4529,7 @@
         "name": "@promethean-os/compiler",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/compiler",
+          "root": "orgs/riatzukiza/promethean/packages/compiler",
           "name": "@promethean-os/compiler",
           "tags": [
             "npm:private"
@@ -4578,7 +4578,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -4628,7 +4628,7 @@
         "name": "@promethean-os/examples",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/examples",
+          "root": "orgs/riatzukiza/promethean/packages/examples",
           "name": "@promethean-os/examples",
           "tags": [
             "npm:private"
@@ -4677,7 +4677,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -4727,10 +4727,10 @@
         "name": "@promethean-os/markdown",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/markdown",
+          "root": "orgs/riatzukiza/promethean/packages/markdown",
           "name": "@promethean-os/markdown",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {
@@ -4788,7 +4788,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -4847,7 +4847,7 @@
         "name": "@promethean-os/platform",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/platform",
+          "root": "orgs/riatzukiza/promethean/packages/platform",
           "name": "@promethean-os/platform",
           "tags": [
             "npm:private"
@@ -4896,7 +4896,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -4946,7 +4946,7 @@
         "name": "@promethean-os/security",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/security",
+          "root": "orgs/riatzukiza/promethean/packages/security",
           "name": "@promethean-os/security",
           "tags": [
             "npm:private"
@@ -5019,7 +5019,7 @@
         "name": "frontend",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/frontend",
+          "root": "orgs/riatzukiza/promethean/packages/frontend",
           "name": "frontend",
           "tags": [
             "npm:private",
@@ -5406,7 +5406,7 @@
         "name": "@promethean-os/discord",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/discord",
+          "root": "orgs/riatzukiza/promethean/packages/discord",
           "name": "@promethean-os/discord",
           "tags": [
             "npm:private"
@@ -5477,7 +5477,7 @@
         "name": "@promethean-os/effects",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/effects",
+          "root": "orgs/riatzukiza/promethean/packages/effects",
           "name": "@promethean-os/effects",
           "tags": [
             "npm:private"
@@ -5526,7 +5526,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -5576,7 +5576,7 @@
         "name": "@promethean-os/testgap",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/testgap",
+          "root": "orgs/riatzukiza/promethean/packages/testgap",
           "name": "@promethean-os/testgap",
           "tags": [
             "npm:private"
@@ -5717,10 +5717,10 @@
         "name": "@promethean-os/broker",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/broker",
+          "root": "orgs/riatzukiza/promethean/packages/broker",
           "name": "@promethean-os/broker",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {
@@ -5743,7 +5743,7 @@
                 "script": "start"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET index.js",
+                "scriptContent": "node index.js",
                 "runCommand": "bun run start -- undefined"
               },
               "configurations": {},
@@ -5790,10 +5790,10 @@
         "name": "@promethean-os/kanban",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/kanban",
+          "root": "orgs/riatzukiza/promethean/packages/kanban",
           "name": "@promethean-os/kanban",
           "tags": [
-            "npm:REDACTED_SECRET",
+            "npm:public",
             "npm:kanban",
             "npm:markdown",
             "npm:task-management",
@@ -5905,7 +5905,7 @@
         "name": "@promethean-os/legacy",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/legacy",
+          "root": "orgs/riatzukiza/promethean/packages/legacy",
           "name": "@promethean-os/legacy",
           "tags": [
             "npm:private"
@@ -5936,7 +5936,7 @@
         "name": "@promethean-os/naming",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/naming",
+          "root": "orgs/riatzukiza/promethean/packages/naming",
           "name": "@promethean-os/naming",
           "tags": [
             "npm:private"
@@ -5985,7 +5985,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -6035,10 +6035,10 @@
         "name": "@promethean-os/stream",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/stream",
+          "root": "orgs/riatzukiza/promethean/packages/stream",
           "name": "@promethean-os/stream",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {
@@ -6084,7 +6084,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -6143,7 +6143,7 @@
         "name": "@promethean-os/worker",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/worker",
+          "root": "orgs/riatzukiza/promethean/packages/worker",
           "name": "@promethean-os/worker",
           "tags": [
             "npm:private"
@@ -6192,7 +6192,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -6242,7 +6242,7 @@
         "name": "@promethean-os/event",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/event",
+          "root": "orgs/riatzukiza/promethean/packages/event",
           "name": "@promethean-os/event",
           "tags": [
             "npm:private"
@@ -6291,7 +6291,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -6341,10 +6341,10 @@
         "name": "@promethean-os/utils",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/utils",
+          "root": "orgs/riatzukiza/promethean/packages/utils",
           "name": "@promethean-os/utils",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {
@@ -6423,10 +6423,10 @@
         "name": "@promethean-os/voice-service",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/voice",
+          "root": "orgs/riatzukiza/promethean/packages/voice",
           "name": "@promethean-os/voice-service",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {
@@ -6483,7 +6483,7 @@
         "name": "@promethean-os/http",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/http",
+          "root": "orgs/riatzukiza/promethean/packages/http",
           "name": "@promethean-os/http",
           "tags": [
             "npm:private"
@@ -6532,7 +6532,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -6582,7 +6582,7 @@
         "name": "orgs-riatzukiza-book-of-shadows",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "projects/orgs-riatzukiza-book-of-shadows",
+          "root": "projects/orgs-riatzukiza-book-of-shadows",
           "name": "orgs-riatzukiza-book-of-shadows",
           "projectType": "application",
           "tags": [
@@ -6613,7 +6613,7 @@
         "name": "@promethean-os/cli",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/cli",
+          "root": "orgs/riatzukiza/promethean/packages/cli",
           "name": "@promethean-os/cli",
           "tags": [
             "npm:private"
@@ -6662,7 +6662,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -6712,7 +6712,7 @@
         "name": "@promethean-os/dlq",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/dlq",
+          "root": "orgs/riatzukiza/promethean/packages/dlq",
           "name": "@promethean-os/dlq",
           "tags": [
             "npm:private"
@@ -6761,7 +6761,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -6811,7 +6811,7 @@
         "name": "@promethean-os/fsm",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/fsm",
+          "root": "orgs/riatzukiza/promethean/packages/fsm",
           "name": "@promethean-os/fsm",
           "tags": [
             "npm:private"
@@ -6882,7 +6882,7 @@
         "name": "@promethean-os/llm",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/llm",
+          "root": "orgs/riatzukiza/promethean/packages/llm",
           "name": "@promethean-os/llm",
           "tags": [
             "npm:private"
@@ -6931,7 +6931,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -6981,7 +6981,7 @@
         "name": "@promethean-os/mcp",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/mcp",
+          "root": "orgs/riatzukiza/promethean/packages/mcp",
           "name": "@promethean-os/mcp",
           "tags": [
             "npm:private"
@@ -7088,7 +7088,7 @@
         "name": "orgs-riatzukiza-goblin-lessons",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "projects/orgs-riatzukiza-goblin-lessons",
+          "root": "projects/orgs-riatzukiza-goblin-lessons",
           "name": "orgs-riatzukiza-goblin-lessons",
           "projectType": "application",
           "tags": [
@@ -7119,10 +7119,10 @@
         "name": "@promethean-os/ds",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/ds",
+          "root": "orgs/riatzukiza/promethean/packages/ds",
           "name": "@promethean-os/ds",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {
@@ -7168,7 +7168,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -7227,10 +7227,10 @@
         "name": "@promethean-os/fs",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/fs",
+          "root": "orgs/riatzukiza/promethean/packages/fs",
           "name": "@promethean-os/fs",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {
@@ -7276,7 +7276,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -7335,7 +7335,7 @@
         "name": "@promethean-os/ws",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/packages/ws",
+          "root": "orgs/riatzukiza/promethean/packages/ws",
           "name": "@promethean-os/ws",
           "tags": [
             "npm:private"
@@ -7384,7 +7384,7 @@
                 "script": "lisp"
               },
               "metadata": {
-                "scriptContent": "REDACTED_SECRET dist/cli/lisp.js",
+                "scriptContent": "node dist/cli/lisp.js",
                 "runCommand": "bun run lisp -- undefined"
               },
               "configurations": {},
@@ -7434,7 +7434,7 @@
         "name": "orgs-riatzukiza-agent-shell",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "projects/orgs-riatzukiza-agent-shell",
+          "root": "projects/orgs-riatzukiza-agent-shell",
           "name": "orgs-riatzukiza-agent-shell",
           "projectType": "application",
           "tags": [
@@ -7465,7 +7465,7 @@
         "name": "orgs-riatzukiza-promethean",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "projects/orgs-riatzukiza-promethean",
+          "root": "projects/orgs-riatzukiza-promethean",
           "name": "orgs-riatzukiza-promethean",
           "projectType": "application",
           "tags": [
@@ -7496,7 +7496,7 @@
         "name": "orgs-moofone-codex-ts-sdk",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "projects/orgs-moofone-codex-ts-sdk",
+          "root": "projects/orgs-moofone-codex-ts-sdk",
           "name": "orgs-moofone-codex-ts-sdk",
           "projectType": "application",
           "tags": [
@@ -7527,7 +7527,7 @@
         "name": "@promethean/file-watcher",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/file-system/file-watcher",
+          "root": "packages/file-system/file-watcher",
           "name": "@promethean/file-watcher",
           "sourceRoot": "packages/file-system/file-watcher/src",
           "tags": [
@@ -7584,7 +7584,7 @@
         "name": "orgs-bhauman-clojure-mcp",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "projects/orgs-bhauman-clojure-mcp",
+          "root": "projects/orgs-bhauman-clojure-mcp",
           "name": "orgs-bhauman-clojure-mcp",
           "projectType": "application",
           "tags": [
@@ -7615,7 +7615,7 @@
         "name": "orgs-riatzukiza-dotfiles",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "projects/orgs-riatzukiza-dotfiles",
+          "root": "projects/orgs-riatzukiza-dotfiles",
           "name": "orgs-riatzukiza-dotfiles",
           "projectType": "application",
           "tags": [
@@ -7646,10 +7646,10 @@
         "name": "@promethean-os/tools",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "orgs/riatzukiza/promethean/tools",
+          "root": "orgs/riatzukiza/promethean/tools",
           "name": "@promethean-os/tools",
           "tags": [
-            "npm:REDACTED_SECRET"
+            "npm:public"
           ],
           "metadata": {
             "targetGroups": {},
@@ -7677,7 +7677,7 @@
         "name": "orgs-riatzukiza-desktop",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "projects/orgs-riatzukiza-desktop",
+          "root": "projects/orgs-riatzukiza-desktop",
           "name": "orgs-riatzukiza-desktop",
           "projectType": "application",
           "tags": [
@@ -7708,7 +7708,7 @@
         "name": "orgs-riatzukiza-openhax",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "projects/orgs-riatzukiza-openhax",
+          "root": "projects/orgs-riatzukiza-openhax",
           "name": "orgs-riatzukiza-openhax",
           "projectType": "application",
           "tags": [
@@ -7739,7 +7739,7 @@
         "name": "@promethean/semverguard",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/pipelines/semverguard",
+          "root": "packages/pipelines/semverguard",
           "name": "@promethean/semverguard",
           "sourceRoot": "packages/pipelines/semverguard/src",
           "tags": [
@@ -7796,7 +7796,7 @@
         "name": "@promethean/image-link-generator",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/image-link-generator",
+          "root": "packages/image-link-generator",
           "name": "@promethean/image-link-generator",
           "sourceRoot": "packages/image-link-generator/src",
           "tags": [
@@ -7850,7 +7850,7 @@
         "name": "@promethean/readmeflow",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/pipelines/readmeflow",
+          "root": "packages/pipelines/readmeflow",
           "name": "@promethean/readmeflow",
           "sourceRoot": "packages/pipelines/readmeflow/src",
           "tags": [
@@ -7908,7 +7908,7 @@
         "name": "@promethean/sonarflow",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/pipelines/sonarflow",
+          "root": "packages/pipelines/sonarflow",
           "name": "@promethean/sonarflow",
           "sourceRoot": "packages/pipelines/sonarflow/src",
           "tags": [
@@ -7965,7 +7965,7 @@
         "name": "orgs-riatzukiza-stt",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "projects/orgs-riatzukiza-stt",
+          "root": "projects/orgs-riatzukiza-stt",
           "name": "orgs-riatzukiza-stt",
           "projectType": "application",
           "tags": [
@@ -7996,7 +7996,7 @@
         "name": "@promethean/boardrev",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/pipelines/boardrev",
+          "root": "packages/pipelines/boardrev",
           "name": "@promethean/boardrev",
           "sourceRoot": "packages/pipelines/boardrev/src",
           "tags": [
@@ -8053,7 +8053,7 @@
         "name": "@promethean/buildfix",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/pipelines/buildfix",
+          "root": "packages/pipelines/buildfix",
           "name": "@promethean/buildfix",
           "sourceRoot": "packages/pipelines/buildfix/src",
           "pipelines": "pipelines.json",
@@ -8114,7 +8114,7 @@
         "name": "@promethean/codemods",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/pipelines/codemods",
+          "root": "packages/pipelines/codemods",
           "name": "@promethean/codemods",
           "sourceRoot": "packages/pipelines/codemods/src",
           "tags": [
@@ -8171,7 +8171,7 @@
         "name": "@promethean/codepack",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/pipelines/codepack",
+          "root": "packages/pipelines/codepack",
           "name": "@promethean/codepack",
           "sourceRoot": "packages/pipelines/codepack/src",
           "tags": [
@@ -8228,7 +8228,7 @@
         "name": "@promethean/enso-protocol",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/enso/enso-protocol",
+          "root": "packages/enso/enso-protocol",
           "name": "@promethean/enso-protocol",
           "sourceRoot": "packages/enso/enso-protocol/src",
           "tags": [
@@ -8282,7 +8282,7 @@
         "name": "@promethean/simtasks",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/pipelines/simtask",
+          "root": "packages/pipelines/simtask",
           "name": "@promethean/simtasks",
           "sourceRoot": "packages/pipelines/simtask/src",
           "tags": [
@@ -8339,7 +8339,7 @@
         "name": "@promethean/symdocs",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/pipelines/symdocs",
+          "root": "packages/pipelines/symdocs",
           "name": "@promethean/symdocs",
           "sourceRoot": "packages/pipelines/symdocs/src",
           "tags": [
@@ -8396,7 +8396,7 @@
         "name": "orgs-openai-codex",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "projects/orgs-openai-codex",
+          "root": "projects/orgs-openai-codex",
           "name": "orgs-openai-codex",
           "projectType": "application",
           "tags": [
@@ -8427,7 +8427,7 @@
         "name": "orgs-sst-opencode",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "projects/orgs-sst-opencode",
+          "root": "projects/orgs-sst-opencode",
           "name": "orgs-sst-opencode",
           "projectType": "application",
           "tags": [
@@ -8458,7 +8458,7 @@
         "name": "@promethean/docops",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/pipelines/docops",
+          "root": "packages/pipelines/docops",
           "name": "@promethean/docops",
           "sourceRoot": "packages/pipelines/docops/src",
           "tags": [
@@ -8515,7 +8515,7 @@
         "name": "@promethean/frontend-service",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/frontend-service",
+          "root": "packages/frontend-service",
           "name": "@promethean/frontend-service",
           "sourceRoot": "packages/frontend-service/src",
           "tags": [
@@ -8573,7 +8573,7 @@
         "name": "@promethean/openai-server",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/ai/openai-server",
+          "root": "packages/ai/openai-server",
           "name": "@promethean/openai-server",
           "sourceRoot": "packages/ai/openai-server/src",
           "tags": [
@@ -8630,7 +8630,7 @@
         "name": "@promethean/webcrawler-service",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "pseudo/webcrawler-service",
+          "root": "pseudo/webcrawler-service",
           "name": "@promethean/webcrawler-service",
           "sourceRoot": "pseudo/webcrawler-service/src",
           "tags": [
@@ -8690,7 +8690,7 @@
         "name": "@promethean/piper",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/pipelines/piper",
+          "root": "packages/pipelines/piper",
           "name": "@promethean/piper",
           "sourceRoot": "packages/pipelines/piper/src",
           "tags": [
@@ -8747,7 +8747,7 @@
         "name": "@promethean/fs",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/file-system/fs",
+          "root": "packages/file-system/fs",
           "name": "@promethean/fs",
           "sourceRoot": "packages/file-system/fs/src",
           "tags": [
@@ -8804,7 +8804,7 @@
         "name": "@promethean/promethean-cli",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/promethean-cli",
+          "root": "packages/promethean-cli",
           "name": "@promethean/promethean-cli",
           "sourceRoot": "packages/promethean-cli/src",
           "tags": [
@@ -8841,7 +8841,7 @@
         "name": "@promethean/indexer-service",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "pseudo/indexer-service",
+          "root": "pseudo/indexer-service",
           "name": "@promethean/indexer-service",
           "sourceRoot": "pseudo/indexer-service/src",
           "tags": [
@@ -8896,7 +8896,7 @@
         "name": "@promethean/ui-components",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/ui-components",
+          "root": "packages/ui-components",
           "name": "@promethean/ui-components",
           "sourceRoot": "packages/ui-components/src",
           "tags": [
@@ -8951,7 +8951,7 @@
         "name": "eidolon-field",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/eidolon-field",
+          "root": "packages/eidolon-field",
           "name": "eidolon-field",
           "tags": [
             "scope:packages"
@@ -8984,7 +8984,7 @@
         "name": "@promethean/auth-service",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/auth-service",
+          "root": "packages/auth-service",
           "name": "@promethean/auth-service",
           "sourceRoot": "packages/auth-service/src",
           "tags": [
@@ -9041,7 +9041,7 @@
         "name": "@promethean/cookbookflow",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/cookbookflow",
+          "root": "packages/cookbookflow",
           "name": "@promethean/cookbookflow",
           "sourceRoot": "packages/cookbookflow/src",
           "tags": [
@@ -9098,7 +9098,7 @@
         "name": "@promethean/embedding",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/ai/embedding",
+          "root": "packages/ai/embedding",
           "name": "@promethean/embedding",
           "sourceRoot": "packages/ai/embedding/src",
           "tags": [
@@ -9155,7 +9155,7 @@
         "name": "@promethean/file-indexer",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/file-indexer",
+          "root": "packages/file-indexer",
           "name": "@promethean/file-indexer",
           "sourceRoot": "packages/file-indexer/src",
           "tags": [
@@ -9215,7 +9215,7 @@
         "name": "@promethean/intention",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/ai/intention",
+          "root": "packages/ai/intention",
           "name": "@promethean/intention",
           "sourceRoot": "packages/ai/intention/src",
           "tags": [
@@ -9272,7 +9272,7 @@
         "name": "@promethean/markdown-graph",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "pseudo/markdown-graph",
+          "root": "pseudo/markdown-graph",
           "name": "@promethean/markdown-graph",
           "sourceRoot": "pseudo/markdown-graph/src",
           "tags": [
@@ -9326,7 +9326,7 @@
         "name": "@promethean/report-forge",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/report-forge",
+          "root": "packages/report-forge",
           "name": "@promethean/report-forge",
           "sourceRoot": "packages/report-forge/src",
           "tags": [
@@ -9372,7 +9372,7 @@
         "name": "@promethean/alias-rewrite",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "pseudo/alias-rewrite",
+          "root": "pseudo/alias-rewrite",
           "name": "@promethean/alias-rewrite",
           "sourceRoot": "pseudo/alias-rewrite/src",
           "tags": [
@@ -9429,7 +9429,7 @@
         "name": "@promethean/apply-patch",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/apply-patch",
+          "root": "packages/apply-patch",
           "name": "@promethean/apply-patch",
           "sourceRoot": "packages/apply-patch/src",
           "tags": [
@@ -9486,7 +9486,7 @@
         "name": "@promethean/level-cache",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/level-cache",
+          "root": "packages/level-cache",
           "name": "@promethean/level-cache",
           "sourceRoot": "packages/level-cache/src",
           "tags": [
@@ -9543,7 +9543,7 @@
         "name": "@promethean/persistence",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/persistence",
+          "root": "packages/persistence",
           "name": "@promethean/persistence",
           "sourceRoot": "packages/persistence/src",
           "tags": [
@@ -9600,7 +9600,7 @@
         "name": "@promethean/pm2-helpers",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/pm2-helpers",
+          "root": "packages/pm2-helpers",
           "name": "@promethean/pm2-helpers",
           "sourceRoot": "packages/pm2-helpers/src",
           "tags": [
@@ -9655,7 +9655,7 @@
         "name": "@promethean/shadow-conf",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/shadow-conf",
+          "root": "packages/shadow-conf",
           "name": "@promethean/shadow-conf",
           "sourceRoot": "packages/shadow-conf/src",
           "tags": [
@@ -9710,7 +9710,7 @@
         "name": "@promethean/compaction",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/compaction",
+          "root": "packages/compaction",
           "name": "@promethean/compaction",
           "sourceRoot": "packages/compaction/src",
           "tags": [
@@ -9767,7 +9767,7 @@
         "name": "@promethean/indexer-core",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "pseudo/indexer-core",
+          "root": "pseudo/indexer-core",
           "name": "@promethean/indexer-core",
           "sourceRoot": "pseudo/indexer-core/src",
           "tags": [
@@ -9822,7 +9822,7 @@
         "name": "@promethean/migrations",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/migrations",
+          "root": "packages/migrations",
           "name": "@promethean/migrations",
           "sourceRoot": "packages/migrations/src",
           "tags": [
@@ -9879,7 +9879,7 @@
         "name": "@promethean/monitoring",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/monitoring",
+          "root": "packages/monitoring",
           "name": "@promethean/monitoring",
           "sourceRoot": "packages/monitoring/src",
           "tags": [
@@ -9934,7 +9934,7 @@
         "name": "@promethean/projectors",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/projectors",
+          "root": "packages/projectors",
           "name": "@promethean/projectors",
           "sourceRoot": "packages/projectors/src",
           "tags": [
@@ -9991,7 +9991,7 @@
         "name": "@promethean/test-utils",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/test-utils",
+          "root": "packages/test-utils",
           "name": "@promethean/test-utils",
           "sourceRoot": "packages/test-utils/src",
           "tags": [
@@ -10048,7 +10048,7 @@
         "name": "@promethean/naming",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/ai/naming",
+          "root": "packages/ai/naming",
           "name": "@promethean/naming",
           "sourceRoot": "packages/ai/naming/src",
           "tags": [
@@ -10105,7 +10105,7 @@
         "name": "@promethean/providers",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/providers",
+          "root": "packages/providers",
           "name": "@promethean/providers",
           "sourceRoot": "packages/providers/src",
           "tags": [
@@ -10162,7 +10162,7 @@
         "name": "@promethean/shadow-ui",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/shadow-ui",
+          "root": "packages/shadow-ui",
           "name": "@promethean/shadow-ui",
           "sourceRoot": "packages/shadow-ui/src",
           "tags": [
@@ -10208,7 +10208,7 @@
         "name": "@promethean/snapshots",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/snapshots",
+          "root": "packages/snapshots",
           "name": "@promethean/snapshots",
           "sourceRoot": "packages/snapshots/src",
           "tags": [
@@ -10265,7 +10265,7 @@
         "name": "@promethean/web-utils",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/web-utils",
+          "root": "packages/web-utils",
           "name": "@promethean/web-utils",
           "sourceRoot": "packages/web-utils/src",
           "tags": [
@@ -10322,7 +10322,7 @@
         "name": "heartbeat-service",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/heartbeat",
+          "root": "packages/heartbeat",
           "name": "heartbeat-service",
           "tags": [
             "scope:packages"
@@ -10355,7 +10355,7 @@
         "name": "ts-clj-hacks",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/clj-hacks",
+          "root": "packages/clj-hacks",
           "name": "ts-clj-hacks",
           "sourceRoot": "packages/clj-hacks/src",
           "tags": [
@@ -10384,7 +10384,7 @@
             "test": {
               "executor": "nx:run-commands",
               "options": {
-                "command": "REDACTED_SECRET tools/scripts/run-clj-hacks-test.mjs",
+                "command": "node tools/scripts/run-clj-hacks-test.mjs",
                 "cwd": "."
               },
               "dependsOn": [],
@@ -10407,7 +10407,7 @@
         "name": "@promethean/cephalon",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/cephalon",
+          "root": "packages/cephalon",
           "name": "@promethean/cephalon",
           "sourceRoot": "packages/cephalon/src",
           "tags": [
@@ -10464,7 +10464,7 @@
         "name": "@promethean/changefeed",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "pseudo/changefeed",
+          "root": "pseudo/changefeed",
           "name": "@promethean/changefeed",
           "sourceRoot": "pseudo/changefeed/src",
           "tags": [
@@ -10521,7 +10521,7 @@
         "name": "@promethean/compiler",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/compiler",
+          "root": "packages/compiler",
           "name": "@promethean/compiler",
           "sourceRoot": "packages/compiler/src",
           "tags": [
@@ -10578,7 +10578,7 @@
         "name": "@promethean/examples",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/examples",
+          "root": "packages/examples",
           "name": "@promethean/examples",
           "sourceRoot": "packages/examples/src",
           "tags": [
@@ -10635,7 +10635,7 @@
         "name": "@promethean/markdown",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/markdown",
+          "root": "packages/markdown",
           "name": "@promethean/markdown",
           "sourceRoot": "packages/markdown/src",
           "tags": [
@@ -10692,7 +10692,7 @@
         "name": "@promethean/platform",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/platform",
+          "root": "packages/platform",
           "name": "@promethean/platform",
           "sourceRoot": "packages/platform/src",
           "tags": [
@@ -10749,7 +10749,7 @@
         "name": "@promethean/security",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/security",
+          "root": "packages/security",
           "name": "@promethean/security",
           "sourceRoot": "packages/security/src",
           "tags": [
@@ -10806,7 +10806,7 @@
         "name": "@promethean/timetravel",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "pseudo/timetravel",
+          "root": "pseudo/timetravel",
           "name": "@promethean/timetravel",
           "sourceRoot": "pseudo/timetravel/src",
           "tags": [
@@ -10863,7 +10863,7 @@
         "name": "@promethean/contracts",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "pseudo/contracts",
+          "root": "pseudo/contracts",
           "name": "@promethean/contracts",
           "sourceRoot": "pseudo/contracts/src",
           "tags": [
@@ -10920,7 +10920,7 @@
         "name": "@promethean/discord",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/discord",
+          "root": "packages/discord",
           "name": "@promethean/discord",
           "sourceRoot": "packages/discord/src",
           "tags": [
@@ -10975,7 +10975,7 @@
         "name": "@promethean/effects",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/effects",
+          "root": "packages/effects",
           "name": "@promethean/effects",
           "sourceRoot": "packages/effects/src",
           "tags": [
@@ -11032,7 +11032,7 @@
         "name": "@promethean/testgap",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/testgap",
+          "root": "packages/testgap",
           "name": "@promethean/testgap",
           "sourceRoot": "packages/testgap/src",
           "tags": [
@@ -11089,10 +11089,10 @@
         "name": "lisp-fixer",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "tools/lisp-fixer",
+          "root": "tools/lisp-fixer",
           "name": "lisp-fixer",
           "tags": [
-            "npm:REDACTED_SECRET",
+            "npm:public",
             "tool",
             "lisp",
             "ml"
@@ -11144,7 +11144,7 @@
                 "format": [
                   "esm"
                 ],
-                "platform": "REDACTED_SECRET",
+                "platform": "node",
                 "sourcemap": true,
                 "minify": false
               },
@@ -11214,7 +11214,7 @@
               "parallelism": true
             }
           },
-          "$schema": "REDACTED_SECRET_modules/nx/schemas/project-schema.json",
+          "$schema": "node_modules/nx/schemas/project-schema.json",
           "sourceRoot": "src",
           "projectType": "application",
           "implicitDependencies": []
@@ -11224,7 +11224,7 @@
         "name": "@promethean/broker",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/broker",
+          "root": "packages/broker",
           "name": "@promethean/broker",
           "sourceRoot": "packages/broker",
           "tags": [
@@ -11277,7 +11277,7 @@
         "name": "@promethean/kanban",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/kanban",
+          "root": "packages/kanban",
           "name": "@promethean/kanban",
           "sourceRoot": "packages/kanban/src",
           "tags": [
@@ -11337,7 +11337,7 @@
         "name": "@promethean/legacy",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/legacy",
+          "root": "packages/legacy",
           "name": "@promethean/legacy",
           "tags": [
             "scope:packages"
@@ -11370,7 +11370,7 @@
         "name": "@promethean/llm",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/ai/llm",
+          "root": "packages/ai/llm",
           "name": "@promethean/llm",
           "sourceRoot": "packages/ai/llm/src",
           "tags": [
@@ -11427,7 +11427,7 @@
         "name": "@promethean/stream",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/stream",
+          "root": "packages/stream",
           "name": "@promethean/stream",
           "sourceRoot": "packages/stream/src",
           "tags": [
@@ -11484,7 +11484,7 @@
         "name": "@promethean/worker",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/worker",
+          "root": "packages/worker",
           "name": "@promethean/worker",
           "sourceRoot": "packages/worker/src",
           "tags": [
@@ -11541,7 +11541,7 @@
         "name": "health-service",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/health",
+          "root": "packages/health",
           "name": "health-service",
           "tags": [
             "scope:packages"
@@ -11574,7 +11574,7 @@
         "name": "@promethean/event",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/event",
+          "root": "packages/event",
           "name": "@promethean/event",
           "sourceRoot": "packages/event/src",
           "tags": [
@@ -11631,7 +11631,7 @@
         "name": "@promethean/utils",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/utils",
+          "root": "packages/utils",
           "name": "@promethean/utils",
           "sourceRoot": "packages/utils/src",
           "tags": [
@@ -11688,7 +11688,7 @@
         "name": "@promethean/voice-service",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/voice",
+          "root": "packages/voice",
           "name": "@promethean/voice-service",
           "sourceRoot": "packages/voice/src",
           "tags": [
@@ -11745,7 +11745,7 @@
         "name": "@promethean/http",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/http",
+          "root": "packages/http",
           "name": "@promethean/http",
           "sourceRoot": "packages/http/src",
           "tags": [
@@ -11802,7 +11802,7 @@
         "name": "@promethean/parity",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "pseudo/parity",
+          "root": "pseudo/parity",
           "name": "@promethean/parity",
           "sourceRoot": "pseudo/parity/src",
           "tags": [
@@ -11859,7 +11859,7 @@
         "name": "@promethean/schema",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "pseudo/schema",
+          "root": "pseudo/schema",
           "name": "@promethean/schema",
           "sourceRoot": "pseudo/schema/src",
           "tags": [
@@ -11916,7 +11916,7 @@
         "name": "giga",
         "type": "app",
         "data": {
-          "REDACTED_SECRET": "projects/giga",
+          "root": "projects/giga",
           "name": "giga",
           "projectType": "application",
           "tags": [
@@ -11939,7 +11939,7 @@
         "name": "vision-service",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "pseudo/vision",
+          "root": "pseudo/vision",
           "name": "vision-service",
           "sourceRoot": "pseudo/vision",
           "tags": [
@@ -11973,7 +11973,7 @@
         "name": "@promethean/cli",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/cli",
+          "root": "packages/cli",
           "name": "@promethean/cli",
           "sourceRoot": "packages/cli/src",
           "tags": [
@@ -12030,7 +12030,7 @@
         "name": "@promethean/dlq",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/dlq",
+          "root": "packages/dlq",
           "name": "@promethean/dlq",
           "sourceRoot": "packages/dlq/src",
           "tags": [
@@ -12087,7 +12087,7 @@
         "name": "@promethean/fsm",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/fsm",
+          "root": "packages/fsm",
           "name": "@promethean/fsm",
           "sourceRoot": "packages/fsm/src",
           "tags": [
@@ -12142,7 +12142,7 @@
         "name": "@promethean/mcp",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/mcp",
+          "root": "packages/mcp",
           "name": "@promethean/mcp",
           "sourceRoot": "packages/mcp/src",
           "tags": [
@@ -12202,7 +12202,7 @@
         "name": "@promethean/ds",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/ds",
+          "root": "packages/ds",
           "name": "@promethean/ds",
           "sourceRoot": "packages/ds/src",
           "tags": [
@@ -12259,7 +12259,7 @@
         "name": "@promethean/ws",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "packages/ws",
+          "root": "packages/ws",
           "name": "@promethean/ws",
           "sourceRoot": "packages/ws/src",
           "tags": [
@@ -12316,7 +12316,7 @@
         "name": "@promethean/tools",
         "type": "lib",
         "data": {
-          "REDACTED_SECRET": "tools",
+          "root": "tools",
           "name": "@promethean/tools",
           "projectType": "library",
           "generators": {

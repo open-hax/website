@@ -2,7 +2,7 @@
   "packageManager": "pnpm",
   "testRunner": "command",
   "commandRunner": {
-    "command": "REDACTED_SECRET --enable-source-maps target/test.cjs"
+    "command": "node --enable-source-maps target/test.cjs"
   },
   "coverageAnalysis": "off",
   "mutate": ["target/test.cjs"],

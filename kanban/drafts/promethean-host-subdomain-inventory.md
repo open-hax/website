@@ -16,7 +16,7 @@ category: "specs"
 
 ## Open questions
 - Whether all three target hosts (`ussy`, `ussy2`, `ussy3`) are reachable over SSH with the current key material.
-- Which runtime configs on each host are authoritative for REDACTED_SECRET hostname routing: Caddy, nginx, compose env, or service-specific proxy config.
+- Which runtime configs on each host are authoritative for public hostname routing: Caddy, nginx, compose env, or service-specific proxy config.
 - Whether some subdomains are declared in config but not currently backed by healthy containers.
 
 ## Risks
@@ -39,7 +39,7 @@ category: "specs"
 
 ## Definition of done
 - Each of `ussy`, `ussy2`, and `ussy3` is classified as reachable/unreachable.
-- For each reachable host, running containers and intended REDACTED_SECRET subdomains are summarized from runtime evidence.
+- For each reachable host, running containers and intended public subdomains are summarized from runtime evidence.
 - No DNS writes or proxy enablement occur.
 
 ## Execution log
@@ -93,7 +93,7 @@ category: "specs"
 - Public/browser-facing service now deployed:
   - `portal.promethean.rest` -> standalone `host-fleet-dashboard`
 - Verified live behavior:
-  - REDACTED_SECRET HTML from `https://portal.promethean.rest/`
+  - public HTML from `https://portal.promethean.rest/`
   - authenticated `/api/hosts` returns aggregated host cards for `ussy2`, `ussy`, and `ussy3`
   - browser snapshot shows a live local host card plus remote cards from the other ussy hosts
 - Running portal containers:

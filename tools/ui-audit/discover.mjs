@@ -1,4 +1,4 @@
-#!/usr/bin/env REDACTED_SECRET
+#!/usr/bin/env node
 
 /**
  * UI Discovery Script for devel monorepo
@@ -16,13 +16,13 @@ const ROOT = join(__dirname, '..', '..');
 
 // Skip patterns
 const SKIP_DIRS = new Set([
-  'REDACTED_SECRET_modules', '.git', 'dist', 'out', 'target', '.cpcache', '.shadow-cljs',
+  'node_modules', '.git', 'dist', 'out', 'target', '.cpcache', '.shadow-cljs',
   '.nx', '.worktrees', 'coverage', '.pnpm-store', 'external'
 ]);
 
 const SKIP_PATTERNS = [
   /\/\.git\//,
-  /\/REDACTED_SECRET_modules\//,
+  /\/node_modules\//,
   /\/dist\//,
   /\/target\//,
   /\.baseline$/,
@@ -50,8 +50,8 @@ const VENDOR_PATTERNS = [
 /**
  * Parse .gitmodules to get submodule info
  */
-function parseGitmodules(REDACTED_SECRET) {
-  const gmPath = join(REDACTED_SECRET, '.gitmodules');
+function parseGitmodules(root) {
+  const gmPath = join(root, '.gitmodules');
   if (!existsSync(gmPath)) return {};
   
   const content = readFileSync(gmPath, 'utf-8');
@@ -115,7 +115,7 @@ function classifySubmodule(path, submodules) {
     }
   }
   
-  return { owned: true, org: 'REDACTED_SECRET' };
+  return { owned: true, org: 'root' };
 }
 
 /**
@@ -240,7 +240,7 @@ function discover() {
   // Output
   const output = {
     generated: new Date().toISOString(),
-    REDACTED_SECRET: ROOT,
+    root: ROOT,
     stats: {
       ...stats,
       byDir: Object.fromEntries(

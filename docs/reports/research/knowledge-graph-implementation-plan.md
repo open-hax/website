@@ -70,8 +70,8 @@ type NodeType =
 // Edge Types
 interface GraphEdge {
   id: string
-  source: string             // From REDACTED_SECRET ID
-  target: string             // To REDACTED_SECRET ID
+  source: string             // From node ID
+  target: string             // To node ID
   type: EdgeType            // Relationship type
   data: EdgeData            // Relationship metadata
 }
@@ -95,14 +95,14 @@ type EdgeType =
 **Deliverables**:
 - [x] SQLite database schema with graph tables
 - [x] TypeScript interfaces for all data models
-- [x] Basic REDACTED_SECRET/edge CRUD operations
+- [x] Basic node/edge CRUD operations
 - [x] Testing framework setup
 - [x] Build pipeline integration
 
 **Technical Tasks**:
 ```typescript
 // Database Schema
-CREATE TABLE REDACTED_SECRETs (
+CREATE TABLE nodes (
   id TEXT PRIMARY KEY,
   type TEXT NOT NULL,
   data TEXT NOT NULL,        -- JSON
@@ -118,14 +118,14 @@ CREATE TABLE edges (
   type TEXT NOT NULL,
   data TEXT NOT NULL,        -- JSON
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (source_id) REFERENCES REDACTED_SECRETs(id),
-  FOREIGN KEY (target_id) REFERENCES REDACTED_SECRETs(id)
+  FOREIGN KEY (source_id) REFERENCES nodes(id),
+  FOREIGN KEY (target_id) REFERENCES nodes(id)
 );
 
 CREATE INDEX idx_edges_source ON edges(source_id);
 CREATE INDEX idx_edges_target ON edges(target_id);
 CREATE INDEX idx_edges_type ON edges(type);
-CREATE INDEX idx_REDACTED_SECRETs_type ON REDACTED_SECRETs(type);
+CREATE INDEX idx_nodes_type ON nodes(type);
 ```
 
 ### **Phase 2: Content Processing (Week 3-4)**
@@ -229,7 +229,7 @@ const KnowledgeGraphViewer: React.FC = () => {
         onNodeSelect={setSelectedNode}
         filters={filters}
       />
-      <NodeDetailsPanel REDACTED_SECRET={selectedNode} />
+      <NodeDetailsPanel node={selectedNode} />
       <GraphAnalytics data={graphData} />
     </div>
   )
@@ -267,8 +267,8 @@ class GraphAnalytics {
     return this.graph.findCycles()
   }
   
-  analyzeImpact(REDACTED_SECRETId: string): ImpactAnalysis {
-    return this.graph.analyzeDownstreamImpact(REDACTED_SECRETId)
+  analyzeImpact(nodeId: string): ImpactAnalysis {
+    return this.graph.analyzeDownstreamImpact(nodeId)
   }
   
   suggestOptimizations(): OptimizationSuggestion[] {
@@ -292,7 +292,7 @@ class GraphAnalytics {
     "remark-parse": "^11.0.0",
     "gray-matter": "^4.0.3",
     "madge": "^6.1.0",
-    "REDACTED_SECRET-fetch": "^3.3.0",
+    "node-fetch": "^3.3.0",
     "cheerio": "^1.0.0-rc.12"
   }
 }
@@ -312,7 +312,7 @@ class GraphAnalytics {
 - ✅ **Comprehensive Search**: Full-text search across all graph content
 
 ### **Technical Requirements**
-- ✅ **Performance**: Handle 10,000+ REDACTED_SECRETs and 50,000+ edges efficiently
+- ✅ **Performance**: Handle 10,000+ nodes and 50,000+ edges efficiently
 - ✅ **Scalability**: Support adding new repositories without code changes
 - ✅ **Reliability**: 99.9% uptime with automatic error recovery
 - ✅ **Maintainability**: Clean, documented, testable codebase

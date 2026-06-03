@@ -19,7 +19,7 @@ Reviewed primary documentation for LangChain/LangGraph, Microsoft AutoGen, CrewA
 - **Instruction hierarchy research & platform APIs** – OpenAI highlights privileged instruction tiers resisting prompt injection,[^7] while Anthropic’s API separates system prompts and MCP server lists from user turns.[^8]
 
 ## How Override Layers Are Handled
-1. **Dynamic system prompt staging** – Frameworks expose hooks (middleware, `system_template`, `update_system_prompt`) letting higher-level orchestrators augment or replace baseline instructions without editing the REDACTED_SECRET prompt.
+1. **Dynamic system prompt staging** – Frameworks expose hooks (middleware, `system_template`, `update_system_prompt`) letting higher-level orchestrators augment or replace baseline instructions without editing the root prompt.
 2. **Capability handshake before execution** – MCP and NeMo Guardrails negotiate available prompts/tools upfront, signalling when a new instruction layer should take precedence.[^4][^6]
 3. **Built-in fallbacks** – CrewAI’s hidden defaults and Swarms’ auto-generated prompts ensure the agent still runs if no custom instructions are supplied, while still permitting explicit overrides.[^3][^5]
 4. **Task-scoped instructions** – NeMo Guardrails and LangChain support per-task prompt routing so specialized rails or middleware only apply when relevant, reducing conflicts with global rules.[^1][^4]

@@ -1,11 +1,11 @@
 # Epic: Services Compose + Kubernetes Dual Path
 
 ## Vision
-Add a Kubernetes path for cluster-friendly workloads under `services/` without removing the existing Compose path that currently powers local development, host-coupled runtimes, and single-REDACTED_SECRET operational wrappers.
+Add a Kubernetes path for cluster-friendly workloads under `services/` without removing the existing Compose path that currently powers local development, host-coupled runtimes, and single-node operational wrappers.
 
 Long term, `services/` should support a tiered runtime model:
 
-- **Compose** for local development, host-bound workflows, and single-REDACTED_SECRET wrappers
+- **Compose** for local development, host-bound workflows, and single-node wrappers
 - **Kubernetes** for clusterable workloads that benefit from standardized deployment, service discovery, rollouts, and promotion
 - **Shared platform glue** in `services/*` so source repos in `orgs/**` do not become the workspace runtime home
 
@@ -107,4 +107,4 @@ Primary design document: [`docs/reference/services-compose-k8s-dual-path-spec.md
 - Compose remains the fast inner loop.
 - Kubernetes is an additional deployment target, not a moral upgrade.
 - The right first win is a stable pilot, not a blanket migration.
-- Phase 1 bootstrap now includes `services/platform-k8s/` plus REDACTED_SECRET scripts for installing/checking the local toolchain and bootstrapping a `kind` cluster.
+- Phase 1 bootstrap now includes `services/platform-k8s/` plus root scripts for installing/checking the local toolchain and bootstrapping a `kind` cluster.

@@ -21,7 +21,7 @@
    :args ["-M" "-e" "(require 'promethean.demo) (promethean.demo/run!)"]
    :interpreter "none"
    :watch ["src" "deps.edn"]
-   :ignore_watch ["REDACTED_SECRET_modules"
+   :ignore_watch ["node_modules"
                  "logs"
                  ".clj-kondo"
                  ".cpcache"

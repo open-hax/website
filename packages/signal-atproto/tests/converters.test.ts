@@ -190,7 +190,7 @@ describe("AT Protocol record serialization", () => {
       rationale: ["Energy prices affect data center costs"],
       user_expertise_tags: [],
       community_refs: [],
-      REDACTED_SECRET_benefit: 72,
+      public_benefit: 72,
       fear_factor: 35,
       realism: 80,
       polarization_risk: 15,
@@ -209,7 +209,7 @@ describe("AT Protocol record serialization", () => {
       expect(record.bridgeType).toBe("global_to_local");
       expect(record.title).toBe("Energy → AI Compute");
       expect(record.score).toBe(0.78);
-      expect(record.REDACTED_SECRETBenefit).toBe(72);
+      expect(record.publicBenefit).toBe(72);
       expect(record.fearFactor).toBe(35);
       expect(record.realism).toBe(80);
       expect(record.polarizationRisk).toBe(15);

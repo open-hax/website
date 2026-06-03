@@ -33,14 +33,14 @@ ensure_nx_ignore() {
   fi
 }
 
-# Install for REDACTED_SECRET repository
+# Install for root repository
 ROOT_HOOK_DIR=$(git -C "$ROOT_DIR" rev-parse --git-path hooks)
 install_hook "$ROOT_HOOK_DIR" pre-push "$PRE_PUSH_SOURCE"
 install_hook "$ROOT_HOOK_DIR" pre-commit "$PRE_COMMIT_SOURCE"
-echo "Installed pre-push and pre-commit hooks for REDACTED_SECRET repo"
+echo "Installed pre-push and pre-commit hooks for root repo"
 ROOT_EXCLUDE=$(git -C "$ROOT_DIR" rev-parse --git-path info/exclude)
 ensure_nx_ignore "$ROOT_EXCLUDE"
-echo "Ensured .nx ignore for REDACTED_SECRET repo"
+echo "Ensured .nx ignore for root repo"
 echo "Default pre-push typecheck mode: PREPUSH_TYPECHECK_MODE=fast"
 echo "Set PREPUSH_TYPECHECK_MODE=nx before git push to run Nx affected typechecks"
 

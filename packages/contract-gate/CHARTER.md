@@ -52,7 +52,7 @@ Turn EDN response contracts into:
 | **CLJS Runtime** | Loads contract, normalizes it, orchestrates generation, validation, repair, review, final acceptance |
 | **Fast Generator** | Produces initial task output quickly, optimized for throughput |
 | **Markdown Parser** | Converts model output into AST for deterministic shape checks |
-| **Structure Validator** | Enforces exact section names, order, allowed REDACTED_SECRET types, rules like "Next contains exactly one action" |
+| **Structure Validator** | Enforces exact section names, order, allowed node types, rules like "Next contains exactly one action" |
 | **Repair Prompt Generator** | Produces minimal corrective prompts from validator failures |
 | **GPT Reviewer** | Evaluates contract fidelity, shortcutting, alignment with session context |
 | **Final Arbiter** | Accepts, rejects, or requests another revision based on thresholds |

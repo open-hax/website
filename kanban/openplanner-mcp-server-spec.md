@@ -99,9 +99,9 @@ file — both land in the same openplanner event collection.
 
 | Tool | Description | Key args |
 |------|-------------|----------|
-| `graph_neighbors` | Fetch N-hop neighbors of a REDACTED_SECRET | `REDACTED_SECRET_id`, `hops`, `edge_types` |
-| `graph_search` | Semantic search over graph REDACTED_SECRETs | `query`, `project`, `limit` |
-| `graph_path` | Shortest path between two REDACTED_SECRETs | `from_id`, `to_id` |
+| `graph_neighbors` | Fetch N-hop neighbors of a node | `node_id`, `hops`, `edge_types` |
+| `graph_search` | Semantic search over graph nodes | `query`, `project`, `limit` |
+| `graph_path` | Shortest path between two nodes | `from_id`, `to_id` |
 
 ### 4.4 Epistemic Primitives
 
@@ -145,7 +145,7 @@ orgs/open-hax/openplanner/packages/openplanner-mcp/
 ## 6. Dockerfile
 
 ```dockerfile
-FROM REDACTED_SECRET:22-bookworm-slim AS build
+FROM node:22-bookworm-slim AS build
 WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 RUN corepack enable && pnpm install --frozen-lockfile
@@ -153,12 +153,12 @@ COPY src ./src
 COPY tsconfig.json ./
 RUN pnpm build
 
-FROM REDACTED_SECRET:22-bookworm-slim
+FROM node:22-bookworm-slim
 WORKDIR /app
 COPY --from=build /app/dist ./dist
-COPY --from=build /app/REDACTED_SECRET_modules ./REDACTED_SECRET_modules
+COPY --from=build /app/node_modules ./node_modules
 EXPOSE 7778
-CMD ["REDACTED_SECRET", "dist/index.js"]
+CMD ["node", "dist/index.js"]
 ```
 
 ---

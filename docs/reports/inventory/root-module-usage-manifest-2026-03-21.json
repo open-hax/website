@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-03-21T19:59:56Z",
-  "scope": "Root-level outside-structure modules from the outside-structure manifest (aliases + standalone REDACTED_SECRETs + REDACTED_SECRET-level vendor/fork/special checkouts).",
+  "scope": "Root-level outside-structure modules from the outside-structure manifest (aliases + standalone roots + root-level vendor/fork/special checkouts).",
   "records": [
     {
       "path": "desktop",
@@ -35,7 +35,7 @@
         "share/applications/codex-open-hax.desktop",
         "docs/manifests/riatzukiza-repos-manifest-2025-11-06.md"
       ],
-      "whyUsed": "Root alias for orgs/riatzukiza/desktop still supports launcher, desktop-entry, and documentation/manifests that refer to the short REDACTED_SECRET path.",
+      "whyUsed": "Root alias for orgs/riatzukiza/desktop still supports launcher, desktop-entry, and documentation/manifests that refer to the short root path.",
       "suggestedNextDecision": "Keep as an explicit operator convenience alias or migrate launcher/docs to orgs/riatzukiza/desktop and retire the alias later."
     },
     {
@@ -76,7 +76,7 @@
     },
     {
       "path": "pm2-clj-project",
-      "outsideCategory": "top-level-standalone-REDACTED_SECRET",
+      "outsideCategory": "top-level-standalone-root",
       "activeStatus": "active-tooling-fixture",
       "referenceFileCount": 4,
       "referenceAreaCounts": {
@@ -95,13 +95,13 @@
         "shadow-cljs.edn",
         "docs/PACKAGE_MANIFEST.md"
       ],
-      "whyUsed": "Used as a REDACTED_SECRET-level PM2/ClojureScript tooling fixture and compiler source path for ecosystem parity and manifest docs.",
-      "suggestedNextDecision": "Decide whether this belongs in packages/, orgs/riatzukiza/, or as an explicit REDACTED_SECRET-level tooling exception."
+      "whyUsed": "Used as a root-level PM2/ClojureScript tooling fixture and compiler source path for ecosystem parity and manifest docs.",
+      "suggestedNextDecision": "Decide whether this belongs in packages/, orgs/riatzukiza/, or as an explicit root-level tooling exception."
     },
     {
       "path": "reconstitute",
-      "outsideCategory": "top-level-standalone-REDACTED_SECRET",
-      "activeStatus": "active-tooling-REDACTED_SECRET",
+      "outsideCategory": "top-level-standalone-root",
+      "activeStatus": "active-tooling-root",
       "referenceFileCount": 55,
       "referenceAreaCounts": {
         "other": 33,
@@ -130,12 +130,12 @@
         ".opencode/commands/opencode-sessions-index.md",
         ".opencode/skills/opencode-reconstituter/SKILL.md"
       ],
-      "whyUsed": "Acts as a REDACTED_SECRET CLI/tooling entrypoint around the reconstitution workflow and is referenced by REDACTED_SECRET package scripts, OpenCode commands, and skills.",
-      "suggestedNextDecision": "Classify it as an intentional tooling REDACTED_SECRET or normalize it into packages/ or an org repo while leaving a compatibility command path."
+      "whyUsed": "Acts as a root CLI/tooling entrypoint around the reconstitution workflow and is referenced by root package scripts, OpenCode commands, and skills.",
+      "suggestedNextDecision": "Classify it as an intentional tooling root or normalize it into packages/ or an org repo while leaving a compatibility command path."
     },
     {
       "path": "reconstitute-mcp",
-      "outsideCategory": "top-level-standalone-REDACTED_SECRET",
+      "outsideCategory": "top-level-standalone-root",
       "activeStatus": "doc-and-experimental-surface",
       "referenceFileCount": 5,
       "referenceAreaCounts": {
@@ -157,8 +157,8 @@
     },
     {
       "path": "mcp-social-publisher-live",
-      "outsideCategory": "top-level-standalone-REDACTED_SECRET",
-      "activeStatus": "active-standalone-deploy-REDACTED_SECRET",
+      "outsideCategory": "top-level-standalone-root",
+      "activeStatus": "active-standalone-deploy-root",
       "referenceFileCount": 6,
       "referenceAreaCounts": {
         "other": 3,
@@ -179,13 +179,13 @@
         ".gitmodules",
         "receipts.log"
       ],
-      "whyUsed": "Standalone repo used as the current source/deploy REDACTED_SECRET for the live ussy deployment, with deployment specs and receipts pointing at it explicitly.",
-      "suggestedNextDecision": "Give it an explicit placement decision rather than leaving it ambiguous at the workspace REDACTED_SECRET."
+      "whyUsed": "Standalone repo used as the current source/deploy root for the live ussy deployment, with deployment specs and receipts pointing at it explicitly.",
+      "suggestedNextDecision": "Give it an explicit placement decision rather than leaving it ambiguous at the workspace root."
     },
     {
       "path": "threat-radar-deploy",
-      "outsideCategory": "top-level-standalone-REDACTED_SECRET",
-      "activeStatus": "active-product-source-REDACTED_SECRET",
+      "outsideCategory": "top-level-standalone-root",
+      "activeStatus": "active-product-source-root",
       "referenceFileCount": 12,
       "referenceAreaCounts": {
         "other": 6,
@@ -218,7 +218,7 @@
     },
     {
       "path": "verathar-server",
-      "outsideCategory": "top-level-standalone-REDACTED_SECRET",
+      "outsideCategory": "top-level-standalone-root",
       "activeStatus": "bookkeeping-only-for-now",
       "referenceFileCount": 4,
       "referenceAreaCounts": {
@@ -242,7 +242,7 @@
     },
     {
       "path": "threat-radar-next-step",
-      "outsideCategory": "top-level-standalone-REDACTED_SECRET",
+      "outsideCategory": "top-level-standalone-root",
       "activeStatus": "planning-bundle",
       "referenceFileCount": 4,
       "referenceAreaCounts": {
@@ -265,7 +265,7 @@
     },
     {
       "path": "bevy_replicon",
-      "outsideCategory": "REDACTED_SECRET-level-vendor-or-fork-repo",
+      "outsideCategory": "root-level-vendor-or-fork-repo",
       "activeStatus": "bookkeeping-only-foreign-fork",
       "referenceFileCount": 4,
       "referenceAreaCounts": {
@@ -289,7 +289,7 @@
     },
     {
       "path": "egregoria",
-      "outsideCategory": "REDACTED_SECRET-level-vendor-or-fork-repo",
+      "outsideCategory": "root-level-vendor-or-fork-repo",
       "activeStatus": "bookkeeping-only-foreign-fork",
       "referenceFileCount": 4,
       "referenceAreaCounts": {
@@ -313,7 +313,7 @@
     },
     {
       "path": "game_network",
-      "outsideCategory": "REDACTED_SECRET-level-vendor-or-fork-repo",
+      "outsideCategory": "root-level-vendor-or-fork-repo",
       "activeStatus": "bookkeeping-only-foreign-fork",
       "referenceFileCount": 4,
       "referenceAreaCounts": {
@@ -337,7 +337,7 @@
     },
     {
       "path": "ggrs",
-      "outsideCategory": "REDACTED_SECRET-level-vendor-or-fork-repo",
+      "outsideCategory": "root-level-vendor-or-fork-repo",
       "activeStatus": "bookkeeping-only-foreign-fork",
       "referenceFileCount": 4,
       "referenceAreaCounts": {
@@ -361,7 +361,7 @@
     },
     {
       "path": "lightyear",
-      "outsideCategory": "REDACTED_SECRET-level-vendor-or-fork-repo",
+      "outsideCategory": "root-level-vendor-or-fork-repo",
       "activeStatus": "bookkeeping-only-foreign-fork",
       "referenceFileCount": 4,
       "referenceAreaCounts": {
@@ -385,7 +385,7 @@
     },
     {
       "path": "gates-pr35-hardening-main",
-      "outsideCategory": "REDACTED_SECRET-level-worktree-or-fork-repo",
+      "outsideCategory": "root-level-worktree-or-fork-repo",
       "activeStatus": "active-special-worktree",
       "referenceFileCount": 5,
       "referenceAreaCounts": {
@@ -418,7 +418,7 @@
     "bookkeepingOnly": 6
   },
   "globalNotes": [
-    "Root modules are not all the same problem: some are active aliases, some are active product/deploy REDACTED_SECRETs, some are planning bundles, and some are only preserved through bookkeeping artifacts.",
+    "Root modules are not all the same problem: some are active aliases, some are active product/deploy roots, some are planning bundles, and some are only preserved through bookkeeping artifacts.",
     "Reference counts are based on tracked-file searches outside each module's own tree and should be read as evidence of external dependency, not exhaustive runtime truth."
   ]
 }

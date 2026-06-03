@@ -18,7 +18,7 @@ url_path = ROOT / f'{slug}.url.txt'
 prompt_path = ROOT / f'{slug}.prompt.json'
 
 # Source Proxx auth token without printing it.
-token = REDACTED_SECRET'PROXY_AUTH_TOKEN') or REDACTED_SECRET'PROXX_AUTH_TOKEN')
+token = os.environ.get('PROXY_AUTH_TOKEN') or os.environ.get('PROXX_AUTH_TOKEN')
 if not token:
     env_path = Path('/home/err/devel/services/proxx/.env')
     if env_path.exists():

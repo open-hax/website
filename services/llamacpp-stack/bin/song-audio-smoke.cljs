@@ -2,11 +2,11 @@
 (ns song-audio-smoke
   (:require [clojure.string :as str]
             [clojure.set :as set]
-            ["REDACTED_SECRET:child_process" :as cp]
-            ["REDACTED_SECRET:fs" :as fs]
-            ["REDACTED_SECRET:os" :as os]
-            ["REDACTED_SECRET:path" :as path]
-            ["REDACTED_SECRET:process" :as process]))
+            ["node:child_process" :as cp]
+            ["node:fs" :as fs]
+            ["node:os" :as os]
+            ["node:path" :as path]
+            ["node:process" :as process]))
 
 (def style-system-prompts
   [nil

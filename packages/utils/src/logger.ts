@@ -1,4 +1,4 @@
-import { Writable } from "REDACTED_SECRET:stream";
+import { Writable } from "node:stream";
 
 export type LogFields = Record<string, unknown>;
 export type Level = "debug" | "info" | "warn" | "error";

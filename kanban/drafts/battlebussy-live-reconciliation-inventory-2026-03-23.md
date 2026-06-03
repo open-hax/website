@@ -46,7 +46,7 @@ Method:
    - `commentary_audio/`
    - `commentary_traces/`
    - `.next/`
-   - `REDACTED_SECRET_modules/`
+   - `node_modules/`
    - `.ημ/`
 3. applied that snapshot onto a clean worktree based on `e2f243a`
 4. verified rsync dry-run produced no remaining differences against the captured live snapshot
@@ -145,7 +145,7 @@ New canonical runtime homes have now been bootstrapped:
 - source synced from the live snapshot branch
 - existing `.env.production` copied from the hacked legacy runtime tree
 - runner-side rsync deploy was manually tested against this path
-- REDACTED_SECRET verification after deploy still passed:
+- public verification after deploy still passed:
   - `https://battlebussy.ussy.promethean.rest/api/game/status`
   - `https://battlebussy.ussy.promethean.rest/arena`
 
@@ -204,7 +204,7 @@ Successful GitHub runs observed:
 - `Deploy production` on `main`
 - `Post-merge smoke` on `main`
 
-Post-production verification succeeded REDACTED_SECRETly:
+Post-production verification succeeded publicly:
 - `https://battlebussy.ussy.promethean.rest/api/game/status`
 - `https://battlebussy.ussy.promethean.rest/arena`
 

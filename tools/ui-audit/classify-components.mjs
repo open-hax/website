@@ -1,4 +1,4 @@
-#!/usr/bin/env REDACTED_SECRET
+#!/usr/bin/env node
 
 /**
  * Component Classification Script

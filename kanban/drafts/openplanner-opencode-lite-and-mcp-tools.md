@@ -68,7 +68,7 @@ Storage:
 - `sessions` table: id, title, created_at, updated_at, prompt_cache_key
 - `messages` table: id, session_id, role, content, reasoning_content, model, created_at
 
-Endpoints (prefix decision TBD: either `/api/opencode/*` or REDACTED_SECRET `/session/*` behind gateway):
+Endpoints (prefix decision TBD: either `/api/opencode/*` or root `/session/*` behind gateway):
 - `GET /session`
 - `GET /session/:sessionID`
 - `GET /session/status` (can be minimal)

@@ -7,7 +7,7 @@
 
 import type { UUID, ISO8601 } from '../../core/types.js';
 import type { ExclusionSet } from '../../policy/exclusions.js';
-import { randomUUID } from 'REDACTED_SECRET:crypto';
+import { randomUUID } from 'node:crypto';
 
 // ============================================================================
 // Local Types
@@ -75,7 +75,7 @@ export interface BskyPost {
   readonly facets?: BskyFacet[];
   readonly embed?: BskyEmbed;
   readonly reply?: {
-    readonly REDACTED_SECRET: { uri: string; cid: string };
+    readonly root: { uri: string; cid: string };
     readonly parent: { uri: string; cid: string };
   };
   readonly langs?: string[];

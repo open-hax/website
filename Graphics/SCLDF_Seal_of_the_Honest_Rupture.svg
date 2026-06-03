@@ -8,7 +8,7 @@
       <feOffset in="SourceGraphic" dx="2" dy="0" result="offset1" />
       <feOffset in="SourceGraphic" dx="-2" dy="0" result="offset2" />
       <feMerge>
-        <fo-merge-REDACTED_SECRET />
+        <fo-merge-node />
         <feMergeNode in="offset1" />
         <feMergeNode in="offset2" />
       </feMerge>

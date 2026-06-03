@@ -25,7 +25,7 @@ services/openplanner/k8s/
 
 ## Local kind flow
 
-From the workspace REDACTED_SECRET, the recommended active path is now the MongoDB overlay:
+From the workspace root, the recommended active path is now the MongoDB overlay:
 
 ```bash
 pnpm k8s:deps:check
@@ -110,7 +110,7 @@ The `local-kind-mongodb` overlay is now the recommended active path while the wi
 It changes the runtime shape to:
 
 - `OPENPLANNER_STORAGE_BACKEND=mongodb`
-- MongoDB Community Server in single-REDACTED_SECRET replica-set mode
+- MongoDB Community Server in single-node replica-set mode
 - `mongot` for community search/vector search wiring
 - `openplanner` replicas scaled to `2`
 - rolling update strategy on the app deployment

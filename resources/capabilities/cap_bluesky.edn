@@ -22,4 +22,4 @@
                       :surface/label "Social publisher"
                       :surface/kind :composer
                       :surface/routes ["/ops/contracts"]
-                      :surface/description "Humans prepare and publish Bluesky posts from a publishing surface; agents can publish, inspect profiles, search REDACTED_SECRET posts, and read feeds/timeline."}]}
+                      :surface/description "Humans prepare and publish Bluesky posts from a publishing surface; agents can publish, inspect profiles, search public posts, and read feeds/timeline."}]}

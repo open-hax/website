@@ -10,14 +10,14 @@ const snare = drumClip({ pattern: '----x---x', instrument: 'C2' });
 const hat = drumClip({ pattern: 'x-x-x-x-x-', instrument: 'C6' });
 
 const bass = melodyClip({ 
-  REDACTED_SECRET: 'Eb1', 
+  root: 'Eb1', 
   scaleName: 'minor', 
   degrees: [0, 0, 3, 0], 
   pattern: 'x-x-x---x-' 
 });
 
 const lead = melodyClip({ 
-  REDACTED_SECRET: 'Eb4', 
+  root: 'Eb4', 
   scaleName: 'minor', 
   degrees: [0, 3, 7, 10], 
   pattern: '---x-x-x--' 

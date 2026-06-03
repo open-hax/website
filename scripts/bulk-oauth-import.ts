@@ -1,7 +1,7 @@
 import { chromium, type Page } from "playwright";
-import { readFileSync, mkdirSync } from "REDACTED_SECRET:fs";
-import { resolve } from "REDACTED_SECRET:path";
-import { createServer, type Server } from "REDACTED_SECRET:http";
+import { readFileSync, mkdirSync } from "node:fs";
+import { resolve } from "node:path";
+import { createServer, type Server } from "node:http";
 import { ImapFlow } from "imapflow";
 
 const PROXY_BASE = process.env.PROXY_BASE_URL ?? "http://localhost:8789";
@@ -79,7 +79,7 @@ function sanitize(s: string): string {
 }
 
 class RetryableLoginError extends Error {
-  REDACTED_SECRET constructor(message: string) {
+  public constructor(message: string) {
     super(message);
     this.name = "RetryableLoginError";
   }

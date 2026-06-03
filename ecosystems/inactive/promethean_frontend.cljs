@@ -8,7 +8,7 @@
 (clobber.macro/defapp "frontend-main"
   {:script "shadow-cljs"
    :cwd "./orgs/riatzukiza/promethean/packages/frontend"
-   :interpreter "REDACTED_SECRET"
+   :interpreter "node"
    :interpreter_args "--max-old-space-size=4096"
    :watch false
    :max_memory_restart "1G"
@@ -25,7 +25,7 @@
   {:script "vite"
    :args "--port 3001 --host 0.0.0.0"
    :cwd "./orgs/riatzukiza/promethean/packages/frontend"
-   :interpreter "REDACTED_SECRET"
+   :interpreter "node"
    :interpreter_args "--max-old-space-size=4096"
    :watch false
    :max_memory_restart "1G"

@@ -17,7 +17,7 @@ category: "specs"
 ## Goal
 Turn the user's scattered but relevant experience into a concrete OpenAI Parameter Golf application package by:
 1. bringing `openai/parameter-golf` into this workspace as an SSH git submodule,
-2. inspecting the challenge and the early REDACTED_SECRET landscape,
+2. inspecting the challenge and the early public landscape,
 3. scanning this workspace for reusable ideas/artifacts that map well to the challenge,
 4. producing a truth-bound, targeted resume variant for this effort.
 
@@ -42,7 +42,7 @@ Turn the user's scattered but relevant experience into a concrete OpenAI Paramet
 - Do we want a first local baseline experiment for Parameter Golf after submodule install, or stop at setup + application materials?
 
 ## Risks
-- The challenge is fresh, so REDACTED_SECRET solution signal may be sparse or noisy.
+- The challenge is fresh, so public solution signal may be sparse or noisy.
 - Resume claims must stay tightly evidence-bound; easy to oversell model-training depth if not careful.
 - The workspace is already dirty; edits must stay localized and traceable.
 - Upstream repo/tooling may require GPU/runtime assumptions we cannot fully exercise in this pass.
@@ -59,7 +59,7 @@ Turn the user's scattered but relevant experience into a concrete OpenAI Paramet
 
 ### Phase 1 — Research + evidence gathering
 - Inspect official challenge materials.
-- Check current leaderboard / notable runs / REDACTED_SECRET forks if available.
+- Check current leaderboard / notable runs / public forks if available.
 - Scan local workspace for challenge-relevant artifacts and evidence.
 
 ### Phase 2 — Workspace setup

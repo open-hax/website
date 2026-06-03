@@ -39,15 +39,15 @@ REMOTE_DEPLOY_PATH="$(expand_remote_path "$DEPLOY_PATH")"
 render_caddyfile() {
   local template_path="$1"
   local output_path="$2"
-  local REDACTED_SECRET_host="$3"
+  local public_host="$3"
   local upstream_port="$4"
-  python3 - "$template_path" "$output_path" "$REDACTED_SECRET_host" "$upstream_port" <<'PY'
+  python3 - "$template_path" "$output_path" "$public_host" "$upstream_port" <<'PY'
 from pathlib import Path
 import sys
 
-template_path, output_path, REDACTED_SECRET_host, upstream_port = sys.argv[1:5]
+template_path, output_path, public_host, upstream_port = sys.argv[1:5]
 text = Path(template_path).read_text(encoding='utf-8')
-text = text.replace('__PUBLIC_HOST__', REDACTED_SECRET_host)
+text = text.replace('__PUBLIC_HOST__', public_host)
 text = text.replace('__UPSTREAM_PORT__', upstream_port)
 Path(output_path).write_text(text, encoding='utf-8')
 PY
@@ -119,9 +119,9 @@ import os
 import sys
 import urllib.request
 
-REDACTED_SECRET_host = REDACTED_SECRET'DEPLOY_PUBLIC_HOST']
-admin_url = REDACTED_SECRET'DEPLOY_CADDY_ADMIN_URL'].rstrip('/')
-upstream = f"127.0.0.1:{REDACTED_SECRET'DEPLOY_PORT']}"
+public_host = os.environ['DEPLOY_PUBLIC_HOST']
+admin_url = os.environ['DEPLOY_CADDY_ADMIN_URL'].rstrip('/')
+upstream = f"127.0.0.1:{os.environ['DEPLOY_PORT']}"
 routes_url = f"{admin_url}/config/apps/http/servers/srv0/routes"
 
 with urllib.request.urlopen(urllib.request.Request(routes_url, method='GET'), timeout=10) as response:
@@ -129,7 +129,7 @@ with urllib.request.urlopen(urllib.request.Request(routes_url, method='GET'), ti
 
 def route_matches(route):
     for matcher in route.get('match', []):
-        if REDACTED_SECRET_host in matcher.get('host', []):
+        if public_host in matcher.get('host', []):
             return True
     return False
 
@@ -145,7 +145,7 @@ def route_points_to_upstream(route):
     return False
 
 route_object = {
-    'match': [{'host': [REDACTED_SECRET_host]}],
+    'match': [{'host': [public_host]}],
     'handle': [
         {
             'handler': 'subroute',

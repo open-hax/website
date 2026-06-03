@@ -1,6 +1,6 @@
-import { access, chmod, mkdir, mkdtemp, readFile, rm, writeFile } from 'REDACTED_SECRET:fs/promises';
-import os from 'REDACTED_SECRET:os';
-import path from 'REDACTED_SECRET:path';
+import { access, chmod, mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
 
 import { afterEach, describe, expect, test } from 'vitest';
 
@@ -10,7 +10,7 @@ import { executeResolution } from '../src/octavia/runner';
 import type { DiscoveredCommand } from '../src/octavia/types';
 
 interface Workspace {
-  readonly REDACTED_SECRET: string;
+  readonly root: string;
   readonly outputs: {
     readonly shell: string;
     readonly pkg: string;
@@ -35,23 +35,23 @@ const writeExecutable = async (filePath: string, contents: string): Promise<void
 };
 
 const createMockWorkspace = async (): Promise<Workspace> => {
-  const REDACTED_SECRET = await mkdtemp(path.join(os.tmpdir(), 'octavia-e2e-'));
-  const artifactsDir = path.join(REDACTED_SECRET, 'artifacts');
+  const root = await mkdtemp(path.join(os.tmpdir(), 'octavia-e2e-'));
+  const artifactsDir = path.join(root, 'artifacts');
   await mkdir(artifactsDir, { recursive: true });
 
-  const shellScript = path.join(REDACTED_SECRET, 'scripts/tools/hello.sh');
+  const shellScript = path.join(root, 'scripts/tools/hello.sh');
   await writeExecutable(
     shellScript,
     '#!/usr/bin/env bash\nset -euo pipefail\nout="$1"\nmsg="$2"\nprintf "shell:%s\\n" "$msg" >> "$out"\n',
   );
 
-  const extensionlessScript = path.join(REDACTED_SECRET, 'orgs/acme/tooling/bin/mixed-runner');
+  const extensionlessScript = path.join(root, 'orgs/acme/tooling/bin/mixed-runner');
   await writeExecutable(
     extensionlessScript,
-    "#!/usr/bin/env REDACTED_SECRET\nconst { appendFileSync } = require('REDACTED_SECRET:fs');\nconst [out, msg] = process.argv.slice(2);\nappendFileSync(out, `mixed:${msg}\\n`);\n",
+    "#!/usr/bin/env node\nconst { appendFileSync } = require('node:fs');\nconst [out, msg] = process.argv.slice(2);\nappendFileSync(out, `mixed:${msg}\\n`);\n",
   );
 
-  const packageDir = path.join(REDACTED_SECRET, 'packages/app');
+  const packageDir = path.join(root, 'packages/app');
   await mkdir(path.join(packageDir, 'scripts'), { recursive: true });
   await writeFile(
     path.join(packageDir, 'package.json'),
@@ -60,7 +60,7 @@ const createMockWorkspace = async (): Promise<Workspace> => {
         name: 'mock-app',
         version: '1.0.0',
         scripts: {
-          emit: 'REDACTED_SECRET ./scripts/pkg-writer.js',
+          emit: 'node ./scripts/pkg-writer.js',
         },
       },
       null,
@@ -69,23 +69,23 @@ const createMockWorkspace = async (): Promise<Workspace> => {
   );
   await writeExecutable(
     path.join(packageDir, 'scripts/pkg-writer.js'),
-    "#!/usr/bin/env REDACTED_SECRET\nconst { appendFileSync } = require('REDACTED_SECRET:fs');\nconst args = process.argv.slice(2).filter((entry) => entry !== '--');\nconst [out, msg] = args;\nappendFileSync(out, `pkg:${msg}\\n`);\n",
+    "#!/usr/bin/env node\nconst { appendFileSync } = require('node:fs');\nconst args = process.argv.slice(2).filter((entry) => entry !== '--');\nconst [out, msg] = args;\nappendFileSync(out, `pkg:${msg}\\n`);\n",
   );
 
-  const daemonConfig = path.join(REDACTED_SECRET, 'system/daemons/devops/nx-daemon/dist/ecosystem.config.mjs');
+  const daemonConfig = path.join(root, 'system/daemons/devops/nx-daemon/dist/ecosystem.config.mjs');
   await writeExecutable(
     daemonConfig,
-    "#!/usr/bin/env REDACTED_SECRET\nimport { appendFileSync } from 'REDACTED_SECRET:fs';\nconst [out, msg] = process.argv.slice(2);\nappendFileSync(out, `daemon:${msg}\\n`);\n",
+    "#!/usr/bin/env node\nimport { appendFileSync } from 'node:fs';\nconst [out, msg] = process.argv.slice(2);\nappendFileSync(out, `daemon:${msg}\\n`);\n",
   );
 
-  const aggregateConfig = path.join(REDACTED_SECRET, 'ecosystem.config.enhanced.mjs');
+  const aggregateConfig = path.join(root, 'ecosystem.config.enhanced.mjs');
   await writeExecutable(
     aggregateConfig,
-    "#!/usr/bin/env REDACTED_SECRET\nimport { appendFileSync } from 'REDACTED_SECRET:fs';\nconst [out, msg] = process.argv.slice(2);\nconst value = msg ?? 'default';\nappendFileSync(out, `aggregate:${value}\\n`);\n",
+    "#!/usr/bin/env node\nimport { appendFileSync } from 'node:fs';\nconst [out, msg] = process.argv.slice(2);\nconst value = msg ?? 'default';\nappendFileSync(out, `aggregate:${value}\\n`);\n",
   );
 
   return {
-    REDACTED_SECRET,
+    root,
     outputs: {
       shell: path.join(artifactsDir, 'shell.txt'),
       pkg: path.join(artifactsDir, 'pkg.txt'),
@@ -101,7 +101,7 @@ const createMockWorkspace = async (): Promise<Workspace> => {
       daemon: ['system', 'daemons', 'devops', 'nx-daemon', 'dist', 'ecosystem.config.mjs'],
     },
     cleanup: async () => {
-      await rm(REDACTED_SECRET, { recursive: true, force: true });
+      await rm(root, { recursive: true, force: true });
     },
   };
 };
@@ -127,10 +127,10 @@ describe('octavia e2e', () => {
 
   test('indexes mixed-language hierarchy', async () => {
     workspace = await createMockWorkspace();
-    await discoverAndPersist({ REDACTED_SECRET: workspace.REDACTED_SECRET, force: true });
-    await access(path.join(workspace.REDACTED_SECRET, 'index.jsonl'));
-    await access(path.join(workspace.REDACTED_SECRET, '.octavia', 'lmdb', 'data.mdb'));
-    const commands = await ensureIndex({ REDACTED_SECRET: workspace.REDACTED_SECRET });
+    await discoverAndPersist({ root: workspace.root, force: true });
+    await access(path.join(workspace.root, 'index.jsonl'));
+    await access(path.join(workspace.root, '.octavia', 'lmdb', 'data.mdb'));
+    const commands = await ensureIndex({ root: workspace.root });
 
     const shell = expectResolution(workspace.selectors.shellFull, commands);
     expect(shell.command.relativePath?.endsWith('scripts/tools/hello.sh')).toBe(true);
@@ -153,8 +153,8 @@ describe('octavia e2e', () => {
 
   test('executes scripts via octavia runner', async () => {
     workspace = await createMockWorkspace();
-    await discoverAndPersist({ REDACTED_SECRET: workspace.REDACTED_SECRET, force: true });
-    const commands = await ensureIndex({ REDACTED_SECRET: workspace.REDACTED_SECRET });
+    await discoverAndPersist({ root: workspace.root, force: true });
+    const commands = await ensureIndex({ root: workspace.root });
 
     const runAndRead = async (selector: readonly string[], outPath: string, message: string) => {
       const resolution = expectResolution(selector, commands);
@@ -169,8 +169,8 @@ describe('octavia e2e', () => {
     const shellContent = await runAndRead(workspace.selectors.shellFull, workspace.outputs.shell, 'bash');
     expect(shellContent).toContain('shell:bash');
 
-    const mixedContent = await runAndRead(workspace.selectors.mixedBinary, workspace.outputs.mixed, 'REDACTED_SECRET-shebang');
-    expect(mixedContent).toContain('mixed:REDACTED_SECRET-shebang');
+    const mixedContent = await runAndRead(workspace.selectors.mixedBinary, workspace.outputs.mixed, 'node-shebang');
+    expect(mixedContent).toContain('mixed:node-shebang');
 
     const daemonContent = await runAndRead(workspace.selectors.daemon, workspace.outputs.daemon, 'daemon-run');
     expect(daemonContent).toContain('daemon:daemon-run');

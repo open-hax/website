@@ -1,9 +1,9 @@
-#!/usr/bin/env REDACTED_SECRET
+#!/usr/bin/env node
 import { Octokit } from "@octokit/rest";
-import { execSync, spawnSync } from "REDACTED_SECRET:child_process";
-import { existsSync, mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "REDACTED_SECRET:fs";
-import { tmpdir } from "REDACTED_SECRET:os";
-import { join, dirname } from "REDACTED_SECRET:path";
+import { execSync, spawnSync } from "node:child_process";
+import { existsSync, mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join, dirname } from "node:path";
 
 const WATCHERS = [
   {

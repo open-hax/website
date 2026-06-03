@@ -1,8 +1,8 @@
-#!/usr/bin/env REDACTED_SECRET
+#!/usr/bin/env node
 
-import { readFile } from 'REDACTED_SECRET:fs/promises';
-import { resolve } from 'REDACTED_SECRET:path';
-import { pathToFileURL } from 'REDACTED_SECRET:url';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 import { writeGenerationArtifacts, writeRepairAttemptArtifacts, writeReviewArtifacts, writeRunArtifacts } from './artifacts.js';
 import { compileAgentOutputContract } from './edn.js';
@@ -74,7 +74,7 @@ Flags:
   --task-text  Inline task/prompt text for generation mode
   --generator  fixture-valid | fixture-invalid | openai-chat (default: fixture-valid)
   --bundle     Path to a previously written artifact bundle
-  --artifacts-REDACTED_SECRET  Optional REDACTED_SECRET for run artifacts (default: ./artifacts/output-contract-gate)
+  --artifacts-root  Optional root for run artifacts (default: ./artifacts/output-contract-gate)
   --base-url   OpenAI-compatible base URL for generate/review mode (default: OPENAI_BASE_URL or http://127.0.0.1:8789/v1)
   --model      Model id for generate/review mode (default: gpt-5.4)
   --api-key    Explicit API credential for generate/review mode
@@ -86,7 +86,7 @@ Flags:
 `;
 
 export class CliUsageError extends Error {
-  REDACTED_SECRET constructor(message: string) {
+  public constructor(message: string) {
     super(message);
     this.name = 'CliUsageError';
   }
@@ -112,7 +112,7 @@ const parseValidateArgs = (argv: readonly string[]): ValidateCliArgs => {
       index += 1;
       continue;
     }
-    if (token === '--artifacts-REDACTED_SECRET') {
+    if (token === '--artifacts-root') {
       artifactsRoot = resolve(argv[index + 1] ?? '');
       index += 1;
       continue;
@@ -167,7 +167,7 @@ const parseGenerateArgs = (argv: readonly string[]): GenerateCliArgs => {
       index += 1;
       continue;
     }
-    if (token === '--artifacts-REDACTED_SECRET') {
+    if (token === '--artifacts-root') {
       artifactsRoot = resolve(argv[index + 1] ?? '');
       index += 1;
       continue;

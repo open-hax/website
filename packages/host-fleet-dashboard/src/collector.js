@@ -1,5 +1,5 @@
-import { request as httpRequest } from 'REDACTED_SECRET:http';
-import { readFile } from 'REDACTED_SECRET:fs/promises';
+import { request as httpRequest } from 'node:http';
+import { readFile } from 'node:fs/promises';
 
 import { parseCaddyRoutes, parseDockerPsLines } from './parse.js';
 import { resolveTargetAuthToken } from './config.js';
@@ -21,7 +21,7 @@ function normalizeSnapshot(target, partial, overrides = {}) {
     id: target.id,
     label: target.label,
     mode: target.mode,
-    REDACTED_SECRETBaseUrl: target.REDACTED_SECRETBaseUrl,
+    publicBaseUrl: target.publicBaseUrl,
     notes: target.notes,
     fetchedAt: typeof partial.fetchedAt === 'string' && partial.fetchedAt ? partial.fetchedAt : new Date().toISOString(),
     reachable: partial.reachable !== false && (errors.length === 0 || containers.length > 0 || routes.length > 0),
@@ -153,8 +153,8 @@ function unavailableSnapshot(target, error) {
 }
 
 export async function collectRemoteSnapshot(target, config) {
-  if (!target.REDACTED_SECRETBaseUrl) {
-    return unavailableSnapshot(target, 'target REDACTED_SECRETBaseUrl is not configured');
+  if (!target.publicBaseUrl) {
+    return unavailableSnapshot(target, 'target publicBaseUrl is not configured');
   }
 
   const controller = new AbortController();
@@ -166,7 +166,7 @@ export async function collectRemoteSnapshot(target, config) {
       headers.set('authorization', `Bearer ${token}`);
     }
 
-    const response = await fetch(`${target.REDACTED_SECRETBaseUrl}/api/self`, {
+    const response = await fetch(`${target.publicBaseUrl}/api/self`, {
       method: 'GET',
       headers,
       signal: controller.signal,
@@ -189,7 +189,7 @@ export async function collectRemoteSnapshot(target, config) {
 
     return normalizeSnapshot(target, payload, {
       mode: target.mode,
-      REDACTED_SECRETBaseUrl: target.REDACTED_SECRETBaseUrl,
+      publicBaseUrl: target.publicBaseUrl,
       notes: target.notes,
     });
   } catch (error) {

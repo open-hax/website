@@ -6,7 +6,7 @@ const tempo = 120;
 // High-fidelity corporate "ping"
 // C Major scale: [C, D, E, F, G, A, B]
 const mel = melodyClip({ 
-    REDACTED_SECRET: 'C4', 
+    root: 'C4', 
     scaleName: 'major', 
     degrees: [0, 2, 4, 6, 0], // C, E, G, B, C
     pattern: 'x---x-x-x' 

@@ -17,13 +17,13 @@ ROOT_DIR="$(dirname "$SCRIPT_DIR")"
 for entry in "${SERVICES[@]}"; do
   SVC="${entry%%:*}"
   PORT="${entry##*:}"
-  PKG_NAME=$(REDACTED_SECRET -e "console.log(require('$ROOT_DIR/services/$SVC/package.json').name)")
+  PKG_NAME=$(node -e "console.log(require('$ROOT_DIR/services/$SVC/package.json').name)")
   DEST="$ROOT_DIR/services/$SVC/Dockerfile"
 
   echo "Generating $DEST ($PKG_NAME @ :$PORT)"
 
   cat > "$DEST" <<DOCKERFILE
-FROM REDACTED_SECRET:22-bookworm-slim AS build
+FROM node:22-bookworm-slim AS build
 
 ENV PNPM_HOME=/pnpm
 ENV PATH=/pnpm:\$PATH
@@ -32,7 +32,7 @@ RUN corepack enable && corepack prepare pnpm@10.14.0 --activate
 WORKDIR /workspace
 
 COPY package.json pnpm-lock.yaml ./
-RUN REDACTED_SECRET -e "\\
+RUN node -e "\\
   const p = JSON.parse(require('fs').readFileSync('package.json','utf8'));\\
   for (const s of ['dependencies','devDependencies','peerDependencies']) {\\
     if (!p[s]) continue;\\
@@ -54,7 +54,7 @@ RUN pnpm --filter @workspace/hermes run build
 RUN cd services/$SVC && pnpm run build
 RUN pnpm --filter ./services/$SVC deploy --legacy --prod /app
 
-FROM REDACTED_SECRET:22-bookworm-slim
+FROM node:22-bookworm-slim
 
 WORKDIR /app
 COPY --from=build /app .
@@ -62,7 +62,7 @@ COPY --from=build /app .
 ENV NODE_ENV=production
 EXPOSE $PORT
 
-CMD ["REDACTED_SECRET", "dist/main.js"]
+CMD ["node", "dist/main.js"]
 DOCKERFILE
 
 done

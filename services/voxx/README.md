@@ -17,7 +17,7 @@ docker compose up --build -d
 curl http://127.0.0.1:8787/healthz
 ```
 
-The compose default now binds Voxx to loopback (`127.0.0.1`) so it can sit behind a reverse proxy without exposing a raw REDACTED_SECRET port. Override with `VOXX_BIND_HOST=0.0.0.0` only when you explicitly want direct network exposure.
+The compose default now binds Voxx to loopback (`127.0.0.1`) so it can sit behind a reverse proxy without exposing a raw public port. Override with `VOXX_BIND_HOST=0.0.0.0` only when you explicitly want direct network exposure.
 
 For smarter TTS quality without changing callers away from Voxx, pass remote-provider creds straight into the compose runtime and let Voxx fall back automatically. The current runtime default is Xiaomi MiMo first, then Kokoro as the one local voice fallback. eSpeak and MeloTTS are opt-in only so robotic fallback never silently ships. MeloTTS is installed in the Voxx image for explicit tests, but is not in the default provider order because its warm system-memory footprint is larger than Kokoro's on this host.
 
@@ -31,7 +31,7 @@ docker compose up --build -d
 
 Xiaomi MiMo also accepts the legacy typo-prefixed env names `XAIOMI_MIMO_API_BASE_URL` and `XAIOMI_MIMO_API_KEY` so existing local env files keep working while callers migrate to `XIAOMI_*`.
 
-Kokoro runs as a non-REDACTED_SECRET derived image (`Dockerfile.kokoro`) using the upstream CPU PyTorch runtime. Its `/var/lib/kokoro` cache is a named Compose volume so the ~320 MB Kokoro model is downloaded once and reused across restarts.
+Kokoro runs as a non-root derived image (`Dockerfile.kokoro`) using the upstream CPU PyTorch runtime. Its `/var/lib/kokoro` cache is a named Compose volume so the ~320 MB Kokoro model is downloaded once and reused across restarts.
 
 MeloTTS runs inside the Voxx application container when explicitly selected with `VOICE_GATEWAY_TTS_BACKEND_ORDER=melo`. The source `Dockerfile.compose` installs Python 3.11, CPU PyTorch/Torchaudio, MeloTTS from GitHub, UniDic, and NLTK assets needed by `melo.api.TTS`, but Melo is intentionally not part of the default local fallback path.
 

@@ -82,13 +82,13 @@ Examples:
 - a canonical memory record
 - a summary memory
 - an aggregate memory
-- a graph REDACTED_SECRET document
+- a graph node document
 - a tool result artifact
 
 ```ts
 type SubstrateSubjectRef = {
   id: string
-  subjectKind: "memory" | "summary" | "aggregate" | "graph.REDACTED_SECRET" | "artifact"
+  subjectKind: "memory" | "summary" | "aggregate" | "graph.node" | "artifact"
   source?: string
   project?: string
   sessionId?: string
@@ -319,13 +319,13 @@ Specifically, walkers assume:
 - seeds bind to canonical subjects
 - subjects carry typed nexus keys
 - contextual state may be represented by field digests
-- summaries and aggregates can be preferred over noisy raw REDACTED_SECRETs
+- summaries and aggregates can be preferred over noisy raw nodes
 
 ## Suggested implementation order
 
 1. define canonical `NexusKey` normalization helpers
 2. define `FieldDigestRef` canonical serialization and hashing
-3. define `FieldNexusBinding` adapters for memory records and graph-REDACTED_SECRET subjects
+3. define `FieldNexusBinding` adapters for memory records and graph-node subjects
 4. implement `NexusIndexClient` over one real backend
 5. plug Walker v1 into that substrate
 

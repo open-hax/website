@@ -22,7 +22,7 @@ Add a single proxx-hosted dashboard view that shows container inventory and rout
 
 ## Background
 - Proxx already has a built-in React/Vite console and authenticated UI API surface.
-- `services/proxx/Caddyfile` is currently the production source of truth for `ussy.promethean.rest` REDACTED_SECRET subdomain routing.
+- `services/proxx/Caddyfile` is currently the production source of truth for `ussy.promethean.rest` public subdomain routing.
 - `ussy3.promethean.rest` is the current staging proxy host.
 - The user's wording about a future third host is ambiguous, so the dashboard should be target-config driven rather than hard-coded to only two hosts.
 
@@ -35,7 +35,7 @@ Add a single proxx-hosted dashboard view that shows container inventory and rout
 ## Plan
 1. Add a host-dashboard backend module that can:
    - inspect local Docker containers through the Docker socket
-   - parse local runtime Caddy routes from a mounted runtime REDACTED_SECRET
+   - parse local runtime Caddy routes from a mounted runtime root
    - aggregate remote host snapshots over HTTPS
 2. Add authenticated UI routes for `self` and aggregated host overview.
 3. Add a dedicated web console Hosts page.

@@ -162,7 +162,7 @@ describe("integration: collector → normalize → cluster → reduce", () => {
       expect(branch.evidence.length).toBeGreaterThan(0);
       expect(typeof branch.realism).toBe("number");
       expect(typeof branch.fear).toBe("number");
-      expect(typeof branch.REDACTED_SECRET_benefit).toBe("number");
+      expect(typeof branch.public_benefit).toBe("number");
       expect(typeof branch.actionability).toBe("number");
       expect(typeof branch.polarization_risk).toBe("number");
       expect(typeof branch.compression_loss).toBe("number");

@@ -75,7 +75,7 @@ Create a standalone dashboard service that shows container inventory and routed 
 
 ## Verification
 - `cd services/host-fleet-dashboard && npm test`
-- `cd services/host-fleet-dashboard && HOST_FLEET_DASHBOARD_ALLOW_UNAUTHENTICATED=true PORT=8891 timeout 8s REDACTED_SECRET src/index.js` with `curl /api/health`
-- `cd services/host-fleet-dashboard && HOST_FLEET_DASHBOARD_ALLOW_UNAUTHENTICATED=true PORT=8892 timeout 20s REDACTED_SECRET src/index.js` with `GET /api/hosts`
+- `cd services/host-fleet-dashboard && HOST_FLEET_DASHBOARD_ALLOW_UNAUTHENTICATED=true PORT=8891 timeout 8s node src/index.js` with `curl /api/health`
+- `cd services/host-fleet-dashboard && HOST_FLEET_DASHBOARD_ALLOW_UNAUTHENTICATED=true PORT=8892 timeout 20s node src/index.js` with `GET /api/hosts`
 - remote prod: `https://ussy.promethean.rest/fleet/`, `/fleet/api/self`, `/fleet/api/hosts`
 - remote staging: `https://ussy3.promethean.rest/fleet/`, `/fleet/api/self`

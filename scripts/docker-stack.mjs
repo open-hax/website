@@ -1,7 +1,7 @@
-import { spawnSync } from "REDACTED_SECRET:child_process";
-import { existsSync, readFileSync } from "REDACTED_SECRET:fs";
-import { dirname, relative, resolve } from "REDACTED_SECRET:path";
-import { fileURLToPath } from "REDACTED_SECRET:url";
+import { spawnSync } from "node:child_process";
+import { existsSync, readFileSync } from "node:fs";
+import { dirname, relative, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const REGISTRY_PATH = resolve(ROOT, "config/docker-stacks.json");

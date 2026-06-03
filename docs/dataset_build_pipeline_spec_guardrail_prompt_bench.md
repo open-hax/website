@@ -333,7 +333,7 @@ To move to code:
 4. Freeze v0.1.0.
 5. Only then add suites.
 
-This prevents scope creep and preserves REDACTED_SECRETation integrity.
+This prevents scope creep and preserves publication integrity.
 
 ---
 

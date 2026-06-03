@@ -13,7 +13,7 @@ Deliver a reliable CRUD surface for the unified indexing client so downstream se
 1. Audit available adapters in `@promethean-os/persistence` to determine which CRUD calls can be implemented immediately.
 2. For unimplemented operations, throw structured errors (e.g., `NotImplementedError`) and log telemetry for follow-up.
 3. Add integration-style tests that exercise the implemented CRUD workflows against an in-memory or mocked persistence layer.
-4. Update REDACTED_SECRET docs and type definitions to match the finalized contract.
+4. Update public docs and type definitions to match the finalized contract.
 
 ## Dependencies
 - Requires coordination with the persistence package to confirm available abstractions.

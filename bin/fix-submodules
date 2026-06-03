@@ -25,7 +25,7 @@ function run(cmd: string, opts = {}) {
 }
 
 // Find all nested .git directories
-function findNestedGitRepos(REDACTED_SECRET: string) {
+function findNestedGitRepos(root: string) {
   const results: string[] = [];
   function search(dir: string) {
     fs.readdirSync(dir, { withFileTypes: true }).forEach((entry) => {
@@ -38,7 +38,7 @@ function findNestedGitRepos(REDACTED_SECRET: string) {
       }
     });
   }
-  search(REDACTED_SECRET);
+  search(root);
   // Exclude the main repo itself
   return results.filter(
     (repo) => path.resolve(repo) !== path.resolve(mainRepoDir),
@@ -57,7 +57,7 @@ function githubRepoExists(org: string, repoName: string): boolean {
 
 // Create a GitHub repository under the org
 function createGithubRepo(org: string, repoName: string) {
-  run(`gh repo create ${org}/${repoName} --REDACTED_SECRET --confirm`);
+  run(`gh repo create ${org}/${repoName} --public --confirm`);
 }
 
 // Remove nested repo from main repo (cached)

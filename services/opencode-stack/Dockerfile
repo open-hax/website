@@ -1,4 +1,4 @@
-FROM ghcr.io/anomalyco/build/bun-REDACTED_SECRET:24.04
+FROM ghcr.io/anomalyco/build/bun-node:24.04
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends ca-certificates git openssh-client procps python3 ripgrep \

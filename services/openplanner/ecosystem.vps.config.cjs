@@ -1,11 +1,11 @@
-const fs = require("REDACTED_SECRET:fs");
-const os = require("REDACTED_SECRET:os");
-const path = require("REDACTED_SECRET:path");
+const fs = require("node:fs");
+const os = require("node:os");
+const path = require("node:path");
 
 const serviceRoot = __dirname;
 const develRoot = path.resolve(serviceRoot, "../..");
 const home = os.homedir();
-const REDACTED_SECRETPath = path.join(home, ".local/opt/REDACTED_SECRET-v22.21.1-linux-x64/bin/REDACTED_SECRET");
+const nodePath = path.join(home, ".local/opt/node-v22.21.1-linux-x64/bin/node");
 const mongodPath = path.join(home, ".local/opt/mongodb-linux-x86_64-ubuntu2404-8.0.14/bin/mongod");
 
 function readEnvFile(filePath) {
@@ -27,7 +27,7 @@ const fileEnv = readEnvFile(envFile);
 const baseEnv = {
   ...process.env,
   ...fileEnv,
-  PATH: `${path.join(home, ".local/bin")}:${path.join(home, ".local/opt/REDACTED_SECRET-v22.21.1-linux-x64/bin")}:${process.env.PATH ?? ""}`,
+  PATH: `${path.join(home, ".local/bin")}:${path.join(home, ".local/opt/node-v22.21.1-linux-x64/bin")}:${process.env.PATH ?? ""}`,
 };
 for (const key of ["CHROMA_URL", "CHROMA_COLLECTION", "DATABASE_URL"]) {
   if (!baseEnv[key]) delete baseEnv[key];
@@ -71,7 +71,7 @@ module.exports = {
       name: "cloud-proxx",
       script: path.join(proxxRoot, "dist/main.js"),
       cwd: proxxRoot,
-      interpreter: REDACTED_SECRETPath,
+      interpreter: nodePath,
       env: {
         ...baseEnv,
         NODE_ENV: "production",
@@ -140,7 +140,7 @@ module.exports = {
       name: "cloud-openplanner",
       script: path.join(openplannerRoot, "dist/main.js"),
       cwd: openplannerRoot,
-      interpreter: REDACTED_SECRETPath,
+      interpreter: nodePath,
       env: {
         ...baseEnv,
         NODE_ENV: "production",
@@ -156,7 +156,7 @@ module.exports = {
         MONGODB_VECTOR_HOT_COLLECTION: baseEnv.MONGODB_VECTOR_HOT_COLLECTION ?? "event_chunks",
         MONGODB_VECTOR_COMPACT_COLLECTION: baseEnv.MONGODB_VECTOR_COMPACT_COLLECTION ?? "compacted_vectors",
         MONGODB_GRAPH_LAYOUT_COLLECTION: baseEnv.MONGODB_GRAPH_LAYOUT_COLLECTION ?? "graph_layout_overrides",
-        MONGODB_GRAPH_NODE_EMBEDDING_COLLECTION: baseEnv.MONGODB_GRAPH_NODE_EMBEDDING_COLLECTION ?? "graph_REDACTED_SECRET_embeddings",
+        MONGODB_GRAPH_NODE_EMBEDDING_COLLECTION: baseEnv.MONGODB_GRAPH_NODE_EMBEDDING_COLLECTION ?? "graph_node_embeddings",
         MONGODB_EVENTS_TTL_SECONDS: baseEnv.OPENPLANNER_NON_LABELED_EVENTS_TTL_SECONDS ?? "604800",
         MONGODB_COMPACTED_TTL_SECONDS: baseEnv.OPENPLANNER_NON_LABELED_COMPACTED_TTL_SECONDS ?? "2592000",
         SEMANTIC_COMPACTION_ENABLED: baseEnv.SEMANTIC_COMPACTION_ENABLED ?? "false",

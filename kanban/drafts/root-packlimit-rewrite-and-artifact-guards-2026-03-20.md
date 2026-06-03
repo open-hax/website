@@ -1,21 +1,21 @@
 ---
-uuid: "kanban-specs-drafts-REDACTED_SECRET-packlimit-rewrite-and-artifact-guards-2026-03-20-md"
+uuid: "kanban-specs-drafts-root-packlimit-rewrite-and-artifact-guards-2026-03-20-md"
 title: "Spec Draft: Root pack-limit rewrite and artifact guards"
 status: incoming
 priority: P3
 labels: ["specs", "migrated-spec"]
 created_at: "2026-05-29T04:29:44.549Z"
-source: "specs/drafts/REDACTED_SECRET-packlimit-rewrite-and-artifact-guards-2026-03-20.md"
+source: "specs/drafts/root-packlimit-rewrite-and-artifact-guards-2026-03-20.md"
 category: "specs"
 ---
 
-> Source: `specs/drafts/REDACTED_SECRET-packlimit-rewrite-and-artifact-guards-2026-03-20.md`
-> Migrated-to-kanban: `kanban/drafts/REDACTED_SECRET-packlimit-rewrite-and-artifact-guards-2026-03-20.md`
+> Source: `specs/drafts/root-packlimit-rewrite-and-artifact-guards-2026-03-20.md`
+> Migrated-to-kanban: `kanban/drafts/root-packlimit-rewrite-and-artifact-guards-2026-03-20.md`
 
 # Spec Draft: Root pack-limit rewrite and artifact guards
 
 ## Context
-The REDACTED_SECRET `feature/threat-radar-platform` branch accumulated very large generated artifacts, causing GitHub to reject pushes with `pack exceeds maximum allowed size (2.00 GiB)`.
+The root `feature/threat-radar-platform` branch accumulated very large generated artifacts, causing GitHub to reject pushes with `pack exceeds maximum allowed size (2.00 GiB)`.
 
 ## Findings
 - The dominant offenders are `services/proxx/db-backups/*`.
@@ -35,7 +35,7 @@ The REDACTED_SECRET `feature/threat-radar-platform` branch accumulated very larg
 3. Harden `.hooks/pre-push-typecheck.sh` so it fails fast when the push range contains:
    - blocked generated/runtime artifact paths
    - oversized new blobs
-4. Rewrite the REDACTED_SECRET branch in a disposable clone to remove:
+4. Rewrite the root branch in a disposable clone to remove:
    - `services/proxx/db-backups/*`
    - `labs/parameter-golf-ant-lab/runs/**`
    - Python bytecode cache files

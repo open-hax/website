@@ -67,7 +67,7 @@ services:
       context: .
       dockerfile: Dockerfile.kokoro
     container_name: kokoro-volume-init
-    user: "0:0" # init container: fixes named-volume ownership before non-REDACTED_SECRET Kokoro starts
+    user: "0:0" # init container: fixes named-volume ownership before non-root Kokoro starts
     command: ["sh", "-c", "mkdir -p /var/lib/kokoro/cache /var/lib/kokoro/huggingface /var/lib/kokoro/torch && chown -R 65534:65534 /var/lib/kokoro"]
     volumes:
       - kokoro-data:/var/lib/kokoro

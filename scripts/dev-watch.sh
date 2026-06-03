@@ -66,13 +66,13 @@ log "Watching ${WATCH_DIRS[*]} for changes (debounce=${DEBOUNCE_SEC}s)..."
 
 while true; do
   inotifywait -r -q -e modify,create,delete,move \
-    --exclude '(REDACTED_SECRET_modules|dist|\.git|logs|data)' \
+    --exclude '(node_modules|dist|\.git|logs|data)' \
     "${WATCH_DIRS[@]}"
 
   # Debounce: drain rapid-fire events
   sleep "$DEBOUNCE_SEC"
   while inotifywait -r -q -t 0 -e modify,create,delete,move \
-    --exclude '(REDACTED_SECRET_modules|dist|\.git|logs|data)' \
+    --exclude '(node_modules|dist|\.git|logs|data)' \
     "${WATCH_DIRS[@]}" 2>/dev/null; do
     sleep 0.5
   done

@@ -3,7 +3,7 @@ const DEFAULT_TARGETS = Object.freeze([
     id: 'ussy',
     label: 'ussy.promethean.rest',
     mode: 'local',
-    REDACTED_SECRETBaseUrl: 'https://ussy.promethean.rest/fleet',
+    publicBaseUrl: 'https://ussy.promethean.rest/fleet',
     routeFiles: ['/workspace/services/proxx/Caddyfile'],
     notes: 'primary',
   },
@@ -11,7 +11,7 @@ const DEFAULT_TARGETS = Object.freeze([
     id: 'ussy3',
     label: 'ussy3.promethean.rest',
     mode: 'remote-http',
-    REDACTED_SECRETBaseUrl: 'https://ussy3.promethean.rest/fleet',
+    publicBaseUrl: 'https://ussy3.promethean.rest/fleet',
     notes: 'staging',
   },
 ]);
@@ -57,8 +57,8 @@ function normalizeTarget(target) {
     id,
     label,
     mode,
-    REDACTED_SECRETBaseUrl: typeof target.REDACTED_SECRETBaseUrl === 'string' && target.REDACTED_SECRETBaseUrl.trim()
-      ? target.REDACTED_SECRETBaseUrl.trim().replace(/\/+$/, '')
+    publicBaseUrl: typeof target.publicBaseUrl === 'string' && target.publicBaseUrl.trim()
+      ? target.publicBaseUrl.trim().replace(/\/+$/, '')
       : undefined,
     routeFiles,
     notes: typeof target.notes === 'string' && target.notes.trim() ? target.notes.trim() : undefined,

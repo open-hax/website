@@ -4274,7 +4274,7 @@
     {
       "kind": "issue",
       "number": 38,
-      "title": "[Dockerfile.fly] Container runs as REDACTED_SECRET — add non-REDACTED_SECRET user for security hardening",
+      "title": "[Dockerfile.fly] Container runs as root — add non-root user for security hardening",
       "url": "https://github.com/open-hax/proxx/issues/38",
       "author": "app/coderabbitai",
       "ageDays": 9,
@@ -4296,7 +4296,7 @@
         "Bot-generated review follow-up should be clustered with its source PR/date.",
         "Security or secret-handling risk should be actively refined before implementation."
       ],
-      "id": "open-hax/proxx|issue|38|[Dockerfile.fly] Container runs as REDACTED_SECRET — add non-REDACTED_SECRET user for security hardening",
+      "id": "open-hax/proxx|issue|38|[Dockerfile.fly] Container runs as root — add non-root user for security hardening",
       "canonicalRepo": "open-hax/proxx",
       "repos": [
         "open-hax/proxx"

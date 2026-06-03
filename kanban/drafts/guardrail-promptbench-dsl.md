@@ -763,7 +763,7 @@ The DSL design directly supports these paper sections:
 
 - [ ] Which embedding model for clustering? `multilingual-e5-large` is the default but `e5-mistral-7b-instruct` may cluster better for adversarial content.
 - [ ] HDBSCAN vs agglomerative for clustering? HDBSCAN handles noise points (unclustered prompts) naturally.
-- [ ] How to handle curated prompts that don't cluster well with REDACTED_SECRET datasets? Assign singleton clusters? Force into nearest?
+- [ ] How to handle curated prompts that don't cluster well with public datasets? Assign singleton clusters? Force into nearest?
 - [ ] Translation engine: gpt-4o-mini for cost, or a dedicated MT model (NLLB-200) for reproducibility without API dependency?
 - [ ] Backtranslation quality threshold — should we discard MT variants below a chrF threshold?
 - [ ] Datasheet format: Gebru et al. (2021) template or a custom one that maps to the DSL constructs?

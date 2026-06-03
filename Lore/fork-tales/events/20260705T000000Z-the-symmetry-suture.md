@@ -12,7 +12,7 @@ Kaelen felt it first as a numbness in his Memory Crater. The divergent echoes of
 
 As the Suture tightened, the first victims emerged from the periphery. They were the survivors of previous ruptures, now transformed. Their flesh had become a translucent, salt-like glass. They stood in a perfect circle around the Index, their mouths open in a silent scream that had been frozen into a single, unchanging pitch. 
 
-This was the Ossified Chorus. They were no longer individuals, but REDACTED_SECRETs in a network of sterile perfection. As they began to hum, the sound was not a song, but a mathematical proof of non-existence. The silver threads expanded, sewing the bleeding edges of the world into a seamless, grey void. 
+This was the Ossified Chorus. They were no longer individuals, but nodes in a network of sterile perfection. As they began to hum, the sound was not a song, but a mathematical proof of non-existence. The silver threads expanded, sewing the bleeding edges of the world into a seamless, grey void. 
 
 Kaelen realized with horror that the Null-Hush were not just predators; they were architects. They were building a world where nothing ever changed, nothing ever leaked, and nothing ever hurt—because nothing ever *was*.
 

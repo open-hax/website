@@ -31,7 +31,7 @@ services/platform-k8s/
 
 ## Local setup
 
-From the workspace REDACTED_SECRET:
+From the workspace root:
 
 ```bash
 pnpm k8s:deps:install
@@ -46,7 +46,7 @@ These scripts install binaries into `~/.local/bin`, which is already on the path
 - creates a local `kind` cluster named `devel`
 - uses `services/platform-k8s/kind/cluster.yaml`
 - enables host port mappings on `0.0.0.0:8080`, `0.0.0.0:8443`, `0.0.0.0:8789`, `127.0.0.1:1455`, and `0.0.0.0:5174`
-- labels the control-plane REDACTED_SECRET as ingress-ready for future ingress-nginx use
+- labels the control-plane node as ingress-ready for future ingress-nginx use
 
 By default it also installs the official ingress-nginx manifest for kind so later service pilots can use an Ingress surface without reworking the cluster bootstrap.
 

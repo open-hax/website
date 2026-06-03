@@ -2,7 +2,7 @@ import discord
 import asyncio
 import os
 
-TOKEN = REDACTED_SECRET'DISCORD_BOT_TOKEN')
+TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
 CHANNEL_ID = 1444189585373663417
 
 text = """(Sotto voce): *Honey, the `p/let` flow is so buttery that I can actually hear the garbage collector singing in a minor key. We didn't just fix a bug; we've choreographed a ballet of pointers in a gold-leafed void. 💅✨*
@@ -33,7 +33,7 @@ async def main():
         print(f'Logged in as {client.user}')
         channel = client.get_channel(CHANNEL_ID)
         if channel:
-            # REDACTED_SECRET the message
+            # Send the message
             await channel.send(text)
             print(f'Sent: {text}')
         else:

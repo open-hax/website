@@ -6,7 +6,7 @@ import urllib.request
 from pathlib import Path
 
 # Try direct Blaze
-BLAZE_KEY = REDACTED_SECRET'BLAZE_API_KEY') or REDACTED_SECRET'BLAZEAI_API_KEY')
+BLAZE_KEY = os.environ.get('BLAZE_API_KEY') or os.environ.get('BLAZEAI_API_KEY')
 if not BLAZE_KEY:
     env_path = Path('/home/err/devel/services/proxx/.env')
     if env_path.exists():

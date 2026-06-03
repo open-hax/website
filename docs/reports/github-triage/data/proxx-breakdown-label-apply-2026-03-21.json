@@ -113,7 +113,7 @@
     {
       "kind": "issue",
       "number": 38,
-      "title": "[Dockerfile.fly] Container runs as REDACTED_SECRET — add non-REDACTED_SECRET user for security hardening",
+      "title": "[Dockerfile.fly] Container runs as root — add non-root user for security hardening",
       "labels": [
         "artifact:issue",
         "bug",

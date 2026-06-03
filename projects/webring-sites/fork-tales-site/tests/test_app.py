@@ -9,12 +9,12 @@ from fork_tales_api.app import create_app
 from fork_tales_api.settings import normalize_chat_url
 
 
-def write_fixture_site(REDACTED_SECRET: Path) -> None:
-    content = REDACTED_SECRET / "content"
+def write_fixture_site(root: Path) -> None:
+    content = root / "content"
     content.mkdir(parents=True, exist_ok=True)
-    (REDACTED_SECRET / "index.html").write_text("<html><body><h1>fork//tales</h1></body></html>", encoding="utf-8")
-    (REDACTED_SECRET / "app.js").write_text("console.log('fork tales');", encoding="utf-8")
-    (REDACTED_SECRET / "styles.css").write_text("body { background: #000; }", encoding="utf-8")
+    (root / "index.html").write_text("<html><body><h1>fork//tales</h1></body></html>", encoding="utf-8")
+    (root / "app.js").write_text("console.log('fork tales');", encoding="utf-8")
+    (root / "styles.css").write_text("body { background: #000; }", encoding="utf-8")
     library = {
         "generatedAt": "2026-03-24T00:00:00Z",
         "counts": {"docs": 1, "visibleDocs": 1, "audio": 1, "playlists": 0, "gallery": 0, "corpusChunks": 2},

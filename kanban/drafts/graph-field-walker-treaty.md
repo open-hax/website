@@ -88,7 +88,7 @@ The clean reading is:
 | `openplanner` | canonical append-only event lake, graph receipts, graph export/query, derived projections over raw graph truth | graph UI, crawl orchestration, bounded walker doctrine, force/layout simulation as primary concern |
 | `graph-weaver` | graph workbench, preview/mutation, layered graph views, user overlays, declared graph view surfaces | canonical truth ownership, crawl brain, lake semantics, hidden fallback pretending to be canonical |
 | `graph-weaver-aco` | bounded URL frontier, ant-like traversal policy, host pacing, event emission | persistence, graph UI, rich extraction, lake writes, high-level orchestration |
-| `myrmex` | composition REDACTED_SECRET for traversal + extraction + graph write routing + backpressure + checkpointing | canonical lake ownership, graph UI, deep walker doctrine, general-purpose graph database semantics |
+| `myrmex` | composition root for traversal + extraction + graph write routing + backpressure + checkpointing | canonical lake ownership, graph UI, deep walker doctrine, general-purpose graph database semantics |
 | `eros-eris-field` | semantic-force layout engine, graph geometry, attraction/repulsion dynamics, field simulation primitives | canonical graph storage, lake ingestion, crawl policy, user-facing speaking runtime |
 | `daimoi` | bounded motion doctrine across field and graph space, packet semantics, retrieval-walker contract, interpretable trace language | canonical lake ownership, graph UI, direct speaking runtime, pretending the field/graph stack is optional |
 | `cephalon` | speaking runtime, context assembly, tool coordination, session identity, field-timed action | canonical graph storage, crawl orchestration, workbench ownership, private hidden graph empire |
@@ -106,7 +106,7 @@ Current anchors:
 
 Contract responsibilities:
 - graph receipts are append-only and canonical in the lake
-- `graph.REDACTED_SECRET` and `graph.edge` are evidence, not UI opinions
+- `graph.node` and `graph.edge` are evidence, not UI opinions
 - derived projections must remain recomputable and non-destructive
 
 Examples:
@@ -193,7 +193,7 @@ Contract responsibilities:
 graph-weaver-aco
   -> traversal kernel
       -> myrmex
-         -> graph/REDACTED_SECRET/edge receipts
+         -> graph/node/edge receipts
             -> openplanner
                -> canonical graph truth + derived projections
                   -> graph-weaver

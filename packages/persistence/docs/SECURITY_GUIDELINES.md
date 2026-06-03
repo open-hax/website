@@ -857,7 +857,7 @@ class SecurityMonitor {
         // Log alert
         console.error(`SECURITY ALERT: ${alert.description}`, alert.metadata);
         
-        // REDACTED_SECRET notifications
+        // Send notifications
         await this.sendSecurityNotification(alert);
         
         // Take automated response

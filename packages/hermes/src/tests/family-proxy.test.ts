@@ -1,6 +1,6 @@
-import assert from "REDACTED_SECRET:assert/strict";
-import { once } from "REDACTED_SECRET:events";
-import test from "REDACTED_SECRET:test";
+import assert from "node:assert/strict";
+import { once } from "node:events";
+import test from "node:test";
 
 import express from "express";
 

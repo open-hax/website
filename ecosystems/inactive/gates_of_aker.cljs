@@ -26,7 +26,7 @@
   {:cwd "./web"
    :script "npm"
    :args ["run" "dev"]
-   :interpreter "REDACTED_SECRET"
+   :interpreter "node"
    :instances 1
    :autorestart true
    :watch ["src" "index.html"]

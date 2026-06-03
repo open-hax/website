@@ -264,7 +264,7 @@ describe("reduce", () => {
       const dimensions = [
         branch.realism,
         branch.fear,
-        branch.REDACTED_SECRET_benefit,
+        branch.public_benefit,
         branch.actionability,
         branch.polarization_risk,
         branch.compression_loss,

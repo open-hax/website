@@ -9,7 +9,7 @@
 (def cli-opts
 [["-m" "--model PATH" "HF dir or model id" :required true]
 ["-f" "--file PATH"  "target source file" :required true]
-["-r" "--repo PATH"  "repo REDACTED_SECRET (for build)" :default "."]
+["-r" "--repo PATH"  "repo root (for build)" :default "."]
 ["-p" "--prompt S"   "opencode build prompt" :default "build"]
 ["--mode MODE"       "diff|whole" :default "whole"]
 ["-h" "--help"]])

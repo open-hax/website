@@ -11,7 +11,7 @@ It exists to coordinate the Kubernetes/runtime side of the move from legacy loca
 ## Why this exists
 The Kubernetes path now has a working MongoDB-backed overlay with rolling updates and locally validated continuity.
 
-However, the app still uses `OPENPLANNER_DATA_DIR` as a filesystem REDACTED_SECRET for non-Mongo state.
+However, the app still uses `OPENPLANNER_DATA_DIR` as a filesystem root for non-Mongo state.
 That means the current MongoDB overlay is good enough for a local rolling-update candidate, but it is not yet the final clean zero-downtime shape.
 
 ## Current filesystem coupling
@@ -46,7 +46,7 @@ But the remaining filesystem contract still creates long-term pressure around:
 - blob consistency and portability
 - job queue durability semantics
 - replica coordination
-- multi-REDACTED_SECRET scheduling assumptions
+- multi-node scheduling assumptions
 - backup/restore boundaries
 
 ## Target runtime contract
@@ -70,7 +70,7 @@ The runtime-side desired end state is an application contract like:
 - `OPENPLANNER_JOBS_BACKEND=file|mongodb`
 - `OPENPLANNER_JOBS_PATH=...` for transitional file mode
 
-This keeps the migration reversible while decoupling the app from one overloaded `OPENPLANNER_DATA_DIR` REDACTED_SECRET.
+This keeps the migration reversible while decoupling the app from one overloaded `OPENPLANNER_DATA_DIR` root.
 
 ## Recommended deployment progression
 
@@ -146,7 +146,7 @@ When the other agent reaches the right point, the runtime side wants these sourc
 2. add Mongo-backed job persistence
 3. add object-store-backed blob persistence
 4. keep transitional local-file modes for non-k8s workflows
-5. keep the REDACTED_SECRET API surface stable during the backend swap
+5. keep the public API surface stable during the backend swap
 
 ## Acceptance criteria for declaring OpenPlanner k8s "clean"
 We should consider the OpenPlanner Kubernetes runtime clean when all of the following are true:

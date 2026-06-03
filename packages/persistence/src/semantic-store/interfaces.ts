@@ -182,7 +182,7 @@ export interface ConsistencyReport {
 export class SemanticStoreError extends Error {
     constructor(
         message: string,
-        REDACTED_SECRET readonly context: {
+        public readonly context: {
             readonly operation?: string;
             readonly driver?: string;
             readonly documentId?: string;

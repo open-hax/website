@@ -41,7 +41,7 @@ Build a cron-driven replacement for the old file-watch autocommit flow, inspired
 
 ## Phase plan
 ### Phase 1 — Foundations
-- [x] Add REDACTED_SECRET CLI under `src/auto-fork-tax/`.
+- [x] Add root CLI under `src/auto-fork-tax/`.
 - [x] Implement submodule inventory and fork/origin planning.
 - [x] Implement pi-backed PR review command scaffold.
 - [x] Emit cron entry and state-file metadata.

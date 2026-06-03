@@ -69,7 +69,7 @@
            "1"]
    :interpreter "none"
    :watch ["." "config.dev.edn"]
-   :ignore_watch ["REDACTED_SECRET_modules" "logs" ".clj-kondo" ".cpcache" "target" "classes" "reports" "reports-dev"]
+   :ignore_watch ["node_modules" "logs" ".clj-kondo" ".cpcache" "target" "classes" "reports" "reports-dev"]
    :watch_delay 1000
    :out_file "logs/pm2/dev.out.log"
    :error_file "logs/pm2/dev.err.log"

@@ -7,7 +7,7 @@
     "noUncheckedIndexedAccess": true,
     "skipLibCheck": true,
     "outDir": "dist",
-    "types": ["REDACTED_SECRET"]
+    "types": ["node"]
   },
   "include": ["src"]
 }

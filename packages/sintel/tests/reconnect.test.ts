@@ -4,8 +4,8 @@
  * Tests for the firehose reconnection callback behavior.
  */
 
-import { describe, it, beforeEach, afterEach, mock } from 'REDACTED_SECRET:test';
-import assert from 'REDACTED_SECRET:assert';
+import { describe, it, beforeEach, afterEach, mock } from 'node:test';
+import assert from 'node:assert';
 import { BskyDiscovery, type FirehoseOptions } from '../dist/index.js';
 
 // ============================================================================
@@ -173,8 +173,8 @@ describe('Reconnect Timer Behavior', () => {
     // Verify the implementation uses setTimeout (not setInterval) for reconnection
     // This is important because setInterval would cause rapid reconnects
     
-    const fs = await import('REDACTED_SECRET:fs/promises');
-    const path = await import('REDACTED_SECRET:path');
+    const fs = await import('node:fs/promises');
+    const path = await import('node:path');
     
     // Check the main chunk file where firehose code lives
     const chunkPath = path.join(import.meta.dirname, '..', 'dist', 'chunk-RKKZN5YN.js');

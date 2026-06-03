@@ -2,7 +2,7 @@
 (ns describe-document
   (:require ["child_process" :as child-process]
 
-            ["REDACTED_SECRET:fs/promises" :as fs]
+            ["node:fs/promises" :as fs]
             ["path" :as Path]
             [promesa.core :as p]
             [opencode :as oc]

@@ -2,11 +2,11 @@
 
 ## Scope
 - Root-level outside-structure modules only
-- Includes: top-level aliases, top-level standalone REDACTED_SECRETs, and REDACTED_SECRET-level vendor/fork/special checkouts
+- Includes: top-level aliases, top-level standalone roots, and root-level vendor/fork/special checkouts
 - Excludes: foreign org repos and aggregation trees, which were inventoried separately in the outside-structure manifest
 
 Machine-readable companion artifact:
-- `docs/reports/inventory/REDACTED_SECRET-module-usage-manifest-2026-03-21.json`
+- `docs/reports/inventory/root-module-usage-manifest-2026-03-21.json`
 
 ## Summary counts
 - totalRootModules: **15**
@@ -19,13 +19,13 @@ Machine-readable companion artifact:
 
 | Path | Active status | Reference files | Why it is still used | Suggested next decision |
 |---|---|---:|---|---|
-| `desktop` | active-alias | 22 | Root alias for orgs/riatzukiza/desktop still supports launcher, desktop-entry, and documentation/manifests that refer to the short REDACTED_SECRET path. | Keep as an explicit operator convenience alias or migrate launcher/docs to orgs/riatzukiza/desktop and retire the alias later. |
+| `desktop` | active-alias | 22 | Root alias for orgs/riatzukiza/desktop still supports launcher, desktop-entry, and documentation/manifests that refer to the short root path. | Keep as an explicit operator convenience alias or migrate launcher/docs to orgs/riatzukiza/desktop and retire the alias later. |
 | `promethean` | active-alias | 674 | Root alias for orgs/riatzukiza/promethean is still embedded in shadow-cljs source paths, PM2 parity tests, and workspace documentation. | Either bless the alias as a stable compatibility path or rewrite source-path/test/docs references to the canonical org path. |
-| `pm2-clj-project` | active-tooling-fixture | 4 | Used as a REDACTED_SECRET-level PM2/ClojureScript tooling fixture and compiler source path for ecosystem parity and manifest docs. | Decide whether this belongs in packages/, orgs/riatzukiza/, or as an explicit REDACTED_SECRET-level tooling exception. |
-| `reconstitute` | active-tooling-REDACTED_SECRET | 55 | Acts as a REDACTED_SECRET CLI/tooling entrypoint around the reconstitution workflow and is referenced by REDACTED_SECRET package scripts, OpenCode commands, and skills. | Classify it as an intentional tooling REDACTED_SECRET or normalize it into packages/ or an org repo while leaving a compatibility command path. |
+| `pm2-clj-project` | active-tooling-fixture | 4 | Used as a root-level PM2/ClojureScript tooling fixture and compiler source path for ecosystem parity and manifest docs. | Decide whether this belongs in packages/, orgs/riatzukiza/, or as an explicit root-level tooling exception. |
+| `reconstitute` | active-tooling-root | 55 | Acts as a root CLI/tooling entrypoint around the reconstitution workflow and is referenced by root package scripts, OpenCode commands, and skills. | Classify it as an intentional tooling root or normalize it into packages/ or an org repo while leaving a compatibility command path. |
 | `reconstitute-mcp` | doc-and-experimental-surface | 5 | Appears to persist mainly as an experimental/documented MCP surface referenced by notes inside the reconstitute project, not as a clearly active standalone module. | Either fold it into reconstitute as documented design material or promote it into a real package/service if it becomes runnable. |
-| `mcp-social-publisher-live` | active-standalone-deploy-REDACTED_SECRET | 6 | Standalone repo used as the current source/deploy REDACTED_SECRET for the live ussy deployment, with deployment specs and receipts pointing at it explicitly. | Give it an explicit placement decision rather than leaving it ambiguous at the workspace REDACTED_SECRET. |
-| `threat-radar-deploy` | active-product-source-REDACTED_SECRET | 12 | Active product/source surface for the current radar system; user has now directed that it be normalized and consolidated into orgs/open-hax/eta-mu-radar. | Normalize into orgs/open-hax/eta-mu-radar and retarget runtime/deploy references while keeping services/radar-stack as the runtime home. |
+| `mcp-social-publisher-live` | active-standalone-deploy-root | 6 | Standalone repo used as the current source/deploy root for the live ussy deployment, with deployment specs and receipts pointing at it explicitly. | Give it an explicit placement decision rather than leaving it ambiguous at the workspace root. |
+| `threat-radar-deploy` | active-product-source-root | 12 | Active product/source surface for the current radar system; user has now directed that it be normalized and consolidated into orgs/open-hax/eta-mu-radar. | Normalize into orgs/open-hax/eta-mu-radar and retarget runtime/deploy references while keeping services/radar-stack as the runtime home. |
 | `verathar-server` | bookkeeping-only-for-now | 4 | Currently visible primarily through submodule bookkeeping, receipts, and snapshot artifacts rather than active tracked integration points. | Either mark as an explicit external/fork exception or move it under a clearer home if active work resumes. |
 | `threat-radar-next-step` | planning-bundle | 4 | Used as a future/platform design bundle, but user has now directed that all threat-radar-related work consolidate into orgs/open-hax/eta-mu-radar. | Fold useful planning/spec material into orgs/open-hax/eta-mu-radar and retire the standalone bundle once absorbed. |
 | `bevy_replicon` | bookkeeping-only-foreign-fork | 4 | Tracked mainly as an absorbed top-level fork/submodule with no strong active integration references outside bookkeeping artifacts. | Treat as a foreign-fork exception or relocate under a clearer vendor/forks area. |
@@ -47,7 +47,7 @@ Machine-readable companion artifact:
   - `other`: 6
   - `receipts-or-fork-tax`: 1
   - `specs`: 1
-- why used: Root alias for orgs/riatzukiza/desktop still supports launcher, desktop-entry, and documentation/manifests that refer to the short REDACTED_SECRET path.
+- why used: Root alias for orgs/riatzukiza/desktop still supports launcher, desktop-entry, and documentation/manifests that refer to the short root path.
 - key evidence:
   - `bin/codex-open-hax-desktop`
   - `share/applications/codex-open-hax.desktop`
@@ -96,14 +96,14 @@ Machine-readable companion artifact:
 - suggested next decision: Either bless the alias as a stable compatibility path or rewrite source-path/test/docs references to the canonical org path.
 
 ## `pm2-clj-project`
-- outside category: `top-level-standalone-REDACTED_SECRET`
+- outside category: `top-level-standalone-root`
 - active status: **active-tooling-fixture**
 - tracked reference files outside its own tree: **4**
 - reference area counts:
   - `config-or-manifest`: 1
   - `docs`: 1
   - `other`: 2
-- why used: Used as a REDACTED_SECRET-level PM2/ClojureScript tooling fixture and compiler source path for ecosystem parity and manifest docs.
+- why used: Used as a root-level PM2/ClojureScript tooling fixture and compiler source path for ecosystem parity and manifest docs.
 - key evidence:
   - `tests/pm2-clj.parity.test.ts`
   - `shadow-cljs.edn`
@@ -113,11 +113,11 @@ Machine-readable companion artifact:
   - `docs/PACKAGE_MANIFEST.md`
   - `shadow-cljs.edn`
   - `tests/pm2-clj.parity.test.ts`
-- suggested next decision: Decide whether this belongs in packages/, orgs/riatzukiza/, or as an explicit REDACTED_SECRET-level tooling exception.
+- suggested next decision: Decide whether this belongs in packages/, orgs/riatzukiza/, or as an explicit root-level tooling exception.
 
 ## `reconstitute`
-- outside category: `top-level-standalone-REDACTED_SECRET`
-- active status: **active-tooling-REDACTED_SECRET**
+- outside category: `top-level-standalone-root`
+- active status: **active-tooling-root**
 - tracked reference files outside its own tree: **55**
 - reference area counts:
   - `config-or-manifest`: 7
@@ -126,7 +126,7 @@ Machine-readable companion artifact:
   - `other`: 33
   - `receipts-or-fork-tax`: 1
   - `specs`: 2
-- why used: Acts as a REDACTED_SECRET CLI/tooling entrypoint around the reconstitution workflow and is referenced by REDACTED_SECRET package scripts, OpenCode commands, and skills.
+- why used: Acts as a root CLI/tooling entrypoint around the reconstitution workflow and is referenced by root package scripts, OpenCode commands, and skills.
 - key evidence:
   - `package.json`
   - `.opencode/commands/opencode-sessions-index.md`
@@ -142,10 +142,10 @@ Machine-readable companion artifact:
   - `.opencode/skills/AGENTS.md`
   - `.opencode/skills/opencode-apply-reconstituted-diffs/SKILL.md`
   - `.opencode/skills/opencode-reconstituter/SKILL.md`
-- suggested next decision: Classify it as an intentional tooling REDACTED_SECRET or normalize it into packages/ or an org repo while leaving a compatibility command path.
+- suggested next decision: Classify it as an intentional tooling root or normalize it into packages/ or an org repo while leaving a compatibility command path.
 
 ## `reconstitute-mcp`
-- outside category: `top-level-standalone-REDACTED_SECRET`
+- outside category: `top-level-standalone-root`
 - active status: **doc-and-experimental-surface**
 - tracked reference files outside its own tree: **5**
 - reference area counts:
@@ -163,15 +163,15 @@ Machine-readable companion artifact:
 - suggested next decision: Either fold it into reconstitute as documented design material or promote it into a real package/service if it becomes runnable.
 
 ## `mcp-social-publisher-live`
-- outside category: `top-level-standalone-REDACTED_SECRET`
-- active status: **active-standalone-deploy-REDACTED_SECRET**
+- outside category: `top-level-standalone-root`
+- active status: **active-standalone-deploy-root**
 - tracked reference files outside its own tree: **6**
 - reference area counts:
   - `gitmodules`: 1
   - `other`: 3
   - `receipts-or-fork-tax`: 1
   - `specs`: 1
-- why used: Standalone repo used as the current source/deploy REDACTED_SECRET for the live ussy deployment, with deployment specs and receipts pointing at it explicitly.
+- why used: Standalone repo used as the current source/deploy root for the live ussy deployment, with deployment specs and receipts pointing at it explicitly.
 - key evidence:
   - `specs/drafts/mcp-social-publisher-ussy-key-auth-deploy-2026-03-21.md`
   - `.gitmodules`
@@ -183,11 +183,11 @@ Machine-readable companion artifact:
   - `.gitmodules`
   - `receipts.log`
   - `specs/drafts/mcp-social-publisher-ussy-key-auth-deploy-2026-03-21.md`
-- suggested next decision: Give it an explicit placement decision rather than leaving it ambiguous at the workspace REDACTED_SECRET.
+- suggested next decision: Give it an explicit placement decision rather than leaving it ambiguous at the workspace root.
 
 ## `threat-radar-deploy`
-- outside category: `top-level-standalone-REDACTED_SECRET`
-- active status: **active-product-source-REDACTED_SECRET**
+- outside category: `top-level-standalone-root`
+- active status: **active-product-source-root**
 - tracked reference files outside its own tree: **12**
 - reference area counts:
   - `config-or-manifest`: 1
@@ -214,7 +214,7 @@ Machine-readable companion artifact:
 - suggested next decision: Normalize into orgs/open-hax/eta-mu-radar and retarget runtime/deploy references while keeping services/radar-stack as the runtime home.
 
 ## `verathar-server`
-- outside category: `top-level-standalone-REDACTED_SECRET`
+- outside category: `top-level-standalone-root`
 - active status: **bookkeeping-only-for-now**
 - tracked reference files outside its own tree: **4**
 - reference area counts:
@@ -234,7 +234,7 @@ Machine-readable companion artifact:
 - suggested next decision: Either mark as an explicit external/fork exception or move it under a clearer home if active work resumes.
 
 ## `threat-radar-next-step`
-- outside category: `top-level-standalone-REDACTED_SECRET`
+- outside category: `top-level-standalone-root`
 - active status: **planning-bundle**
 - tracked reference files outside its own tree: **4**
 - reference area counts:
@@ -253,7 +253,7 @@ Machine-readable companion artifact:
 - suggested next decision: Fold useful planning/spec material into orgs/open-hax/eta-mu-radar and retire the standalone bundle once absorbed.
 
 ## `bevy_replicon`
-- outside category: `REDACTED_SECRET-level-vendor-or-fork-repo`
+- outside category: `root-level-vendor-or-fork-repo`
 - active status: **bookkeeping-only-foreign-fork**
 - tracked reference files outside its own tree: **4**
 - reference area counts:
@@ -273,7 +273,7 @@ Machine-readable companion artifact:
 - suggested next decision: Treat as a foreign-fork exception or relocate under a clearer vendor/forks area.
 
 ## `egregoria`
-- outside category: `REDACTED_SECRET-level-vendor-or-fork-repo`
+- outside category: `root-level-vendor-or-fork-repo`
 - active status: **bookkeeping-only-foreign-fork**
 - tracked reference files outside its own tree: **4**
 - reference area counts:
@@ -293,7 +293,7 @@ Machine-readable companion artifact:
 - suggested next decision: Treat as a foreign-fork exception or relocate under a clearer vendor/forks area.
 
 ## `game_network`
-- outside category: `REDACTED_SECRET-level-vendor-or-fork-repo`
+- outside category: `root-level-vendor-or-fork-repo`
 - active status: **bookkeeping-only-foreign-fork**
 - tracked reference files outside its own tree: **4**
 - reference area counts:
@@ -313,7 +313,7 @@ Machine-readable companion artifact:
 - suggested next decision: Treat as a foreign-fork exception or relocate under a clearer vendor/forks area.
 
 ## `ggrs`
-- outside category: `REDACTED_SECRET-level-vendor-or-fork-repo`
+- outside category: `root-level-vendor-or-fork-repo`
 - active status: **bookkeeping-only-foreign-fork**
 - tracked reference files outside its own tree: **4**
 - reference area counts:
@@ -333,7 +333,7 @@ Machine-readable companion artifact:
 - suggested next decision: Treat as a foreign-fork exception or relocate under a clearer vendor/forks area.
 
 ## `lightyear`
-- outside category: `REDACTED_SECRET-level-vendor-or-fork-repo`
+- outside category: `root-level-vendor-or-fork-repo`
 - active status: **bookkeeping-only-foreign-fork**
 - tracked reference files outside its own tree: **4**
 - reference area counts:
@@ -353,7 +353,7 @@ Machine-readable companion artifact:
 - suggested next decision: Treat as a foreign-fork exception or relocate under a clearer vendor/forks area.
 
 ## `gates-pr35-hardening-main`
-- outside category: `REDACTED_SECRET-level-worktree-or-fork-repo`
+- outside category: `root-level-worktree-or-fork-repo`
 - active status: **active-special-worktree**
 - tracked reference files outside its own tree: **5**
 - reference area counts:
@@ -377,7 +377,7 @@ Machine-readable companion artifact:
 ## Interpretation
 - `desktop` and `promethean` are still active mainly as compatibility aliases.
 - `pm2-clj-project`, `reconstitute`, `mcp-social-publisher-live`, and `threat-radar-deploy` have real active usage and are not just residue.
-- Threat-radar REDACTED_SECRETs are now explicitly expected to normalize into `orgs/open-hax/eta-mu-radar`.
+- Threat-radar roots are now explicitly expected to normalize into `orgs/open-hax/eta-mu-radar`.
 - `reconstitute-mcp` and `threat-radar-next-step` look more like documentation/planning surfaces than stable canonical homes.
 - `bevy_replicon`, `egregoria`, `game_network`, `ggrs`, `lightyear`, and `verathar-server` currently look mostly preserved by bookkeeping rather than active integration.
 - `gates-pr35-hardening-main` is a special exception because it is still referenced by an active skill/workflow surface.

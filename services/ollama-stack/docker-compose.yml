@@ -7,7 +7,7 @@ services:
       - "127.0.0.1:${OLLAMA_PORT:-11434}:11434"
     gpus: all
     volumes:
-      - /usr/share/ollama/.ollama:/REDACTED_SECRET/.ollama
+      - /usr/share/ollama/.ollama:/root/.ollama
     environment:
       OLLAMA_HOST: 0.0.0.0
       OLLAMA_NUM_GPU: "${OLLAMA_NUM_GPU:-1}"

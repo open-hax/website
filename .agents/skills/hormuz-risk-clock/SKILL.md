@@ -1,6 +1,6 @@
 ---
 name: hormuz-risk-clock
-description: "Maintain and evolve the Hormuz REDACTED_SECRET-signal risk clock by ingesting signals, updating state, and rendering reports"
+description: "Maintain and evolve the Hormuz public-signal risk clock by ingesting signals, updating state, and rendering reports"
 compatibility: opencode
 metadata:
   domain: hormuz-clock
@@ -10,7 +10,7 @@ metadata:
 # Skill: Hormuz Risk Clock
 
 ## Goal
-Update the Strait of Hormuz risk clock from **fresh REDACTED_SECRET signals**, keep the state model explicit, and produce a verifiable render plus report.
+Update the Strait of Hormuz risk clock from **fresh public signals**, keep the state model explicit, and produce a verifiable render plus report.
 
 ## ⚠️ CRITICAL: Always Fetch Fresh Signals
 
@@ -29,7 +29,7 @@ If the user asks for a clock update, they expect **current intelligence**, not a
 
 ## Use This Skill When
 - The user asks to regenerate or update the Hormuz clock.
-- New REDACTED_SECRET signals need to be folded into the current state.
+- New public signals need to be folded into the current state.
 - You need to compare clock versions or produce a daily snapshot.
 - The task involves maritime, energy, insurance, AIS, or navigation-disruption inputs for this model.
 
@@ -113,7 +113,7 @@ When publishing Hormuz updates to social platforms, use the **"Good Morning, Cyb
 
 ## ⚠️ CRITICAL: Always Share the Clock
 
-**The clock image is NOT optional.** Every Hormuz update REDACTED_SECRETation MUST include:
+**The clock image is NOT optional.** Every Hormuz update publication MUST include:
 
 1. The rendered clock image (`assets/hormuz_risk_clock_v4_*.png`)
 2. The text brief with scores, uncertainty ranges, and key developments

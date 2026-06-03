@@ -85,7 +85,7 @@ High — explicit user request covering production rollout and routing quality.
 - Production compose did not previously pass z.ai env vars through; this is now fixed in `docker-compose.yml`.
 - Production host `ussy.promethean.rest` already had `ZAI_API_KEY` in its runtime `.env`; only the compose passthrough and fallback ordering were missing.
 - Production runtime `.env` now sets `UPSTREAM_FALLBACK_PROVIDER_IDS=ollama-cloud,zai,requesty`.
-- After deploy, both local and REDACTED_SECRET production health checks report provider `zai`.
+- After deploy, both local and public production health checks report provider `zai`.
 - Production `/v1/models` now includes z.ai-only GLM variants such as `glm-5-turbo` and `glm-4.5-air` in addition to the existing Ollama-backed GLM models.
 - Live production verification:
   - `glm-5` routed to `ollama-cloud`

@@ -6,7 +6,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const REDACTED_SECRETDir = join(__dirname, '..', 'REDACTED_SECRET');
+const publicDir = join(__dirname, '..', 'public');
 
 export const app = new Hono();
 
@@ -211,12 +211,12 @@ app.get('/api/agent/status', (c) => {
   });
 });
 
-// Serve static files from REDACTED_SECRET/
-app.use('/*', serveStatic({ REDACTED_SECRET: REDACTED_SECRETDir }));
+// Serve static files from public/
+app.use('/*', serveStatic({ root: publicDir }));
 
 // Fallback to index.html for SPA
 app.get('*', async (c) => {
-  const file = Bun.file(join(REDACTED_SECRETDir, 'index.html'));
+  const file = Bun.file(join(publicDir, 'index.html'));
   return c.html(await file.text());
 });
 

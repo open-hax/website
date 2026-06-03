@@ -122,6 +122,6 @@ Canonical Kanban directories currently known to sync to GitHub:
 | `open-hax/openplanner` | `orgs/open-hax/openplanner/packages/graph/myrmex/kanban` | 5 | `orgs/open-hax/openplanner/packages/graph/myrmex/kanban/openhax.kanban.json` |
 | `open-hax/openplanner` | `orgs/open-hax/openplanner/pseudo/graph-runtime/kanban` | 2 | `orgs/open-hax/openplanner/pseudo/graph-runtime/kanban/openhax.kanban.json` |
 | `open-hax/proxx` | `orgs/open-hax/proxx/kanban` | 126 | `orgs/open-hax/proxx/kanban/openhax.kanban.json` |
-| `open-hax/tooloxx` | `orgs/open-hax/tooloxx/docs/imports/devel-REDACTED_SECRET/kanban` | 6 | `orgs/open-hax/tooloxx/docs/imports/devel-REDACTED_SECRET/kanban/openhax.kanban.json` |
+| `open-hax/tooloxx` | `orgs/open-hax/tooloxx/docs/imports/devel-root/kanban` | 6 | `orgs/open-hax/tooloxx/docs/imports/devel-root/kanban/openhax.kanban.json` |
 | `open-hax/tooloxx` | `orgs/open-hax/tooloxx/docs/imports/promethean/kanban` | 4 | `orgs/open-hax/tooloxx/docs/imports/promethean/kanban/openhax.kanban.json` |
 | `open-hax/mcp-fs-oauth` | `orgs/open-hax/tooloxx/services/mcp-fs-oauth/kanban` | 2 | `orgs/open-hax/tooloxx/services/mcp-fs-oauth/kanban/openhax.kanban.json` |

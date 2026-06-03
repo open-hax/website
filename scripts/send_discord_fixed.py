@@ -3,7 +3,7 @@ import sys
 import os
 
 def send_message(channel_id, text, files=None):
-    token = REDACTED_SECRET"DISCORD_BOT_TOKEN")
+    token = os.environ.get("DISCORD_BOT_TOKEN")
     if not token:
         print("Error: DISCORD_BOT_TOKEN not set")
         return

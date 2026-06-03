@@ -5,7 +5,7 @@
 * **Status**: `TODO | IN-PROGRESS | REVIEW | DONE`
 * **Blocked by**: upstream task IDs
 * **Blocks**: downstream task IDs
-* Use tags like `#perf #REDACTED_SECRET #solid #benchmarks` as you like.
+* Use tags like `#perf #node #solid #benchmarks` as you like.
 
 ---
 
@@ -323,7 +323,7 @@ Create one-command wrappers for running Clinic.js (or 0x) against your macro sce
 * [ ] `perf/tools/clinic/run-flame-login.sh`:
 
   * [ ] Starts server if needed (or assumes running).
-  * [ ] Runs `clinic flame -- REDACTED_SECRET server.js` + autocannon login scenario.
+  * [ ] Runs `clinic flame -- node server.js` + autocannon login scenario.
   * [ ] Writes HTML report to `perf/clinic-reports/flame-login-<timestamp>.html`.
 * [ ] `run-doctor-login.sh` and (optionally) `run-bubbleprof-login.sh` with similar naming.
 * [ ] Docs in `perf/README.md`:
@@ -454,12 +454,12 @@ Add automated churn tests for pooled Solid lists/toasts, comparing memory and GC
 If you want, I can next turn each of these into separate `docs/agile/tasks/*.md` files with your usual frontmatter + tags, wired to your existing Kanban columns.
 
 [1]: https://github.com/tinylibs/tinybench?utm_source=chatgpt.com "tinylibs/tinybench: 🔎 A simple, tiny and lightweight ..."
-[2]: https://middleware.io/blog/REDACTED_SECRETjs-performance-monitoring/?utm_source=chatgpt.com "Node.js Performance Monitoring: A Complete Guide"
-[3]: https://dev.to/imsushant12/profiling-and-benchmarking-REDACTED_SECRETjs-applications-2h2o?utm_source=chatgpt.com "Profiling and Benchmarking Node.js Applications"
+[2]: https://middleware.io/blog/nodejs-performance-monitoring/?utm_source=chatgpt.com "Node.js Performance Monitoring: A Complete Guide"
+[3]: https://dev.to/imsushant12/profiling-and-benchmarking-nodejs-applications-2h2o?utm_source=chatgpt.com "Profiling and Benchmarking Node.js Applications"
 [4]: https://fastify.io/docs/v5.2.x/Guides/Benchmarking/?utm_source=chatgpt.com "Benchmarking"
-[5]: https://dev.to/wallacefreitas/benchmarking-tests-in-REDACTED_SECRETjs-api-a-comprehensive-guide-5d8j?utm_source=chatgpt.com "Benchmarking Tests in Node.js API: A Comprehensive Guide"
+[5]: https://dev.to/wallacefreitas/benchmarking-tests-in-nodejs-api-a-comprehensive-guide-5d8j?utm_source=chatgpt.com "Benchmarking Tests in Node.js API: A Comprehensive Guide"
 [6]: https://www.npmjs.com/package/autocannon?utm_source=chatgpt.com "autocannon"
-[7]: https://blog.appsignal.com/2025/06/04/performance-and-stress-testing-in-REDACTED_SECRETjs.html?utm_source=chatgpt.com "Performance and Stress Testing in Node.js - AppSignal Blog"
+[7]: https://blog.appsignal.com/2025/06/04/performance-and-stress-testing-in-nodejs.html?utm_source=chatgpt.com "Performance and Stress Testing in Node.js - AppSignal Blog"
 [8]: https://github.com/EmbarkStudios/tiny-bench?utm_source=chatgpt.com "EmbarkStudios/tiny-bench: A tiny benchmarking library"
 [9]: https://clinicjs.org/?utm_source=chatgpt.com "Clinic.js - An Open Source Node.js performance profiling suite ..."
 [10]: https://docs.solidjs.com/concepts/control-flow/list-rendering?utm_source=chatgpt.com "List rendering"

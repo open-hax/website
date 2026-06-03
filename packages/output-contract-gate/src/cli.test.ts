@@ -1,8 +1,8 @@
-import test from 'REDACTED_SECRET:test';
-import assert from 'REDACTED_SECRET:assert/strict';
-import { mkdtemp, readdir, readFile, rm, writeFile } from 'REDACTED_SECRET:fs/promises';
-import { tmpdir } from 'REDACTED_SECRET:os';
-import { join } from 'REDACTED_SECRET:path';
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtemp, readdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 
 import {
   ETA_MU_FIVE_SECTION_CONTRACT_EDN,
@@ -31,7 +31,7 @@ test('runCli exits 0 and prints success JSON for a valid response', async () => 
     let stdout = '';
     let stderr = '';
     const exitCode = await runCli(
-      ['--contract', contractPath, '--response', responsePath, '--artifacts-REDACTED_SECRET', artifactsRoot],
+      ['--contract', contractPath, '--response', responsePath, '--artifacts-root', artifactsRoot],
       {
         stdout: (text) => {
           stdout += text;
@@ -68,7 +68,7 @@ test('runCli exits 1 and prints repair JSON for an invalid response', async () =
     let stdout = '';
     let stderr = '';
     const exitCode = await runCli(
-      ['--contract', contractPath, '--response', responsePath, '--artifacts-REDACTED_SECRET', artifactsRoot],
+      ['--contract', contractPath, '--response', responsePath, '--artifacts-root', artifactsRoot],
       {
         stdout: (text) => {
           stdout += text;
@@ -122,7 +122,7 @@ test('runCli review-stub emits review-report.json for a structurally valid bundl
 
     let validateStdout = '';
     const validateExitCode = await runCli(
-      ['--contract', contractPath, '--response', responsePath, '--artifacts-REDACTED_SECRET', artifactsRoot],
+      ['--contract', contractPath, '--response', responsePath, '--artifacts-root', artifactsRoot],
       {
         stdout: (text) => {
           validateStdout += text;
@@ -194,7 +194,7 @@ test('runCli generate writes generation artifacts and auto-runs review stub on s
         '--contract', contractPath,
         '--task-text', 'Turn this task into the required five-section response.',
         '--generator', 'fixture-valid',
-        '--artifacts-REDACTED_SECRET', artifactsRoot,
+        '--artifacts-root', artifactsRoot,
       ],
       {
         stdout: (text) => {
@@ -262,7 +262,7 @@ test('runCli generate repairs malformed output within bounded retries', async ()
         '--contract', contractPath,
         '--task-text', 'Repair this into the correct five-section response.',
         '--generator', 'fixture-invalid',
-        '--artifacts-REDACTED_SECRET', artifactsRoot,
+        '--artifacts-root', artifactsRoot,
       ],
       {
         stdout: (text) => {

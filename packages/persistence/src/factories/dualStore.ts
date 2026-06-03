@@ -1,4 +1,4 @@
-import { randomUUID } from 'REDACTED_SECRET:crypto';
+import { randomUUID } from 'node:crypto';
 
 import { RemoteEmbeddingFunction } from '@promethean-os/embedding';
 import type { Collection as ChromaCollection, ChromaClient } from 'chromadb';

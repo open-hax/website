@@ -37,7 +37,7 @@ Conclusion: the pattern works and is ready to be rolled out beyond Proxx.
 ## Scope
 Near-term first adopter after Proxx: `orgs/ussyverse/battlebussy`
 
-Longer-term target set: all durable REDACTED_SECRET services currently deployed across:
+Longer-term target set: all durable public services currently deployed across:
 
 - `ussy.promethean.rest`
 - `ussy2.promethean.rest`
@@ -108,7 +108,7 @@ For every deployed service, use this order:
 1. **Inventory live reality**
    - runtime path
    - compose files / service manager
-   - REDACTED_SECRET hostnames
+   - public hostnames
    - secrets / env contract
    - current live commit or equivalent source snapshot
 
@@ -167,7 +167,7 @@ Progress now achieved:
 - staging deploy workflow succeeded on GitHub
 - production deploy workflow succeeded on GitHub
 - post-merge smoke succeeded on both staging and main
-- production REDACTED_SECRET verification succeeded after the `main` deploy:
+- production public verification succeeded after the `main` deploy:
   - `https://battlebussy.ussy.promethean.rest/api/game/status`
   - `https://battlebussy.ussy.promethean.rest/arena`
 
@@ -176,7 +176,7 @@ Repeat the same protocol for other ussy-hosted services.
 
 Selection heuristic:
 
-- service is REDACTED_SECRETly routed and long-lived
+- service is publicly routed and long-lived
 - service has a stable runtime home
 - service currently depends on manual SSH deploys or ad-hoc host edits
 

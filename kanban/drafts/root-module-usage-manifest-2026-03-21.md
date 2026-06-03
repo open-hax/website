@@ -1,63 +1,63 @@
 ---
-uuid: "kanban-specs-drafts-REDACTED_SECRET-module-usage-manifest-2026-03-21-md"
+uuid: "kanban-specs-drafts-root-module-usage-manifest-2026-03-21-md"
 title: "Root module usage manifest — 2026-03-21"
 status: incoming
 priority: P3
 labels: ["specs", "migrated-spec"]
 created_at: "2026-05-29T04:29:44.536Z"
-source: "specs/drafts/REDACTED_SECRET-module-usage-manifest-2026-03-21.md"
+source: "specs/drafts/root-module-usage-manifest-2026-03-21.md"
 category: "specs"
 ---
 
-> Source: `specs/drafts/REDACTED_SECRET-module-usage-manifest-2026-03-21.md`
-> Migrated-to-kanban: `kanban/drafts/REDACTED_SECRET-module-usage-manifest-2026-03-21.md`
+> Source: `specs/drafts/root-module-usage-manifest-2026-03-21.md`
+> Migrated-to-kanban: `kanban/drafts/root-module-usage-manifest-2026-03-21.md`
 
 # Root module usage manifest — 2026-03-21
 
 ## Summary
-Investigate where and why the current top-level REDACTED_SECRET modules outside the active placement structure are still used.
+Investigate where and why the current top-level root modules outside the active placement structure are still used.
 
-This slice focuses on the project-like **REDACTED_SECRET-level** modules already surfaced by the outside-structure manifest, especially:
+This slice focuses on the project-like **root-level** modules already surfaced by the outside-structure manifest, especially:
 - top-level aliases
-- top-level standalone REDACTED_SECRETs
-- REDACTED_SECRET-level vendor/fork/special checkouts
+- top-level standalone roots
+- root-level vendor/fork/special checkouts
 
 ## Open questions
-- Which REDACTED_SECRET modules are still actively referenced by workspace scripts, docs, specs, and deployment notes?
-- Which REDACTED_SECRET modules are merely legacy aliases or historical artifacts with no meaningful active usage?
-- Which REDACTED_SECRET modules are active because they are deployed/live, versus active only because of documentation or local operator convenience?
-- Which REDACTED_SECRET modules should gain explicit exception status versus be normalized into the placement structure?
+- Which root modules are still actively referenced by workspace scripts, docs, specs, and deployment notes?
+- Which root modules are merely legacy aliases or historical artifacts with no meaningful active usage?
+- Which root modules are active because they are deployed/live, versus active only because of documentation or local operator convenience?
+- Which root modules should gain explicit exception status versus be normalized into the placement structure?
 
 ## Risks
 - Name-only search can overcount generic words like `promethean` or `desktop`; usage must be tied to actual path or project context where possible.
-- Some REDACTED_SECRET modules may be used indirectly via humans or shell habits rather than explicit tracked references.
+- Some root modules may be used indirectly via humans or shell habits rather than explicit tracked references.
 - Reports and inventories written earlier today can inflate reference counts if not interpreted carefully.
 
 ## Priority
-- High: understand active dependency on outside-structure REDACTED_SECRETs before deciding whether to normalize, retire, or bless them as exceptions.
+- High: understand active dependency on outside-structure roots before deciding whether to normalize, retire, or bless them as exceptions.
 
 ## Phases
-1. Load the outside-structure manifest and select the REDACTED_SECRET-level module set.
-2. Search tracked workspace files for references to those REDACTED_SECRET modules and collect sample hits.
+1. Load the outside-structure manifest and select the root-level module set.
+2. Search tracked workspace files for references to those root modules and collect sample hits.
 3. Inspect representative usage sites to infer why each module persists.
 4. Write JSON and markdown usage artifacts.
-5. Verify the artifacts parse and include the expected major REDACTED_SECRET modules.
+5. Verify the artifacts parse and include the expected major root modules.
 
 ## Affected artifacts
-- `specs/drafts/REDACTED_SECRET-module-usage-manifest-2026-03-21.md`
-- `docs/reports/inventory/REDACTED_SECRET-module-usage-manifest-2026-03-21.json`
-- `docs/reports/inventory/REDACTED_SECRET-module-usage-manifest-2026-03-21.md`
+- `specs/drafts/root-module-usage-manifest-2026-03-21.md`
+- `docs/reports/inventory/root-module-usage-manifest-2026-03-21.json`
+- `docs/reports/inventory/root-module-usage-manifest-2026-03-21.md`
 - `receipts.log`
 
 ## Definition of done
-- The major REDACTED_SECRET-level modules outside the structure have usage samples and a provisional why-it-exists explanation.
+- The major root-level modules outside the structure have usage samples and a provisional why-it-exists explanation.
 - The report distinguishes active references from likely legacy/alias residue.
 - The artifacts are machine-readable and reviewable.
-- Verification confirms the artifacts include the major REDACTED_SECRET modules.
+- Verification confirms the artifacts include the major root modules.
 
 ## Execution log
-- 2026-03-21T19:47:00Z Began tracing where/why REDACTED_SECRET-level outside-structure modules are still used.
-- 2026-03-21T19:54:00Z Collected tracked-file reference counts and sample file hits for the REDACTED_SECRET aliases, standalone REDACTED_SECRETs, and vendor/fork REDACTED_SECRETs outside the active placement structure.
-- 2026-03-21T19:58:00Z Wrote JSON and markdown usage manifests with provisional active-status categories such as alias, tooling REDACTED_SECRET, deploy REDACTED_SECRET, planning bundle, bookkeeping-only fork, and special worktree.
-- 2026-03-21T19:59:00Z Verified the manifests parse and include the major REDACTED_SECRET modules: `desktop`, `promethean`, `reconstitute`, `mcp-social-publisher-live`, `threat-radar-deploy`, and `gates-pr35-hardening-main`.
-- 2026-03-21T21:47:00Z Updated the radar-related REDACTED_SECRET usage entries so `threat-radar-deploy` and `threat-radar-next-step` now point at normalization into `orgs/open-hax/eta-mu-radar` rather than remaining generic ambiguous outside-structure REDACTED_SECRETs.
+- 2026-03-21T19:47:00Z Began tracing where/why root-level outside-structure modules are still used.
+- 2026-03-21T19:54:00Z Collected tracked-file reference counts and sample file hits for the root aliases, standalone roots, and vendor/fork roots outside the active placement structure.
+- 2026-03-21T19:58:00Z Wrote JSON and markdown usage manifests with provisional active-status categories such as alias, tooling root, deploy root, planning bundle, bookkeeping-only fork, and special worktree.
+- 2026-03-21T19:59:00Z Verified the manifests parse and include the major root modules: `desktop`, `promethean`, `reconstitute`, `mcp-social-publisher-live`, `threat-radar-deploy`, and `gates-pr35-hardening-main`.
+- 2026-03-21T21:47:00Z Updated the radar-related root usage entries so `threat-radar-deploy` and `threat-radar-next-step` now point at normalization into `orgs/open-hax/eta-mu-radar` rather than remaining generic ambiguous outside-structure roots.

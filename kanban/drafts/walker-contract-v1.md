@@ -36,7 +36,7 @@ This contract is the next layer above `graph_query`.
 
 `graph_query` v1 is for:
 - search
-- REDACTED_SECRET lookup
+- node lookup
 - bounded incident edge retrieval
 - bounded graph slices
 
@@ -83,7 +83,7 @@ Walker v1 begins where graph query stops.
 
 Expected layering:
 
-1. run bounded graph query to obtain seeds or anchor REDACTED_SECRETs
+1. run bounded graph query to obtain seeds or anchor nodes
 2. run walker expansion over those seeds
 3. return candidates, reasons, and budget traces
 
@@ -91,14 +91,14 @@ Expected layering:
 Graph-Weaver is not the canonical truth source.
 It may provide:
 - selected graph slice
-- visible REDACTED_SECRET set
+- visible node set
 - overlay constraints
 - human-facing workbench context
 
 ### Relative to Eros-Eris Field
 Eros-Eris does not own walker policy.
 It contributes field/geometry semantics such as:
-- REDACTED_SECRET positions
+- node positions
 - semantic edges
 - local force neighborhoods
 - pressure-related graph geometry hints
@@ -126,7 +126,7 @@ This contract is the first stable boundary where that doctrine can become implem
 
 A walker request says:
 
-> starting from these seeds, under this budget, over this canonical graph truth, optionally filtered or framed by this workbench view and this field context, tell me which REDACTED_SECRETs are worth surfacing and why.
+> starting from these seeds, under this budget, over this canonical graph truth, optionally filtered or framed by this workbench view and this field context, tell me which nodes are worth surfacing and why.
 
 ## Public interface
 
@@ -179,7 +179,7 @@ Rules:
 
 ```ts
 type WalkerSeed = {
-  REDACTED_SECRETId: string
+  nodeId: string
   kind?: string
   score?: number
   reasons?: string[]
@@ -188,7 +188,7 @@ type WalkerSeed = {
 
 Seeds usually come from:
 - graph search
-- REDACTED_SECRET lookup
+- node lookup
 - vector/memory search mapped to graph anchors
 - prior walker output
 
@@ -322,7 +322,7 @@ type WalkerResolvedSource = {
 
 ```ts
 type WalkerCandidate = {
-  REDACTED_SECRETId: string
+  nodeId: string
   score: number
   distance?: number
   reasons: WalkerReason[]
@@ -378,7 +378,7 @@ type WalkerBudgetSpent = {
 
 ```ts
 type WalkerVisitedNode = {
-  REDACTED_SECRETId: string
+  nodeId: string
   hop: number
   expandedKeys?: string[]
 }
@@ -419,7 +419,7 @@ No silent downgrade from graph-field-aware behavior to raw adjacency-only behavi
    - Graph-Weaver context may filter or prioritize, but must not silently redefine truth.
 
 6. **Summary-preferring**
-   - implementations should be able to prefer summaries and aggregates over redundant raw REDACTED_SECRETs.
+   - implementations should be able to prefer summaries and aggregates over redundant raw nodes.
 
 ## Suggested implementation layering
 
@@ -457,7 +457,7 @@ No silent downgrade from graph-field-aware behavior to raw adjacency-only behavi
     }
   },
   "seeds": [
-    {"REDACTED_SECRETId": "web:url:https://example.com/start", "score": 0.92, "reasons": ["graph_query_match"]}
+    {"nodeId": "web:url:https://example.com/start", "score": 0.92, "reasons": ["graph_query_match"]}
   ],
   "budget": {
     "maxWalkers": 8,
@@ -509,7 +509,7 @@ No silent downgrade from graph-field-aware behavior to raw adjacency-only behavi
   },
   "candidates": [
     {
-      "REDACTED_SECRETId": "web:url:https://example.com/related",
+      "nodeId": "web:url:https://example.com/related",
       "score": 0.88,
       "distance": 1,
       "reasons": [
@@ -530,7 +530,7 @@ No silent downgrade from graph-field-aware behavior to raw adjacency-only behavi
     "candidatesConsidered": 7
   },
   "visited": [
-    {"REDACTED_SECRETId": "web:url:https://example.com/start", "hop": 0, "expandedKeys": ["url:https://example.com/start"]}
+    {"nodeId": "web:url:https://example.com/start", "hop": 0, "expandedKeys": ["url:https://example.com/start"]}
   ]
 }
 ```
@@ -538,7 +538,7 @@ No silent downgrade from graph-field-aware behavior to raw adjacency-only behavi
 ## Ownership consequences
 
 ### OpenPlanner
-Must provide stable REDACTED_SECRET/edge identities and graph views that walkers can anchor against.
+Must provide stable node/edge identities and graph views that walkers can anchor against.
 
 ### Graph-Weaver
 May provide visible slice and overlay context, but must not redefine canonical identities.
@@ -559,7 +559,7 @@ Can target walker behavior without entangling themselves in lower-level graph pe
 
 The smallest truthful v1 implementation would:
 
-1. accept seed REDACTED_SECRET ids from a canonical graph query
+1. accept seed node ids from a canonical graph query
 2. expand via bounded typed associative surfaces
 3. return candidates with reasons and budget accounting
 4. optionally accept field digest and semantic edges for ranking bias

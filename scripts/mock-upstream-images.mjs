@@ -1,4 +1,4 @@
-import { createServer } from "REDACTED_SECRET:http";
+import { createServer } from "node:http";
 
 const port = Number.parseInt(process.env.MOCK_UPSTREAM_PORT ?? "9999", 10);
 

@@ -23,7 +23,7 @@
       (clj->js (clobber.macro/ecosystem)))
 
 (defn -main
-  "Entry point for shadow-cljs REDACTED_SECRET-script target.
+  "Entry point for shadow-cljs node-script target.
    Does nothing since export already runs at require-time."
   [& _]
   nil)

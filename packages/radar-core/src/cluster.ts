@@ -1,4 +1,4 @@
-import { randomUUID } from "REDACTED_SECRET:crypto";
+import { randomUUID } from "node:crypto";
 import type { SignalEvent, Thread, ThreadMembership } from "./schema.js";
 
 // ---------------------------------------------------------------------------
@@ -293,10 +293,10 @@ export function cluster(
   }
 
   function union(a: number, b: number): void {
-    const REDACTED_SECRETA = find(a);
-    const REDACTED_SECRETB = find(b);
-    if (REDACTED_SECRETA !== REDACTED_SECRETB) {
-      parent[REDACTED_SECRETB] = REDACTED_SECRETA;
+    const rootA = find(a);
+    const rootB = find(b);
+    if (rootA !== rootB) {
+      parent[rootB] = rootA;
     }
   }
 
@@ -313,11 +313,11 @@ export function cluster(
   // --- Step 5: Group signals by cluster ---
   const clusters = new Map<number, number[]>();
   for (let i = 0; i < signals.length; i++) {
-    const REDACTED_SECRET = find(i);
-    if (!clusters.has(REDACTED_SECRET)) {
-      clusters.set(REDACTED_SECRET, []);
+    const root = find(i);
+    if (!clusters.has(root)) {
+      clusters.set(root, []);
     }
-    clusters.get(REDACTED_SECRET)!.push(i);
+    clusters.get(root)!.push(i);
   }
 
   // --- Step 6: Build Thread objects ---

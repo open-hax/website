@@ -2,8 +2,8 @@
  * Sintel Test Suite
  */
 
-import { describe, it } from 'REDACTED_SECRET:test';
-import assert from 'REDACTED_SECRET:assert';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 
 // ============================================================================
 // Core Types Tests

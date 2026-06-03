@@ -238,9 +238,9 @@
       "check": "heading-order"
     },
     {
-      "id": "rule/allowed-REDACTED_SECRET-types",
+      "id": "rule/allowed-node-types",
       "kind": "deterministic",
-      "check": "REDACTED_SECRET-type-allowlist"
+      "check": "node-type-allowlist"
     },
     {
       "id": "rule/frames-cardinality",
@@ -274,10 +274,10 @@
       "kind": "deterministic",
       "check": "heading-order"
     },
-    "rule/allowed-REDACTED_SECRET-types": {
-      "id": "rule/allowed-REDACTED_SECRET-types",
+    "rule/allowed-node-types": {
+      "id": "rule/allowed-node-types",
       "kind": "deterministic",
-      "check": "REDACTED_SECRET-type-allowlist"
+      "check": "node-type-allowlist"
     },
     "rule/frames-cardinality": {
       "id": "rule/frames-cardinality",
@@ -317,9 +317,9 @@
       "text": "Rewrite `## Frames` so it contains 2–3 plausible interpretations."
     },
     {
-      "id": "repair/disallowed-REDACTED_SECRET-type",
-      "whenRuleId": "rule/allowed-REDACTED_SECRET-types",
-      "text": "Section `{{heading}}` contains `{{REDACTED_SECRETType}}` REDACTED_SECRETs which are not allowed. Use `## {{heading}}` as a level-2 markdown header for section headings. Do not use bold (`**...**`), emphasis, or deeper heading levels (`###`, `####`) inside sections. Flatten sub-section content into paragraphs, lists, or blockquotes."
+      "id": "repair/disallowed-node-type",
+      "whenRuleId": "rule/allowed-node-types",
+      "text": "Section `{{heading}}` contains `{{nodeType}}` nodes which are not allowed. Use `## {{heading}}` as a level-2 markdown header for section headings. Do not use bold (`**...**`), emphasis, or deeper heading levels (`###`, `####`) inside sections. Flatten sub-section content into paragraphs, lists, or blockquotes."
     }
   ],
   "repairTemplatesByRuleId": {
@@ -351,11 +351,11 @@
         "text": "Rewrite `## Frames` so it contains 2–3 plausible interpretations."
       }
     ],
-    "rule/allowed-REDACTED_SECRET-types": [
+    "rule/allowed-node-types": [
       {
-        "id": "repair/disallowed-REDACTED_SECRET-type",
-        "whenRuleId": "rule/allowed-REDACTED_SECRET-types",
-        "text": "Section `{{heading}}` contains `{{REDACTED_SECRETType}}` REDACTED_SECRETs which are not allowed. Use `## {{heading}}` as a level-2 markdown header for section headings. Do not use bold (`**...**`), emphasis, or deeper heading levels (`###`, `####`) inside sections. Flatten sub-section content into paragraphs, lists, or blockquotes."
+        "id": "repair/disallowed-node-type",
+        "whenRuleId": "rule/allowed-node-types",
+        "text": "Section `{{heading}}` contains `{{nodeType}}` nodes which are not allowed. Use `## {{heading}}` as a level-2 markdown header for section headings. Do not use bold (`**...**`), emphasis, or deeper heading levels (`###`, `####`) inside sections. Flatten sub-section content into paragraphs, lists, or blockquotes."
       }
     ]
   },

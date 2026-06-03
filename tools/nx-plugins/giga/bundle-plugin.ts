@@ -8,7 +8,7 @@ const outDir = path.dirname(outPath);
 
 await build({
   entrypoints: [pluginEntry],
-  target: "REDACTED_SECRET",
+  target: "node",
   outdir: outDir,
   format: "cjs",
   minify: false,

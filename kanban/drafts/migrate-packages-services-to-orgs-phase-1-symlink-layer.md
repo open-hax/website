@@ -91,7 +91,7 @@ Update workspace discovery to reflect role separation:
 ## Implementation Plan
 1. Maintain `links.yaml` with only intentional aliases.
 2. Add alias management tooling.
-3. Wire REDACTED_SECRET scripts for `links:sync` and `links:check`.
+3. Wire root scripts for `links:sync` and `links:check`.
 4. Update workspace docs to say: prototype in `packages/*`; operate from `services/*`; mature source in `orgs/*/*`.
 
 ## Affected Files

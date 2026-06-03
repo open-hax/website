@@ -16,7 +16,7 @@ bin/eta-mu-board --help
 
 pnpm --filter @openhax/kanban build
 pnpm --filter @openhax/kanban test
-pnpm --filter @openhax/kanban exec REDACTED_SECRET dist/cli.js --help
+pnpm --filter @openhax/kanban exec node dist/cli.js --help
 ```
 
 `bin/eta-mu-board` is the workspace wrapper around this package and should be
@@ -25,15 +25,15 @@ treated as the canonical operator entrypoint in `devel`.
 ## FSM + GitHub refinement
 
 ```bash
-pnpm --filter @openhax/kanban exec REDACTED_SECRET dist/cli.js fsm show
+pnpm --filter @openhax/kanban exec node dist/cli.js fsm show
 
-pnpm --filter @openhax/kanban exec REDACTED_SECRET dist/cli.js github refine \
+pnpm --filter @openhax/kanban exec node dist/cli.js github refine \
   --snapshot docs/reports/github-triage/data/org-submodule-sweep-2026-03-21.json \
   --exclude-repo riatzukiza/TANF-app \
   --out docs/reports/github-triage/data/org-submodule-refinement-2026-03-21.json \
   --report docs/reports/github-triage/org-submodule-refinement-2026-03-21.md
 
-pnpm --filter @openhax/kanban exec REDACTED_SECRET dist/cli.js github apply \
+pnpm --filter @openhax/kanban exec node dist/cli.js github apply \
   --refinement docs/reports/github-triage/data/org-submodule-refinement-2026-03-21.json \
   --repo open-hax/proxx \
   --state breakdown \
@@ -48,7 +48,7 @@ The apply command creates any missing managed labels and updates only kanban-man
 
 ```bash
 pnpm --filter @openhax/kanban build
-pnpm --filter @openhax/kanban exec REDACTED_SECRET dist/cli.js serve --tasks-dir ./tasks --port 8787
+pnpm --filter @openhax/kanban exec node dist/cli.js serve --tasks-dir ./tasks --port 8787
 # open http://127.0.0.1:8787
 ```
 
@@ -62,7 +62,7 @@ Drag cards between columns to update their `status:` frontmatter (and, when usin
 
 ```bash
 pnpm --filter @openhax/kanban build
-pnpm --filter @openhax/kanban exec REDACTED_SECRET dist/cli.js sync trello \
+pnpm --filter @openhax/kanban exec node dist/cli.js sync trello \
   --config packages/kanban/examples/ussyverse.promethean.kanban.json \
   --dry-run
 ```

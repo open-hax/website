@@ -2,7 +2,7 @@ import { promises as fs } from "fs";
 import * as path from "path";
 
 const IGNORE_DIRS = new Set([
-  "REDACTED_SECRET_modules",
+  "node_modules",
   "dist",
   "build",
   "coverage",
@@ -11,7 +11,7 @@ const IGNORE_DIRS = new Set([
 ]);
 
 /**
- * Recursively list files under `REDACTED_SECRET` matching extensions in `exts`.
+ * Recursively list files under `root` matching extensions in `exts`.
  * Hidden files/directories and common build outputs are skipped.
  */
 const isHidden = (name: string): boolean => name.startsWith(".");
@@ -26,7 +26,7 @@ const shouldInclude = (
 };
 
 export async function listFilesRec(
-  REDACTED_SECRET: string,
+  root: string,
   exts: Set<string>,
 ): Promise<string[]> {
   const out: string[] = [];
@@ -46,6 +46,6 @@ export async function listFilesRec(
       }
     }
   }
-  await walk(REDACTED_SECRET);
+  await walk(root);
   return out;
 }

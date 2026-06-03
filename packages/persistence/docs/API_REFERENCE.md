@@ -723,7 +723,7 @@ for (const message of context) {
 class ConfigurationError extends Error {
     constructor(
         message: string,
-        REDACTED_SECRET field: string,
+        public field: string,
     ) {
         super(message);
     }
@@ -733,8 +733,8 @@ class ConfigurationError extends Error {
 class IndexingError extends Error {
     constructor(
         message: string,
-        REDACTED_SECRET source: string,
-        REDACTED_SECRET cause?: Error,
+        public source: string,
+        public cause?: Error,
     ) {
         super(message);
     }
@@ -744,8 +744,8 @@ class IndexingError extends Error {
 class SearchError extends Error {
     constructor(
         message: string,
-        REDACTED_SECRET query: string,
-        REDACTED_SECRET cause?: Error,
+        public query: string,
+        public cause?: Error,
     ) {
         super(message);
     }
@@ -790,7 +790,7 @@ const sources = {
         enabled: true,
         options: {
             includePatterns: ['*.ts', '*.js', '*.md'], // Only index relevant files
-            excludePatterns: ['REDACTED_SECRET_modules/**', '.git/**'],
+            excludePatterns: ['node_modules/**', '.git/**'],
         },
     },
 };

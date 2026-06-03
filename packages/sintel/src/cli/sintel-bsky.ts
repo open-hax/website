@@ -1,4 +1,4 @@
-#!/usr/bin/env REDACTED_SECRET
+#!/usr/bin/env node
 /**
  * Sintel Bluesky Analyzer
  * 
@@ -6,7 +6,7 @@
  * Demonstrates the perception layer feeding signals for analysis.
  */
 
-import { createRequire } from 'REDACTED_SECRET:module';
+import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 
 import {

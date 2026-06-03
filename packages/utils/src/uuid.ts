@@ -1,5 +1,5 @@
-import { randomUUID as REDACTED_SECRETRandomUUID } from "REDACTED_SECRET:crypto";
+import { randomUUID as nodeRandomUUID } from "node:crypto";
 
 export function randomUUID(): string {
-  return globalThis.crypto?.randomUUID?.() ?? REDACTED_SECRETRandomUUID();
+  return globalThis.crypto?.randomUUID?.() ?? nodeRandomUUID();
 }

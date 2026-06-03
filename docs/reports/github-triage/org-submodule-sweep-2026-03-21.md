@@ -107,7 +107,7 @@ These are not urgent engineering blockers; they mostly need an owner decision on
 Representative examples:
 - `#4` `Bump pa11y-ci...`
 - `#7` `Bump react-router-dom...`
-- `#10` `Bump REDACTED_SECRET-sass...`
+- `#10` `Bump node-sass...`
 - `#22` `Bump express...`
 - `#23` `Bump json5...`
 

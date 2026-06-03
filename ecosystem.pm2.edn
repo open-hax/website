@@ -22,7 +22,7 @@
          :min_uptime 10000}
         {:name "duck-io"
          :cwd "./orgs/octave-commons/cephalon-clj/cephalon-clj-discord-io"
-         :script "REDACTED_SECRET"
+         :script "node"
          :args ["dist/duck.cjs"]
          :interpreter "none"
          :out_file "logs/pm2/duck-io.out.log"
@@ -53,7 +53,7 @@
          :env {:DUCK_ADMIN_WS_URL "ws://127.0.0.1:8788"}}
         ;; {:name "skull-io"
         ;;  :cwd "./orgs/octave-commons/cephalon-clj/cephalon-clj-discord-io"
-        ;;  :script "REDACTED_SECRET"
+        ;;  :script "node"
         ;;  :args ["dist/skull.cjs"]
         ;;  :interpreter "none"
         ;;  :out_file "logs/pm2/skull-io.out.log"
@@ -117,7 +117,7 @@
                           :args ["shadow-cljs" "watch" "duck"]
                           :interpreter "none"
                           :watch ["src" "shadow-cljs.edn"]
-                          :ignore_watch ["REDACTED_SECRET_modules"
+                          :ignore_watch ["node_modules"
                                          "logs"
                                          ".shadow-cljs"
                                          "dist"]
@@ -127,11 +127,11 @@
                           :log_date_format "YYYY-MM-DD HH:mm:ss"}
                          {:name "duck-io-dev"
                           :cwd "./orgs/octave-commons/cephalon-clj/cephalon-clj-discord-io"
-                          :script "REDACTED_SECRET"
+                          :script "node"
                           :args ["dist/duck.cjs"]
                           :interpreter "none"
                           :watch ["dist/duck.cjs"]
-                          :ignore_watch ["REDACTED_SECRET_modules"
+                          :ignore_watch ["node_modules"
                                          "logs"
                                          ".shadow-cljs"]
                           :watch_delay 1000
@@ -144,13 +144,13 @@
                           :cwd "./orgs/octave-commons/cephalon-clj/cephalon-clj-brain"
                           :script "clojure"
                           :args ["-Sdeps"
-                                 "{:deps {octave-commons/promethean-agent-system {:local/REDACTED_SECRET \"../../promethean-agent-system\"}}}"
+                                 "{:deps {octave-commons/promethean-agent-system {:local/root \"../../promethean-agent-system\"}}}"
                                  "-M"
                                  "-m"
                                  "cephalon.brain.main"]
                           :interpreter "none"
                           :watch ["src" "deps.edn"]
-                          :ignore_watch ["REDACTED_SECRET_modules"
+                          :ignore_watch ["node_modules"
                                          "logs"
                                          ".clj-kondo"
                                          ".cpcache"
@@ -177,7 +177,7 @@
                           :env {:DUCK_ADMIN_WS_URL "ws://127.0.0.1:8788"}}]}
             :duck {:apps [{:name "duck-io"
                            :cwd "./orgs/octave-commons/cephalon-clj/cephalon-clj-discord-io"
-                           :script "REDACTED_SECRET"
+                           :script "node"
                            :args ["dist/duck.cjs"]
                            :interpreter "none"
                            :out_file "logs/pm2/duck-io.out.log"

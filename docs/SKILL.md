@@ -3,7 +3,7 @@
 Use this skill to improve the Hormuz clock itself over time through deep research, model redesign, and new signal integration.
 
 ## Purpose
-Advance the clock architecture by identifying better state variables, better REDACTED_SECRET signal sources, and better rendering strategies.
+Advance the clock architecture by identifying better state variables, better public signal sources, and better rendering strategies.
 
 ## When to use
 Use this skill when asked to:

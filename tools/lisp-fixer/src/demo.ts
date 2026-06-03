@@ -3,7 +3,7 @@
 import { autoCloseParens } from "./sexp.js";
 import { dropRandomCloseParen } from "./mutators/paren.js";
 import fg from "fast-glob";
-import * as path from "REDACTED_SECRET:path";
+import * as path from "node:path";
 
 async function demo() {
   console.log("🔍 Lisp Fixer LLM Demo");
@@ -51,7 +51,7 @@ async function demo() {
   }
   
   console.log("\n✅ Demo complete! System is ready for training.");
-  console.log("\nAvailable commands from REDACTED_SECRET:");
+  console.log("\nAvailable commands from root:");
   console.log("  pnpm lisp-fixer:scan     # Scan for Lisp repos");
   console.log("  pnpm lisp-fixer:mutate   # Generate training data");
   console.log("  pnpm lisp-fixer:dataset  # Inspect datasets");

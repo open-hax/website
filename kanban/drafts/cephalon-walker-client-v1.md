@@ -146,12 +146,12 @@ Rules:
 
 ### 1. `expandFromNode`
 
-Use when Cephalon already has a canonical graph REDACTED_SECRET id or URL anchor.
+Use when Cephalon already has a canonical graph node id or URL anchor.
 
 ```ts
 type CephalonWalkerNodeRequest = {
   anchor: {
-    REDACTED_SECRETId?: string
+    nodeId?: string
     url?: string
   }
   context: CephalonWalkerContext
@@ -168,7 +168,7 @@ type CephalonWalkerGraphQueryRequest = {
   query: string
   graphQuery?: {
     projects?: string[]
-    REDACTED_SECRETTypes?: string[]
+    nodeTypes?: string[]
     edgeTypes?: string[]
     limit?: number
     edgeLimit?: number
@@ -195,7 +195,7 @@ type CephalonWalkerSearchHit = {
   source?: string
   kind?: string
   text?: string
-  REDACTED_SECRETIdHint?: string
+  nodeIdHint?: string
   urlHint?: string
 }
 ```
@@ -245,7 +245,7 @@ type CephalonWalkerResult = {
 
 ```ts
 type CephalonWalkerRelatedItem = {
-  REDACTED_SECRETId: string
+  nodeId: string
   score: number
   label?: string
   distance?: number
@@ -270,14 +270,14 @@ Rules:
 ## Required internal behavior
 
 ### `expandFromNode`
-1. resolve anchor to canonical REDACTED_SECRET if needed
+1. resolve anchor to canonical node if needed
 2. package current runtime context
 3. forward a walker request
 4. normalize response for Cephalon use
 
 ### `expandFromGraphQuery`
 1. run bounded graph query first
-2. convert matched REDACTED_SECRETs into walker seeds
+2. convert matched nodes into walker seeds
 3. forward walker request
 4. normalize related set
 
@@ -293,7 +293,7 @@ Rules:
 3. If field digest is unavailable, degrade explicitly to graph-aware but field-light behavior.
 4. If view context is unavailable, continue without pretending it was applied.
 
-No silent fallback from graph-field-aware reasoning to REDACTED_SECRET local-helper behavior.
+No silent fallback from graph-field-aware reasoning to opaque local-helper behavior.
 
 ## Relationship to the local graph helper
 

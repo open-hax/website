@@ -1,5 +1,5 @@
-import { readdir, readFile } from "REDACTED_SECRET:fs/promises";
-import path from "REDACTED_SECRET:path";
+import { readdir, readFile } from "node:fs/promises";
+import path from "node:path";
 
 const ACCEL_ROOT = "/sys/class/accel";
 
@@ -410,9 +410,9 @@ async function listDirectoryNames(dir: string): Promise<string[]> {
   }
 }
 
-async function readFirstNumber(REDACTED_SECRET: string, names: readonly string[]): Promise<number | null> {
+async function readFirstNumber(root: string, names: readonly string[]): Promise<number | null> {
   for (const name of names) {
-    const value = await readNumber(path.join(REDACTED_SECRET, name));
+    const value = await readNumber(path.join(root, name));
     if (value !== null) {
       return value;
     }

@@ -41,12 +41,12 @@ var name = PLUGIN_NAME;
 var createNodesV2 = [
   "**/.gitmodules",
   async (configFiles, options, ctx) => {
-    const REDACTED_SECRETPath = ctx.workspaceRoot;
-    const gitmodulesPath = import_path.join(REDACTED_SECRETPath, ".gitmodules");
+    const rootPath = ctx.workspaceRoot;
+    const gitmodulesPath = import_path.join(rootPath, ".gitmodules");
     const projects = {};
     const projectNames = [];
     const pluginOptions = options ?? {};
-    const depsMapPath = pluginOptions.depsMapPath ? `${REDACTED_SECRETPath}/${pluginOptions.depsMapPath}` : undefined;
+    const depsMapPath = pluginOptions.depsMapPath ? `${rootPath}/${pluginOptions.depsMapPath}` : undefined;
     try {
       const gitmodulesContent = import_fs.readFileSync(gitmodulesPath, "utf8");
       const submodulePaths = parseGitmodules(gitmodulesContent);
@@ -85,7 +85,7 @@ var createNodesV2 = [
         const projectConfig = {
           name: projectName,
           projectType: "application",
-          REDACTED_SECRET: subPath,
+          root: subPath,
           sourceRoot: `${subPath}/src`,
           targets,
           implicitDependencies: deps.length ? deps : undefined
@@ -98,7 +98,7 @@ var createNodesV2 = [
     projects["."] = {
       name: "giga",
       projectType: "application",
-      REDACTED_SECRET: ".",
+      root: ".",
       sourceRoot: ".",
       targets: {
         watch: {

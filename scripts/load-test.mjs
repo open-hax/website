@@ -1,4 +1,4 @@
-#!/usr/bin/env REDACTED_SECRET
+#!/usr/bin/env node
 
 const baseUrl = process.env.DEV_PROXY_URL ?? "http://127.0.0.1:8795";
 const model = process.env.LOAD_TEST_MODEL ?? "gpt-5.4";

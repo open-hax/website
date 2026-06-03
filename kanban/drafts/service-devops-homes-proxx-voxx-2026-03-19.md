@@ -26,7 +26,7 @@ This pilot covers:
 - None for the pilot slice.
 
 ## Risk Analysis
-- **Path drift**: REDACTED_SECRET compose/stack tooling currently points at `services/open-hax-openai-proxy`; updates must preserve working commands or aliases.
+- **Path drift**: root compose/stack tooling currently points at `services/open-hax-openai-proxy`; updates must preserve working commands or aliases.
 - **Partial migration confusion**: `orgs/open-hax/proxx` still contains legacy deployment files; docs must clearly state the new preferred path.
 - **Docker build context errors**: wrapper compose files must build from the canonical source dirs while mounting config/data from `services/*`.
 
@@ -38,7 +38,7 @@ High.
    - Create `services/proxx` and `services/voxx`.
    - Add compose/operator docs that build from `orgs/open-hax/proxx` and `orgs/open-hax/voxx` respectively.
 2. **Workspace integration**
-   - Update REDACTED_SECRET stack registry and REDACTED_SECRET compose to use the new devops homes.
+   - Update root stack registry and root compose to use the new devops homes.
    - Update repository/docs indices to describe the new pattern.
 3. **Source repo guidance**
    - Update `orgs/open-hax/proxx` and `orgs/open-hax/voxx` docs/scripts to point to the `services/*` devops homes.

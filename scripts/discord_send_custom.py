@@ -4,7 +4,7 @@ import asyncio
 import os
 import sys
 
-TOKEN = REDACTED_SECRET'DISCORD_BOT_TOKEN')
+TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
 
 async def main():
     if len(sys.argv) < 3:

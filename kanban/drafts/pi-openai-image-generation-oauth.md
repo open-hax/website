@@ -17,7 +17,7 @@ category: "specs"
 ## Context
 Pi wants `/v1/images/generations` to work through the Open Hax proxy using **OpenAI OAuth-backed accounts** (no API keys).
 
-Current behavior (observed): OAuth access tokens obtained via the bundled ChatGPT/Codex CLI REDACTED_SECRET client id return "Missing scopes" when calling the official OpenAI Platform endpoints:
+Current behavior (observed): OAuth access tokens obtained via the bundled ChatGPT/Codex CLI public client id return "Missing scopes" when calling the official OpenAI Platform endpoints:
 - `GET https://api.openai.com/v1/models` → missing `api.model.read`
 - `POST https://api.openai.com/v1/images/generations` → missing `api.model.images.request`
 - `POST https://api.openai.com/v1/responses` → missing `api.responses.write`
@@ -28,7 +28,7 @@ ChatGPT backend endpoints for image generation (`https://chatgpt.com/backend-api
 - Make image generation succeed via OAuth-backed accounts by obtaining tokens with the necessary **OpenAI Platform API scopes**, and routing image requests to `https://api.openai.com/v1/images/generations`.
 
 Secondary goal (pragmatic, subscription-compatible):
-- When Platform scopes are missing (common for ChatGPT/Codex OAuth REDACTED_SECRET clients), allow image generation to fall back to **ChatGPT/Codex backend** image endpoints under `https://chatgpt.com/backend-api/...`.
+- When Platform scopes are missing (common for ChatGPT/Codex OAuth public clients), allow image generation to fall back to **ChatGPT/Codex backend** image endpoints under `https://chatgpt.com/backend-api/...`.
 
 ## Non-goals
 - Bypassing Cloudflare/browser checks for ChatGPT backend APIs.

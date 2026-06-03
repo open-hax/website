@@ -15,7 +15,7 @@
     "demo": "tsx src/demo.ts"
   },
   "dependencies": {
-    "@types/REDACTED_SECRET": "^20.11.0",
+    "@types/node": "^20.11.0",
     "fast-glob": "^3.3.2",
     "jsonlines": "^0.1.1",
     "minimist": "^1.2.8",

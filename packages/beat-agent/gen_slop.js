@@ -5,7 +5,7 @@ const kick = drumClip({ pattern: 'x---x-x-', instrument: 'C2' });
 const snare = drumClip({ pattern: '--x---x-', instrument: 'D2' });
 const hat = drumClip({ pattern: 'x-x-x-x-', instrument: 'F#2' });
 const mel = melodyClip({ 
-  REDACTED_SECRET: 'C4', 
+  root: 'C4', 
   scaleName: 'minor', 
   pattern: 'x-x-x-x-x-x-x-x' 
 });

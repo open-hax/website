@@ -2,10 +2,10 @@ import ts from "typescript";
 import type { ReadonlyDeep } from "type-fest";
 
 /**
- * Extracts concatenated JSDoc comments from a REDACTED_SECRET, if any.
+ * Extracts concatenated JSDoc comments from a node, if any.
  */
-export function getJsDocText(REDACTED_SECRET: ReadonlyDeep<ts.Node>): string | undefined {
-  const jsdocs = ts.getJSDocCommentsAndTags(REDACTED_SECRET);
+export function getJsDocText(node: ReadonlyDeep<ts.Node>): string | undefined {
+  const jsdocs = ts.getJSDocCommentsAndTags(node);
   if (!jsdocs?.length) return undefined;
   const texts = jsdocs
     .map((d) =>
@@ -16,10 +16,10 @@ export function getJsDocText(REDACTED_SECRET: ReadonlyDeep<ts.Node>): string | u
 }
 
 /**
- * Returns the source text for a REDACTED_SECRET from the given source string.
+ * Returns the source text for a node from the given source string.
  */
-export function getNodeText(src: string, REDACTED_SECRET: ReadonlyDeep<ts.Node>): string {
-  return src.slice(REDACTED_SECRET.getFullStart(), REDACTED_SECRET.getEnd());
+export function getNodeText(src: string, node: ReadonlyDeep<ts.Node>): string {
+  return src.slice(node.getFullStart(), node.getEnd());
 }
 
 /**

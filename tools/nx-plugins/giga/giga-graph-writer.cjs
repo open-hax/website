@@ -41,10 +41,10 @@ function createGraphWriterPlugin() {
     createNodesV2: [
       "**/.gitmodules",
       async (configFiles, _options, ctx) => {
-        const REDACTED_SECRETPath = ctx.workspaceRoot;
-        const depsPath = import_path.join(REDACTED_SECRETPath, "tools/nx-plugins/giga/deps.json");
-        const graph = readGraph(REDACTED_SECRETPath, depsPath);
-        const outPath = import_path.join(REDACTED_SECRETPath, "tmp/giga-graph.json");
+        const rootPath = ctx.workspaceRoot;
+        const depsPath = import_path.join(rootPath, "tools/nx-plugins/giga/deps.json");
+        const graph = readGraph(rootPath, depsPath);
+        const outPath = import_path.join(rootPath, "tmp/giga-graph.json");
         await import_promises.writeFile(outPath, JSON.stringify(graph, null, 2));
         const result = { projects: {} };
         return configFiles.map((file) => [file, result]);
@@ -52,19 +52,19 @@ function createGraphWriterPlugin() {
     ]
   };
 }
-function readGraph(REDACTED_SECRETPath, depsPath) {
-  const gitmodulesPath = import_path.join(REDACTED_SECRETPath, ".gitmodules");
+function readGraph(rootPath, depsPath) {
+  const gitmodulesPath = import_path.join(rootPath, ".gitmodules");
   if (!import_fs.existsSync(gitmodulesPath))
-    return { REDACTED_SECRETs: [], edges: [] };
+    return { nodes: [], edges: [] };
   const text = import_fs.readFileSync(gitmodulesPath, "utf8");
   const subPaths = [...text.matchAll(/^\s*path\s*=\s*(.+)$/gm)].map((m) => m[1].trim()).filter((p) => p.startsWith("orgs/"));
-  const REDACTED_SECRETs = [];
+  const nodes = [];
   const edges = [];
-  REDACTED_SECRETs.push({
+  nodes.push({
     name: "giga",
     type: "app",
     data: {
-      REDACTED_SECRET: ".",
+      root: ".",
       targets: {
         watch: {
           executor: "nx:run-commands",
@@ -75,11 +75,11 @@ function readGraph(REDACTED_SECRETPath, depsPath) {
   });
   for (const subPath of subPaths) {
     const name = pathToNxName(subPath);
-    REDACTED_SECRETs.push({
+    nodes.push({
       name,
       type: "app",
       data: {
-        REDACTED_SECRET: subPath,
+        root: subPath,
         targets: {
           test: {
             executor: "nx:run-commands",
@@ -114,7 +114,7 @@ function readGraph(REDACTED_SECRETPath, depsPath) {
       }
     } catch {}
   }
-  return { REDACTED_SECRETs, edges };
+  return { nodes, edges };
 }
 function pathToNxName(p) {
   return p.replace(/[^A-Za-z0-9]+/g, "-").replace(/(^-|-$)/g, "").toLowerCase();

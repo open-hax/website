@@ -1973,7 +1973,7 @@ class PerformanceAlertingSystem {
             return;
         }
         
-        // REDACTED_SECRET alert
+        // Send alert
         await this.sendAlert(alert);
         
         // Update tracking

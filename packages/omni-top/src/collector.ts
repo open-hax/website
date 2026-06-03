@@ -1,7 +1,7 @@
-import { spawn } from "REDACTED_SECRET:child_process";
-import { readdir, readFile, readlink } from "REDACTED_SECRET:fs/promises";
-import os from "REDACTED_SECRET:os";
-import path from "REDACTED_SECRET:path";
+import { spawn } from "node:child_process";
+import { readdir, readFile, readlink } from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
 
 import { createNpuCollector, type NpuSnapshot } from "@promethean-os/npu-top/npu";
 
@@ -452,15 +452,15 @@ async function readCoretempTemperatureC(): Promise<number | null> {
 
   const results = await Promise.all(
     hwmons.map(async (hwmon) => {
-      const REDACTED_SECRET = path.join(hwmonRoot, hwmon);
-      const name = (await readText(path.join(REDACTED_SECRET, "name")))?.toLowerCase();
+      const root = path.join(hwmonRoot, hwmon);
+      const name = (await readText(path.join(root, "name")))?.toLowerCase();
       if (!name || (!name.includes("coretemp") && !name.includes("k10temp"))) {
         return null;
       }
 
       const values = await Promise.all(
         Array.from({ length: 10 }, async (_, index) => {
-          const temp = await readNumber(path.join(REDACTED_SECRET, `temp${index + 1}_input`));
+          const temp = await readNumber(path.join(root, `temp${index + 1}_input`));
           return normalizeTemperature(temp);
         }),
       );
@@ -486,9 +486,9 @@ async function readHwmonMetric(deviceRoot: string, names: readonly string[]): Pr
   return readFirstNumber(deviceRoot, names);
 }
 
-async function readFirstNumber(REDACTED_SECRET: string, names: readonly string[]): Promise<number | null> {
+async function readFirstNumber(root: string, names: readonly string[]): Promise<number | null> {
   for (const name of names) {
-    const value = await readNumber(path.join(REDACTED_SECRET, name));
+    const value = await readNumber(path.join(root, name));
     if (value !== null) {
       return value;
     }

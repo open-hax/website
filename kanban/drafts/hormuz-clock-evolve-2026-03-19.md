@@ -19,7 +19,7 @@ Evolve the Hormuz Risk Clock so the model can ingest fresh operational and polic
 
 This slice covers:
 - additive model evolution for branch-prior logic and structured signal categories
-- a fresh signal set using current REDACTED_SECRET reporting
+- a fresh signal set using current public reporting
 - a regenerated clock image and markdown snapshot
 - a Bluesky-ready thread draft in a high-energy "GOOD MORNING, VIETNAM" register
 - a short lyrics artifact tied to the updated snapshot
@@ -31,7 +31,7 @@ This slice covers:
 - **Source drift**: official pages and advisories have changed since the prior 2026-03-11 snapshot; extraction must stay additive and fall back cleanly.
 - **Model overreach**: branch priors are not facts; any new dynamic logic must remain transparent and reversible.
 - **Tone spillover**: the Bluesky thread should carry the requested energy without contaminating the factual state/report artifacts.
-- **Workspace dirtiness**: the REDACTED_SECRET workspace is already dirty; changes must stay scoped to the Hormuz bundle plus the required spec/receipts artifacts.
+- **Workspace dirtiness**: the root workspace is already dirty; changes must stay scoped to the Hormuz bundle plus the required spec/receipts artifacts.
 
 ## Priority
 High.
@@ -42,7 +42,7 @@ High.
    - add additive scoring/branch logic for structured signals and explicit priors
    - document the evolved model
 2. **Fresh signal ingest + snapshot generation**
-   - curate/update fresh signals from REDACTED_SECRET sources
+   - curate/update fresh signals from public sources
    - recompute `data/state.v4.json`
    - regenerate `assets/hormuz_risk_clock_v4.png`
    - regenerate `reports/v4_snapshot.md`

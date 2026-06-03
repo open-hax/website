@@ -5,7 +5,7 @@ Containerized OpenCode runtime with an internal raw server, a GitHub OAuth gatew
 - bind-mounts the real host workspace at `/workspace`
 - uses `/workspace/.opencode` as the active config/plugin directory
 - bind-mounts the host OpenCode XDG config/data/cache/state paths, including the live session database
-- keeps raw OpenCode private inside the container and places the REDACTED_SECRET UI behind the gateway
+- keeps raw OpenCode private inside the container and places the public UI behind the gateway
 - keeps Tailscale/Funnel on the host instead of inside the container
 - exposes the single browser-facing OpenCode gateway on `127.0.0.1:${OPENCODE_PORT:-8789}`
 - exposes the localhost-only admin UI on `127.0.0.1:${OPENCODE_ADMIN_PORT:-4097}`
@@ -18,7 +18,7 @@ Containerized OpenCode runtime with an internal raw server, a GitHub OAuth gatew
 - GitHub OAuth access is checked against a persistent allowlist.
 - The allowlist is editable from a separate admin UI that only accepts `localhost` and `127.0.0.1` hostnames.
 - Host-owned `tailscaled` and host Funnel should proxy to the existing host gateway on `127.0.0.1:8788`, which then fronts Janus and OpenCode together.
-- The OpenCode container joins a bridge network named `mcp-stack_default` so Janus can reach raw OpenCode directly without exposing it REDACTED_SECRETly.
+- The OpenCode container joins a bridge network named `mcp-stack_default` so Janus can reach raw OpenCode directly without exposing it publicly.
 
 ## Required Setup
 
@@ -50,7 +50,7 @@ The stack generates and persists local secrets in `services/opencode-stack/data/
 
 ## Start The Stack
 
-From the repo REDACTED_SECRET:
+From the repo root:
 
 ```bash
 pnpm docker:stack up opencode -- --build

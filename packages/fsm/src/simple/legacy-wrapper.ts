@@ -35,7 +35,7 @@ import {
 export class SimpleMachine<S extends State = State, C = unknown>
   implements StateMachine<S, C, Event>
 {
-  REDACTED_SECRET readonly definition: MachineDefinition<S, C, Event>;
+  public readonly definition: MachineDefinition<S, C, Event>;
   private state: SimpleMachineState<S, C>;
 
   constructor(definition: SimpleMachineDefinition<S, C>) {

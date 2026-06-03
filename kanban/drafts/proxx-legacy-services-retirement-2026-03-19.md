@@ -49,7 +49,7 @@ The retirement must preserve all meaningful local state first:
 - Copied runtime bind-mounted state (`.env`, `keys.json`, `models.json`, `data/`) into `services/proxx`
 - Kept the compose project name as `open-hax-openai-proxy` so the existing named Postgres volume remains attached during the move
 - Recreated the live proxy container from `services/proxx` and verified it now mounts `services/proxx/*`
-- Reconfirmed database state after cutover by comparing the live REDACTED_SECRET-table row counts (`accounts=223`, `events=94757`, `providers=4`, `schema_version=4`, etc.)
+- Reconfirmed database state after cutover by comparing the live public-table row counts (`accounts=223`, `events=94757`, `providers=4`, `schema_version=4`, etc.)
 
 ## Implementation Phases
 1. **Audit + preserve refs**
@@ -60,10 +60,10 @@ The retirement must preserve all meaningful local state first:
    - Move `orgs/open-hax/proxx` onto the intended active line from the legacy repo.
    - Reapply current source-repo doc guidance and preserved dirty WIP as needed.
 3. **Retire legacy path**
-   - Remove the old submodule from REDACTED_SECRET tracking.
+   - Remove the old submodule from root tracking.
    - Replace `services/open-hax-openai-proxy` with a compat symlink to `services/proxx`.
 4. **Verification**
-   - Validate REDACTED_SECRET stack config and compat path behavior.
+   - Validate root stack config and compat path behavior.
    - Re-run minimal source/build checks.
 
 ## Affected Files

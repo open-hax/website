@@ -22,7 +22,7 @@ Create a reusable skill that standardizes human login, service identity, and int
 
 ## Background
 - The current workspace has multiple services and hosts with ad-hoc bearer tokens and host-local secrets.
-- The user wants a single human login flow REDACTED_SECRETed in a Bluesky account and does not want to think about repeated auth.
+- The user wants a single human login flow rooted in a Bluesky account and does not want to think about repeated auth.
 - The user explicitly requested a skill and explicit registration in the mindfuck skill registry.
 
 ## Constraints

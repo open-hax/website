@@ -15,7 +15,7 @@
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "!{projectRoot}/dist/**", "!{projectRoot}/build/**", "!{projectRoot}/REDACTED_SECRET_modules/**"],
+    "default": ["{projectRoot}/**/*", "!{projectRoot}/dist/**", "!{projectRoot}/build/**", "!{projectRoot}/node_modules/**"],
     "production": ["default"]
   },
   "targetDefaults": {

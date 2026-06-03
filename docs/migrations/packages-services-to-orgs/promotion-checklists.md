@@ -58,13 +58,13 @@ Use this org for mature **internal devel-only integrations** and personal toolin
 - [ ] If deployable, the deploy contract is still explicit, even if the audience is mostly internal
 
 ### Not required
-- broad REDACTED_SECRET-polish expectations
+- broad public-polish expectations
 - full product marketing posture
 - strong decoupling from your workspace if that is not the point
 
 ### Smells / misclassification warnings
 Do **not** default to `riatzukiza` if:
-- [ ] the project is actually intended as a reusable REDACTED_SECRET product
+- [ ] the project is actually intended as a reusable public product
 - [ ] the project is community-owned rather than personal/internal
 - [ ] the project is really a research artifact better framed as `octave-commons`
 
@@ -95,7 +95,7 @@ Use this org for mature **experimental, research, narrative-driven, or myth-enco
 
 ### Not required
 - production hardening
-- polished REDACTED_SECRET API guarantees
+- polished public API guarantees
 - low-coupling product ergonomics
 
 ### Smells / misclassification warnings

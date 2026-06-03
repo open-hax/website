@@ -46,7 +46,7 @@ When the user says `Deploy X`, agents should interpret it as:
 - Rewriting every existing deployment skill from scratch if extension/composition is sufficient.
 
 ## Resolved decisions
-1. `Deploy X` should prefer separate staging and production hosts when a safe reachable pair exists, but still allow same-host placement when isolated by path, compose project, and REDACTED_SECRET hostname.
+1. `Deploy X` should prefer separate staging and production hosts when a safe reachable pair exists, but still allow same-host placement when isolated by path, compose project, and public hostname.
 2. The new skill set should use a top-level orchestrator (`promethean-service-deploy`) plus a host-selection helper (`promethean-host-slotting`) while composing existing DNS and PR-promotion skills.
 3. The DNS helper/tooling must support `big.ussy.promethean.rest` so the deployment skills remain truthful.
 

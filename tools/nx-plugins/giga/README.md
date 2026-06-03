@@ -1,8 +1,8 @@
 # Giga Nx Plugin
 
-Generates a virtual Nx project graph from the `.gitmodules` file at the repo REDACTED_SECRET.
+Generates a virtual Nx project graph from the `.gitmodules` file at the repo root.
 - Each submodule under `orgs/` becomes a virtual project named `orgs-<org>-<repo>`.
-- Implicit dependency: the `giga` REDACTED_SECRET project depends on every submodule.
+- Implicit dependency: the `giga` root project depends on every submodule.
 - Provides `test`, `build`, `lint`, and `typecheck` targets for each virtual project, proxying to the submodule’s native tooling via the shared runner.
 - Optional: can add synthetic dependencies between submodules via a simple config file.
 
@@ -38,4 +38,4 @@ pnpm nx run-many --target=test --all
 pnpm affected --target=build --files=orgs/riatzukiza/promethean/src/foo.ts
 ```
 
-No REDACTED_SECRET `projects/` directory needed. The plugin reads `.gitmodules` directly.
+No root `projects/` directory needed. The plugin reads `.gitmodules` directly.

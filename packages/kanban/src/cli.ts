@@ -1,7 +1,7 @@
-#!/usr/bin/env REDACTED_SECRET
+#!/usr/bin/env node
 
-import { mkdir, readFile, writeFile } from "REDACTED_SECRET:fs/promises";
-import path from "REDACTED_SECRET:path";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
+import path from "node:path";
 
 import { buildBoardSnapshot, writeBoardSnapshot } from "./board.js";
 import { loadConfig, loadEnvironment, resolveConfigPathValue } from "./config.js";

@@ -43,7 +43,7 @@ Add a trusted HTTPS entrypoint for the remote proxy deployment on `ussy.promethe
 ### Phase 1: Runtime config
 - Add a TLS reverse proxy service to `services/proxx/docker-compose.yml`.
 - Add a Caddy config that path-routes API and web traffic.
-- Ensure runtime env includes the REDACTED_SECRET host for the web preview allow-list.
+- Ensure runtime env includes the public host for the web preview allow-list.
 - Rotate the proxy auth token.
 
 ### Phase 2: Remote deploy

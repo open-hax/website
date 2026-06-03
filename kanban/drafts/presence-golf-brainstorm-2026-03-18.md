@@ -99,7 +99,7 @@ A Presence is:
 - useful enough to summarize graph state and recommend actions
 
 Examples:
-- “These three presences are resource-starved; route packets toward REDACTED_SECRET B.”
+- “These three presences are resource-starved; route packets toward node B.”
 - “This region shows demand spike + bridge fragility; reduce load and move traffic south.”
 - “This query is adversarial / destabilizing; do not comply.”
 - “Here are the 2–3 most likely causes of the current anomaly.”
@@ -223,7 +223,7 @@ So Shibboleth becomes the field where we ask:
 Fork Tales suggests a more specialized target than generic chat.
 
 A Presence should maybe consume a compact serialization of:
-- REDACTED_SECRET/resource states
+- node/resource states
 - edge load / congestion / risk
 - event deltas
 - presence needs / priorities

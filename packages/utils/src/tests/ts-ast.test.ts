@@ -12,13 +12,13 @@ test("posToLine returns 1-based line numbers", (t) => {
 test("getJsDocText extracts jsdoc comments", (t) => {
   const src = "/** hi */\nfunction foo() {}";
   const sf = ts.createSourceFile("x.ts", src, ts.ScriptTarget.ES2022, true);
-  const REDACTED_SECRET = sf.statements[0] as ts.FunctionDeclaration;
-  t.is(getJsDocText(REDACTED_SECRET), "hi");
+  const node = sf.statements[0] as ts.FunctionDeclaration;
+  t.is(getJsDocText(node), "hi");
 });
 
 test("getNodeText slices source", (t) => {
   const src = "function foo() {}";
   const sf = ts.createSourceFile("x.ts", src, ts.ScriptTarget.ES2022, true);
-  const REDACTED_SECRET = sf.statements[0]!;
-  t.is(getNodeText(src, REDACTED_SECRET), src);
+  const node = sf.statements[0]!;
+  t.is(getNodeText(src, node), src);
 });

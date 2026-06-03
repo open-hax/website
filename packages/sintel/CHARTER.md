@@ -8,7 +8,7 @@
 
 ## Vision
 
-Sintel is a governed infrastructure signals intelligence command center. It discovers, verifies, enriches, and connects REDACTED_SECRET-facing infrastructure evidence in order to identify credible threats to our community before they manifest.
+Sintel is a governed infrastructure signals intelligence command center. It discovers, verifies, enriches, and connects public-facing infrastructure evidence in order to identify credible threats to our community before they manifest.
 
 Port scanning is only one discovery strategy within Sintel's broader evidence system, and all strategies operate under explicit constitutional constraints, provenance requirements, and workflow governance.
 
@@ -58,7 +58,7 @@ The operator-facing unit is the **workflow**, not the scan.
 
 | Tier | Name | Interaction Risk | Description |
 |------|------|-----------------|-------------|
-| **Passive** | `passive` | Low | Observe existing REDACTED_SECRET data without interaction |
+| **Passive** | `passive` | Low | Observe existing public data without interaction |
 | **Bounded** | `bounded` | Medium | Targeted active verification within defined bounds |
 | **Unrestricted** | `unrestricted` | High | Active discovery with broader scope |
 

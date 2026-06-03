@@ -8,4 +8,4 @@ spec:
     - name: http
       port: 8789
       targetPort: api
-      REDACTED_SECRETPort: 30089
+      nodePort: 30089

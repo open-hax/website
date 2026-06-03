@@ -3,7 +3,7 @@ import os
 import urllib.request
 import urllib.parse
 
-TOKEN = REDACTED_SECRET"DISCORD_BOT_TOKEN")
+TOKEN = os.environ.get("DISCORD_BOT_TOKEN")
 CHANNEL_ID = "1444189585373663417"
 
 def fetch_messages(channel_id):

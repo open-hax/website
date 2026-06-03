@@ -38,7 +38,7 @@
         {
           "org": "open-hax",
           "score": 0.31,
-          "reason": "could evolve into a REDACTED_SECRET protocol helper later, but it is not there yet."
+          "reason": "could evolve into a public protocol helper later, but it is not there yet."
         }
       ],
       "rationale": "Minimal metadata and no README keep it in packages for now.",
@@ -111,7 +111,7 @@
         {
           "org": "open-hax",
           "score": 0.28,
-          "reason": "it could become more REDACTED_SECRET later, but current README emphasizes internal bot/testing workflow."
+          "reason": "it could become more public later, but current README emphasizes internal bot/testing workflow."
         }
       ],
       "rationale": "Mature enough to leave packages, but still primarily coupled to your internal ecosystem.",
@@ -147,10 +147,10 @@
         {
           "org": "open-hax",
           "score": 0.33,
-          "reason": "generic embedding helpers could later become REDACTED_SECRET, but current evidence is mostly internal ecosystem reuse."
+          "reason": "generic embedding helpers could later become public, but current evidence is mostly internal ecosystem reuse."
         }
       ],
-      "rationale": "Existing Promethean monorepo matches imply internal canonical-home drift more than a new standalone REDACTED_SECRET package.",
+      "rationale": "Existing Promethean monorepo matches imply internal canonical-home drift more than a new standalone public package.",
       "notes": [
         "Package name already exists under one or more current org monorepos; promotion should resolve source-of-truth drift rather than create a third copy."
       ],
@@ -274,7 +274,7 @@
         {
           "org": "open-hax",
           "score": 0.58,
-          "reason": "the docs/tests and generic API make it a plausible future REDACTED_SECRET utility once decoupled."
+          "reason": "the docs/tests and generic API make it a plausible future public utility once decoupled."
         }
       ],
       "rationale": "Today it looks like mature Promethean plumbing; later it may deserve open-hax treatment if extracted cleanly.",
@@ -324,12 +324,12 @@
         {
           "org": "riatzukiza",
           "score": 0.69,
-          "reason": "exact monorepo matches and current ecosystem scope outweigh its REDACTED_SECRET utility for now."
+          "reason": "exact monorepo matches and current ecosystem scope outweigh its public utility for now."
         },
         {
           "org": "open-hax",
           "score": 0.56,
-          "reason": "the package is well-documented and broadly reusable, so it could later graduate into a REDACTED_SECRET utility."
+          "reason": "the package is well-documented and broadly reusable, so it could later graduate into a public utility."
         }
       ],
       "rationale": "Current best fit is internal monorepo package with open-hax potential later.",
@@ -415,10 +415,10 @@
         {
           "org": "open-hax",
           "score": 0.35,
-          "reason": "logging helpers can become REDACTED_SECRET, but this one is not yet documented to that standard."
+          "reason": "logging helpers can become public, but this one is not yet documented to that standard."
         }
       ],
-      "rationale": "Looks like internal ecosystem infrastructure more than a finished REDACTED_SECRET library.",
+      "rationale": "Looks like internal ecosystem infrastructure more than a finished public library.",
       "notes": [
         "Package name already exists under one or more current org monorepos; promotion should resolve source-of-truth drift rather than create a third copy."
       ],
@@ -605,7 +605,7 @@
         {
           "org": "open-hax",
           "score": 0.84,
-          "reason": "reusable client library for OpenCode consumers with build/test surface and REDACTED_SECRET-facing API."
+          "reason": "reusable client library for OpenCode consumers with build/test surface and public-facing API."
         },
         {
           "org": "riatzukiza",
@@ -726,7 +726,7 @@
         {
           "org": "open-hax",
           "score": 0.72,
-          "reason": "install docs, quickstart, tests/lint/coverage, and generic cache utility shape all fit a REDACTED_SECRET product library."
+          "reason": "install docs, quickstart, tests/lint/coverage, and generic cache utility shape all fit a public product library."
         },
         {
           "org": "riatzukiza",
@@ -937,10 +937,10 @@
         {
           "org": "open-hax",
           "score": 0.29,
-          "reason": "REDACTED_SECRET utility possible later, but current scope appears ecosystem-supportive."
+          "reason": "public utility possible later, but current scope appears ecosystem-supportive."
         }
       ],
-      "rationale": "Shared internal helper more than standalone REDACTED_SECRET product right now.",
+      "rationale": "Shared internal helper more than standalone public product right now.",
       "notes": [
         "Package name already exists under one or more current org monorepos; promotion should resolve source-of-truth drift rather than create a third copy."
       ],
@@ -1034,7 +1034,7 @@
         {
           "org": "open-hax",
           "score": 0.54,
-          "reason": "docs/tests and generic utility shape could later justify a REDACTED_SECRET utility package."
+          "reason": "docs/tests and generic utility shape could later justify a public utility package."
         }
       ],
       "rationale": "Looks mature, but current evidence points to internal ecosystem utility first.",

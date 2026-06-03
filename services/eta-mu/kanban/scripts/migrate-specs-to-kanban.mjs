@@ -1,13 +1,13 @@
-#!/usr/bin/env REDACTED_SECRET
-import { spawnSync } from "REDACTED_SECRET:child_process";
-import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from "REDACTED_SECRET:fs/promises";
-import path from "REDACTED_SECRET:path";
+#!/usr/bin/env node
+import { spawnSync } from "node:child_process";
+import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
+import path from "node:path";
 
 const workspaceRoot = path.resolve(process.cwd());
 
 const usage = () => {
   console.error(`Usage:
-  REDACTED_SECRET services/eta-mu/kanban/scripts/migrate-specs-to-kanban.mjs [--REDACTED_SECRET <path>] [--manifest <json>] <spec-dir>...
+  node services/eta-mu/kanban/scripts/migrate-specs-to-kanban.mjs [--root <path>] [--manifest <json>] <spec-dir>...
 
 Manifest may be either an array of { specDir, boardDir?, projectId?, title? } entries or { entries: [...] }.`);
 };
@@ -15,7 +15,7 @@ Manifest may be either an array of { specDir, boardDir?, projectId?, title? } en
 const parseArgs = (argv) => {
   const specDirs = [];
   let manifest;
-  let REDACTED_SECRET = workspaceRoot;
+  let root = workspaceRoot;
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     if (arg === "--manifest") {
@@ -23,8 +23,8 @@ const parseArgs = (argv) => {
       i += 1;
       continue;
     }
-    if (arg === "--REDACTED_SECRET") {
-      REDACTED_SECRET = path.resolve(argv[i + 1] ?? ".");
+    if (arg === "--root") {
+      root = path.resolve(argv[i + 1] ?? ".");
       i += 1;
       continue;
     }
@@ -34,7 +34,7 @@ const parseArgs = (argv) => {
     }
     specDirs.push(arg);
   }
-  return { manifest, REDACTED_SECRET, specDirs };
+  return { manifest, root, specDirs };
 };
 
 const pathExists = async (candidate) => {
@@ -75,10 +75,10 @@ const firstHeading = (raw, fallback) => {
 
 const createdAt = async (filePath) => (await stat(filePath)).mtime.toISOString();
 
-const ensureFrontmatter = async ({ filePath, sourcePath, projectSlug, REDACTED_SECRET }) => {
+const ensureFrontmatter = async ({ filePath, sourcePath, projectSlug, root }) => {
   const raw = await readFile(filePath, "utf8");
-  const relativeSource = path.relative(REDACTED_SECRET, sourcePath).split(path.sep).join("/");
-  const relativeCard = path.relative(REDACTED_SECRET, filePath).split(path.sep).join("/");
+  const relativeSource = path.relative(root, sourcePath).split(path.sep).join("/");
+  const relativeCard = path.relative(root, filePath).split(path.sep).join("/");
   const title = firstHeading(raw, filePath);
   const uuid = slugify(`${projectSlug}-${relativeSource}`);
   const defaults = [
@@ -132,9 +132,9 @@ const boardLooksOccupied = async (boardDir) => {
 
 const defaultBoardDir = (specDir) => path.join(path.dirname(specDir), "kanban");
 
-const loadEntries = async ({ manifest, specDirs, REDACTED_SECRET }) => {
+const loadEntries = async ({ manifest, specDirs, root }) => {
   if (manifest) {
-    const raw = await readFile(path.resolve(REDACTED_SECRET, manifest), "utf8");
+    const raw = await readFile(path.resolve(root, manifest), "utf8");
     const parsed = JSON.parse(raw);
     const entries = Array.isArray(parsed) ? parsed : parsed.entries;
     if (!Array.isArray(entries)) throw new Error("Manifest must be an array or object with entries array.");
@@ -162,8 +162,8 @@ const validateBoard = (boardDir) => {
   };
 };
 
-const migrateOne = async (entry, REDACTED_SECRET) => {
-  const specDir = path.resolve(REDACTED_SECRET, entry.specDir);
+const migrateOne = async (entry, root) => {
+  const specDir = path.resolve(root, entry.specDir);
   if (!await pathExists(specDir)) return { specDir, skipped: true, reason: "missing" };
   const specStat = await stat(specDir);
   if (!specStat.isDirectory()) return { specDir, skipped: true, reason: "not-directory" };
@@ -173,8 +173,8 @@ const migrateOne = async (entry, REDACTED_SECRET) => {
   const markdownFiles = files.filter((file) => file.endsWith(".md"));
   if (markdownFiles.length === 0) return { specDir, skipped: true, reason: "no-markdown" };
 
-  const boardDir = path.resolve(REDACTED_SECRET, entry.boardDir ?? defaultBoardDir(specDir));
-  const projectSlug = slugify(entry.projectId ?? path.relative(REDACTED_SECRET, boardDir));
+  const boardDir = path.resolve(root, entry.boardDir ?? defaultBoardDir(specDir));
+  const projectSlug = slugify(entry.projectId ?? path.relative(root, boardDir));
   const occupied = await boardLooksOccupied(boardDir);
   const targetBase = occupied ? path.join(boardDir, `${path.basename(specDir)}-import`) : boardDir;
 
@@ -185,7 +185,7 @@ const migrateOne = async (entry, REDACTED_SECRET) => {
   const copiedMarkdown = copiedFiles.filter((file) => file.endsWith(".md"));
   for (const filePath of copiedMarkdown) {
     const sourcePath = path.join(specDir, path.relative(targetBase, filePath));
-    await ensureFrontmatter({ filePath, sourcePath, projectSlug, REDACTED_SECRET });
+    await ensureFrontmatter({ filePath, sourcePath, projectSlug, root });
   }
 
   await writeFile(path.join(boardDir, "openhax.kanban.json"), JSON.stringify({ tasksDir: ".", boardFile: ".kanban/board.json" }, null, 2) + "\n", "utf8");
@@ -206,8 +206,8 @@ const migrateOne = async (entry, REDACTED_SECRET) => {
 
 const main = async () => {
   const args = parseArgs(process.argv.slice(2));
-  const REDACTED_SECRET = path.resolve(args.REDACTED_SECRET);
-  const entries = await loadEntries({ ...args, REDACTED_SECRET });
+  const root = path.resolve(args.root);
+  const entries = await loadEntries({ ...args, root });
   if (entries.length === 0) {
     usage();
     process.exit(1);
@@ -216,7 +216,7 @@ const main = async () => {
   const results = [];
   for (const entry of entries) {
     try {
-      const result = await migrateOne(entry, REDACTED_SECRET);
+      const result = await migrateOne(entry, root);
       results.push(result);
       console.log(JSON.stringify(result));
     } catch (error) {

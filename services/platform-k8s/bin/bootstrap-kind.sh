@@ -46,4 +46,4 @@ if [[ "$INSTALL_INGRESS_NGINX" == "1" ]]; then
 fi
 
 log "kind bootstrap complete"
-kubectl get REDACTED_SECRETs -o wide
+kubectl get nodes -o wide

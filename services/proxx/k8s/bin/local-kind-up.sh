@@ -44,4 +44,4 @@ log "services"
 kubectl get pods,svc,pvc,statefulset,ingress -n proxx
 
 log "api health (inside cluster)"
-kubectl exec -n proxx deploy/proxx -- sh -lc "REDACTED_SECRET -e \"fetch('http://127.0.0.1:8789/health',{headers:{Authorization:'Bearer '+(process.env.PROXY_AUTH_TOKEN||'')}}).then(async(r)=>{const t=await r.text(); if(!r.ok){console.error(t); process.exit(1)} console.log(t)}).catch((e)=>{console.error(String(e)); process.exit(1)})\""
+kubectl exec -n proxx deploy/proxx -- sh -lc "node -e \"fetch('http://127.0.0.1:8789/health',{headers:{Authorization:'Bearer '+(process.env.PROXY_AUTH_TOKEN||'')}}).then(async(r)=>{const t=await r.text(); if(!r.ok){console.error(t); process.exit(1)} console.log(t)}).catch((e)=>{console.error(String(e)); process.exit(1)})\""

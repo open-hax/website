@@ -45,7 +45,7 @@ Added `org_id` parameter to segment list queries:
 ```
 
 ### 3. Lounge Routes Authentication
-**Before:** No authentication required; messages were REDACTED_SECRET
+**Before:** No authentication required; messages were public
 **After:** Requires `agent.chat.use` permission; messages include `user_email` and `org_slug`:
 ```clojure
 (route! app "GET" "/api/lounge/messages"

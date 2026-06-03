@@ -58,7 +58,7 @@ export type ISO8601 = string;
 
 /**
  * Strategy tiers define the interaction risk level for discovery.
- * - passive: Observe existing REDACTED_SECRET data without interaction
+ * - passive: Observe existing public data without interaction
  * - bounded: Targeted active verification within defined bounds
  * - unrestricted: Active discovery with broader scope
  */

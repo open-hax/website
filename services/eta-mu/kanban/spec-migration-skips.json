@@ -38,51 +38,51 @@
       "reason": "generated/pruned"
     },
     {
-      "specDir": "inbox/workspaces/openhax-codex/codex-auth/REDACTED_SECRET_modules/.pnpm/@hey-api+json-schema-ref-parser@1.0.6/REDACTED_SECRET_modules/@hey-api/json-schema-ref-parser/lib/__tests__/spec",
+      "specDir": "inbox/workspaces/openhax-codex/codex-auth/node_modules/.pnpm/@hey-api+json-schema-ref-parser@1.0.6/node_modules/@hey-api/json-schema-ref-parser/lib/__tests__/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "inbox/workspaces/openhax-codex/codex-auth/REDACTED_SECRET_modules/.pnpm/@openauthjs+openauth@0.4.3_arctic@2.3.4_hono@4.10.5/REDACTED_SECRET_modules/@standard-schema/spec",
+      "specDir": "inbox/workspaces/openhax-codex/codex-auth/node_modules/.pnpm/@openauthjs+openauth@0.4.3_arctic@2.3.4_hono@4.10.5/node_modules/@standard-schema/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "inbox/workspaces/openhax-codex/codex-auth/REDACTED_SECRET_modules/.pnpm/@standard-schema+spec@1.0.0-beta.3/REDACTED_SECRET_modules/@standard-schema/spec",
+      "specDir": "inbox/workspaces/openhax-codex/codex-auth/node_modules/.pnpm/@standard-schema+spec@1.0.0-beta.3/node_modules/@standard-schema/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "inbox/workspaces/openhax-codex/codex-auth/REDACTED_SECRET_modules/.pnpm/json-schema-traverse@0.4.1/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "inbox/workspaces/openhax-codex/codex-auth/node_modules/.pnpm/json-schema-traverse@0.4.1/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "inbox/workspaces/openhax-codex/codex-auth/REDACTED_SECRET_modules/.pnpm/json-schema-traverse@1.0.0/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "inbox/workspaces/openhax-codex/codex-auth/node_modules/.pnpm/json-schema-traverse@1.0.0/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "inbox/workspaces/openhax-codex/codex-auth/REDACTED_SECRET_modules/.pnpm/REDACTED_SECRET_modules/@standard-schema/spec",
+      "specDir": "inbox/workspaces/openhax-codex/codex-auth/node_modules/.pnpm/node_modules/@standard-schema/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "REDACTED_SECRET_modules/.pnpm/json-schema-traverse@1.0.0/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "node_modules/.pnpm/json-schema-traverse@1.0.0/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "REDACTED_SECRET_modules/.pnpm/s-js@0.4.9/REDACTED_SECRET_modules/s-js/spec",
+      "specDir": "node_modules/.pnpm/s-js@0.4.9/node_modules/s-js/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "REDACTED_SECRET_modules/.pnpm/tdigest@0.1.2/REDACTED_SECRET_modules/tdigest/specs",
+      "specDir": "node_modules/.pnpm/tdigest@0.1.2/node_modules/tdigest/specs",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/octave-commons/eta-mu-sol/.opencode/REDACTED_SECRET_modules/@standard-schema/spec",
+      "specDir": "orgs/octave-commons/eta-mu-sol/.opencode/node_modules/@standard-schema/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/octave-commons/fork_tales/part64/frontend/REDACTED_SECRET_modules/@standard-schema/spec",
+      "specDir": "orgs/octave-commons/fork_tales/part64/frontend/node_modules/@standard-schema/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/octave-commons/fork_tales/part64/frontend/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "orgs/octave-commons/fork_tales/part64/frontend/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
@@ -110,43 +110,43 @@
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/eta-mu/REDACTED_SECRET_modules/.pnpm/@standard-schema+spec@1.1.0/REDACTED_SECRET_modules/@standard-schema/spec",
+      "specDir": "orgs/open-hax/eta-mu/node_modules/.pnpm/@standard-schema+spec@1.1.0/node_modules/@standard-schema/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/eta-mu/REDACTED_SECRET_modules/.pnpm/effect@4.0.0-beta.59/REDACTED_SECRET_modules/@standard-schema/spec",
+      "specDir": "orgs/open-hax/eta-mu/node_modules/.pnpm/effect@4.0.0-beta.59/node_modules/@standard-schema/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/eta-mu/REDACTED_SECRET_modules/.pnpm/json-schema-traverse@1.0.0/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "orgs/open-hax/eta-mu/node_modules/.pnpm/json-schema-traverse@1.0.0/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/eta-mu/REDACTED_SECRET_modules/.pnpm/REDACTED_SECRET_modules/@standard-schema/spec",
+      "specDir": "orgs/open-hax/eta-mu/node_modules/.pnpm/node_modules/@standard-schema/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/openplanner/REDACTED_SECRET_modules/.pnpm/@standard-schema+spec@1.1.0/REDACTED_SECRET_modules/@standard-schema/spec",
+      "specDir": "orgs/open-hax/openplanner/node_modules/.pnpm/@standard-schema+spec@1.1.0/node_modules/@standard-schema/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/openplanner/REDACTED_SECRET_modules/.pnpm/effect@4.0.0-beta.59/REDACTED_SECRET_modules/@standard-schema/spec",
+      "specDir": "orgs/open-hax/openplanner/node_modules/.pnpm/effect@4.0.0-beta.59/node_modules/@standard-schema/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/openplanner/REDACTED_SECRET_modules/.pnpm/effect@4.0.0-beta.65/REDACTED_SECRET_modules/@standard-schema/spec",
+      "specDir": "orgs/open-hax/openplanner/node_modules/.pnpm/effect@4.0.0-beta.65/node_modules/@standard-schema/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/openplanner/REDACTED_SECRET_modules/.pnpm/json-schema-traverse@0.4.1/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "orgs/open-hax/openplanner/node_modules/.pnpm/json-schema-traverse@0.4.1/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/openplanner/REDACTED_SECRET_modules/.pnpm/json-schema-traverse@1.0.0/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "orgs/open-hax/openplanner/node_modules/.pnpm/json-schema-traverse@1.0.0/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/openplanner/REDACTED_SECRET_modules/.pnpm/REDACTED_SECRET_modules/@standard-schema/spec",
+      "specDir": "orgs/open-hax/openplanner/node_modules/.pnpm/node_modules/@standard-schema/spec",
       "reason": "generated/pruned"
     },
     {
@@ -170,7 +170,7 @@
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/openplanner/packages/agents/knoxx/REDACTED_SECRET_modules/.pnpm/json-schema-traverse@1.0.0/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "orgs/open-hax/openplanner/packages/agents/knoxx/node_modules/.pnpm/json-schema-traverse@1.0.0/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
@@ -190,7 +190,7 @@
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/proxx/.opencode/REDACTED_SECRET_modules/@standard-schema/spec",
+      "specDir": "orgs/open-hax/proxx/.opencode/node_modules/@standard-schema/spec",
       "reason": "generated/pruned"
     },
     {
@@ -270,39 +270,39 @@
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/proxx/REDACTED_SECRET_modules/.pnpm/@fastify+swagger@9.5.1/REDACTED_SECRET_modules/@fastify/swagger/lib/spec",
+      "specDir": "orgs/open-hax/proxx/node_modules/.pnpm/@fastify+swagger@9.5.1/node_modules/@fastify/swagger/lib/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/proxx/REDACTED_SECRET_modules/.pnpm/@fastify+swagger@9.5.1/REDACTED_SECRET_modules/@fastify/swagger/test/spec",
+      "specDir": "orgs/open-hax/proxx/node_modules/.pnpm/@fastify+swagger@9.5.1/node_modules/@fastify/swagger/test/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/proxx/REDACTED_SECRET_modules/.pnpm/json-schema-traverse@0.4.1/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "orgs/open-hax/proxx/node_modules/.pnpm/json-schema-traverse@0.4.1/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/proxx/REDACTED_SECRET_modules/.pnpm/json-schema-traverse@1.0.0/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "orgs/open-hax/proxx/node_modules/.pnpm/json-schema-traverse@1.0.0/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/proxx/REDACTED_SECRET_modules/@fastify/ajv-compiler/REDACTED_SECRET_modules/ajv/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "orgs/open-hax/proxx/node_modules/@fastify/ajv-compiler/node_modules/ajv/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/proxx/REDACTED_SECRET_modules/ajv-formats/REDACTED_SECRET_modules/ajv/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "orgs/open-hax/proxx/node_modules/ajv-formats/node_modules/ajv/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/proxx/REDACTED_SECRET_modules/fast-json-stringify/REDACTED_SECRET_modules/ajv/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "orgs/open-hax/proxx/node_modules/fast-json-stringify/node_modules/ajv/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/open-hax/proxx/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "orgs/open-hax/proxx/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/reference/anomalyco/opencode/.opencode/REDACTED_SECRET_modules/@standard-schema/spec",
+      "specDir": "orgs/reference/anomalyco/opencode/.opencode/node_modules/@standard-schema/spec",
       "reason": "generated/pruned"
     },
     {
@@ -314,7 +314,7 @@
       "reason": "archive/reference/source-copy"
     },
     {
-      "specDir": "orgs/riatzukiza/desktop/.worktrees/fix-typecheck-deps/REDACTED_SECRET_modules/.pnpm/json-schema-traverse@0.4.1/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "orgs/riatzukiza/desktop/.worktrees/fix-typecheck-deps/node_modules/.pnpm/json-schema-traverse@0.4.1/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
@@ -330,7 +330,7 @@
       "reason": "no-markdown"
     },
     {
-      "specDir": "orgs/shuv/mrmd/vscode/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "orgs/shuv/mrmd/vscode/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
@@ -346,11 +346,11 @@
       "reason": "no-markdown"
     },
     {
-      "specDir": "orgs/shuv/pi-mcp-adapter/examples/interactive-visualizer/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "orgs/shuv/pi-mcp-adapter/examples/interactive-visualizer/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {
-      "specDir": "orgs/shuv/pi-mcp-adapter/REDACTED_SECRET_modules/json-schema-traverse/spec",
+      "specDir": "orgs/shuv/pi-mcp-adapter/node_modules/json-schema-traverse/spec",
       "reason": "generated/pruned"
     },
     {

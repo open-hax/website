@@ -1,6 +1,6 @@
 {
   "name": "lisp-fixer",
-  "$schema": "REDACTED_SECRET_modules/nx/schemas/project-schema.json",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "src",
   "projectType": "application",
   "targets": {

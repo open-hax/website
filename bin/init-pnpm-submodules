@@ -3,7 +3,7 @@
 # Target GitHub organization or user to create repos under
 GITHUB_OWNER="octave-commons"
 
-# Main repository REDACTED_SECRET
+# Main repository root
 MAIN_REPO_ROOT=$(pwd)
 
 # Run git status on all workspace packages - only process those without a git repo
@@ -24,7 +24,7 @@ while IFS= read -r pkg_path; do
   git add .
   git commit -m "Initial commit for $(basename "$pkg_path")"
 
-  # Create remote repo on GitHub via gh CLI, private repo (remove --private if REDACTED_SECRET desired)
+  # Create remote repo on GitHub via gh CLI, private repo (remove --private if public desired)
   gh repo create "${GITHUB_OWNER}/$(basename "$pkg_path")" --private --confirm
 
   # Add remote and push
@@ -32,7 +32,7 @@ while IFS= read -r pkg_path; do
   git branch -M main
   git push -u origin main
 
-  # Go back to main repo REDACTED_SECRET
+  # Go back to main repo root
   cd "$MAIN_REPO_ROOT" || exit
 
   # Add submodule

@@ -12,8 +12,8 @@ if [[ "${SKIP_PREPUSH_TYPECHECK:-0}" == "1" ]]; then
   exit 0
 fi
 
-repo_REDACTED_SECRET=$(git rev-parse --show-toplevel)
-cd "$repo_REDACTED_SECRET"
+repo_root=$(git rev-parse --show-toplevel)
+cd "$repo_root"
 
 log() {
   printf "[pre-push:typecheck] %s\n" "$1"
@@ -320,7 +320,7 @@ run_changed_package_typecheck() {
   done
 
   if [[ ${#package_dirs[@]} -eq 0 ]]; then
-    log "No changed package REDACTED_SECRETs detected for fallback typecheck"
+    log "No changed package roots detected for fallback typecheck"
     return 0
   fi
 

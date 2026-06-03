@@ -1,5 +1,5 @@
-import { readdir, readFile, stat } from "REDACTED_SECRET:fs/promises";
-import path from "REDACTED_SECRET:path";
+import { readdir, readFile, stat } from "node:fs/promises";
+import path from "node:path";
 
 import matter from "gray-matter";
 

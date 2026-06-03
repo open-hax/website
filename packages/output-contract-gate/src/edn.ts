@@ -14,7 +14,7 @@ type EdnValue = string | number | boolean | null | readonly EdnValue[];
 type EdnList = readonly EdnValue[];
 
 export class ContractCompileError extends Error {
-  REDACTED_SECRET constructor(message: string) {
+  public constructor(message: string) {
     super(message);
     this.name = 'ContractCompileError';
   }
@@ -76,7 +76,7 @@ const parseSection = (form: EdnList): ContractSection => {
   const order = numberValue(findChild(form, 'order')?.[1], `order for ${id}`);
   const cardinalityRaw = keywordToId(findChild(form, 'cardinality')?.[1], `cardinality for ${id}`);
   const cardinality = cardinalityRaw === 'many' ? 'many' : 'one';
-  const allowedNodeTypes = parseStringVector(findChild(form, 'allowed-REDACTED_SECRET-types')?.[1], `allowed-REDACTED_SECRET-types for ${id}`);
+  const allowedNodeTypes = parseStringVector(findChild(form, 'allowed-node-types')?.[1], `allowed-node-types for ${id}`);
   const localRuleIds = parseStringVector(findChild(form, 'local-rules')?.[1], `local-rules for ${id}`);
 
   return { id, heading, required, order, cardinality, allowedNodeTypes, localRuleIds };
@@ -119,7 +119,7 @@ const groupTemplates = (templates: readonly RepairTemplate[]): Readonly<Record<s
 export const parseEdnForm = (source: string): EdnValue => jsedn.toJS(jsedn.parse(source)) as EdnValue;
 
 export const compileAgentOutputContract = (source: string): NormalizedContract => {
-  const form = expectList(parseEdnForm(source), 'Contract REDACTED_SECRET must be a list');
+  const form = expectList(parseEdnForm(source), 'Contract root must be a list');
   if (form[0] !== 'agent-output-contract') {
     throw new ContractCompileError('Root form must be (agent-output-contract ...)');
   }
@@ -158,7 +158,7 @@ export const compileAgentOutputContract = (source: string): NormalizedContract =
     version,
     targetFormat: keywordToId(requireChild(target, 'format')[1], 'target format'),
     targetAst: keywordToId(requireChild(target, 'ast')[1], 'target ast'),
-    targetRoot: keywordToId(requireChild(target, 'REDACTED_SECRET')[1], 'target REDACTED_SECRET'),
+    targetRoot: keywordToId(requireChild(target, 'root')[1], 'target root'),
     repairMaxRetries: numberValue(findChild(repairForm, 'max-retries')?.[1], 'repair max-retries', 0),
     sections,
     sectionsById,

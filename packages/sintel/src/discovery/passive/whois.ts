@@ -26,7 +26,7 @@ export interface WHOISData {
 
 /**
  * WHOIS passive source.
- * Queries REDACTED_SECRET WHOIS servers for domain registration data.
+ * Queries public WHOIS servers for domain registration data.
  */
 export class WHOISDiscovery implements PassiveSource {
   readonly name = 'whois_data';
@@ -56,7 +56,7 @@ export class WHOISDiscovery implements PassiveSource {
   private async queryWHOIS(query: string): Promise<WHOISData> {
     // Placeholder: In production, use whois library or API
     // Real implementation would:
-    // - Use REDACTED_SECRET-whois or similar
+    // - Use node-whois or similar
     // - Parse WHOIS response
     // - Handle different WHOIS formats by TLD
     

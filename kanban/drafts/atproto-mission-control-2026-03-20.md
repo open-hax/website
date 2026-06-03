@@ -50,7 +50,7 @@ Already live:
 - Hormuz recurring bundle pipeline
 - crawler/weaver ingestion into radar threads
 - social publish path exists elsewhere in workspace (`services/mcp-social-publisher`)
-- REDACTED_SECRET radar host: `https://radar.promethean.rest`
+- public radar host: `https://radar.promethean.rest`
 
 New Phase 1 target:
 - Jetstream firehose backend integration

@@ -52,7 +52,7 @@ Extract the Web Graph Weaver from `fork_tales/web_graph_weaver.js` into `package
 │         ▼                                                   │
 │  ┌─────────────┐                                           │
 │  │  Knowledge  │◄──────── Knowledge Graph ◄────┘           │
-│  │   Graph     │   (REDACTED_SECRETs, edges, concepts)                │
+│  │   Graph     │   (nodes, edges, concepts)                │
 │  └─────────────┘                                           │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -61,7 +61,7 @@ Extract the Web Graph Weaver from `fork_tales/web_graph_weaver.js` into `package
 
 **Crawler Engine** = Respects robots.txt, rate limits, concurrency.
 
-**Graph Builder** = Extracts concepts, references, metadata into REDACTED_SECRETs/edges.
+**Graph Builder** = Extracts concepts, references, metadata into nodes/edges.
 
 **WebSocket Stream** = Real-time progress to connected clients.
 
@@ -137,7 +137,7 @@ export interface WatchlistSeed {
 
 export interface CrawlConfig {
   maxDepth: number;        // Maximum crawl depth
-  maxNodes: number;        // Maximum graph REDACTED_SECRETs
+  maxNodes: number;        // Maximum graph nodes
   concurrency: number;     // Concurrent fetches
   delayMs: number;        // Delay between requests
   timeoutMs: number;      // Request timeout
@@ -166,14 +166,14 @@ export interface KnowledgeNode {
 }
 
 export interface KnowledgeEdge {
-  from: string;            // Source REDACTED_SECRET ID
-  to: string;              // Target REDACTED_SECRET ID
+  from: string;            // Source node ID
+  to: string;              // Target node ID
   kind: "references" | "cites" | "mentions" | "related";
   weight: number;          // Relevance weight
 }
 
 export interface KnowledgeGraph {
-  REDACTED_SECRETs: Map<string, KnowledgeNode>;
+  nodes: Map<string, KnowledgeNode>;
   edges: Map<string, KnowledgeEdge>;
   stats: {
     totalNodes: number;
@@ -352,47 +352,47 @@ export function extractFeedEntries(feed: FeedResult): FeedEntry[] {
 
 ```typescript
 export interface KnowledgeGraphBuilder {
-  addNode(REDACTED_SECRET: KnowledgeNode): void;
+  addNode(node: KnowledgeNode): void;
   addEdge(edge: KnowledgeEdge): void;
   getNode(id: string): KnowledgeNode | undefined;
-  getEdges(REDACTED_SECRETId: string): KnowledgeEdge[];
+  getEdges(nodeId: string): KnowledgeEdge[];
   stats(): GraphStats;
   export(): KnowledgeGraphJSON;
 }
 
 export class InMemoryKnowledgeGraph implements KnowledgeGraphBuilder {
-  private REDACTED_SECRETs = new Map<string, KnowledgeNode>();
+  private nodes = new Map<string, KnowledgeNode>();
   private edges = new Map<string, KnowledgeEdge[]>();
 
-  addNode(REDACTED_SECRET: KnowledgeNode): void {
-    this.REDACTED_SECRETs.set(REDACTED_SECRET.id, REDACTED_SECRET);
+  addNode(node: KnowledgeNode): void {
+    this.nodes.set(node.id, node);
 
     // Index by outgoing edges
-    for (const ref of REDACTED_SECRET.references) {
+    for (const ref of node.references) {
       const edge: KnowledgeEdge = {
-        from: REDACTED_SECRET.id,
+        from: node.id,
         to: hashUrl(ref),
         kind: "references",
         weight: 1.0,
       };
-      const existing = this.edges.get(REDACTED_SECRET.id) || [];
+      const existing = this.edges.get(node.id) || [];
       existing.push(edge);
-      this.edges.set(REDACTED_SECRET.id, existing);
+      this.edges.set(node.id, existing);
     }
   }
 
   getNode(id: string): KnowledgeNode | undefined {
-    return this.REDACTED_SECRETs.get(id);
+    return this.nodes.get(id);
   }
 
-  getEdges(REDACTED_SECRETId: string): KnowledgeEdge[] {
-    return this.edges.get(REDACTED_SECRETId) || [];
+  getEdges(nodeId: string): KnowledgeEdge[] {
+    return this.edges.get(nodeId) || [];
   }
 
   stats(): GraphStats {
-    const maxDepth = [...this.REDACTED_SECRETs.values()].reduce((max, n) => Math.max(max, n.depth), 0);
+    const maxDepth = [...this.nodes.values()].reduce((max, n) => Math.max(max, n.depth), 0);
     return {
-      totalNodes: this.REDACTED_SECRETs.size,
+      totalNodes: this.nodes.size,
       totalEdges: [...this.edges.values()].flat().length,
       maxDepth,
       crawledAt: new Date().toISOString(),
@@ -453,14 +453,14 @@ export class WebGraphWeaver implements Weaver {
 
       try {
         const result = await this.fetcher.fetch(normalized);
-        const REDACTED_SECRET = await this.parse(result, item.depth);
+        const node = await this.parse(result, item.depth);
 
-        this.graph.addNode(REDACTED_SECRET);
+        this.graph.addNode(node);
         this.emit({ type: "fetched", url: normalized, depth: item.depth, timestamp: new Date().toISOString(), metadata: { size: result.size } });
 
         // Queue references
         if (item.depth < this.config.maxDepth) {
-          for (const ref of REDACTED_SECRET.references) {
+          for (const ref of node.references) {
             if (!visited.has(normalizeUrl(ref))) {
               queue.push({ url: ref, depth: item.depth + 1, priority: item.priority });
             }
@@ -502,18 +502,18 @@ export class WebGraphWeaver implements Weaver {
 import { WebGraphWeaver, WatchlistSeed } from "@workspace/web-graph-weaver";
 import { SourceDefinition } from "@workspace/radar-core";
 
-// Convert web graph REDACTED_SECRETs to radar sources
-function graphNodeToSource(REDACTED_SECRET: KnowledgeNode): SourceDefinition {
+// Convert web graph nodes to radar sources
+function graphNodeToSource(node: KnowledgeNode): SourceDefinition {
   return {
-    id: `source:${REDACTED_SECRET.id}`,
+    id: `source:${node.id}`,
     radar_id: "hormuz",
-    kind: REDACTED_SECRET.url.includes("/feed") ? "rss" : "web",
-    name: REDACTED_SECRET.title || REDACTED_SECRET.url,
-    uri: REDACTED_SECRET.url,
-    adapter_config: { depth: REDACTED_SECRET.depth },
+    kind: node.url.includes("/feed") ? "rss" : "web",
+    name: node.title || node.url,
+    uri: node.url,
+    adapter_config: { depth: node.depth },
     trust_profile: {
       default_confidence: 0.7,
-      quality: REDACTED_SECRET.depth === 0 ? "primary" : "secondary",
+      quality: node.depth === 0 ? "primary" : "secondary",
     },
     status: "active",
   };
@@ -556,13 +556,13 @@ describe("WebGraphWeaver", () => {
     const weaver = new WebGraphWeaver({ respectRobots: true });
     // Mock robots.txt disallow
     const graph = await weaver.crawl([{ url: "https://example.com/private", kind: "html", priority: 1 }]);
-    expect(graph.REDACTED_SECRETs.has(hashUrl("https://example.com/private"))).toBe(false);
+    expect(graph.nodes.has(hashUrl("https://example.com/private"))).toBe(false);
   });
 
   it("limits crawl depth", async () => {
     const weaver = new WebGraphWeaver({ maxDepth: 2 });
     const graph = await weaver.crawl(seeds);
-    const maxDepth = [...graph.REDACTED_SECRETs.values()].reduce((max, n) => Math.max(max, n.depth), 0);
+    const maxDepth = [...graph.nodes.values()].reduce((max, n) => Math.max(max, n.depth), 0);
     expect(maxDepth).toBeLessThanOrEqual(2);
   });
 

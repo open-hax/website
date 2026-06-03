@@ -33,9 +33,9 @@ class SiteContentError(RuntimeError):
 class ForkTalesService:
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
-        self._site_REDACTED_SECRET = settings.site_REDACTED_SECRET
-        self._library = self._load_json(self.settings.content_REDACTED_SECRET / "library.json")
-        self._corpus = self._load_json(self.settings.content_REDACTED_SECRET / "corpus.json")
+        self._site_root = settings.site_root
+        self._library = self._load_json(self.settings.content_root / "library.json")
+        self._corpus = self._load_json(self.settings.content_root / "corpus.json")
         self._index = CorpusIndex(self._corpus)
         self._docs_by_id = {item["id"]: item for item in self._library.get("docs", [])}
         self._audio_by_id = {item["id"]: item for item in self._library.get("audio", [])}

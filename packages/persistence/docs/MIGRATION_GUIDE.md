@@ -1701,7 +1701,7 @@ class RollbackManager {
                 proceduresExecuted: this.rollbackPlan.procedures.length,
             };
             
-            // REDACTED_SECRET rollback notification
+            // Send rollback notification
             await this.sendRollbackNotification(result);
             
             return result;
@@ -1718,7 +1718,7 @@ class RollbackManager {
                 duration: endTime - startTime,
             };
             
-            // REDACTED_SECRET rollback failure notification
+            // Send rollback failure notification
             await this.sendRollbackFailureNotification(result, error);
             
             return result;

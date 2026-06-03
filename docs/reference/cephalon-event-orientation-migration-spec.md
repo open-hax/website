@@ -398,7 +398,7 @@ A captured sequence of temporal + external events should be sufficient to re-dri
 
 ## Open questions
 - Should the canonical temporal topic be `temporal.schedule.fired` or `scheduler.fired`?
-- Should `system.tick` survive as prompt-facing only, or remain a REDACTED_SECRET domain event forever?
+- Should `system.tick` survive as prompt-facing only, or remain a public domain event forever?
 - Should the scheduler be embedded per runtime at first, or extracted immediately into a shared package/service?
 - Should RSS polling be modeled as one temporal event plus one IO event, or one combined domain event?
 

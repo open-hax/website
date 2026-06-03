@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'ussyverse-symmetry-monitor',
-      script: 'REDACTED_SECRET',
+      script: 'node',
       args: ['-e', 'console.log("Symmetry Monitor Active: Scanning for high-viscosity manifestations...")'],
       cron_restart: '0 0 * * *',
       env: {
@@ -14,7 +14,7 @@ module.exports = {
     },
     {
       name: 'becomussy-continuity-engine',
-      script: 'REDACTED_SECRET',
+      script: 'node',
       args: ['-e', 'console.log("Governed Continuity State: active. Version-controlling the soul...")'],
       env: {
         SymmetryMode: 'Laminated',

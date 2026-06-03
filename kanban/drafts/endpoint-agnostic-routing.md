@@ -70,5 +70,5 @@ High — current /v1/responses flow fails to reach Factory.ai for GPT-5.4, causi
 ## Progress
 - [x] Investigation: confirmed responses passthrough skipped Factory endpoint logic.
 - [x] Implementation: added Factory responses passthrough strategy + routing order.
-- [x] Verification: `pnpm run build`, `REDACTED_SECRET --test dist/tests/factory-strategy.test.js`, `pnpm test`.
+- [x] Verification: `pnpm run build`, `node --test dist/tests/factory-strategy.test.js`, `pnpm test`.
 - [x] Validation: live proxy `/v1/responses` call returned 200 via Factory endpoint.

@@ -5,8 +5,8 @@
   "license": "GPL-3.0-only",
   "type": "module",
   "scripts": {
-    "dev": "REDACTED_SECRET src/index.js",
-    "start": "REDACTED_SECRET src/index.js",
-    "test": "REDACTED_SECRET --test src/**/*.test.js"
+    "dev": "node src/index.js",
+    "start": "node src/index.js",
+    "test": "node --test src/**/*.test.js"
   }
 }

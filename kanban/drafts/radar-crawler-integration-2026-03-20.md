@@ -34,7 +34,7 @@ This leaves crawler activity invisible to the radar wall.
 - crawler-derived signals can be attached to a radar like `hormuz`
 - clustering/reduction can use those signals without duplicating threads on every cycle
 - the deployed recurring agent cycle uses crawler collection before clustering/reduction
-- the REDACTED_SECRET radar wall can surface crawler-connected threads
+- the public radar wall can surface crawler-connected threads
 
 ## Constraints
 

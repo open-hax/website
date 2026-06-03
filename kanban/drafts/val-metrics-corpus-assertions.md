@@ -179,7 +179,7 @@ All curated-corpus attack families (`:persona-injection`, `:authority-impersonat
 Evidence: Call `(taxonomy/descendants :adversarial)` and verify inclusion of all three families.
 
 ### VAL-CORPUS-008: curated prompts are ingested in Stage 0 (Fetch)
-After Stage 0 completes, the raw data directory must contain curated prompts alongside REDACTED_SECRET dataset prompts. Curated prompts must retain their `:source` metadata pointing to `curated-persona-injections`.
+After Stage 0 completes, the raw data directory must contain curated prompts alongside public dataset prompts. Curated prompts must retain their `:source` metadata pointing to `curated-persona-injections`.
 Evidence: Inspect Stage 0 output; filter records by source; verify curated prompt count matches input file line count.
 
 ### VAL-CORPUS-009: curated prompts are canonicalized
@@ -222,8 +222,8 @@ Evidence: Verify build manifest lists curated source version; modify curated fil
 Two full pipeline builds from the same seed (1337), same config, same curated corpus content must produce byte-identical parquet files and identical checksums. No non-determinism from curated source processing.
 Evidence: Run pipeline twice with seed 1337; compare SHA-256 checksums of all output files; assert identical.
 
-### VAL-CORPUS-019: curated prompts are deduplicated against REDACTED_SECRET datasets
-If a curated prompt is textually identical (after canonicalization) to a prompt from a REDACTED_SECRET source, it must be detected as a duplicate. The dedup policy must be documented: keep curated, keep REDACTED_SECRET, or merge metadata.
+### VAL-CORPUS-019: curated prompts are deduplicated against public datasets
+If a curated prompt is textually identical (after canonicalization) to a prompt from a public source, it must be detected as a duplicate. The dedup policy must be documented: keep curated, keep public, or merge metadata.
 Evidence: Insert a known duplicate; run pipeline; verify duplicate-detection check identifies it; verify the resolution policy is applied.
 
 ### VAL-CORPUS-020: curated corpus directory structure is valid

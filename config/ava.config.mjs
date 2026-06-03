@@ -4,14 +4,14 @@
 export default {
   files: [
     '**/*.test.{js,ts,mjs,cjs}',
-    '!**/REDACTED_SECRET_modules/**',
+    '!**/node_modules/**',
     '!**/dist/**',
     '!**/build/**'
   ],
   extensions: {
     ts: 'module',
   },
-  REDACTED_SECRETArguments: [
+  nodeArguments: [
     '--import=tsx',
     '--no-warnings',
   ],

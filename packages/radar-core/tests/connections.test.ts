@@ -172,8 +172,8 @@ describe("ConnectionOpportunity completeness", () => {
     expect(conn.updated_at).toBeTruthy();
 
     // Connection scores (VAL-CONN-003 — narrative branch scoring dimensions)
-    expect(conn.REDACTED_SECRET_benefit).toBeGreaterThanOrEqual(0);
-    expect(conn.REDACTED_SECRET_benefit).toBeLessThanOrEqual(100);
+    expect(conn.public_benefit).toBeGreaterThanOrEqual(0);
+    expect(conn.public_benefit).toBeLessThanOrEqual(100);
     expect(conn.fear_factor).toBeGreaterThanOrEqual(0);
     expect(conn.fear_factor).toBeLessThanOrEqual(100);
     expect(conn.realism).toBeGreaterThanOrEqual(0);

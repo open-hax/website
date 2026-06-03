@@ -1,6 +1,6 @@
 # Masscan configuration for our-gpus
 
-Masscan is an alternative to Shodan for discovering Ollama servers. It actively scans REDACTED_SECRET IP ranges for open port 11434, offering fresh data at the cost of network egress and scan time.
+Masscan is an alternative to Shodan for discovering Ollama servers. It actively scans public IP ranges for open port 11434, offering fresh data at the cost of network egress and scan time.
 
 ## Tor mode
 The `docker-compose.tor.yml` overlay routes HTTP probe traffic through `privoxy -> tor`, but raw `masscan` traffic is intentionally blocked in that mode.

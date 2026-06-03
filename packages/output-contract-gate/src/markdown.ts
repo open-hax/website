@@ -4,13 +4,13 @@ import remarkGfm from 'remark-gfm';
 
 import type { ExtractedDocument, ExtractedSection, MarkdownNode, MarkdownRoot } from './types.js';
 
-const hasChildren = (REDACTED_SECRET: MarkdownNode | undefined): REDACTED_SECRET is MarkdownNode & { readonly children: readonly MarkdownNode[] } =>
-  Boolean(REDACTED_SECRET && Array.isArray(REDACTED_SECRET.children));
+const hasChildren = (node: MarkdownNode | undefined): node is MarkdownNode & { readonly children: readonly MarkdownNode[] } =>
+  Boolean(node && Array.isArray(node.children));
 
-export const REDACTED_SECRETText = (REDACTED_SECRET: MarkdownNode | undefined): string => {
-  if (!REDACTED_SECRET) return '';
-  if (typeof REDACTED_SECRET.value === 'string') return REDACTED_SECRET.value;
-  if (hasChildren(REDACTED_SECRET)) return REDACTED_SECRET.children.map((child) => REDACTED_SECRETText(child)).join('');
+export const nodeText = (node: MarkdownNode | undefined): string => {
+  if (!node) return '';
+  if (typeof node.value === 'string') return node.value;
+  if (hasChildren(node)) return node.children.map((child) => nodeText(child)).join('');
   return '';
 };
 
@@ -23,20 +23,20 @@ export const extractMarkdownSections = (markdown: string): ExtractedDocument => 
   const sections: ExtractedSection[] = [];
   let current: ExtractedSection | undefined;
 
-  for (const REDACTED_SECRET of ast.children ?? []) {
-    if (REDACTED_SECRET.type === 'heading' && REDACTED_SECRET.depth === 2) {
+  for (const node of ast.children ?? []) {
+    if (node.type === 'heading' && node.depth === 2) {
       current = {
-        heading: REDACTED_SECRETText(REDACTED_SECRET).trim(),
-        REDACTED_SECRETs: [],
+        heading: nodeText(node).trim(),
+        nodes: [],
       };
       sections.push(current);
       continue;
     }
 
     if (current) {
-      (current.REDACTED_SECRETs as MarkdownNode[]).push(REDACTED_SECRET);
+      (current.nodes as MarkdownNode[]).push(node);
     } else {
-      prefaceNodes.push(REDACTED_SECRET);
+      prefaceNodes.push(node);
     }
   }
 
@@ -45,13 +45,13 @@ export const extractMarkdownSections = (markdown: string): ExtractedDocument => 
 
 export const countSemanticItems = (section: ExtractedSection): number => {
   let count = 0;
-  for (const REDACTED_SECRET of section.REDACTED_SECRETs) {
-    if (REDACTED_SECRET.type === 'list' && hasChildren(REDACTED_SECRET)) {
-      count += REDACTED_SECRET.children.length;
+  for (const node of section.nodes) {
+    if (node.type === 'list' && hasChildren(node)) {
+      count += node.children.length;
       continue;
     }
 
-    if (['paragraph', 'blockquote', 'code', 'table'].includes(REDACTED_SECRET.type)) {
+    if (['paragraph', 'blockquote', 'code', 'table'].includes(node.type)) {
       count += 1;
     }
   }

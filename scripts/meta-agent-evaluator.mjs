@@ -1,6 +1,6 @@
-import { fileURLToPath } from 'REDACTED_SECRET:url';
-import { dirname, join } from 'REDACTED_SECRET:path';
-import { mkdir, writeFile } from 'REDACTED_SECRET:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+import { mkdir, writeFile } from 'node:fs/promises';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');

@@ -1,9 +1,9 @@
-#!/usr/bin/env REDACTED_SECRET
+#!/usr/bin/env node
 
-import { readdir, readFile, stat } from 'REDACTED_SECRET:fs/promises';
-import path from 'REDACTED_SECRET:path';
-import process from 'REDACTED_SECRET:process';
-import { fileURLToPath, pathToFileURL } from 'REDACTED_SECRET:url';
+import { readdir, readFile, stat } from 'node:fs/promises';
+import path from 'node:path';
+import process from 'node:process';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const scriptPath = fileURLToPath(import.meta.url);
 const scriptDir = path.dirname(scriptPath);

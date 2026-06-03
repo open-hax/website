@@ -44,7 +44,7 @@ spec:
                 - /bin/sh
                 - -lc
                 - >-
-                  REDACTED_SECRET -e "fetch('http://127.0.0.1:8789/health',{headers:{Authorization:'Bearer '+(process.env.PROXY_AUTH_TOKEN||'')}}).then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+                  node -e "fetch('http://127.0.0.1:8789/health',{headers:{Authorization:'Bearer '+(process.env.PROXY_AUTH_TOKEN||'')}}).then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
             failureThreshold: 24
             periodSeconds: 10
           readinessProbe:
@@ -53,7 +53,7 @@ spec:
                 - /bin/sh
                 - -lc
                 - >-
-                  REDACTED_SECRET -e "fetch('http://127.0.0.1:8789/health',{headers:{Authorization:'Bearer '+(process.env.PROXY_AUTH_TOKEN||'')}}).then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+                  node -e "fetch('http://127.0.0.1:8789/health',{headers:{Authorization:'Bearer '+(process.env.PROXY_AUTH_TOKEN||'')}}).then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
             periodSeconds: 10
             timeoutSeconds: 5
             failureThreshold: 3
@@ -63,7 +63,7 @@ spec:
                 - /bin/sh
                 - -lc
                 - >-
-                  REDACTED_SECRET -e "fetch('http://127.0.0.1:8789/health',{headers:{Authorization:'Bearer '+(process.env.PROXY_AUTH_TOKEN||'')}}).then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+                  node -e "fetch('http://127.0.0.1:8789/health',{headers:{Authorization:'Bearer '+(process.env.PROXY_AUTH_TOKEN||'')}}).then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
             initialDelaySeconds: 30
             periodSeconds: 20
             timeoutSeconds: 5

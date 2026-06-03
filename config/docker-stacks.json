@@ -3,7 +3,7 @@
   "stacks": [
     {
       "name": "devel",
-      "aliases": ["REDACTED_SECRET"],
+      "aliases": ["root"],
       "cwd": ".",
       "files": ["docker-compose.yml"],
       "projectName": "devel",

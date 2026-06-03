@@ -96,7 +96,7 @@ function initStats() {
   const counts = state.library.counts || {};
   const stats = [
     ['visible docs', counts.visibleDocs || 0],
-    ['audio REDACTED_SECRETs', counts.audio || 0],
+    ['audio nodes', counts.audio || 0],
     ['playlists', counts.playlists || 0],
     ['gallery shards', counts.gallery || 0],
     ['oracle chunks', counts.corpusChunks || 0],

@@ -10,7 +10,7 @@ This report provides comprehensive tool recommendations for implementing a knowl
 1. **Markdown Processing** - Extract links, parse frontmatter, handle Obsidian wikilinks
 2. **Code Analysis** - Extract imports, dependencies, and code relationships  
 3. **Dependency Analysis** - Parse package.json files and npm dependencies
-4. **Graph Storage** - Store REDACTED_SECRETs and edges efficiently
+4. **Graph Storage** - Store nodes and edges efficiently
 5. **Visualization** - Interactive graph exploration and analysis
 6. **Web Crawling** - Extract external documentation and resources
 
@@ -62,8 +62,8 @@ const extractImports = (code: string) => {
   traverse(ast, {
     ImportDeclaration(path) {
       imports.push({
-        source: path.REDACTED_SECRET.source.value,
-        specifiers: path.REDACTED_SECRET.specifiers.map(s => s.local.name)
+        source: path.node.source.value,
+        specifiers: path.node.specifiers.map(s => s.local.name)
       })
     }
   })
@@ -86,7 +86,7 @@ import madge from 'madge'
 const analyzeDependencies = async (path: string) => {
   const graph = await madge(path, {
     fileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-    excludeRegExp: [/REDACTED_SECRET_modules/, /\.test\.|\.spec\./]
+    excludeRegExp: [/node_modules/, /\.test\.|\.spec\./]
   })
   
   return {
@@ -118,12 +118,12 @@ class KnowledgeGraph {
     this.initializeSchema()
   }
   
-  addNode(REDACTED_SECRET: Node): void {
+  addNode(node: Node): void {
     const stmt = this.db.prepare(`
-      INSERT OR REPLACE INTO REDACTED_SECRETs (id, type, data, metadata)
+      INSERT OR REPLACE INTO nodes (id, type, data, metadata)
       VALUES (?, ?, ?, ?)
     `)
-    stmt.run(REDACTED_SECRET.id, REDACTED_SECRET.type, JSON.stringify(REDACTED_SECRET.data), JSON.stringify(REDACTED_SECRET.metadata))
+    stmt.run(node.id, node.type, JSON.stringify(node.data), JSON.stringify(node.metadata))
   }
   
   addEdge(edge: Edge): void {
@@ -153,11 +153,11 @@ const KnowledgeGraphVisualization = ({ graphData }) => {
   const [elements, setElements] = useState([])
   
   useEffect(() => {
-    const REDACTED_SECRETs = graphData.REDACTED_SECRETs.map(REDACTED_SECRET => ({
+    const nodes = graphData.nodes.map(node => ({
       data: { 
-        id: REDACTED_SECRET.id, 
-        label: REDACTED_SECRET.data.title || REDACTED_SECRET.id,
-        type: REDACTED_SECRET.type
+        id: node.id, 
+        label: node.data.title || node.id,
+        type: node.type
       }
     }))
     
@@ -170,7 +170,7 @@ const KnowledgeGraphVisualization = ({ graphData }) => {
       }
     }))
     
-    setElements([...REDACTED_SECRETs, ...edges])
+    setElements([...nodes, ...edges])
   }, [graphData])
   
   return (
@@ -180,7 +180,7 @@ const KnowledgeGraphVisualization = ({ graphData }) => {
       layout={{ name: 'cose' }}
       stylesheet={[
         {
-          selector: 'REDACTED_SECRET',
+          selector: 'node',
           style: {
             'background-color': 'data(type)',
             'label': 'data(label)',
@@ -207,13 +207,13 @@ const KnowledgeGraphVisualization = ({ graphData }) => {
 
 | **Component** | **Recommended Tool** | **Source** | **Rationale** | **Integration** |
 |---------------|---------------------|------------|---------------|----------------|
-| **HTTP Client** | **REDACTED_SECRET-fetch** | **External** | Modern fetch API for Node.js, TypeScript support | External resource fetching |
+| **HTTP Client** | **node-fetch** | **External** | Modern fetch API for Node.js, TypeScript support | External resource fetching |
 | **HTML Parsing** | **cheerio** | **External** | jQuery-like API for server-side DOM manipulation | Extract content from web pages |
 | **Rate Limiting** | **p-queue** | **External** | Promise-based queue with concurrency control | Respectful crawling |
 
 **Implementation Example:**
 ```typescript
-import fetch from 'REDACTED_SECRET-fetch'
+import fetch from 'node-fetch'
 import { load } from 'cheerio'
 import PQueue from 'p-queue'
 
@@ -249,7 +249,7 @@ class WebCrawler {
   "better-sqlite3": "^8.7.0",
   "cytoscape": "^3.26.0",
   "react-cytoscapejs": "^2.0.0",
-  "REDACTED_SECRET-fetch": "^3.3.0",
+  "node-fetch": "^3.3.0",
   "cheerio": "^1.0.0-rc.12",
   "p-queue": "^7.3.0"
 }
@@ -266,7 +266,7 @@ class WebCrawler {
 
 ### **Phase 1: Core Infrastructure (Week 1-2)**
 1. Set up SQLite database with graph schema
-2. Implement basic REDACTED_SECRET/edge storage and retrieval
+2. Implement basic node/edge storage and retrieval
 3. Create TypeScript interfaces for all data models
 4. Set up build pipeline and testing framework
 
@@ -313,7 +313,7 @@ class WebCrawler {
 ### **Technical Metrics**
 - **Coverage**: Extract 95%+ of links, imports, and dependencies
 - **Performance**: Graph queries under 100ms for typical operations
-- **Scalability**: Handle 10,000+ REDACTED_SECRETs and 50,000+ edges
+- **Scalability**: Handle 10,000+ nodes and 50,000+ edges
 - **Accuracy**: 99%+ correct relationship identification
 
 ### **User Experience Metrics**
@@ -328,7 +328,7 @@ class WebCrawler {
 - Follow existing promethean ESLint configuration
 - Use TypeScript strict mode throughout
 - Implement comprehensive test coverage
-- Document all REDACTED_SECRET APIs and interfaces
+- Document all public APIs and interfaces
 
 ### **Performance Considerations**
 - Implement efficient graph algorithms

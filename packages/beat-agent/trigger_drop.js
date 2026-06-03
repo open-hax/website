@@ -15,7 +15,7 @@ async function main() {
 
   console.log("Composing sillyshit motif...");
   const d = drumClip({ pattern: "x---x---x---x---" });
-  const m = melodyClip({ REDACTED_SECRET: "C4", scaleName: "minor", degrees: [0, 2, 4, 6], pattern: "x-x-x-x-x-x-x-x-" });
+  const m = melodyClip({ root: "C4", scaleName: "minor", degrees: [0, 2, 4, 6], pattern: "x-x-x-x-x-x-x-x-" });
 
   const midiPath = path.join(process.cwd(), "sillyshit.mid");
   writeClipsToMidi([d, m], midiPath);

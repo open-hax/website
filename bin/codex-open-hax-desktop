@@ -79,7 +79,7 @@ import json
 import os
 from pathlib import Path
 
-path = Path(REDACTED_SECRET'AUTH_FILE'])
+path = Path(os.environ['AUTH_FILE'])
 path.parent.mkdir(parents=True, exist_ok=True)
 current = None
 if path.exists():
@@ -89,7 +89,7 @@ if path.exists():
         current = None
 next_value = {
     'auth_mode': 'apikey',
-    'OPENAI_API_KEY': REDACTED_SECRET'TOKEN'],
+    'OPENAI_API_KEY': os.environ['TOKEN'],
 }
 if current != next_value:
     path.write_text(json.dumps(next_value, indent=2) + '\n')

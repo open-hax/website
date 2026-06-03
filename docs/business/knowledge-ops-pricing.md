@@ -7,7 +7,7 @@ A multi-tenant domain-aware knowledge management platform:
 - Auto-translates content
 - Expert review UI for SME corrections
 - Feeds labeled data back into fine-tuning pipeline
-- Multi-layer: REDACTED_SECRET assistant, CMS, knowledge worker, coding agent, SME review
+- Multi-layer: public assistant, CMS, knowledge worker, coding agent, SME review
 
 ## Open Source Business Model
 

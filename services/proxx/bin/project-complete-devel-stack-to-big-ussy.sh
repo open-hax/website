@@ -32,7 +32,7 @@ Options:
   --apply                       Actually execute actions. Default is dry-run.
   --remote-host HOST            SSH target. Default: error@big.ussy.promethean.rest
   --remote-ssh-key PATH         SSH private key. Default: ~/.ssh/id_ed25519
-  --remote-workspace-REDACTED_SECRET PATH  Remote workspace REDACTED_SECRET. Default: /home/error/devel
+  --remote-workspace-root PATH  Remote workspace root. Default: /home/error/devel
   --owner-subject SUBJECT       Federation owner subject. Defaults to local services/proxx/.env value.
   --remote-canon-url URL        Public URL for remote canonical proxx. Default: http://big.ussy.promethean.rest:8789
   --remote-tunnel-port PORT     Reverse SSH tunnel port on remote host. Default: 18789
@@ -56,7 +56,7 @@ while [[ $# -gt 0 ]]; do
     --apply) APPLY=1 ;;
     --remote-host) REMOTE_HOST="$2"; shift ;;
     --remote-ssh-key) REMOTE_SSH_KEY="$2"; shift ;;
-    --remote-workspace-REDACTED_SECRET) REMOTE_WORKSPACE_ROOT="$2"; shift ;;
+    --remote-workspace-root) REMOTE_WORKSPACE_ROOT="$2"; shift ;;
     --owner-subject) OWNER_SUBJECT="$2"; shift ;;
     --remote-canon-url) REMOTE_CANON_URL="$2"; shift ;;
     --remote-tunnel-port) REMOTE_TUNNEL_PORT="$2"; shift ;;
@@ -74,7 +74,7 @@ require_cmd() {
   command -v "$1" >/dev/null 2>&1 || { echo "Missing required command: $1" >&2; exit 1; }
 }
 
-for cmd in ssh rsync curl python3 REDACTED_SECRET; do
+for cmd in ssh rsync curl python3 node; do
   require_cmd "$cmd"
 done
 
@@ -193,7 +193,7 @@ SYNC_PATHS=(
 
 RSYNC_EXCLUDES=(
   --exclude '.git'
-  --exclude 'REDACTED_SECRET_modules'
+  --exclude 'node_modules'
   --exclude '.turbo'
   --exclude 'coverage'
   --exclude '.next'
@@ -206,7 +206,7 @@ RSYNC_EXCLUDES=(
 )
 
 build_local_artifacts() {
-  run "cd ${WORKSPACE_ROOT@Q}/orgs/octave-commons/cephalon/packages/cephalon-ts && ./REDACTED_SECRET_modules/.bin/tsup --config tsup.standalone.ts"
+  run "cd ${WORKSPACE_ROOT@Q}/orgs/octave-commons/cephalon/packages/cephalon-ts && ./node_modules/.bin/tsup --config tsup.standalone.ts"
   run "mkdir -p ${WORKSPACE_ROOT@Q}/services/cephalon-hive/dist"
   run "rsync -a ${WORKSPACE_ROOT@Q}/orgs/octave-commons/cephalon/packages/cephalon-ts/dist/ ${WORKSPACE_ROOT@Q}/services/cephalon-hive/dist/"
 }
@@ -348,20 +348,20 @@ set -euo pipefail
 
 relay_port="$1"
 tunnel_port="$2"
-remote_workspace_REDACTED_SECRET="$3"
+remote_workspace_root="$3"
 
-python3 - "$relay_port" "$tunnel_port" "$remote_workspace_REDACTED_SECRET" <<'PY'
+python3 - "$relay_port" "$tunnel_port" "$remote_workspace_root" <<'PY'
 import os
 import subprocess
 import sys
 import time
 from pathlib import Path
 
-relay_port, tunnel_port, remote_workspace_REDACTED_SECRET = sys.argv[1:4]
+relay_port, tunnel_port, remote_workspace_root = sys.argv[1:4]
 pattern = f"socat.*TCP-LISTEN:{relay_port}.*TCP:127.0.0.1:{tunnel_port}"
 subprocess.run(['bash', '-lc', f"pkill -f '{pattern}' >/dev/null 2>&1 || true"], check=False)
 
-log_path = Path(remote_workspace_REDACTED_SECRET) / 'services' / 'proxx' / 'logs' / 'local-canonical-relay.log'
+log_path = Path(remote_workspace_root) / 'services' / 'proxx' / 'logs' / 'local-canonical-relay.log'
 log_path.parent.mkdir(parents=True, exist_ok=True)
 with log_path.open('ab', buffering=0) as handle:
     process = subprocess.Popen(
@@ -459,16 +459,16 @@ start_sync_daemons() {
       PROXX_CANON_SYNC_INTERVAL_MS="300000" \
       PROXX_CANON_SYNC_INITIAL_DELAY_MS="20000" \
       PROXX_CANON_SYNC_JITTER_MS="15000" \
-      REDACTED_SECRET "${WORKSPACE_ROOT}/services/proxx/sync/canonical-federation-sync.mjs" >"${local_log}" 2>&1 &
+      node "${WORKSPACE_ROOT}/services/proxx/sync/canonical-federation-sync.mjs" >"${local_log}" 2>&1 &
     echo $! >"${local_pid}"
 
-    ssh -i "$REMOTE_SSH_KEY" "$REMOTE_HOST" "mkdir -p ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/logs ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/.runtime; if [ -f ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/.runtime/canonical-sync-remote.pid ] && kill -0 \$(cat ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/.runtime/canonical-sync-remote.pid) >/dev/null 2>&1; then kill \$(cat ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/.runtime/canonical-sync-remote.pid) >/dev/null 2>&1 || true; fi; nohup env PROXX_CANON_SYNC_BASE_URL=http://127.0.0.1:8789 PROXX_CANON_SYNC_AUTH_TOKEN=${REMOTE_CANON_TOKEN@Q} PROXX_CANON_SYNC_OWNER_SUBJECT=${OWNER_SUBJECT@Q} PROXX_CANON_SYNC_PEER_ID=local-core PROXX_CANON_SYNC_INTERVAL_MS=300000 PROXX_CANON_SYNC_INITIAL_DELAY_MS=25000 PROXX_CANON_SYNC_JITTER_MS=20000 REDACTED_SECRET ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/sync/canonical-federation-sync.mjs > ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/logs/canonical-sync-remote.log 2>&1 & echo \$! > ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/.runtime/canonical-sync-remote.pid"
+    ssh -i "$REMOTE_SSH_KEY" "$REMOTE_HOST" "mkdir -p ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/logs ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/.runtime; if [ -f ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/.runtime/canonical-sync-remote.pid ] && kill -0 \$(cat ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/.runtime/canonical-sync-remote.pid) >/dev/null 2>&1; then kill \$(cat ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/.runtime/canonical-sync-remote.pid) >/dev/null 2>&1 || true; fi; nohup env PROXX_CANON_SYNC_BASE_URL=http://127.0.0.1:8789 PROXX_CANON_SYNC_AUTH_TOKEN=${REMOTE_CANON_TOKEN@Q} PROXX_CANON_SYNC_OWNER_SUBJECT=${OWNER_SUBJECT@Q} PROXX_CANON_SYNC_PEER_ID=local-core PROXX_CANON_SYNC_INTERVAL_MS=300000 PROXX_CANON_SYNC_INITIAL_DELAY_MS=25000 PROXX_CANON_SYNC_JITTER_MS=20000 node ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/sync/canonical-federation-sync.mjs > ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/logs/canonical-sync-remote.log 2>&1 & echo \$! > ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/.runtime/canonical-sync-remote.pid"
   fi
 }
 
 prime_sync_once() {
-  run "env PROXX_CANON_SYNC_BASE_URL=${LOCAL_CANON_URL@Q} PROXX_CANON_SYNC_AUTH_TOKEN=${LOCAL_CANON_TOKEN@Q} PROXX_CANON_SYNC_OWNER_SUBJECT=${OWNER_SUBJECT@Q} PROXX_CANON_SYNC_PEER_ID=big-ussy-canonical PROXX_CANON_SYNC_ONCE=true PROXX_CANON_SYNC_INITIAL_DELAY_MS=1 REDACTED_SECRET ${WORKSPACE_ROOT@Q}/services/proxx/sync/canonical-federation-sync.mjs"
-  run_remote "env PROXX_CANON_SYNC_BASE_URL=http://127.0.0.1:8789 PROXX_CANON_SYNC_AUTH_TOKEN=${REMOTE_CANON_TOKEN@Q} PROXX_CANON_SYNC_OWNER_SUBJECT=${OWNER_SUBJECT@Q} PROXX_CANON_SYNC_PEER_ID=local-core PROXX_CANON_SYNC_ONCE=true PROXX_CANON_SYNC_INITIAL_DELAY_MS=1 REDACTED_SECRET ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/sync/canonical-federation-sync.mjs"
+  run "env PROXX_CANON_SYNC_BASE_URL=${LOCAL_CANON_URL@Q} PROXX_CANON_SYNC_AUTH_TOKEN=${LOCAL_CANON_TOKEN@Q} PROXX_CANON_SYNC_OWNER_SUBJECT=${OWNER_SUBJECT@Q} PROXX_CANON_SYNC_PEER_ID=big-ussy-canonical PROXX_CANON_SYNC_ONCE=true PROXX_CANON_SYNC_INITIAL_DELAY_MS=1 node ${WORKSPACE_ROOT@Q}/services/proxx/sync/canonical-federation-sync.mjs"
+  run_remote "env PROXX_CANON_SYNC_BASE_URL=http://127.0.0.1:8789 PROXX_CANON_SYNC_AUTH_TOKEN=${REMOTE_CANON_TOKEN@Q} PROXX_CANON_SYNC_OWNER_SUBJECT=${OWNER_SUBJECT@Q} PROXX_CANON_SYNC_PEER_ID=local-core PROXX_CANON_SYNC_ONCE=true PROXX_CANON_SYNC_INITIAL_DELAY_MS=1 node ${REMOTE_WORKSPACE_ROOT@Q}/services/proxx/sync/canonical-federation-sync.mjs"
 }
 
 main() {

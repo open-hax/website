@@ -81,16 +81,16 @@ const validateAllowedNodeTypes = (
   for (const section of sections) {
     const expectedSection = contract.sectionsByHeading[section.heading];
     if (!expectedSection) continue;
-    for (const REDACTED_SECRET of section.REDACTED_SECRETs) {
-      if (!expectedSection.allowedNodeTypes.includes(REDACTED_SECRET.type)) {
+    for (const node of section.nodes) {
+      if (!expectedSection.allowedNodeTypes.includes(node.type)) {
         failures.push(
           buildFailure(contract, {
-            ruleId: 'rule/allowed-REDACTED_SECRET-types',
+            ruleId: 'rule/allowed-node-types',
             sectionId: expectedSection.id,
             heading: section.heading,
             expected: { allowedNodeTypes: expectedSection.allowedNodeTypes },
-            actual: { REDACTED_SECRETType: REDACTED_SECRET.type },
-            message: `Section \`${section.heading}\` contains disallowed REDACTED_SECRET type \`${REDACTED_SECRET.type}\``,
+            actual: { nodeType: node.type },
+            message: `Section \`${section.heading}\` contains disallowed node type \`${node.type}\``,
           }),
         );
       }

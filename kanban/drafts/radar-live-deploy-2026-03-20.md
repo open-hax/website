@@ -16,7 +16,7 @@ category: "specs"
 
 ## Goal
 
-Deploy a live threat-radar platform to `ssh error@ussy.promethean.rest` with REDACTED_SECRET hostname `radar.promethean.rest`, including:
+Deploy a live threat-radar platform to `ssh error@ussy.promethean.rest` with public hostname `radar.promethean.rest`, including:
 
 - recurring Hormuz risk update cycle
 - threat-radar web + MCP backend
@@ -24,7 +24,7 @@ Deploy a live threat-radar platform to `ssh error@ussy.promethean.rest` with RED
 - MCP family services
 - deployed Hormuz clock MCP
 - Fork Tales crawler/weaver support
-- a Bluesky REDACTED_SECRETation of the current threat clock
+- a Bluesky publication of the current threat clock
 
 ## Constraints
 
@@ -53,7 +53,7 @@ Deploy a live threat-radar platform to `ssh error@ussy.promethean.rest` with RED
 ## Risks
 
 - `threat-radar-deploy` appears Render-oriented and may need SSH/Docker deployment glue.
-- Current threat-radar clock rendering depends on live snapshots; without packet submission the REDACTED_SECRET wall may stay visually empty.
+- Current threat-radar clock rendering depends on live snapshots; without packet submission the public wall may stay visually empty.
 - Fork Tales crawler has local package dependencies and must be deployed with the matching workspace package paths.
 - Existing Caddy config must be updated carefully to avoid breaking `ussy.promethean.rest`, `battlebussy.*`, or `voxx.*`.
 
@@ -63,7 +63,7 @@ Deploy a live threat-radar platform to `ssh error@ussy.promethean.rest` with RED
 - add container-first radar stack config
 - make threat-radar backend automation-friendly for recurring jobs
 - add Hormuz packet export bridge from bundle -> radar backend
-- wire REDACTED_SECRET proxy route for `radar.promethean.rest`
+- wire public proxy route for `radar.promethean.rest`
 
 ### Phase 2 — Sync and deploy to remote
 - sync required workspace slices to `/home/error/devel`
@@ -74,7 +74,7 @@ Deploy a live threat-radar platform to `ssh error@ussy.promethean.rest` with RED
 ### Phase 3 — Seed + verify
 - create/ensure `hormuz` radar
 - run one recurring update cycle
-- verify openplanner, MCP family, hormuz MCP, crawler, threat-radar API, and REDACTED_SECRET site
+- verify openplanner, MCP family, hormuz MCP, crawler, threat-radar API, and public site
 
 ### Phase 4 — Publish
 - regenerate social payloads from current Hormuz snapshot

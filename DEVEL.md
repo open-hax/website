@@ -40,7 +40,7 @@ Over:
 1. If a namespace exceeds ~400 lines, it is a candidate for slicing by domain.
 2. If a function is used by two or more domains, promote it to `tools.shared` or `tools.media`.
 3. Keep `agent-hydration` thin: settings, passive hydration, message assembly, and tool-suite composition only. Implementation belongs in domain slices.
-4. Private helpers (`defn-`) should outnumber REDACTED_SECRET functions in domain namespaces. The REDACTED_SECRET surface is the tool factory and any data schemas.
+4. Private helpers (`defn-`) should outnumber public functions in domain namespaces. The public surface is the tool factory and any data schemas.
 5. Never import a domain slice into another domain slice to grab a helper — move the helper up to shared.
 
 ## Modern CLJS Patterns

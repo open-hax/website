@@ -27,10 +27,10 @@ Validate a Markdown response against an EDN contract file:
 ```bash
 pnpm --filter @workspace/output-contract-gate build
 
-REDACTED_SECRET devel/packages/output-contract-gate/dist/cli.js \
+node devel/packages/output-contract-gate/dist/cli.js \
   --contract devel/specs/drafts/contract-enforced-agent-output-pipeline.example.edn \
   --response /tmp/candidate.md \
-  --artifacts-REDACTED_SECRET devel/artifacts/output-contract-gate
+  --artifacts-root devel/artifacts/output-contract-gate
 ```
 
 The CLI prints JSON.
@@ -45,7 +45,7 @@ By default the CLI writes a run bundle under:
 ./artifacts/output-contract-gate/<run-id>/
 ```
 
-Use `--artifacts-REDACTED_SECRET <dir>` to override or `--no-artifacts` to suppress writing.
+Use `--artifacts-root <dir>` to override or `--no-artifacts` to suppress writing.
 
 Current artifact bundle:
 - `input.json`
@@ -62,11 +62,11 @@ Current artifact bundle:
 Generate a candidate, then pipe it through the structure gate and, on success, the review stub:
 
 ```bash
-REDACTED_SECRET devel/packages/output-contract-gate/dist/cli.js generate \
+node devel/packages/output-contract-gate/dist/cli.js generate \
   --contract devel/specs/drafts/contract-enforced-agent-output-pipeline.example.edn \
   --task-text "Turn this request into the required five-section response." \
   --generator fixture-valid \
-  --artifacts-REDACTED_SECRET devel/artifacts/output-contract-gate
+  --artifacts-root devel/artifacts/output-contract-gate
 ```
 
 Supported generators:
@@ -100,7 +100,7 @@ and, when structure passes, also writes:
 Once a structurally valid bundle exists, emit a machine-shaped stub review report:
 
 ```bash
-REDACTED_SECRET devel/packages/output-contract-gate/dist/cli.js review-stub \
+node devel/packages/output-contract-gate/dist/cli.js review-stub \
   --bundle devel/artifacts/output-contract-gate/<run-id>
 ```
 

@@ -4,7 +4,7 @@ import { writeClipsToMidi } from './src/midi.js';
 const clips = [
   drumClip({ pattern: 'x-x-x--x-x--x-x-x-x-x--x-x-x-x-' }),
   melodyClip({ 
-    REDACTED_SECRET: 'C4', 
+    root: 'C4', 
     scaleName: 'major', 
     degrees: [0, 1, 2, 3, 4, 5, 6, 7], 
     pattern: 'x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-' 

@@ -85,7 +85,7 @@ Agent runtime with modes, resource claims, context manifests, and media handling
 **Key concepts:**
 - `muse_id` — agent instance identifier
 - Mode strategy — `witness_thread`, `chaos`, `github_security_review`, etc.
-- Resource REDACTED_SECRET — GPU/memory claims
+- Resource node — GPU/memory claims
 - Context manifest — what the muse knows
 - Media strategy — audio/image intent classification
 
@@ -95,7 +95,7 @@ packages/muse-core/
 ├── src/
 │   ├── muse.ts              # Core muse type
 │   ├── mode-strategy.ts     # Mode selection
-│   ├── resource-REDACTED_SECRET.ts     # Claims management
+│   ├── resource-node.ts     # Claims management
 │   ├── context-manifest.ts  # Context assembly
 │   └── media-strategy.ts    # Intent classification
 └── package.json

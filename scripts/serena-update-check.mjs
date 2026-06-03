@@ -1,8 +1,8 @@
-import { execSync } from 'REDACTED_SECRET:child_process';
-import { dirname, join } from 'REDACTED_SECRET:path';
-import { mkdir, readFile, writeFile } from 'REDACTED_SECRET:fs/promises';
-import { fileURLToPath } from 'REDACTED_SECRET:url';
-import { setTimeout } from 'REDACTED_SECRET:timers/promises';
+import { execSync } from 'node:child_process';
+import { dirname, join } from 'node:path';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { setTimeout } from 'node:timers/promises';
 import ioPkg from '@pm2/io';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));

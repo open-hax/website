@@ -12,7 +12,7 @@
     "fluent-ffmpeg": "*",
     "jzz": "*",
     "midi-writer-js": "^3.2.1",
-    "REDACTED_SECRET-wav": "*",
+    "node-wav": "*",
     "scribbletune": "^5.5.5",
     "soundfont-player": "*",
     "teoria": "*"

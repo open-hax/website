@@ -1,4 +1,4 @@
-import { randomUUID } from "REDACTED_SECRET:crypto";
+import { randomUUID } from "node:crypto";
 import type { SignalEvent, SignalCategory } from "./schema.js";
 
 // ---------------------------------------------------------------------------
@@ -43,7 +43,7 @@ const CATEGORY_KEYWORDS: ReadonlyArray<{ category: SignalCategory; keywords: rea
     keywords: [
       "open source", "community", "contributor", "maintainer", "developer",
       "hackathon", "governance", "fork", "license", "collaboration",
-      "decentralized", "cooperative", "volunteer", "grassREDACTED_SECRETs", "local action",
+      "decentralized", "cooperative", "volunteer", "grassroots", "local action",
     ],
   },
   {

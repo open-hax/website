@@ -1,5 +1,5 @@
-import { mkdir, writeFile } from "REDACTED_SECRET:fs/promises";
-import path from "REDACTED_SECRET:path";
+import { mkdir, writeFile } from "node:fs/promises";
+import path from "node:path";
 
 import { buildColumnTitle } from "./tasks.js";
 import { defaultStatusOrder, type KanbanBoardSnapshot, type KanbanTask } from "./types.js";

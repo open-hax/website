@@ -1,5 +1,5 @@
-import assert from 'REDACTED_SECRET:assert/strict';
-import test from 'REDACTED_SECRET:test';
+import assert from 'node:assert/strict';
+import test from 'node:test';
 
 import { loadTargetsFromEnv, resolveTargetAuthToken } from './config.js';
 import { parseCaddyRoutes, parseDockerPsLines } from './parse.js';
@@ -74,7 +74,7 @@ test('loadTargetsFromEnv parses configured host targets', () => {
         id: 'prod',
         label: 'prod',
         mode: 'local',
-        REDACTED_SECRETBaseUrl: 'https://ussy.promethean.rest/fleet/',
+        publicBaseUrl: 'https://ussy.promethean.rest/fleet/',
         routeFiles: ['/a', '/b'],
         authTokenEnv: 'HOST_TOKEN_PROD',
       },
@@ -82,7 +82,7 @@ test('loadTargetsFromEnv parses configured host targets', () => {
         id: 'stage',
         label: 'stage',
         mode: 'remote-http',
-        REDACTED_SECRETBaseUrl: 'https://ussy3.promethean.rest/fleet',
+        publicBaseUrl: 'https://ussy3.promethean.rest/fleet',
       },
     ]),
   });
@@ -92,7 +92,7 @@ test('loadTargetsFromEnv parses configured host targets', () => {
       id: 'prod',
       label: 'prod',
       mode: 'local',
-      REDACTED_SECRETBaseUrl: 'https://ussy.promethean.rest/fleet',
+      publicBaseUrl: 'https://ussy.promethean.rest/fleet',
       routeFiles: ['/a', '/b'],
       notes: undefined,
       authToken: undefined,
@@ -102,7 +102,7 @@ test('loadTargetsFromEnv parses configured host targets', () => {
       id: 'stage',
       label: 'stage',
       mode: 'remote-http',
-      REDACTED_SECRETBaseUrl: 'https://ussy3.promethean.rest/fleet',
+      publicBaseUrl: 'https://ussy3.promethean.rest/fleet',
       routeFiles: [],
       notes: undefined,
       authToken: undefined,

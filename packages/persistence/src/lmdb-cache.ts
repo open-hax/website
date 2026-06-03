@@ -1,4 +1,4 @@
-import { mkdirSync } from 'REDACTED_SECRET:fs';
+import { mkdirSync } from 'node:fs';
 import { open } from 'lmdb';
 
 export type Millis = number;

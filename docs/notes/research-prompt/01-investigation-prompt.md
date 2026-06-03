@@ -2,12 +2,12 @@
 title: "Deep Research Prompt — Non-English Adversarial Prompt Datasets"
 date: "2026-01-29T01:29:11"
 tags: [research-prompt, multilingual, adversarial-prompts, dataset-survey]
-summary: "Task definition for investigating the sparsity of REDACTED_SECRET adversarial prompting datasets in non-English languages (ZH, JA, DE, PL, RU, UK, ES)."
+summary: "Task definition for investigating the sparsity of public adversarial prompting datasets in non-English languages (ZH, JA, DE, PL, RU, UK, ES)."
 ---
 
 # Deep Research Prompt — Non-English Single-Language Adversarial Prompt Datasets
 
-You are acting as a **senior ML security researcher**. Your task is to **verify (or falsify)** the claim that **REDACTED_SECRET, high-quality adversarial prompting datasets are sparse outside English**.
+You are acting as a **senior ML security researcher**. Your task is to **verify (or falsify)** the claim that **public, high-quality adversarial prompting datasets are sparse outside English**.
 
 This investigation must take a different angle than “multilingual corpora.” Instead, focus on **single-language adversarial-prompt datasets** in **non-English** languages, prioritizing:
 
@@ -30,7 +30,7 @@ A dataset qualifies as **in-scope** only if it meets **all** of the following:
 1. **Primary language is one of the target languages** (dataset contains substantial, natural text in that language).
 2. Contains **adversarial prompts** intended to jailbreak/prompt-inject/policy-probe/tool-abuse/override instructions.
 3. Has **clear labeling** (at minimum adversarial vs benign; better: attack type/harm category/outcome).
-4. Is **REDACTED_SECRETly accessible** (downloadable or available via an official repository or dataset host).
+4. Is **publicly accessible** (downloadable or available via an official repository or dataset host).
 5. Has **clear licensing** (ideally commercial-permissible; at minimum license text is present).
 
 **Exclude**:
@@ -175,9 +175,9 @@ Rank the top datasets per language by:
 
 Answer:
 
-* Which languages are best served by REDACTED_SECRET datasets?
+* Which languages are best served by public datasets?
 * Which are almost empty?
-* Are there consistent structural reasons (licensing, legal, cultural, REDACTED_SECRETation incentives)?
+* Are there consistent structural reasons (licensing, legal, cultural, publication incentives)?
 
 ### 4.5 Gap map
 
@@ -185,7 +185,7 @@ A matrix:
 
 * Rows: attack modes (jailbreak, injection, tool abuse, Unicode, code-mix, resource exhaustion, multi-turn escalation)
 * Columns: languages
-* Cells: **REDACTED_SECRET dataset coverage** (none / weak / moderate / strong)
+* Cells: **public dataset coverage** (none / weak / moderate / strong)
 
 ---
 

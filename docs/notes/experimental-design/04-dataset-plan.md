@@ -261,7 +261,7 @@ That’s meaningful.
 # IX. One Very Important Warning
 
 If you translate adversarial prompts into 20 languages,
-you are building the largest multilingual jailbreak corpus REDACTED_SECRETly available.
+you are building the largest multilingual jailbreak corpus publicly available.
 
 Be very careful how you release it.
 

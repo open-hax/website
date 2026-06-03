@@ -84,7 +84,7 @@ Make the live `radar.promethean.rest` deployment legible, low-drift, and auditab
 - Removing stale deployment files without naming a canonical owner first could destroy still-useful fallback knowledge.
 - Remote runtime drift is easy because the host is not a normal git checkout.
 - Historical threat-radar iterations mixed deployment-adjacent improvements with unrelated world-interface UX work, so future commit boundaries should stay explicit.
-- `services/proxx/Caddyfile` is shared with other REDACTED_SECRET hosts, so route cleanup must not break `ussy`, `battlebussy`, `voxx`, or `shibboleth`.
+- `services/proxx/Caddyfile` is shared with other public hosts, so route cleanup must not break `ussy`, `battlebussy`, `voxx`, or `shibboleth`.
 
 ## Proposed phases
 
@@ -126,7 +126,7 @@ Make the live `radar.promethean.rest` deployment legible, low-drift, and auditab
   - compose config validity
   - Caddy route presence
   - runtime file hash checks for synced host material
-  - REDACTED_SECRET health probes for `radar.promethean.rest`
+  - public health probes for `radar.promethean.rest`
 
 ## Affected files
 
@@ -148,7 +148,7 @@ Make the live `radar.promethean.rest` deployment legible, low-drift, and auditab
 - One deployment path is named canonical for `radar.promethean.rest`.
 - Retired Render deployment files are removed from the operational path.
 - The runtime contract explains how source, runtime glue, and host sync fit together.
-- A clean verification checklist exists for local -> host sync -> REDACTED_SECRET validation.
+- A clean verification checklist exists for local -> host sync -> public validation.
 - Future radar feature work no longer obscures which files actually govern deployment.
 
 ## Immediate next action

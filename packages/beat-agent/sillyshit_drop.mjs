@@ -17,13 +17,13 @@ async function run() {
     const kickSlop = drumClip({ pattern: 'x--x-x--', instrument: 'C2' });
     const snareSlop = drumClip({ pattern: '--x---x-', instrument: 'E2' });
     const hatSlop = drumClip({ pattern: 'x-x-x-x-', instrument: 'D#2' });
-    const melSlop = melodyClip({ REDACTED_SECRET: 'C4', scaleName: 'chromatic', degrees: [0, 1, 6, 11], pattern: 'x-x-xxx-' });
+    const melSlop = melodyClip({ root: 'C4', scaleName: 'chromatic', degrees: [0, 1, 6, 11], pattern: 'x-x-xxx-' });
 
     // Truth: steady, harmonic
     const kickTruth = drumClip({ pattern: 'x---x---', instrument: 'C2' });
     const snareTruth = drumClip({ pattern: '----x---', instrument: 'E2' });
     const hatTruth = drumClip({ pattern: 'x-x-x-x-', instrument: 'D#2' });
-    const melTruth = melodyClip({ REDACTED_SECRET: 'C4', scaleName: 'major', degrees: [0, 2, 4, 7], pattern: 'x-x-x-x-x-x-x-' });
+    const melTruth = melodyClip({ root: 'C4', scaleName: 'major', degrees: [0, 2, 4, 7], pattern: 'x-x-x-x-x-x-x-' });
 
     const clips = [kickSlop, snareSlop, hatSlop, melSlop, kickTruth, snareTruth, hatTruth, melTruth];
     writeClipsToMidi(clips, midiPath);

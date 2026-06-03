@@ -60,7 +60,7 @@ Research compiled from [free-for-dev](https://github.com/ripienaar/free-for-dev)
 
 ### Strategy for Minimal DB Usage
 - Store only config, user preferences, system state, and signal metadata
-- Push all REDACTED_SECRET content to AT Protocol/Bluesky
+- Push all public content to AT Protocol/Bluesky
 - Use Redis/KV for ephemeral caches and queues
 - 0.5 GB Neon is ~500K rows of typical config data — more than enough
 
@@ -190,7 +190,7 @@ Start with **Neon pgvector** (zero additional services — use your Postgres for
 | Message queue | Upstash QStash | 1K msg/day, 10 schedules | ~200-500 msg/day |
 | Render KV (backup cache) | Render Key Value | 25 MB, 50 connections | Light caching |
 | Cron keepalive | cron-job.org | Unlimited | 2-3 ping jobs |
-| Content storage | AT Protocol | Unlimited (network) | All REDACTED_SECRET content |
+| Content storage | AT Protocol | Unlimited (network) | All public content |
 | **Total monthly cost** | | | **$0** |
 
 ---
@@ -204,7 +204,7 @@ Start with **Neon pgvector** (zero additional services — use your Postgres for
 4. **Batch processing** — Collect signals in QStash queue, process in batches to minimize active compute time
 
 ### Storage
-5. **AT Protocol as primary storage** — All REDACTED_SECRET news data, analysis, and feed content lives on Bluesky (zero DB cost)
+5. **AT Protocol as primary storage** — All public news data, analysis, and feed content lives on Bluesky (zero DB cost)
 6. **Ephemeral data in Redis** — Set TTLs aggressively; don't persist what can be recomputed
 7. **Postgres only for state** — Config, user prefs, signal metadata, processing checkpoints
 8. **pgvector for embeddings** — Avoid a separate vector DB until you outgrow 0.5 GB

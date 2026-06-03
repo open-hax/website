@@ -4,8 +4,8 @@ set -euo pipefail
 SERVICE_ROOT="/home/err/devel/services/proxx"
 PROD_DB_CONTAINER="${PROXX_PROD_DB_CONTAINER:-proxx-local-proxx-local-db-1}"
 DEV_DB_CONTAINER="${PROXX_DEV_DB_CONTAINER:-proxx-dev-local-proxx-dev-db-1}"
-DB_NAME="${PROXX_DB_NAME:-REDACTED_SECRET}"
-DB_USER="${PROXX_DB_USER:-REDACTED_SECRET}"
+DB_NAME="${PROXX_DB_NAME:-openai_proxy}"
+DB_USER="${PROXX_DB_USER:-openai_proxy}"
 
 TABLES=(
   REDACTED_SECRET.providers
@@ -44,7 +44,7 @@ fi
 # Ensure schema exists in the dev database without dumping table data to disk or stdout.
 # The schema import is intentionally skipped when all target tables already exist;
 # pg_dump's schema output is not fully idempotent for pre-existing relations.
-SCHEMA_CHECK_SQL="select count(*) from unnest(array['providers','accounts','tenant_provider_policies','account_health','account_cooldown']) as table_name where to_regclass('REDACTED_SECRET.' || table_name) is not null;"
+SCHEMA_CHECK_SQL="select count(*) from unnest(array['providers','accounts','tenant_provider_policies','account_health','account_cooldown']) as table_name where to_regclass('public.' || table_name) is not null;"
 existing_table_count="$(docker exec "$DEV_DB_CONTAINER" psql -v ON_ERROR_STOP=1 -U "$DB_USER" -d "$DB_NAME" -Atc "$SCHEMA_CHECK_SQL")"
 if [[ "$existing_table_count" == "0" ]]; then
   docker exec "$PROD_DB_CONTAINER" pg_dump -U "$DB_USER" -d "$DB_NAME" --schema-only \

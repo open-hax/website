@@ -56,7 +56,7 @@ pip install -e '.[dev]'
 
 ### 2. Build the site snapshot
 
-This still curates content from local source REDACTED_SECRETs. By default it reads:
+This still curates content from local source roots. By default it reads:
 
 - `/home/err/devel/orgs/octave-commons/fork_tales`
 - `/home/err/Music`
@@ -75,7 +75,7 @@ python build_site.py
 ### 3. Run the API
 
 ```bash
-python server.py --REDACTED_SECRET dist --host 127.0.0.1 --port 8794 --reload
+python server.py --root dist --host 127.0.0.1 --port 8794 --reload
 ```
 
 Open:
@@ -134,12 +134,12 @@ This project now follows the same familiar promotion pattern used elsewhere:
 ### Runtime conventions
 
 - staging SSH host: `ussy3.promethean.rest`
-- staging REDACTED_SECRET host: `staging.fork.tales.promethean.rest`
+- staging public host: `staging.fork.tales.promethean.rest`
 - staging path: `~/devel/services/fork-tales-site-staging`
 - staging compose project: `fork-tales-site-staging`
 
 - production SSH host: `big.ussy.promethean.rest`
-- production REDACTED_SECRET host: `fork.tales.promethean.rest`
+- production public host: `fork.tales.promethean.rest`
 - production path: `~/devel/services/fork-tales-site`
 - production compose project: `fork-tales-site`
 
@@ -147,7 +147,7 @@ This project now follows the same familiar promotion pattern used elsewhere:
 
 The remote deploy script does four things:
 
-1. syncs this project to the remote runtime REDACTED_SECRET
+1. syncs this project to the remote runtime root
 2. creates a build venv on the host
 3. runs `python build_site.py` on the host so the live corpus is rebuilt from local content sources
 4. runs `docker compose up -d --build`

@@ -14,12 +14,12 @@ export const name = PLUGIN_NAME;
 export const createNodesV2: CreateNodesV2<GigaPluginOptions> = [
   "**/.gitmodules",
   async (configFiles, options, ctx) => {
-    const REDACTED_SECRETPath = ctx.workspaceRoot;
-    const gitmodulesPath = join(REDACTED_SECRETPath, ".gitmodules");
+    const rootPath = ctx.workspaceRoot;
+    const gitmodulesPath = join(rootPath, ".gitmodules");
     const projects: Record<string, ProjectConfiguration> = {};
     const projectNames: string[] = [];
     const pluginOptions = (options ?? {}) as GigaPluginOptions;
-    const depsMapPath = pluginOptions.depsMapPath ? `${REDACTED_SECRETPath}/${pluginOptions.depsMapPath}` : undefined;
+    const depsMapPath = pluginOptions.depsMapPath ? `${rootPath}/${pluginOptions.depsMapPath}` : undefined;
 
     try {
       const gitmodulesContent = readFileSync(gitmodulesPath, "utf8");
@@ -62,7 +62,7 @@ export const createNodesV2: CreateNodesV2<GigaPluginOptions> = [
         const projectConfig: ProjectConfiguration = {
           name: projectName,
           projectType: "application",
-          REDACTED_SECRET: subPath,
+          root: subPath,
           sourceRoot: `${subPath}/src`,
           targets,
           implicitDependencies: deps.length ? deps : undefined,
@@ -77,7 +77,7 @@ export const createNodesV2: CreateNodesV2<GigaPluginOptions> = [
     projects["."] = {
       name: "giga",
       projectType: "application",
-      REDACTED_SECRET: ".",
+      root: ".",
       sourceRoot: ".",
       targets: {
         watch: {

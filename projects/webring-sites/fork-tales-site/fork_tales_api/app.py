@@ -13,9 +13,9 @@ from .settings import Settings
 
 def create_app() -> FastAPI:
     settings = Settings()
-    site_REDACTED_SECRET = settings.site_REDACTED_SECRET
-    if not site_REDACTED_SECRET.exists():
-        raise RuntimeError(f"Static site REDACTED_SECRET does not exist: {site_REDACTED_SECRET}")
+    site_root = settings.site_root
+    if not site_root.exists():
+        raise RuntimeError(f"Static site root does not exist: {site_root}")
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
@@ -47,5 +47,5 @@ def create_app() -> FastAPI:
         service: ForkTalesService = request.app.state.service
         return await service.chat(payload.message, payload.history)
 
-    app.mount("/", StaticFiles(directory=site_REDACTED_SECRET, html=True), name="site")
+    app.mount("/", StaticFiles(directory=site_root, html=True), name="site")
     return app

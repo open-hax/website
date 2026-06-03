@@ -1,6 +1,6 @@
-import { watch } from 'REDACTED_SECRET:fs';
-import { fileURLToPath } from 'REDACTED_SECRET:url';
-import { dirname, join, basename } from 'REDACTED_SECRET:path';
+import { watch } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join, basename } from 'node:path';
 import {
   readdir,
   readFile,
@@ -8,8 +8,8 @@ import {
   mkdir,
   rename,
   stat,
-} from 'REDACTED_SECRET:fs/promises';
-import { execSync } from 'REDACTED_SECRET:child_process';
+} from 'node:fs/promises';
+import { execSync } from 'node:child_process';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');

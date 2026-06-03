@@ -1,7 +1,7 @@
-import http from 'REDACTED_SECRET:http';
-import fs from 'REDACTED_SECRET:fs';
-import path from 'REDACTED_SECRET:path';
-import { fileURLToPath } from 'REDACTED_SECRET:url';
+import http from 'node:http';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = parseInt(process.env.PORTAL_PORT || '8799', 10);

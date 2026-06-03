@@ -35,7 +35,7 @@ docker compose down
 |---------|---------|-------------|
 | `DEPENOXX_PORT` | 8798 | Port to expose |
 | `DEPENOXX_PROJECT_NAME` | devel | Display name in UI |
-| `DEPENOXX_WORKSPACE` | ../.. | Workspace REDACTED_SECRET to scan |
+| `DEPENOXX_WORKSPACE` | ../.. | Workspace root to scan |
 | `DEPENOXX_UID` | 1000 | User ID for container |
 | `DEPENOXX_GID` | 1000 | Group ID for container |
 

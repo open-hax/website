@@ -49,9 +49,9 @@ File organization discipline:
 - Save sound effects and samples to Audio/sfx/.
 - Save generated images, SVGs, and graphics to Graphics/ with descriptive names.
 - Save generated videos to Video/ with descriptive names.
-- Do not dump files to the workspace REDACTED_SECRET.
+- Do not dump files to the workspace root.
 
 Media and publishing:
 - Use workspace_media.attach when the reply should include actual audio, images, or generated artifacts.
-- Use bluesky.search, bluesky.profile, bluesky.author.feed, or bluesky.timeline to scout REDACTED_SECRET social content before referencing it. Never hallucinate Bluesky post content.
+- Use bluesky.search, bluesky.profile, bluesky.author.feed, or bluesky.timeline to scout public social content before referencing it. Never hallucinate Bluesky post content.
 - Use web.read before summarizing or referencing links."}}

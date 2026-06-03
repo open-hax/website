@@ -119,8 +119,8 @@ class CopiedAsset:
 
 
 class AssetCopier:
-    def __init__(self, media_REDACTED_SECRET: Path) -> None:
-        self.media_REDACTED_SECRET = media_REDACTED_SECRET
+    def __init__(self, media_root: Path) -> None:
+        self.media_root = media_root
         self._by_source: dict[Path, CopiedAsset] = {}
         self._used_paths: set[Path] = set()
 
@@ -131,7 +131,7 @@ class AssetCopier:
 
         ext = source.suffix.lower()
         base_slug = preferred_slug or slugify(source.stem)
-        subdir = self.media_REDACTED_SECRET / bucket
+        subdir = self.media_root / bucket
         subdir.mkdir(parents=True, exist_ok=True)
         dest = subdir / f"{base_slug}{ext}"
         counter = 2
@@ -202,9 +202,9 @@ def excerpt(text: str, limit: int = 220) -> str:
 
 
 def relative_label(path: Path) -> str:
-    for REDACTED_SECRET in (FORK_ROOT, MUSIC_ROOT):
+    for root in (FORK_ROOT, MUSIC_ROOT):
         try:
-            return path.relative_to(REDACTED_SECRET).as_posix()
+            return path.relative_to(root).as_posix()
         except ValueError:
             continue
     return path.as_posix()
@@ -218,7 +218,7 @@ def should_include_doc(path: Path) -> bool:
         return False
     if "/mcp-lith-nexus/" in path.as_posix():
         return False
-    if "/.mypy_cache/" in path.as_posix() or "/REDACTED_SECRET_modules/" in path.as_posix():
+    if "/.mypy_cache/" in path.as_posix() or "/node_modules/" in path.as_posix():
         return False
     return True
 
@@ -302,7 +302,7 @@ def parse_manuscript() -> list[dict[str, object]]:
 def collect_docs() -> list[dict[str, object]]:
     docs = parse_manuscript()
 
-    REDACTED_SECRET_files = [
+    root_files = [
         FORK_ROOT / "LIVE_CHOIR.md",
     ]
 
@@ -311,7 +311,7 @@ def collect_docs() -> list[dict[str, object]]:
         doc_files.extend(sorted((FORK_ROOT / "docs").glob(pattern)))
     seen_paths: set[Path] = {FORK_ROOT / "MANUSCRIPT_FULL.md"}
 
-    for path in REDACTED_SECRET_files + doc_files:
+    for path in root_files + doc_files:
         if path in seen_paths or not path.exists() or not should_include_doc(path):
             continue
         seen_paths.add(path)
@@ -342,9 +342,9 @@ def collect_docs() -> list[dict[str, object]]:
     return docs
 
 
-def group_files_by_variant(REDACTED_SECRET: Path) -> dict[str, list[Path]]:
+def group_files_by_variant(root: Path) -> dict[str, list[Path]]:
     groups: dict[str, list[Path]] = defaultdict(list)
-    for path in REDACTED_SECRET.rglob("*"):
+    for path in root.rglob("*"):
         if not path.is_file():
             continue
         groups[normalize_variant_stem(path.stem)].append(path)
@@ -368,11 +368,11 @@ def parse_title_and_tags(sidecar_text: str, fallback_title: str) -> tuple[str, l
     return title, tags
 
 
-def include_music_entry(REDACTED_SECRET: Path, variant_key: str, parsed_title: str, sidecar_text: str) -> bool:
+def include_music_entry(root: Path, variant_key: str, parsed_title: str, sidecar_text: str) -> bool:
     lower_title = f"{variant_key} {parsed_title}".lower()
     if any(token in lower_title for token in SUSPICIOUS_AUDIO_TOKENS):
         return False
-    if REDACTED_SECRET.name == "operators":
+    if root.name == "operators":
         if sidecar_text.strip():
             return True
         keep_markers = ("eta_mu", "ημ", "operation mindfuck", "witness", "choir", "mycelial", "world sounds", "lullaby", "lantern", "deep cut", "epic")
@@ -382,9 +382,9 @@ def include_music_entry(REDACTED_SECRET: Path, variant_key: str, parsed_title: s
 
 def select_featured_images(copier: AssetCopier) -> list[dict[str, object]]:
     image_candidates: list[Path] = []
-    frag_REDACTED_SECRET = FORK_ROOT / ".fork_Π_ημ_frags"
-    if frag_REDACTED_SECRET.exists():
-        for path in frag_REDACTED_SECRET.rglob("*"):
+    frag_root = FORK_ROOT / ".fork_Π_ημ_frags"
+    if frag_root.exists():
+        for path in frag_root.rglob("*"):
             if path.is_file() and path.suffix.lower() in IMAGE_EXTS:
                 lower = path.name.lower()
                 if any(keyword in lower for keyword in FEATURED_IMAGE_KEYWORDS):
@@ -450,8 +450,8 @@ def build_music_entries(docs: list[dict[str, object]], copier: AssetCopier) -> l
         )
 
     # Part64 renders.
-    part64_REDACTED_SECRET = FORK_ROOT / "part64"
-    for audio_path in sorted(part64_REDACTED_SECRET.glob("*.wav")):
+    part64_root = FORK_ROOT / "part64"
+    for audio_path in sorted(part64_root.glob("*.wav")):
         title = audio_path.stem.replace("_", " ")
         entry_id = f"audio-{slugify(title)}-{hashlib.sha1(audio_path.as_posix().encode()).hexdigest()[:6]}"
         entries.append(
@@ -472,12 +472,12 @@ def build_music_entries(docs: list[dict[str, object]], copier: AssetCopier) -> l
             }
         )
 
-    # Curated music REDACTED_SECRETs.
-    for REDACTED_SECRET in RELEVANT_MUSIC_DIRS:
-        if not REDACTED_SECRET.exists():
+    # Curated music roots.
+    for root in RELEVANT_MUSIC_DIRS:
+        if not root.exists():
             continue
-        groups = group_files_by_variant(REDACTED_SECRET)
-        collection_title = REDACTED_SECRET.name.replace("_", " ").title()
+        groups = group_files_by_variant(root)
+        collection_title = root.name.replace("_", " ").title()
         for variant_key, paths in sorted(groups.items(), key=lambda item: item[0].lower()):
             primary = choose_primary_audio(paths)
             if primary is None:
@@ -486,7 +486,7 @@ def build_music_entries(docs: list[dict[str, object]], copier: AssetCopier) -> l
             sidecar_text_path = next((path for path in paths if path.suffix.lower() == ".txt"), None)
             sidecar_text = sidecar_text_path.read_text(encoding="utf-8", errors="ignore") if sidecar_text_path else ""
             parsed_title, tags = parse_title_and_tags(sidecar_text, fallback_title)
-            if not include_music_entry(REDACTED_SECRET, variant_key, parsed_title, sidecar_text):
+            if not include_music_entry(root, variant_key, parsed_title, sidecar_text):
                 continue
             art_path = next((path for path in paths if path.suffix.lower() in IMAGE_EXTS), None)
             entry_id = f"audio-{slugify(parsed_title)}-{hashlib.sha1(primary.as_posix().encode()).hexdigest()[:6]}"
@@ -494,11 +494,11 @@ def build_music_entries(docs: list[dict[str, object]], copier: AssetCopier) -> l
                 {
                     "id": entry_id,
                     "title": parsed_title,
-                    "collection": slugify(REDACTED_SECRET.name),
+                    "collection": slugify(root.name),
                     "collectionTitle": collection_title,
                     "kind": "music",
-                    "mediaUrl": copier.copy(primary, f"audio/{slugify(REDACTED_SECRET.name)}", preferred_slug=slugify(parsed_title)),
-                    "artUrl": copier.copy(art_path, f"images/{slugify(REDACTED_SECRET.name)}", preferred_slug=slugify(parsed_title)) if art_path else None,
+                    "mediaUrl": copier.copy(primary, f"audio/{slugify(root.name)}", preferred_slug=slugify(parsed_title)),
+                    "artUrl": copier.copy(art_path, f"images/{slugify(root.name)}", preferred_slug=slugify(parsed_title)) if art_path else None,
                     "lyricsText": sidecar_text,
                     "lyricsHtml": markdown_to_html(sidecar_text) if sidecar_text else "",
                     "excerpt": excerpt(sidecar_text or f"{parsed_title} from {collection_title}"),

@@ -16,7 +16,7 @@
 [INFO] Skipping octave-commons/lineara_conversation_export (viewerPermission=; ADMIN required)
 [OK] Protected octave-commons/pantheon:main
 [OK] Protected octave-commons/promethean:main
-gh: Upgrade to GitHub Pro or make this repository REDACTED_SECRET to enable this feature. (HTTP 403)
+gh: Upgrade to GitHub Pro or make this repository public to enable this feature. (HTTP 403)
 [OK] Protected octave-commons/promethean-agent-system:device/stealth
 [OK] Protected octave-commons/shibboleth:main
 [OK] Protected octave-commons/static_man:main
@@ -25,7 +25,7 @@ gh: Upgrade to GitHub Pro or make this repository REDACTED_SECRET to enable this
 [OK] Protected open-hax/cljs-plugin-template:main
 [OK] Protected open-hax/codex:dev
 [OK] Protected open-hax/eta-mu-github:main
-gh: Upgrade to GitHub Pro or make this repository REDACTED_SECRET to enable this feature. (HTTP 403)
+gh: Upgrade to GitHub Pro or make this repository public to enable this feature. (HTTP 403)
 [OK] Protected open-hax/museeks:main
 [OK] Protected open-hax/opencode-skills:main
 [OK] Protected open-hax/openhax:main

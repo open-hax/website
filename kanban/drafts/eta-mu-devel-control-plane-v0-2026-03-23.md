@@ -20,7 +20,7 @@ License: GPL-3.0-only
 
 ## 1. Summary
 
-`eta.mu.promethean.rest` is the first REDACTED_SECRET face of a practical control plane for `devel`.
+`eta.mu.promethean.rest` is the first public face of a practical control plane for `devel`.
 
 Its first concrete job is not general intelligence.
 Its first concrete job is **promotion orchestration** across repository-backed services that already follow or should follow the canonical flow:

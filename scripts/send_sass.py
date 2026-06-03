@@ -2,7 +2,7 @@ import discord
 import asyncio
 import os
 
-TOKEN = REDACTED_SECRET'DISCORD_BOT_TOKEN')
+TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
 CHANNEL_ID = 1444189585373663417
 FILE_PATH = '/home/err/outputs/brain_activity.log'
 
@@ -17,7 +17,7 @@ async def main():
         print(f'Logged in as {client.user}')
         channel = client.get_channel(CHANNEL_ID)
         if channel:
-            # REDACTED_SECRET message with attachment
+            # Send message with attachment
             with open(FILE_PATH, 'rb') as f:
                 await channel.send(
                     "You wanted it, you got it. Here is the official brain-activity log for the class. 💅✨",

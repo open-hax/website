@@ -1,4 +1,4 @@
-import { randomUUID } from "REDACTED_SECRET:crypto";
+import { randomUUID } from "node:crypto";
 
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";

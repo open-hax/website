@@ -533,7 +533,7 @@
   - labels: artifact:issue, kanban, kind:bug, priority:P0, risk:security, source:coderabbit, state:breakdown, triage:cluster-candidate
   - why: Bot-generated review follow-up should be clustered with its source PR/date. Security or secret-handling risk should be actively refined before implementation.
   - source repos: open-hax/proxx
-- open-hax/proxx#38 [issue] — [Dockerfile.fly] Container runs as REDACTED_SECRET — add non-REDACTED_SECRET user for security hardening
+- open-hax/proxx#38 [issue] — [Dockerfile.fly] Container runs as root — add non-root user for security hardening
   - labels: artifact:issue, kanban, kind:bug, priority:P0, risk:security, source:coderabbit, state:breakdown, triage:cluster-candidate
   - why: Bot-generated review follow-up should be clustered with its source PR/date. Security or secret-handling risk should be actively refined before implementation.
   - source repos: open-hax/proxx

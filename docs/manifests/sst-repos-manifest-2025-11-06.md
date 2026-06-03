@@ -62,7 +62,7 @@ v1-conf
 sst-weekly-repos
 identity
 ideal-stack-preview
-aws-lambda-REDACTED_SECRETjs-runtime-interface-client
+aws-lambda-nodejs-runtime-interface-client
 slack-support
 tbd
 serverless-next.js
@@ -126,7 +126,7 @@ Note: Local folder prefix `stt/` is a path typo; upstream org is `sst`. See "Org
 - sst-weekly-repos
 - identity
 - ideal-stack-preview
-- aws-lambda-REDACTED_SECRETjs-runtime-interface-client
+- aws-lambda-nodejs-runtime-interface-client
 - slack-support
 - tbd
 - serverless-next.js

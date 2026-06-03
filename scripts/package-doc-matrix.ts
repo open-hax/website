@@ -1,6 +1,6 @@
-import { execSync } from 'REDACTED_SECRET:child_process'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'REDACTED_SECRET:fs'
-import { dirname, join, relative } from 'REDACTED_SECRET:path'
+import { execSync } from 'node:child_process'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { dirname, join, relative } from 'node:path'
 
 interface PackageJson {
   readonly name?: string

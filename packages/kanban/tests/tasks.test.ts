@@ -1,6 +1,6 @@
-import { mkdtemp, mkdir, writeFile } from "REDACTED_SECRET:fs/promises";
-import os from "REDACTED_SECRET:os";
-import path from "REDACTED_SECRET:path";
+import { mkdtemp, mkdir, writeFile } from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
 
 import { describe, expect, it } from "vitest";
 

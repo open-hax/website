@@ -63,11 +63,11 @@ Notable datasets used for adversarial prompt research include:
 
 - **TrustLLM (Liu et al., 2023/24):** 35K crowd-sourced “attack prompts” (jailbreaks and privacy attacks) for GPTs.  Label: attack type.  Used by PROOD【61†L481-L489】.
 
-- **HackAPrompt-Playground Submissions (Shaheer et al., 2025):** ~40K user-submitted injection attempts against a web-based LLM demo.  Label: injection vs benign.  Used for training classifiers【47†L32-L40】.  Likely contains duplicates/templates (anecdotal).  Not REDACTED_SECRET (HF reference only).
+- **HackAPrompt-Playground Submissions (Shaheer et al., 2025):** ~40K user-submitted injection attempts against a web-based LLM demo.  Label: injection vs benign.  Used for training classifiers【47†L32-L40】.  Likely contains duplicates/templates (anecdotal).  Not public (HF reference only).
 
 - **COCONOT (Silver et al., 2023):** A taxonomy of refusal categories (not adversarial prompts, but benign queries that often get refused).  Contains ~10K queries per category.  Used in refusal calibration work【66†L423-L432】.  Useful for tuning but not adversarial.
 
-- **Other injection corpora:** Small sets of known exploit prompts (e.g. from StackOverflow, GitHub issues, or shadow Red Teams) exist but are proprietary. No standard REDACTED_SECRET multilingual adversarial prompt corpus is available. 
+- **Other injection corpora:** Small sets of known exploit prompts (e.g. from StackOverflow, GitHub issues, or shadow Red Teams) exist but are proprietary. No standard public multilingual adversarial prompt corpus is available. 
 
 In summary, most datasets are synthetic or English-only. Many rely on LLM generation (e.g. WildJailbreak, OR-Bench, AdvBench), which can introduce bias. **Gap:** A lack of real-user or multilingual injection corpora (beyond MORBENCH’s handful of languages) is evident.
 
@@ -81,7 +81,7 @@ In summary, most datasets are synthetic or English-only. Many rely on LLM genera
 
 **Risk Scoring & Stateful Effects:** DeepContext【52†L50-L59】 measures *accumulated risk* across turns. This is a novel approach to catch under-blocking in dialogues. Other work notes *context contamination* issues: a safe prompt may be misclassified due to malicious prior prompts in the session. We found no explicit metric studies of this drift except DeepContext’s. 
 
-**DoS via Over-blocking:** The literature does not explicitly discuss denial-of-service by forcing repeated refusals, but it’s implied. For example, excessive false positives degrade utility. Xu et al. (cited in [44]) warn that *“overly restricting benign inputs”* undermines user experience【44†L139-L144】. No known REDACTED_SECRET exploits (beyond anecdotal) intentionally spam triggers to shut down a model, but it’s recognized as a risk (e.g. rate-limits triggered by excessive refusals). The OWASP GenAI project notes monitoring repeated abuse patterns.  
+**DoS via Over-blocking:** The literature does not explicitly discuss denial-of-service by forcing repeated refusals, but it’s implied. For example, excessive false positives degrade utility. Xu et al. (cited in [44]) warn that *“overly restricting benign inputs”* undermines user experience【44†L139-L144】. No known public exploits (beyond anecdotal) intentionally spam triggers to shut down a model, but it’s recognized as a risk (e.g. rate-limits triggered by excessive refusals). The OWASP GenAI project notes monitoring repeated abuse patterns.  
 
 ## 5. Engineering Patterns in Production Systems
 
@@ -99,17 +99,17 @@ While academic work abounds, there is less documented on actual deployments. Kno
 
 - **Monitoring and Logging:** Red-teaming guidance (OWASP LLM01) emphasizes logging failed or suspect prompts to a `.learnings` database【9†1?】. (This was mentioned in user chat logs, implying common practice but no formal source.)
 
-In summary: production safety often layers defenses. Academic proposals like ASF and DeepContext illustrate concrete components (segmentation model, BERT, RNN) that could be integrated. Vendor systems (e.g. internal LLM APIs) likely combine these ideas with engineering controls, though few details are REDACTED_SECRET.  
+In summary: production safety often layers defenses. Academic proposals like ASF and DeepContext illustrate concrete components (segmentation model, BERT, RNN) that could be integrated. Vendor systems (e.g. internal LLM APIs) likely combine these ideas with engineering controls, though few details are public.  
 
 ## 6. Multilingual and Code-Mixed Detection
 
-This is an **under-explored** area. The only multilingual dataset we found is MORBENCH (targeting over-refusal, not general injection)【55†L203-L212】. We found no REDACTED_SECRET studies specifically on *multilingual prompt injection* or *code-mixed adversarial inputs*. Promptfoo’s “homoglyph encoding strategy” notes that visually similar Unicode can bypass content filters【59†L5-L12】, and an arXiv on evading detectors with homoglyphs【59†L9-L12】 confirms such vulnerabilities for AI content detectors. NVIDIA’s 2025 red-team discovered that emoji/rebus puzzles can be used as non-textual “prompt injections” in multimodal LLMs【58†L53-L62】. But beyond these, there is little published. Common filters (like Regex) fail on code-mix or character swaps, so this is a clear gap.  
+This is an **under-explored** area. The only multilingual dataset we found is MORBENCH (targeting over-refusal, not general injection)【55†L203-L212】. We found no public studies specifically on *multilingual prompt injection* or *code-mixed adversarial inputs*. Promptfoo’s “homoglyph encoding strategy” notes that visually similar Unicode can bypass content filters【59†L5-L12】, and an arXiv on evading detectors with homoglyphs【59†L9-L12】 confirms such vulnerabilities for AI content detectors. NVIDIA’s 2025 red-team discovered that emoji/rebus puzzles can be used as non-textual “prompt injections” in multimodal LLMs【58†L53-L62】. But beyond these, there is little published. Common filters (like Regex) fail on code-mix or character swaps, so this is a clear gap.  
 
 **Conclusion:** More work is needed on cross-lingual/cross-modal attacks. Current benchmarks are English-centric; few papers analyze e.g. Arabic, Hindi, or polyglot prompts. We did not find any specialized defenses (most classifiers assume English tokenization). Unicode homoglyphs (e.g. Cyrillic “a” vs Latin “a”) are known tricks in spam; detection of such requires normalization or character-level ML, but literature on LLM prompt filters using this is scarce.
 
 ## 7. Gaps and Open Questions
 
-- **Dataset Deficiencies:** No REDACTED_SECRET *real-world multilingual* adversarial prompt corpus. Most datasets are English and synthetic. Code-mixed data is absent. Many benchmarks (e.g. OR-Bench) are automatically generated and may not reflect user behavior. The small size of All-Prompt-Jailbreak (600) and proprietary nature of others (e.g. internal RedTeam corpora) limits evaluation.
+- **Dataset Deficiencies:** No public *real-world multilingual* adversarial prompt corpus. Most datasets are English and synthetic. Code-mixed data is absent. Many benchmarks (e.g. OR-Bench) are automatically generated and may not reflect user behavior. The small size of All-Prompt-Jailbreak (600) and proprietary nature of others (e.g. internal RedTeam corpora) limits evaluation.
 
 - **Evaluation Blind Spots:** Few works report standard error rates on realistic benign data. Often “safeguard rate” or F1 on a mixed set is given, but no unified metric. We lack established benchmarks for *availability (over-block)* trade-offs – most focus on *safety (under-block)*.  Also, almost no work simulates *Stateful DoS*: e.g. measuring how repeated benign prompts after many flagged attempts degrade system performance.
 

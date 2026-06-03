@@ -4,7 +4,7 @@ import os
 import sys
 
 async def send_msg(channel_id, content, file_path=None):
-    TOKEN = REDACTED_SECRET'DISCORD_BOT_TOKEN')
+    TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
     if not TOKEN:
         print("Error: DISCORD_BOT_TOKEN not found")
         return

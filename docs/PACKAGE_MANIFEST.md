@@ -4,7 +4,7 @@ This document provides a comprehensive inventory of all package manifest and bui
 
 ## Table of Contents
 
-1. [Root-Level Manifest Files](#REDACTED_SECRET-level-manifest-files)
+1. [Root-Level Manifest Files](#root-level-manifest-files)
 2. [Clojure/ClojureScript Configuration](#clojureclojurescript-configuration)
 3. [PM2 Ecosystem Files](#pm2-ecosystem-files)
 4. [Workspace TypeScript Packages](#workspace-typescript-packages)
@@ -90,7 +90,7 @@ This document provides a comprehensive inventory of all package manifest and bui
 **Build Configurations:**
 | Build Target | Type | Output |
 |--------------|------|--------|
-| :clobber | REDACTED_SECRET-script | `.clobber/index.cjs` |
+| :clobber | node-script | `.clobber/index.cjs` |
 
 **Dependencies:**
 - `org.clojure/core.async` (1.6.673)

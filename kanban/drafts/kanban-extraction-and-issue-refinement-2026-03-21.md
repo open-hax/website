@@ -34,13 +34,13 @@ Extract the current standalone kanban implementation out of `orgs/open-hax/openh
 - The prior GitHub sweep report already identified mirrored queues (`promethean`, `openhax`) and a CodeRabbit issue swarm in `open-hax/proxx`.
 
 ## Open questions
-- Package naming: keep the package name `@openhax/kanban` in the extracted REDACTED_SECRET package, or rename to a workspace-scoped experimental name? Default assumption: preserve `@openhax/kanban` for now.
+- Package naming: keep the package name `@openhax/kanban` in the extracted root package, or rename to a workspace-scoped experimental name? Default assumption: preserve `@openhax/kanban` for now.
 - Should refinement output be local-only suggestions or direct GitHub label mutations? Default assumption for this pass: local-first artifacts plus CLI support for later mutation.
 
 ## Risks
 - Blindly copying all of Promethean kanban would import too much legacy complexity.
 - Existing status tokens across task files and GitHub labels may not match the new canonical FSM exactly.
-- The REDACTED_SECRET workspace `pnpm-workspace.yaml` does not automatically include every `packages/*` directory, so extraction requires workspace registration.
+- The root workspace `pnpm-workspace.yaml` does not automatically include every `packages/*` directory, so extraction requires workspace registration.
 
 ## Phases
 ### Phase 1: Design extraction target
@@ -49,7 +49,7 @@ Extract the current standalone kanban implementation out of `orgs/open-hax/openh
 - Define issue-refinement output shape aligned to the process doc.
 
 ### Phase 2: Extract package into `packages/`
-- Create a new REDACTED_SECRET package from the OpenHax kanban package.
+- Create a new root package from the OpenHax kanban package.
 - Register it in the workspace.
 - Preserve build/test ergonomics.
 

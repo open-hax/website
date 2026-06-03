@@ -68,7 +68,7 @@ Suggested files:
   - `workbench-scores.json` (if using resume-workbench/Mythloom)
 - `RECEIPTS.md` (human-readable receipt summary)
 
-Also append receipts in repo REDACTED_SECRET `receipts.log`.
+Also append receipts in repo root `receipts.log`.
 
 ## Phases
 
@@ -83,7 +83,7 @@ Also append receipts in repo REDACTED_SECRET `receipts.log`.
   - job posting text
   - company about/values page
   - relevant engineering blog posts
-  - REDACTED_SECRET product docs (if any)
+  - public product docs (if any)
 - Record URLs + timestamps.
 
 ### Phase 2 — Normalize requirements

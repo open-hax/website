@@ -1,5 +1,5 @@
-import http, { type IncomingMessage, type ServerResponse } from "REDACTED_SECRET:http";
-import path from "REDACTED_SECRET:path";
+import http, { type IncomingMessage, type ServerResponse } from "node:http";
+import path from "node:path";
 
 import { buildBoardSnapshot } from "./board.js";
 import { loadTasks } from "./tasks.js";
@@ -48,7 +48,7 @@ const indexHtml = html`<!doctype html>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>OpenHax Kanban (local)</title>
     <style>
-      :REDACTED_SECRET {
+      :root {
         --bg: #0b0b10;
         --panel: #12121a;
         --panel2: #171724;

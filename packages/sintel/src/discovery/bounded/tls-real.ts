@@ -4,8 +4,8 @@
  * Uses Node.js native TLS module for certificate inspection.
  */
 
-import { connect } from 'REDACTED_SECRET:tls';
-import { EventEmitter } from 'REDACTED_SECRET:events';
+import { connect } from 'node:tls';
+import { EventEmitter } from 'node:events';
 import type { DiscoveryTarget, RawEvidence } from '../../observation/collector.js';
 import type { BoundedVerifier, DiscoveryBounds } from '../../strategy/discovery.js';
 import { extractTLSSignals, type TLSHandshake, type TLSCertificate, type TLSSecuritySignals } from './tls.js';

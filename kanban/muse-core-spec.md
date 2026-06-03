@@ -64,7 +64,7 @@ Extract the Muse System from `fork_tales` into `packages/muse-core/` — an agen
 MUSE_RUNTIME_RECORD = "eta-mu.muse-runtime.snapshot.v1"
 MUSE_EVENT_RECORD = "eta-mu.muse-event.v1"
 MUSE_CONTEXT_MANIFEST_RECORD = "eta-mu.muse-context-manifest.v1"
-MUSE_RESOURCE_NODE_RECORD = "eta-mu.resource-REDACTED_SECRET.v1"
+MUSE_RESOURCE_NODE_RECORD = "eta-mu.resource-node.v1"
 MUSE_DAIMON_RECORD = "eta-mu.muse-daimon.v1"
 MUSE_GPU_CLAIM_RECORD = "eta-mu.muse-gpu-claim.v1"
 
@@ -96,7 +96,7 @@ BOOTSTRAP_MUSE_SPECS: tuple[dict[str, Any], ...] = (
 **Key concepts:**
 - Bootstrap specs — default muses
 - Context manifest — what the muse knows
-- Resource REDACTED_SECRET — GPU/memory claims
+- Resource node — GPU/memory claims
 - Event streaming — state changes
 
 ### `world_web/muse_mode_strategy.py` — Mode Selection
@@ -141,7 +141,7 @@ packages/muse-core/
 │   ├── muse.ts                 # Core muse type
 │   ├── mode-strategy.ts        # Mode selection
 │   ├── context-manifest.ts     # Context assembly
-│   ├── resource-REDACTED_SECRET.ts        # GPU/memory claims
+│   ├── resource-node.ts        # GPU/memory claims
 │   ├── media-strategy.ts       # Audio/image handling
 │   ├── threat-fallback.ts      # Fallback routing
 │   ├── bootstrap.ts            # Default muses
@@ -278,13 +278,13 @@ export interface ContextManifest {
 export interface ContextManifestManager {
   load(museId: string): Promise<ContextManifest | null>;
   save(manifest: ContextManifest): Promise<void>;
-  addPinnedNode(museId: string, REDACTED_SECRET: PinnedFileNode): Promise<void>;
-  removePinnedNode(museId: string, REDACTED_SECRETId: string): Promise<void>;
+  addPinnedNode(museId: string, node: PinnedFileNode): Promise<void>;
+  removePinnedNode(museId: string, nodeId: string): Promise<void>;
   updateSearchQuery(museId: string, query: string): Promise<void>;
 }
 ```
 
-### `resource-REDACTED_SECRET.ts`
+### `resource-node.ts`
 
 ```typescript
 export interface GpuClaim {

@@ -20,7 +20,7 @@ This directory supports running multiple proxx instances in a federation for loc
 │           ▼                              ▼                        │
 │  ┌─────────────────────┐        ┌─────────────────────┐         │
 │  │   PostgreSQL (5432) │        │   PostgreSQL (5433) │         │
-│  │   REDACTED_SECRET       │        │   REDACTED_SECRET   │         │
+│  │   openai_proxy       │        │   federation_proxy   │         │
 │  └─────────────────────┘        └─────────────────────┘         │
 │                                                                   │
 └─────────────────────────────────────────────────────────────────┘
@@ -46,7 +46,7 @@ Key federation environment variables:
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `FEDERATION_SELF_NODE_ID` | `primary` / `federation-peer-1` | Unique REDACTED_SECRET identifier |
+| `FEDERATION_SELF_NODE_ID` | `primary` / `federation-peer-1` | Unique node identifier |
 | `FEDERATION_SELF_GROUP_ID` | `local-test-group` | Group ID for peer grouping |
 | `FEDERATION_SELF_CLUSTER_ID` | `local-test-cluster` | Cluster ID for deployment grouping |
 | `FEDERATION_SELF_PEER_DID` | (empty) | AT Protocol DID for peer identity |

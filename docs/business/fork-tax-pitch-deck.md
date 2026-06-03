@@ -316,7 +316,7 @@ Multi-tenant, domain-aware knowledge management platform:
 │   Chat widget, customer-facing, constrained access  │
 ├─────────────────────────────────────────────────────┤
 │ Layer 2: Agent-Aware CMS                            │
-│   Knowledge curation, REDACTED_SECRET/internal boundary      │
+│   Knowledge curation, public/internal boundary      │
 ├─────────────────────────────────────────────────────┤
 │ Layer 3: Knowledge Worker                           │
 │   Employee-facing, full internal corpus             │
@@ -349,7 +349,7 @@ Multi-tenant, domain-aware knowledge management platform:
 - [ ] Architecture documentation ready
 - [ ] Clear pilot tenant scenario identified
 - [ ] Pricing parameters calibrated to client tier
-- [ ] Open-source repos REDACTED_SECRET and documented
+- [ ] Open-source repos public and documented
 
 ## During the Pitch
 

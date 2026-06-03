@@ -35,52 +35,52 @@ Local PM2 version: 5.4.3
 [TAILING] Tailing last 50 lines for [duck-cephalon-cljs] process (change the value with --lines option)
 /home/err/.pm2/logs/duck-cephalon-cljs-out.log last 50 lines:
 /home/err/.pm2/logs/duck-cephalon-cljs-error.log last 50 lines:
-3|duck-cep |     at Module._compile (REDACTED_SECRET:internal/modules/cjs/loader:1706:14)
-3|duck-cep |     at Object..js (REDACTED_SECRET:internal/modules/cjs/loader:1839:10)
-3|duck-cep |     at Module.load (REDACTED_SECRET:internal/modules/cjs/loader:1441:32)
-3|duck-cep |     at Function._load (REDACTED_SECRET:internal/modules/cjs/loader:1263:12)
-3|duck-cep |     at TracingChannel.traceSync (REDACTED_SECRET:diagnostics_channel:322:14)
-3|duck-cep |     at wrapModuleLoad (REDACTED_SECRET:internal/modules/cjs/loader:237:24)
-3|duck-cep |     at Module.require (REDACTED_SECRET:internal/modules/cjs/loader:1463:12)
-3|duck-cep |     at require (REDACTED_SECRET:internal/modules/helpers:147:16) {
+3|duck-cep |     at Module._compile (node:internal/modules/cjs/loader:1706:14)
+3|duck-cep |     at Object..js (node:internal/modules/cjs/loader:1839:10)
+3|duck-cep |     at Module.load (node:internal/modules/cjs/loader:1441:32)
+3|duck-cep |     at Function._load (node:internal/modules/cjs/loader:1263:12)
+3|duck-cep |     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+3|duck-cep |     at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+3|duck-cep |     at Module.require (node:internal/modules/cjs/loader:1463:12)
+3|duck-cep |     at require (node:internal/modules/helpers:147:16) {
 3|duck-cep |   code: 'ERR_INVALID_ARG_TYPE'
 3|duck-cep | }
 3|duck-cep | 
 3|duck-cep | Node.js v22.20.0
-3|duck-cep | REDACTED_SECRET:internal/url:1607
+3|duck-cep | node:internal/url:1607
 3|duck-cep |     throw new ERR_INVALID_ARG_TYPE('path', ['string', 'URL'], path);
 3|duck-cep |     ^
 3|duck-cep | 
 3|duck-cep | TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of URL. Received undefined
-3|duck-cep |     at fileURLToPath (REDACTED_SECRET:internal/url:1607:11)
+3|duck-cep |     at fileURLToPath (node:internal/url:1607:11)
 3|duck-cep |     at Object.<anonymous> (/home/err/devel/services/cephalon-ts/dist/index.cjs:3459:47)
-3|duck-cep |     at Module._compile (REDACTED_SECRET:internal/modules/cjs/loader:1706:14)
-3|duck-cep |     at Object..js (REDACTED_SECRET:internal/modules/cjs/loader:1839:10)
-3|duck-cep |     at Module.load (REDACTED_SECRET:internal/modules/cjs/loader:1441:32)
-3|duck-cep |     at Function._load (REDACTED_SECRET:internal/modules/cjs/loader:1263:12)
-3|duck-cep |     at TracingChannel.traceSync (REDACTED_SECRET:diagnostics_channel:322:14)
-3|duck-cep |     at wrapModuleLoad (REDACTED_SECRET:internal/modules/cjs/loader:237:24)
-3|duck-cep |     at Module.require (REDACTED_SECRET:internal/modules/cjs/loader:1463:12)
-3|duck-cep |     at require (REDACTED_SECRET:internal/modules/helpers:147:16) {
+3|duck-cep |     at Module._compile (node:internal/modules/cjs/loader:1706:14)
+3|duck-cep |     at Object..js (node:internal/modules/cjs/loader:1839:10)
+3|duck-cep |     at Module.load (node:internal/modules/cjs/loader:1441:32)
+3|duck-cep |     at Function._load (node:internal/modules/cjs/loader:1263:12)
+3|duck-cep |     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+3|duck-cep |     at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+3|duck-cep |     at Module.require (node:internal/modules/cjs/loader:1463:12)
+3|duck-cep |     at require (node:internal/modules/helpers:147:16) {
 3|duck-cep |   code: 'ERR_INVALID_ARG_TYPE'
 3|duck-cep | }
 3|duck-cep | 
 3|duck-cep | Node.js v22.20.0
-3|duck-cep | REDACTED_SECRET:internal/url:1607
+3|duck-cep | node:internal/url:1607
 3|duck-cep |     throw new ERR_INVALID_ARG_TYPE('path', ['string', 'URL'], path);
 3|duck-cep |     ^
 3|duck-cep | 
 3|duck-cep | TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of URL. Received undefined
-3|duck-cep |     at fileURLToPath (REDACTED_SECRET:internal/url:1607:11)
+3|duck-cep |     at fileURLToPath (node:internal/url:1607:11)
 3|duck-cep |     at Object.<anonymous> (/home/err/devel/services/cephalon-ts/dist/index.cjs:3459:47)
-3|duck-cep |     at Module._compile (REDACTED_SECRET:internal/modules/cjs/loader:1706:14)
-3|duck-cep |     at Object..js (REDACTED_SECRET:internal/modules/cjs/loader:1839:10)
-3|duck-cep |     at Module.load (REDACTED_SECRET:internal/modules/cjs/loader:1441:32)
-3|duck-cep |     at Function._load (REDACTED_SECRET:internal/modules/cjs/loader:1263:12)
-3|duck-cep |     at TracingChannel.traceSync (REDACTED_SECRET:diagnostics_channel:322:14)
-3|duck-cep |     at wrapModuleLoad (REDACTED_SECRET:internal/modules/cjs/loader:237:24)
-3|duck-cep |     at Module.require (REDACTED_SECRET:internal/modules/cjs/loader:1463:12)
-3|duck-cep |     at require (REDACTED_SECRET:internal/modules/helpers:147:16) {
+3|duck-cep |     at Module._compile (node:internal/modules/cjs/loader:1706:14)
+3|duck-cep |     at Object..js (node:internal/modules/cjs/loader:1839:10)
+3|duck-cep |     at Module.load (node:internal/modules/cjs/loader:1441:32)
+3|duck-cep |     at Function._load (node:internal/modules/cjs/loader:1263:12)
+3|duck-cep |     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+3|duck-cep |     at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+3|duck-cep |     at Module.require (node:internal/modules/cjs/loader:1463:12)
+3|duck-cep |     at require (node:internal/modules/helpers:147:16) {
 3|duck-cep |   code: 'ERR_INVALID_ARG_TYPE'
 3|duck-cep | }
 3|duck-cep | 
@@ -123,7 +123,7 @@ var import_fs = require("fs");
 var import_meta = {};
 var __filename = (0, import_url.fileURLToPath)(import_meta.url);
 var __dirname = (0, import_path.dirname)(__filename);
-var PUBLIC_DIR = (0, import_path.join)((0, import_path.dirname)(__dirname), "ui", "REDACTED_SECRET");
+var PUBLIC_DIR = (0, import_path.join)((0, import_path.dirname)(__dirname), "ui", "public");
 function toTableCell(value) {
   if (value === null || value === void 0) {
     return "";
@@ -174,8 +174,8 @@ import type { MemoryStore } from "../core/memory-store.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Point to src/ui/REDACTED_SECRET for static files
-const PUBLIC_DIR = join(dirname(__dirname), "ui", "REDACTED_SECRET");
+// Point to src/ui/public for static files
+const PUBLIC_DIR = join(dirname(__dirname), "ui", "public");
 
 // ============================================================================
 // JSON Utility - Ensures all JSON data is parsable and table-ready
@@ -228,8 +228,8 @@ Tool: read
 00011| const __filename = fileURLToPath(import.meta.url);
 00012| const __dirname = dirname(__filename);
 00013| 
-00014| // Point to src/ui/REDACTED_SECRET for static files
-00015| const PUBLIC_DIR = join(dirname(__dirname), "ui", "REDACTED_SECRET");
+00014| // Point to src/ui/public for static files
+00015| const PUBLIC_DIR = join(dirname(__dirname), "ui", "public");
 00016| 
 00017| // ============================================================================
 00018| // JSON Utility - Ensures all JSON data is parsable and table-ready
@@ -321,7 +321,7 @@ PRIORITY-BASED ACTION GUIDELINES:
 3. This is a newly written comment/docstring: but it's a necessary comment/docstring
 	-> Tell the user why this comment/docstring is absolutely necessary and proceed (justify it)
 	-> Examples of necessary comments: complex algorithms, security-related, performance optimization, regex, mathematical formulas
-	-> Examples of necessary docstrings: REDACTED_SECRET API documentation, complex module/class interfaces
+	-> Examples of necessary docstrings: public API documentation, complex module/class interfaces
 	-> IMPORTANT: Most docstrings are unnecessary if the code is self-explanatory. Only keep truly essential ones.
 
 4. This is a newly written comment/docstring: but it's an unnecessary comment/docstring
@@ -421,7 +421,7 @@ PRIORITY-BASED ACTION GUIDELINES:
 3. This is a newly written comment/docstring: but it's a necessary comment/docstring
 	-> Tell the user why this comment/docstring is absolutely necessary and proceed (justify it)
 	-> Examples of necessary comments: complex algorithms, security-related, performance optimization, regex, mathematical formulas
-	-> Examples of necessary docstrings: REDACTED_SECRET API documentation, complex module/class interfaces
+	-> Examples of necessary docstrings: public API documentation, complex module/class interfaces
 	-> IMPORTANT: Most docstrings are unnecessary if the code is self-explanatory. Only keep truly essential ones.
 
 4. This is a newly written comment/docstring: but it's an unnecessary comment/docstring
@@ -474,7 +474,7 @@ CLI Building entry: src/cli.ts, src/index.ts
 CLI Using tsconfig: tsconfig.json
 CLI tsup v8.5.1
 CLI Using tsup config: /home/err/devel/services/cephalon-ts/tsup.config.ts
-CLI Target: REDACTED_SECRET20
+CLI Target: node20
 CLI Cleaning output folder
 ESM Build start
 CJS Build start
@@ -652,8 +652,8 @@ Local PM2 version: 5.4.3
 3|duck-cep |     at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:59
 3|duck-cep |     at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 3|duck-cep |     at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-3|duck-cep |     at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-3|duck-cep |     at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+3|duck-cep |     at listOnTimeout (node:internal/timers:588:17)
+3|duck-cep |     at process.processTimers (node:internal/timers:523:7)
 3|duck-cep | 
 3|duck-cep | Node.js v22.20.0
 3|duck-cep | [ERROR] Failed to start TypeScript Cephalon { error: 'window is not defined' }
@@ -668,8 +668,8 @@ Local PM2 version: 5.4.3
 3|duck-cep |     at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:59
 3|duck-cep |     at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 3|duck-cep |     at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-3|duck-cep |     at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-3|duck-cep |     at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+3|duck-cep |     at listOnTimeout (node:internal/timers:588:17)
+3|duck-cep |     at process.processTimers (node:internal/timers:523:7)
 3|duck-cep | 
 3|duck-cep | Node.js v22.20.0
 
@@ -1579,12 +1579,12 @@ Local PM2 version: 5.4.3
 3|duck-cep |     at ad (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:119:193)
 3|duck-cep |     at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:123
 3|duck-cep |     at Object.<anonymous> (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:294:3)
-3|duck-cep |     at Module._compile (REDACTED_SECRET:internal/modules/cjs/loader:1706:14)
-3|duck-cep |     at Object..js (REDACTED_SECRET:internal/modules/cjs/loader:1839:10)
-3|duck-cep |     at Module.load (REDACTED_SECRET:internal/modules/cjs/loader:1441:32)
-3|duck-cep |     at Function._load (REDACTED_SECRET:internal/modules/cjs/loader:1263:12)
-3|duck-cep |     at TracingChannel.traceSync (REDACTED_SECRET:diagnostics_channel:322:14)
-3|duck-cep |     at wrapModuleLoad (REDACTED_SECRET:internal/modules/cjs/loader:237:24)
+3|duck-cep |     at Module._compile (node:internal/modules/cjs/loader:1706:14)
+3|duck-cep |     at Object..js (node:internal/modules/cjs/loader:1839:10)
+3|duck-cep |     at Module.load (node:internal/modules/cjs/loader:1441:32)
+3|duck-cep |     at Function._load (node:internal/modules/cjs/loader:1263:12)
+3|duck-cep |     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+3|duck-cep |     at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
 3|duck-cep | 
 3|duck-cep | Node.js v22.20.0
 3|duck-cep | /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292
@@ -1596,12 +1596,12 @@ Local PM2 version: 5.4.3
 3|duck-cep |     at ad (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:119:193)
 3|duck-cep |     at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:123
 3|duck-cep |     at Object.<anonymous> (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:294:3)
-3|duck-cep |     at Module._compile (REDACTED_SECRET:internal/modules/cjs/loader:1706:14)
-3|duck-cep |     at Object..js (REDACTED_SECRET:internal/modules/cjs/loader:1839:10)
-3|duck-cep |     at Module.load (REDACTED_SECRET:internal/modules/cjs/loader:1441:32)
-3|duck-cep |     at Function._load (REDACTED_SECRET:internal/modules/cjs/loader:1263:12)
-3|duck-cep |     at TracingChannel.traceSync (REDACTED_SECRET:diagnostics_channel:322:14)
-3|duck-cep |     at wrapModuleLoad (REDACTED_SECRET:internal/modules/cjs/loader:237:24)
+3|duck-cep |     at Module._compile (node:internal/modules/cjs/loader:1706:14)
+3|duck-cep |     at Object..js (node:internal/modules/cjs/loader:1839:10)
+3|duck-cep |     at Module.load (node:internal/modules/cjs/loader:1441:32)
+3|duck-cep |     at Function._load (node:internal/modules/cjs/loader:1263:12)
+3|duck-cep |     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+3|duck-cep |     at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
 3|duck-cep | 
 3|duck-cep | Node.js v22.20.0
 
@@ -1818,8 +1818,8 @@ Local PM2 version: 5.4.3
 3|duck-cep |     at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:59
 3|duck-cep |     at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 3|duck-cep |     at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-3|duck-cep |     at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-3|duck-cep |     at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+3|duck-cep |     at listOnTimeout (node:internal/timers:588:17)
+3|duck-cep |     at process.processTimers (node:internal/timers:523:7)
 3|duck-cep | Node.js v22.20.0
 3|duck-cep | [ERROR] Failed to start TypeScript Cephalon {
 3|duck-cep |   error: "Cannot set properties of undefined (setting 'cephalon_app')"
@@ -1834,8 +1834,8 @@ Local PM2 version: 5.4.3
 3|duck-cep |     at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:59
 3|duck-cep |     at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 3|duck-cep |     at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-3|duck-cep |     at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-3|duck-cep |     at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+3|duck-cep |     at listOnTimeout (node:internal/timers:588:17)
+3|duck-cep |     at process.processTimers (node:internal/timers:523:7)
 3|duck-cep | Node.js v22.20.0
 3|duck-cep | [ERROR] Failed to start TypeScript Cephalon {
 3|duck-cep |   error: "Cannot set properties of undefined (setting 'cephalon_app')"
@@ -1850,8 +1850,8 @@ Local PM2 version: 5.4.3
 3|duck-cep |     at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:59
 3|duck-cep |     at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 3|duck-cep |     at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-3|duck-cep |     at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-3|duck-cep |     at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+3|duck-cep |     at listOnTimeout (node:internal/timers:588:17)
+3|duck-cep |     at process.processTimers (node:internal/timers:523:7)
 3|duck-cep | Node.js v22.20.0
 
 
@@ -2024,8 +2024,8 @@ Tool: bash
 
 /home/err/.pm2/logs/duck-cephalon-cljs-error.log last 50 lines:
 3|duck-cep |     at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-3|duck-cep |     at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-3|duck-cep |     at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+3|duck-cep |     at listOnTimeout (node:internal/timers:588:17)
+3|duck-cep |     at process.processTimers (node:internal/timers:523:7)
 3|duck-cep | Node.js v22.20.0
 3|duck-cep | /home/err/devel/services/cephalon-cljs/dist/cephalon.js:154
 3|duck-cep | g.ha=function(a,b,c){a=0;for(var d=c;;)if(a<this.o){var e=Fd(this,a);c=e.length;a:{for(var f=0;;)if(f<c){var h=e[f];d=b.h?b.h(d,h):b.call(null,d,h);if(Pb(d)){e=d;break a}f+=1}else{e=d;break a}e=void 0}if(Pb(e))return Ha(e);a+=c;d=e}else return d};g.Ea=function(a,b,c){if(typeof b==="number")return this.Eb(b,c);throw Error("Vector's key for assoc must be a number.");};g.La=function(a,b){return typeof b==="number"&&ia(isNaN(b))&&b!==Infinity&&parseFloat(b)===parseInt(b,10)?0<=b&&b<this.o:!1};
@@ -2037,8 +2037,8 @@ Tool: bash
 3|duck-cep |     at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:59
 3|duck-cep |     at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 3|duck-cep |     at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-3|duck-cep |     at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-3|duck-cep |     at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+3|duck-cep |     at listOnTimeout (node:internal/timers:588:17)
+3|duck-cep |     at process.processTimers (node:internal/timers:523:7)
 3|duck-cep | Node.js v22.20.0
 3|duck-cep | /home/err/devel/services/cephalon-cljs/dist/cephalon.js:154
 3|duck-cep | g.ha=function(a,b,c){a=0;for(var d=c;;)if(a<this.o){var e=Fd(this,a);c=e.length;a:{for(var f=0;;)if(f<c){var h=e[f];d=b.h?b.h(d,h):b.call(null,d,h);if(Pb(d)){e=d;break a}f+=1}else{e=d;break a}e=void 0}if(Pb(e))return Ha(e);a+=c;d=e}else return d};g.Ea=function(a,b,c){if(typeof b==="number")return this.Eb(b,c);throw Error("Vector's key for assoc must be a number.");};g.La=function(a,b){return typeof b==="number"&&ia(isNaN(b))&&b!==Infinity&&parseFloat(b)===parseInt(b,10)?0<=b&&b<this.o:!1};
@@ -2050,8 +2050,8 @@ Tool: bash
 3|duck-cep |     at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:59
 3|duck-cep |     at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 3|duck-cep |     at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-3|duck-cep |     at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-3|duck-cep |     at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+3|duck-cep |     at listOnTimeout (node:internal/timers:588:17)
+3|duck-cep |     at process.processTimers (node:internal/timers:523:7)
 3|duck-cep | Node.js v22.20.0
 3|duck-cep | /home/err/devel/services/cephalon-cljs/dist/cephalon.js:154
 3|duck-cep | g.ha=function(a,b,c){a=0;for(var d=c;;)if(a<this.o){var e=Fd(this,a);c=e.length;a:{for(var f=0;;)if(f<c){var h=e[f];d=b.h?b.h(d,h):b.call(null,d,h);if(Pb(d)){e=d;break a}f+=1}else{e=d;break a}e=void 0}if(Pb(e))return Ha(e);a+=c;d=e}else return d};g.Ea=function(a,b,c){if(typeof b==="number")return this.Eb(b,c);throw Error("Vector's key for assoc must be a number.");};g.La=function(a,b){return typeof b==="number"&&ia(isNaN(b))&&b!==Infinity&&parseFloat(b)===parseInt(b,10)?0<=b&&b<this.o:!1};
@@ -2063,8 +2063,8 @@ Tool: bash
 3|duck-cep |     at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:59
 3|duck-cep |     at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 3|duck-cep |     at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-3|duck-cep |     at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-3|duck-cep |     at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+3|duck-cep |     at listOnTimeout (node:internal/timers:588:17)
+3|duck-cep |     at process.processTimers (node:internal/timers:523:7)
 3|duck-cep | Node.js v22.20.0
 
 
@@ -2105,8 +2105,8 @@ Tool: bash
 3|duck-cep |     at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:59
 3|duck-cep |     at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 3|duck-cep |     at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-3|duck-cep |     at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-3|duck-cep |     at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+3|duck-cep |     at listOnTimeout (node:internal/timers:588:17)
+3|duck-cep |     at process.processTimers (node:internal/timers:523:7)
 3|duck-cep | 
 3|duck-cep | Node.js v22.20.0
 
@@ -2421,8 +2421,8 @@ Local PM2 version: [34m[1m6.0.14[22m[39m
 [31m3|duck-cep | [39m    at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:59
 [31m3|duck-cep | [39m    at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 [31m3|duck-cep | [39m    at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-[31m3|duck-cep | [39m    at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-[31m3|duck-cep | [39m    at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+[31m3|duck-cep | [39m    at listOnTimeout (node:internal/timers:588:17)
+[31m3|duck-cep | [39m    at process.processTimers (node:internal/timers:523:7)
 [31m3|duck-cep | [39m
 [31m3|duck-cep | [39mNode.js v22.20.0
 [31m3|duck-cep | [39m/home/err/devel/services/cephalon-cljs/dist/cephalon.js:154
@@ -2436,8 +2436,8 @@ Local PM2 version: [34m[1m6.0.14[22m[39m
 [31m3|duck-cep | [39m    at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:59
 [31m3|duck-cep | [39m    at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 [31m3|duck-cep | [39m    at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-[31m3|duck-cep | [39m    at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-[31m3|duck-cep | [39m    at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+[31m3|duck-cep | [39m    at listOnTimeout (node:internal/timers:588:17)
+[31m3|duck-cep | [39m    at process.processTimers (node:internal/timers:523:7)
 [31m3|duck-cep | [39m
 [31m3|duck-cep | [39mNode.js v22.20.0
 [31m3|duck-cep | [39m/home/err/devel/services/cephalon-cljs/dist/cephalon.js:154
@@ -2451,8 +2451,8 @@ Local PM2 version: [34m[1m6.0.14[22m[39m
 [31m3|duck-cep | [39m    at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:59
 [31m3|duck-cep | [39m    at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 [31m3|duck-cep | [39m    at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-[31m3|duck-cep | [39m    at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-[31m3|duck-cep | [39m    at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+[31m3|duck-cep | [39m    at listOnTimeout (node:internal/timers:588:17)
+[31m3|duck-cep | [39m    at process.processTimers (node:internal/timers:523:7)
 [31m3|duck-cep | [39m
 [31m3|duck-cep | [39mNode.js v22.20.0
 [31m3|duck-cep | [39m/home/err/devel/services/cephalon-cljs/dist/cephalon.js:154
@@ -2466,8 +2466,8 @@ Local PM2 version: [34m[1m6.0.14[22m[39m
 [31m3|duck-cep | [39m    at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:59
 [31m3|duck-cep | [39m    at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 [31m3|duck-cep | [39m    at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-[31m3|duck-cep | [39m    at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-[31m3|duck-cep | [39m    at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+[31m3|duck-cep | [39m    at listOnTimeout (node:internal/timers:588:17)
+[31m3|duck-cep | [39m    at process.processTimers (node:internal/timers:523:7)
 [31m3|duck-cep | [39m
 [31m3|duck-cep | [39mNode.js v22.20.0
 [31m3|duck-cep | [39m/home/err/devel/services/cephalon-cljs/dist/cephalon.js:154
@@ -2481,8 +2481,8 @@ Local PM2 version: [34m[1m6.0.14[22m[39m
 [31m3|duck-cep | [39m    at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:59
 [31m3|duck-cep | [39m    at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 [31m3|duck-cep | [39m    at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-[31m3|duck-cep | [39m    at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-[31m3|duck-cep | [39m    at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+[31m3|duck-cep | [39m    at listOnTimeout (node:internal/timers:588:17)
+[31m3|duck-cep | [39m    at process.processTimers (node:internal/timers:523:7)
 [31m3|duck-cep | [39m
 [31m3|duck-cep | [39mNode.js v22.20.0
 [31m3|duck-cep | [39m/home/err/devel/services/cephalon-cljs/dist/cephalon.js:154
@@ -2496,8 +2496,8 @@ Local PM2 version: [34m[1m6.0.14[22m[39m
 [31m3|duck-cep | [39m    at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:59
 [31m3|duck-cep | [39m    at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 [31m3|duck-cep | [39m    at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-[31m3|duck-cep | [39m    at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-[31m3|duck-cep | [39m    at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+[31m3|duck-cep | [39m    at listOnTimeout (node:internal/timers:588:17)
+[31m3|duck-cep | [39m    at process.processTimers (node:internal/timers:523:7)
 [31m3|duck-cep | [39m
 [31m3|duck-cep | [39mNode.js v22.20.0
 [31m3|duck-cep | [39m/home/err/devel/services/cephalon-cljs/dist/cephalon.js:154
@@ -2511,8 +2511,8 @@ Local PM2 version: [34m[1m6.0.14[22m[39m
 [31m3|duck-cep | [39m    at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:292:59
 [31m3|duck-cep | [39m    at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 [31m3|duck-cep | [39m    at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:116)
-[31m3|duck-cep | [39m    at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-[31m3|duck-cep | [39m    at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+[31m3|duck-cep | [39m    at listOnTimeout (node:internal/timers:588:17)
+[31m3|duck-cep | [39m    at process.processTimers (node:internal/timers:523:7)
 [31m3|duck-cep | [39m
 [31m3|duck-cep | [39mNode.js v22.20.0
 
@@ -3070,7 +3070,7 @@ pm2 monit                   # Real-time monitoring dashboard
   (:require [clobber.macro]))
 
 (clobber.macro/defapp "my-service"
-  {:script "REDACTED_SECRET"
+  {:script "node"
    :args ["dist/index.js"]
    :cwd "/path/to/service"
    :env {:NODE_ENV "production"}
@@ -3098,7 +3098,7 @@ pnpm build
 
 ### Bin Utilities
 
-- `bin/install-pre-push-hooks.sh`: Installs `.hooks/pre-push-typecheck.sh` into the REDACTED_SECRET repo and every submodule, adding `.nx/` to git excludes.
+- `bin/install-pre-push-hooks.sh`: Installs `.hooks/pre-push-typecheck.sh` into the root repo and every submodule, adding `.nx/` to git excludes.
 - `bin/setup-branch-protection [--dry-run]`: Applies baseline GitHub branch protection to every GitHub-backed submodule default branch (set `ALSO_DEV=true` to also guard `dev`; requires `gh` admin access).
 - `bin/fix-submodules <org>`: Converts nested git directories into proper submodules under the given org, creating GitHub remotes when missing and committing the replacements.
 - `bin/github-transfer-submodules <org>`: Transfers each `.gitmodules` repo to the target org via `gh transfer`.
@@ -3341,7 +3341,7 @@ bun run src/giga/run-submodule.ts "orgs/riatzukiza/promethean" test
 The `submodule smart commit` command provides intelligent, hierarchical commit management:
 
 #### Key Features
-- **Breadth-first traversal**: Commits from deepest submodules up to REDACTED_SECRET workspace
+- **Breadth-first traversal**: Commits from deepest submodules up to root workspace
 - **Pantheon integration**: Generates meaningful commit messages using AI assistance
 - **Interactive explanation**: Prompts for change context to enhance commit messages
 - **Context propagation**: Child commit messages inform parent commit messages
@@ -3663,7 +3663,7 @@ npm run dev
 npm run build:prod
 
 # Run
-REDACTED_SECRET dist/cephalon.js
+node dist/cephalon.js
 ```
 
 ## Reference Implementation
@@ -3989,8 +3989,8 @@ Local PM2 version: 5.4.3
 3|duck-cep |     at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:59
 3|duck-cep |     at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 3|duck-cep |     at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:290:116)
-3|duck-cep |     at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-3|duck-cep |     at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+3|duck-cep |     at listOnTimeout (node:internal/timers:588:17)
+3|duck-cep |     at process.processTimers (node:internal/timers:523:7)
 3|duck-cep | 
 3|duck-cep | Node.js v22.20.0
 3|duck-cep | /home/err/devel/services/cephalon-cljs/dist/cephalon.js:154
@@ -4004,8 +4004,8 @@ Local PM2 version: 5.4.3
 3|duck-cep |     at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:59
 3|duck-cep |     at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 3|duck-cep |     at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:290:116)
-3|duck-cep |     at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-3|duck-cep |     at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+3|duck-cep |     at listOnTimeout (node:internal/timers:588:17)
+3|duck-cep |     at process.processTimers (node:internal/timers:523:7)
 3|duck-cep | 
 3|duck-cep | Node.js v22.20.0
 
@@ -5093,8 +5093,8 @@ Local PM2 version: 5.4.3
 3|duck-cep | [EventBus] Initializing subscriptions...
 
 /home/err/.pm2/logs/duck-cephalon-cljs-error.log last 20 lines:
-3|duck-cep |     at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-3|duck-cep |     at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+3|duck-cep |     at listOnTimeout (node:internal/timers:588:17)
+3|duck-cep |     at process.processTimers (node:internal/timers:523:7)
 3|duck-cep | 
 3|duck-cep | Node.js v22.20.0
 3|duck-cep | /home/err/devel/services/cephalon-cljs/dist/cephalon.js:154
@@ -5108,8 +5108,8 @@ Local PM2 version: 5.4.3
 3|duck-cep |     at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:59
 3|duck-cep |     at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 3|duck-cep |     at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:290:116)
-3|duck-cep |     at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-3|duck-cep |     at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+3|duck-cep |     at listOnTimeout (node:internal/timers:588:17)
+3|duck-cep |     at process.processTimers (node:internal/timers:523:7)
 3|duck-cep | 
 3|duck-cep | Node.js v22.20.0
 3|duck-cep | [ERROR] Failed to start TypeScript Cephalon { error: 'An invalid token was provided.' }
@@ -5399,8 +5399,8 @@ Local PM2 version: 5.4.3
 3|duck-cep |     at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:59
 3|duck-cep |     at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 3|duck-cep |     at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:290:116)
-3|duck-cep |     at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-3|duck-cep |     at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+3|duck-cep |     at listOnTimeout (node:internal/timers:588:17)
+3|duck-cep |     at process.processTimers (node:internal/timers:523:7)
 3|duck-cep | 
 3|duck-cep | Node.js v22.20.0
 3|duck-cep | [ERROR] Failed to start TypeScript Cephalon { error: 'An invalid token was provided.' }
@@ -6637,7 +6637,7 @@ Tool: read
 00002| 
 00003|   :builds
 00004|   {:cephalon
-00005|    {:target :REDACTED_SECRET-script
+00005|    {:target :node-script
 00006|     :output-to "dist/cephalon.js"
 00007|     :main promethean.main/-main
 00008|     :compiler-options {:externs ["externs.js"]}
@@ -6664,7 +6664,7 @@ Tool: bash
 **Input:**
 ```json
 {
-  "command": "REDACTED_SECRET -e \"console.log('Testing...'); require('./dist/cephalon.js')\" 2>&1 | head -50",
+  "command": "node -e \"console.log('Testing...'); require('./dist/cephalon.js')\" 2>&1 | head -50",
   "description": "Test run compiled output",
   "timeout": 5000,
   "workdir": "/home/err/devel/services/cephalon-cljs"
@@ -6704,7 +6704,7 @@ Testing...
 [LLM]   Tool: discord.channel.scroll - Scroll through channel messages (sugar over messages with before=oldest-seen-id). Use discord.list.channels to find a channel
 [LLM]   Tool: discord.dm.messages - Fetch messages from a DM channel with a user
 [LLM]   Tool: discord.search - Search messages in a Discord channel or DM. Supports filtering by query text and user ID. Falls back to client-side filtering if native search unavailable.
-[LLM]   Tool: discord.send - REDACTED_SECRET a message to a Discord channel from discord.list.channels.
+[LLM]   Tool: discord.send - Send a message to a Discord channel from discord.list.channels.
 [LLM]   Tool: discord.list.servers - List all Discord servers/guilds the bot is a member of. Use this BEFORE discord.list.channels
 [LLM]   Tool: discord.list.channels - List all channels in a Discord server/guild
 [LLM]   Tool: get_current_time - Get the current timestamp and ISO date
@@ -6740,7 +6740,7 @@ Tool: bash
 **Input:**
 ```json
 {
-  "command": "timeout 5 REDACTED_SECRET dist/cephalon.js 2>&1 | grep -A5 -B5 \"Vector's key\" || echo \"No error after 5 seconds\"",
+  "command": "timeout 5 node dist/cephalon.js 2>&1 | grep -A5 -B5 \"Vector's key\" || echo \"No error after 5 seconds\"",
   "description": "Run for 5 seconds and check for error",
   "timeout": 10000,
   "workdir": "/home/err/devel/services/cephalon-cljs"
@@ -6833,8 +6833,8 @@ Local PM2 version: 5.4.3
 3|duck-cep |     at /home/err/devel/services/cephalon-cljs/dist/cephalon.js:291:59
 3|duck-cep |     at nd.h (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:126:69)
 3|duck-cep |     at Timeout._onTimeout (/home/err/devel/services/cephalon-cljs/dist/cephalon.js:290:116)
-3|duck-cep |     at listOnTimeout (REDACTED_SECRET:internal/timers:588:17)
-3|duck-cep |     at process.processTimers (REDACTED_SECRET:internal/timers:523:7)
+3|duck-cep |     at listOnTimeout (node:internal/timers:588:17)
+3|duck-cep |     at process.processTimers (node:internal/timers:523:7)
 3|duck-cep | 
 3|duck-cep | Node.js v22.20.0
 3|duck-cep | [ERROR] Failed to start TypeScript Cephalon { error: 'An invalid token was provided.' }

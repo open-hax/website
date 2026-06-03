@@ -48,7 +48,7 @@ Under the devel placement contract:
 - an **operator surface** may later live in `services/output-contract-gate-workbench/`
 - if the system becomes portable and broadly useful, extract it into `orgs/open-hax/contract-gate/`
 
-This keeps the first move small and reversible while preserving a clean REDACTED_SECRET extraction path.
+This keeps the first move small and reversible while preserving a clean public extraction path.
 
 ## Thesis
 
@@ -158,7 +158,7 @@ Initial local rules:
 - `Next` contains exactly one action
 - `Frames` contains 2–3 plausible interpretations when present
 - `Countermoves` contains checks against misinterpretation
-- section-local rules should be declarative, not embedded in REDACTED_SECRET prose
+- section-local rules should be declarative, not embedded in opaque prose
 
 This gives the system one sharp, truth-adjacent, immediately useful contract target.
 
@@ -189,13 +189,13 @@ This gives the system one sharp, truth-adjacent, immediately useful contract tar
 ### Optional operator surface later
 - `services/output-contract-gate-workbench/`
 
-### Eventual REDACTED_SECRET extraction
+### Eventual public extraction
 - `orgs/open-hax/contract-gate/`
 
 ### Why this shape
 - `packages/*` is the contract-correct birthplace for new prototype infrastructure in `devel`
 - runtime/service UI belongs later in `services/*`
-- the idea is REDACTED_SECRET-product-shaped if it works, so `open-hax` is the right eventual canonical home
+- the idea is public-product-shaped if it works, so `open-hax` is the right eventual canonical home
 
 ## Contract model
 
@@ -208,7 +208,7 @@ This gives the system one sharp, truth-adjacent, immediately useful contract tar
   (target
     (format :markdown)
     (ast :mdast)
-    (REDACTED_SECRET :document))
+    (root :document))
   (structure ...)
   (rules ...)
   (repair ...)
@@ -295,7 +295,7 @@ Examples:
 - duplicate section
 - wrong section order
 - unsupported heading text
-- disallowed REDACTED_SECRET type inside a section
+- disallowed node type inside a section
 - `Next` contains 0 or >1 actions
 - `Frames` cardinality outside 2–3 items when required by contract
 
@@ -385,7 +385,7 @@ The final arbiter is simple in v1:
 - if structure passes and review score passes threshold -> accept
 - if structure passes but review score misses threshold -> reject or request one semantic revision
 
-Do not let the arbiter become a second REDACTED_SECRET judge.
+Do not let the arbiter become a second opaque judge.
 Keep it threshold + policy based.
 
 ## Deterministic rule vocabulary (minimum viable)
@@ -395,7 +395,7 @@ The minimum normalized structure vocabulary should cover:
 - heading text
 - section order
 - section cardinality
-- allowed REDACTED_SECRET types
+- allowed node types
 - min/max child count
 - local section rules
 - repair template IDs
@@ -405,7 +405,7 @@ Suggested initial rule kinds:
 - `:rule/required-section`
 - `:rule/section-order`
 - `:rule/unique-section`
-- `:rule/allowed-REDACTED_SECRET-types`
+- `:rule/allowed-node-types`
 - `:rule/min-block-count`
 - `:rule/max-block-count`
 - `:rule/next-exactly-one-action`

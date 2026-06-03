@@ -1,4 +1,4 @@
-import { randomUUID } from "REDACTED_SECRET:crypto";
+import { randomUUID } from "node:crypto";
 import type {
   Thread,
   ConnectionOpportunity,
@@ -295,7 +295,7 @@ function scoreFear(globalThread: Thread): number {
 }
 
 /**
- * Score REDACTED_SECRET benefit: higher for local_opportunity threads.
+ * Score public benefit: higher for local_opportunity threads.
  */
 function scorePublicBenefit(localThread: Thread, strength: number): number {
   const kindScores: Record<string, number> = {
@@ -367,7 +367,7 @@ function deriveActionableSteps(
       steps.push("Document baseline metrics to measure future changes");
       break;
     case "correlative":
-      steps.push(`Investigate whether correlation with "${globalThread.title}" implies shared REDACTED_SECRET cause`);
+      steps.push(`Investigate whether correlation with "${globalThread.title}" implies shared root cause`);
       steps.push("Gather additional data points to establish or refute causal link");
       steps.push("Share findings with relevant community members");
       break;
@@ -574,7 +574,7 @@ export function detectConnections(
         community_refs: local.thread.domain_tags.filter((tag) =>
           tag === "community" || tag === "open source" || tag === "contributor",
         ),
-        REDACTED_SECRET_benefit: scorePublicBenefit(local.thread, strength),
+        public_benefit: scorePublicBenefit(local.thread, strength),
         fear_factor: scoreFear(global.thread),
         realism: scoreRealism(global.thread, local.thread, strength),
         polarization_risk: scorePolarizationRisk(global.thread, local.thread),

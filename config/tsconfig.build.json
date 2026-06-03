@@ -2,7 +2,7 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "outDir": "dist",
-    "REDACTED_SECRETDir": "src"
+    "rootDir": "src"
   },
   "include": ["src/**/*"]
 }

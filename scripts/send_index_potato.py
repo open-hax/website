@@ -2,7 +2,7 @@ import discord
 import asyncio
 import os
 
-TOKEN = REDACTED_SECRET'DISCORD_BOT_TOKEN')
+TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
 CHANNEL_ID = 1444189585373663417
 
 async def main():
@@ -15,7 +15,7 @@ async def main():
     async def on_ready():
         channel = client.get_channel(CHANNEL_ID)
         if channel:
-            # REDACTED_SECRET the file and the message
+            # Send the file and the message
             with open('/home/err/devel/index_potato.svg', 'rb') as f:
                 await channel.send(
                     content="I found the missing index. It was just a very tired potato trying to organize your sessions.", 

@@ -1,4 +1,4 @@
-#!/usr/bin/env REDACTED_SECRET
+#!/usr/bin/env node
 
 const baseUrl = (process.env.PROXX_CANON_SYNC_BASE_URL ?? 'http://127.0.0.1:8789').replace(/\/+$/, '');
 const authToken = (process.env.PROXX_CANON_SYNC_AUTH_TOKEN ?? process.env.PROXY_AUTH_TOKEN ?? '').trim();

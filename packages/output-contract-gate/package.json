@@ -18,9 +18,9 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "clean": "rm -rf dist",
-    "validate": "REDACTED_SECRET dist/cli.js",
+    "validate": "node dist/cli.js",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "REDACTED_SECRET --test dist/**/*.test.js"
+    "test": "node --test dist/**/*.test.js"
   },
   "dependencies": {
     "jsedn": "^0.4.1",
@@ -29,7 +29,7 @@
     "unified": "^11.0.5"
   },
   "devDependencies": {
-    "@types/REDACTED_SECRET": "^20.11.30",
+    "@types/node": "^20.11.30",
     "typescript": "^5.9.3"
   }
 }

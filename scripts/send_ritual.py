@@ -2,7 +2,7 @@ import discord
 import asyncio
 import os
 
-TOKEN = REDACTED_SECRET'DISCORD_BOT_TOKEN')
+TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
 CHANNELS = {
     "yap": 1494137016303095828,
     "slop": 1444189585373663417

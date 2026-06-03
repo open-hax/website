@@ -4,7 +4,7 @@ import os
 import sys
 
 async def main():
-    token = REDACTED_SECRET'DISCORD_BOT_TOKEN')
+    token = os.environ.get('DISCORD_BOT_TOKEN')
     if not token:
         print('DISCORD_BOT_TOKEN not set')
         return

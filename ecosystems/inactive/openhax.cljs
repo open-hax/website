@@ -8,7 +8,7 @@
 (clobber.macro/defapp "agentd"
   {:script "dist/index.js"
    :cwd "services/agentd"
-   :interpreter "REDACTED_SECRET"
+   :interpreter "node"
    :exec_mode "fork"
    :instances 1
    :env_file "services/agentd/.env"

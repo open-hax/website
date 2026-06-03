@@ -1,5 +1,5 @@
-import { mkdir, readFile, rename, writeFile } from "REDACTED_SECRET:fs/promises";
-import path from "REDACTED_SECRET:path";
+import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
+import path from "node:path";
 
 import { defaultStatusOrder, type KanbanTask } from "./types.js";
 

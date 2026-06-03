@@ -27,7 +27,7 @@ services/open-hax-openai-proxy:
   status: canonical
   org: open-hax
   repo: proxx
-  service_kind: REDACTED_SECRET-service
+  service_kind: node-service
   upstream: https://github.com/open-hax/proxx.git
   branch: main
   canonical_source: orgs/open-hax/proxx
@@ -209,7 +209,7 @@ packages/embedding:
       - orgs/octave-commons/promethean/packages/embedding
       - orgs/riatzukiza/promethean/packages/embedding
   inventory_ref: docs/reports/inventory/packages-org-placement-inventory-2026-03-21.json
-  notes: "Verified-useful Promethean extraction. First-pass recommendation is to bless the internal riatzukiza/promethean home before considering any later REDACTED_SECRET split."
+  notes: "Verified-useful Promethean extraction. First-pass recommendation is to bless the internal riatzukiza/promethean home before considering any later public split."
 
 packages/event:
   kind: package
@@ -309,7 +309,7 @@ packages/test-utils:
       - orgs/octave-commons/promethean/packages/test-utils
       - orgs/riatzukiza/promethean/packages/test-utils
   inventory_ref: docs/reports/inventory/packages-org-placement-inventory-2026-03-21.json
-  notes: "Verified-useful Promethean extraction. Shared internal helper first; REDACTED_SECRET-product pressure is weak right now."
+  notes: "Verified-useful Promethean extraction. Shared internal helper first; public-product pressure is weak right now."
 
 packages/utils:
   kind: package

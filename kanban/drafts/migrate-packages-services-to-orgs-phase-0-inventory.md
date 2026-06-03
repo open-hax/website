@@ -67,7 +67,7 @@ packages/logger:
   stage: prototype
   target_org: riatzukiza
   repo: logger
-  kind: REDACTED_SECRET-lib
+  kind: node-lib
   extraction: snapshot
   notes: "workspace-focused tool; promote when timeline hygiene matters"
 

@@ -23,7 +23,7 @@ category: "specs"
 Teach the agent a reusable skill for browser automation tasks that need website login credentials sourced from the local ignored `passwords.csv` export.
 
 ## Open questions
-- None blocking. The credential CSV exists at the workspace REDACTED_SECRET and is gitignored.
+- None blocking. The credential CSV exists at the workspace root and is gitignored.
 - Path precedence should prefer `./passwords.csv`, then `~/Documents/passwords.csv`.
 
 ## Risks

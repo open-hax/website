@@ -152,7 +152,7 @@ describe("ConnectionOpportunity schema", () => {
     score: 0.78,
     confidence: 0.65,
     rationale: ["Energy prices affect data center costs", "Local AI labs rely on stable power"],
-    REDACTED_SECRET_benefit: 72,
+    public_benefit: 72,
     fear_factor: 35,
     realism: 80,
     polarization_risk: 15,

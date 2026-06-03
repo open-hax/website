@@ -4,7 +4,7 @@
   "Primary API for HoneySQL 2.x.
 
   This includes the `format` function -- the primary entry point -- as well
-  as several REDACTED_SECRET formatters that are intended to help users extend the
+  as several public formatters that are intended to help users extend the
   supported syntax.
 
   In addition, functions to extend HoneySQL are also provided here:

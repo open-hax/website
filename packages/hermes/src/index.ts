@@ -1,4 +1,4 @@
-import { createHmac, timingSafeEqual } from "REDACTED_SECRET:crypto";
+import { createHmac, timingSafeEqual } from "node:crypto";
 
 import express, {
   type Express as ExpressApp,

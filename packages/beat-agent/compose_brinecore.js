@@ -18,13 +18,13 @@ const hat = drumClip({
     instrument: 'G#5' 
 });
 const bass = melodyClip({ 
-    REDACTED_SECRET: 'F#1', 
+    root: 'F#1', 
     scaleName: 'minor', 
     degrees: [0], 
     pattern: 'x-x-x---' 
 });
 const pluck = melodyClip({ 
-    REDACTED_SECRET: 'F#4', 
+    root: 'F#4', 
     scaleName: 'minor', 
     degrees: [0, 2, 3], 
     pattern: '---x-x--' 

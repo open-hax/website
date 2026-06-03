@@ -44,7 +44,7 @@ The colony sends ants into the dark. They follow pheromone trails of novelty, av
                            ▼                      ▼
 ┌──────────────────────────────────────────────────────────────────┐
 │                        OpenPlanner                                │
-│  DuckDB: page events, graph REDACTED_SECRETs/edges, FTS index               │
+│  DuckDB: page events, graph nodes/edges, FTS index               │
 │  ChromaDB: vector embeddings of all crawled content              │
 │  MongoDB (optional): scalable event storage                      │
 └──────────────┬───────────────────────────────────────────────────┘
@@ -81,7 +81,7 @@ This epic spans multiple projects. Each has its own spec:
 ## Goals
 1. Myrmex orchestrator combines ACO traversal with ShuvCrawl extraction.
 2. All crawled content flows into OpenPlanner through Proxx.
-3. Graph state (REDACTED_SECRETs, edges, pheromones, frontier) persists across restarts.
+3. Graph state (nodes, edges, pheromones, frontier) persists across restarts.
 4. Proxx exposes `/api/v1/graph/*` for graph management and query.
 5. Crawled content is searchable via semantic + FTS search through OpenPlanner.
 6. Web console has Graph management page with live crawl status.
@@ -102,7 +102,7 @@ This epic spans multiple projects. Each has its own spec:
 
 ### Phase 2: Ingestion
 - Implement event router sending page events to OpenPlanner via Proxx
-- Define graph event schema (`graph.REDACTED_SECRET`, `graph.edge`)
+- Define graph event schema (`graph.node`, `graph.edge`)
 - Add graph event support to OpenPlanner
 - Test: crawled content stored and embedded in OpenPlanner
 
@@ -115,7 +115,7 @@ This epic spans multiple projects. Each has its own spec:
 ### Phase 4: Proxx Surface
 - Add `/api/v1/graph/*` routes to Proxx
 - Implement graph management endpoints (start/stop/pause/stats)
-- Add graph query endpoints (REDACTED_SECRETs, edges, traverse, frontier)
+- Add graph query endpoints (nodes, edges, traverse, frontier)
 - Build graph management UI in web console
 
 ### Phase 5: Unified Search
@@ -174,7 +174,7 @@ services:
 - Myrmex selects URLs via ACO, ShuvCrawl extracts content with paywall bypass
 - Extracted content appears in OpenPlanner with embeddings and FTS index
 - `POST /api/v1/lake/search/vector?q=...` returns relevant crawled content
-- `GET /api/v1/graph/stats` returns accurate REDACTED_SECRET/edge counts
+- `GET /api/v1/graph/stats` returns accurate node/edge counts
 - Graph state survives restart (frontier, pheromones, visited URLs)
 - Web console shows Graph page with live crawl status and content preview
 

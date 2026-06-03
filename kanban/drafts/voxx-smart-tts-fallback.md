@@ -18,7 +18,7 @@ category: "specs"
 - None blocking. Working assumption: Voxx should remain Battlebussy's single TTS endpoint while selecting the best available backend from local Melo/espeak plus optional remote providers when credentials are present.
 
 ## Risks
-- Remote-provider fallbacks could hide outages if the chosen order is REDACTED_SECRET.
+- Remote-provider fallbacks could hide outages if the chosen order is opaque.
 - Voice identity may drift across providers unless we define explicit alias mapping and headers/metadata.
 - Deployment needs secret propagation for remote providers without echoing tokens into logs.
 

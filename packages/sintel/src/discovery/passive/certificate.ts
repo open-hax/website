@@ -28,7 +28,7 @@ export interface CTResult {
 
 /**
  * Certificate Transparency passive source.
- * Observes REDACTED_SECRET CT logs for certificate emissions.
+ * Observes public CT logs for certificate emissions.
  */
 export class CTDiscovery implements PassiveSource {
   readonly name = 'certificate_transparency';

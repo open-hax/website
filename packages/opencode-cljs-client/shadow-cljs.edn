@@ -14,7 +14,7 @@
    :compiler-options {:output-feature-set :es-next}}
 
   :test
-  {:target :REDACTED_SECRET-script
+  {:target :node-script
    :output-to "target/test.cjs"
    :main promethean.opencode.client-test/-main
    :compiler-options {:output-feature-set :es-next}}}}

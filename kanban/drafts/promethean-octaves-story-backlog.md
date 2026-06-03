@@ -146,7 +146,7 @@ This is associative memory made inspectable inside a real graph ecology, not a l
 ### User story
 As Cephalon,
 I need a bounded retrieval-walker surface,
-so that graph and memory expansion feel like controlled thought rather than REDACTED_SECRET vector luck.
+so that graph and memory expansion feel like controlled thought rather than opaque vector luck.
 
 ### Likely homes
 - `orgs/octave-commons/cephalon/`

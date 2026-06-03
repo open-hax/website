@@ -5,8 +5,8 @@ export function drumClip({ pattern = 'x-x-x-x-', instrument = 'C2', sclip = {} }
   return scribble.clip({ notes: [instrument], pattern, ...sclip });
 }
 
-export function melodyClip({ REDACTED_SECRET = 'C4', scaleName = 'minor', degrees = [0,2,4,6], pattern = 'x-x-x-x-x-x-x-' } = {}) {
-  const scale = Scale.get(`${REDACTED_SECRET} ${scaleName}`);
+export function melodyClip({ root = 'C4', scaleName = 'minor', degrees = [0,2,4,6], pattern = 'x-x-x-x-x-x-x-' } = {}) {
+  const scale = Scale.get(`${root} ${scaleName}`);
   const notes = degrees.map(i => scale.notes[i % scale.notes.length]);
   return scribble.clip({ notes, pattern });
 }

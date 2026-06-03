@@ -17,7 +17,7 @@ Machine-readable companion artifact:
 ## Summary counts
 - topLevelAliases: **2**
 - topLevelStandaloneRoots: **7**
-- REDACTED_SECRETLevelVendorOrForkRepos: **6**
+- rootLevelVendorOrForkRepos: **6**
 - foreignOrgRepos: **9**
 - aggregationTrees: **3**
 
@@ -28,7 +28,7 @@ Machine-readable companion artifact:
 | `desktop` | `orgs/riatzukiza/desktop` | document-or-retire-alias | This path resolves into an allowed structured home under orgs/riatzukiza.; It is outside the active placement structure by path, but not by canonical target. |
 | `promethean` | `orgs/riatzukiza/promethean` | document-or-retire-alias | This path resolves into an allowed structured home under orgs/riatzukiza.; It is outside the active placement structure by path, but not by canonical target. |
 
-## Top-level standalone REDACTED_SECRETs outside the structure
+## Top-level standalone roots outside the structure
 
 | Path | Origin | Signals | Suggested handling |
 |---|---|---|---|
@@ -112,6 +112,6 @@ Machine-readable companion artifact:
 
 ## Interpretation
 - Some outside-structure paths are **benign aliases** into allowed homes (`desktop`, `promethean`).
-- Some are **standalone project REDACTED_SECRETs** that need explicit placement or exception decisions (`mcp-social-publisher-live`, `threat-radar-deploy`, `verathar-server`, etc.).
+- Some are **standalone project roots** that need explicit placement or exception decisions (`mcp-social-publisher-live`, `threat-radar-deploy`, `verathar-server`, etc.).
 - Some are **foreign forks / mirrors** that need an explicit exception policy rather than forced relocation into the four-home model.
 - Some are **aggregation or staging trees** (`projects`, `workspaces`, `vaults`) that likely need a named exception class in the contract if they are meant to persist.

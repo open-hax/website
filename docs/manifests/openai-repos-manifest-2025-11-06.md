@@ -24,7 +24,7 @@ Root workspace: /home/err/devel
 - harmony
 - build-hours
 - mle-bench
-- openai-REDACTED_SECRET
+- openai-node
 - openai-ruby
 - openai-java
 - openai-go
@@ -51,7 +51,7 @@ Root workspace: /home/err/devel
 - tiktoken
 - openai-reflect
 - GPTs-are-GPTs
-- openai-quickstart-REDACTED_SECRET
+- openai-quickstart-node
 - openai-icpc-2025
 - completions-responses-migration-pack
 - whisper

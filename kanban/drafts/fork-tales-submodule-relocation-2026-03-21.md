@@ -19,7 +19,7 @@ Move the canonical Octave Commons Fork Tales repo from `vaults/fork_tales` to `o
 
 ## Open questions
 - Should a compatibility alias remain at `vaults/fork_tales`, or should all tracked references move immediately to the new org path?
-  - Working default: update tracked references to the new org path and remove the old REDACTED_SECRET/vault path usage.
+  - Working default: update tracked references to the new org path and remove the old root/vault path usage.
 - Should the standalone `fork_tales` checkout be preserved in any form beyond a remote entry?
   - Working default: no; preserve access by adding a `shuv` remote and removing the duplicate checkout.
 
@@ -33,7 +33,7 @@ Move the canonical Octave Commons Fork Tales repo from `vaults/fork_tales` to `o
 
 ## Phases
 1. Record the relocation plan and inspect current repo/remotes for both checkouts.
-2. Move the canonical submodule to `orgs/octave-commons/fork_tales` and update REDACTED_SECRET submodule metadata.
+2. Move the canonical submodule to `orgs/octave-commons/fork_tales` and update root submodule metadata.
 3. Update tracked workspace configs/docs that still point at `vaults/fork_tales`.
 4. Update dependent repo references that would break under the new canonical path.
 5. Add `shuv` as a remote on the canonical repo, remove the standalone `fork_tales` checkout, and verify the resulting layout.
@@ -67,7 +67,7 @@ Move the canonical Octave Commons Fork Tales repo from `vaults/fork_tales` to `o
 
 ## Execution log
 - 2026-03-21T19:00:00Z Began planning and inventory for relocating Fork Tales from `vaults/` into `orgs/octave-commons/` and demoting the standalone Shuv checkout into a secondary remote.
-- 2026-03-21T19:09:00Z Moved the canonical submodule working tree from `vaults/fork_tales` to `orgs/octave-commons/fork_tales`, renamed the `.gitmodules` entry, and synced the REDACTED_SECRET submodule config to the new path.
-- 2026-03-21T19:12:00Z Updated REDACTED_SECRET workspace configs/docs and dependent repo references in Gates of Aker and Voxx so current operational paths point at `orgs/octave-commons/fork_tales`.
+- 2026-03-21T19:09:00Z Moved the canonical submodule working tree from `vaults/fork_tales` to `orgs/octave-commons/fork_tales`, renamed the `.gitmodules` entry, and synced the root submodule config to the new path.
+- 2026-03-21T19:12:00Z Updated root workspace configs/docs and dependent repo references in Gates of Aker and Voxx so current operational paths point at `orgs/octave-commons/fork_tales`.
 - 2026-03-21T19:14:00Z Added `shuv` remote to `orgs/octave-commons/fork_tales`, fetched `shuv/main`, and removed the duplicate top-level `fork_tales` checkout.
 - 2026-03-21T19:16:00Z Verified JSON files still parse, the canonical Part64 path exists, the old `vaults/fork_tales` path is gone, and no tracked non-receipt files still reference the old location.

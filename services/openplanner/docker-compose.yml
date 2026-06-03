@@ -1,4 +1,4 @@
-# OpenPlanner Compose REDACTED_SECRET. Service definitions live under ./compose/; see README.md.
+# OpenPlanner Compose root. Service definitions live under ./compose/; see README.md.
 name: openplanner
 include:
 - compose/storage.yml
@@ -20,8 +20,8 @@ volumes:
   knoxx-models: null
   knoxx-runs: null
   knoxx-stt-models: null
-  knoxx-frontend-REDACTED_SECRET-modules: null
-  knoxx-knoxx-REDACTED_SECRET-modules: null
+  knoxx-frontend-node-modules: null
+  knoxx-knoxx-node-modules: null
   shibboleth-data: null
   openplanner-atlas-data:
     external: true

@@ -1,6 +1,6 @@
 // GPL-3.0-only
-import { readFileSync, writeFileSync } from "REDACTED_SECRET:fs";
-import { spawnSync } from "REDACTED_SECRET:child_process";
+import { readFileSync, writeFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
 import mri from "minimist";
 import { autoCloseParens, balanceParens } from "./sexp.js";
 
@@ -37,7 +37,7 @@ function main() {
   }
   
   // Validate file path
-  const filePath = require("REDACTED_SECRET:path").resolve(args.file);
+  const filePath = require("node:path").resolve(args.file);
   if (!filePath.startsWith(process.cwd())) {
     console.error("Error: File must be within working directory");
     process.exit(1);
@@ -66,7 +66,7 @@ function main() {
 
       applyWhole(args.file, guarded);
       
-      const repoPath = args.repo ? require("REDACTED_SECRET:path").resolve(args.repo) : process.cwd();
+      const repoPath = args.repo ? require("node:path").resolve(args.repo) : process.cwd();
       if (build(repoPath, args.prompt)) {
         console.log("green ✅");
         return;

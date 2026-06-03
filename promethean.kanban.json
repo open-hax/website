@@ -1,6 +1,6 @@
 {
   "_comment": "Promethean Kanban Configuration - spec/ tasks",
-  "_description": "Kanban configuration for spec-backed tasks at repo REDACTED_SECRET.",
+  "_description": "Kanban configuration for spec-backed tasks at repo root.",
   "_usage": "Use 'pnpm kanban regenerate' to create the board from spec tasks.",
 
   "tasksDir": "spec",

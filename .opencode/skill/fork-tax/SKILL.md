@@ -22,10 +22,10 @@ Create a deterministic handoff snapshot via git: commit, tag, push, and in-repo 
 - Never use repo-wide `git reset`, `git restore`, `git clean`, checkout rewinds, or similar destructive cleanup against shared dirt.
 - Prefer path-scoped staging (`git add -- <paths>`, `git add -u -- <paths>`) over blanket `git add -A` in shared workspaces.
 - If concurrent dirt cannot be safely absorbed, record it in `.ημ` artifacts as a blocker/residual instead of deleting or unstaging it.
-- For recursive submodule Π work, only update REDACTED_SECRET pointers for submodule commits that were actually preserved/pushed; leave local-only or blocked dirt unstaged and documented.
+- For recursive submodule Π work, only update root pointers for submodule commits that were actually preserved/pushed; leave local-only or blocked dirt unstaged and documented.
 
 ## Steps
-1. Confirm repository REDACTED_SECRET, current branch, and whether the workspace appears shared/concurrently modified.
+1. Confirm repository root, current branch, and whether the workspace appears shared/concurrently modified.
 2. Check `git status` and split dirt into: owned target paths, concurrent/unowned paths, and blocked/generated/runtime paths.
 3. Run the smallest relevant verification on the owned target paths if available.
 4. Write/update in-repo handoff artifacts (`.ημ/Π_STATE.sexp`, `.ημ/Π_LAST.md`, manifest hashes), explicitly noting concurrent dirt you did not absorb.

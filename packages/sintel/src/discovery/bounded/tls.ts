@@ -86,7 +86,7 @@ export class TLSHandshakeProbe implements BoundedVerifier {
   private async performHandshake(hostname: string, port: number): Promise<TLSHandshake> {
     const start = Date.now();
 
-    // In production, use REDACTED_SECRET:tls or undici
+    // In production, use node:tls or undici
     // Placeholder implementation
     return {
       hostname,

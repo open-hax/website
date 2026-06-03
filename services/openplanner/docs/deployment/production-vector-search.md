@@ -44,7 +44,7 @@ If you have data in the Community MongoDB volume, migrate it:
 ```bash
 # 1. Dump from Community volume
 docker compose exec mongodb mongodump \
-  -u openplannerRoot -p <REDACTED_SECRET-password> \
+  -u openplannerRoot -p <root-password> \
   --authenticationDatabase admin \
   -d openplanner \
   --out /tmp/dump
@@ -59,7 +59,7 @@ docker compose -f docker-compose.yml -f docker-compose.atlas.yml up -d
 # 4. Wait for atlas-mongodb to be healthy
 docker compose -f docker-compose.yml -f docker-compose.atlas.yml exec atlas-mongodb \
   mongosh --eval 'db.adminCommand("ping")' \
-  -u openplannerRoot -p <REDACTED_SECRET-password> --authenticationDatabase admin
+  -u openplannerRoot -p <root-password> --authenticationDatabase admin
 
 # 5. Restore into Atlas Local
 docker compose -f docker-compose.yml -f docker-compose.atlas.yml cp \
@@ -67,7 +67,7 @@ docker compose -f docker-compose.yml -f docker-compose.atlas.yml cp \
 
 docker compose -f docker-compose.yml -f docker-compose.atlas.yml exec atlas-mongodb \
   mongorestore \
-  -u openplannerRoot -p <REDACTED_SECRET-password> \
+  -u openplannerRoot -p <root-password> \
   --authenticationDatabase admin \
   --drop \
   /tmp/dump/openplanner
@@ -83,9 +83,9 @@ If `atlas-init` already ran successfully, the indexes are being built. To verify
 ```bash
 # Check index status
 docker compose -f docker-compose.yml -f docker-compose.atlas.yml exec atlas-mongodb \
-  mongosh -u openplannerRoot -p <REDACTED_SECRET-password> \
+  mongosh -u openplannerRoot -p <root-password> \
   --authenticationDatabase admin --quiet \
-  --eval 'db.getSiblingDB("openplanner").runCommand({listSearchIndexes: "graph_REDACTED_SECRET_embeddings"})'
+  --eval 'db.getSiblingDB("openplanner").runCommand({listSearchIndexes: "graph_node_embeddings"})'
 
 # Or run the standalone script
 MONGODB_URI="mongodb://openplannerRoot:<password>@localhost:27017/openplanner?authSource=admin" \
@@ -97,12 +97,12 @@ MONGODB_URI="mongodb://openplannerRoot:<password>@localhost:27017/openplanner?au
 ```bash
 # Test $vectorSearch with a sample embedding
 docker compose -f docker-compose.yml -f docker-compose.atlas.yml exec atlas-mongodb \
-  mongosh -u openplannerRoot -p <REDACTED_SECRET-password> \
+  mongosh -u openplannerRoot -p <root-password> \
   --authenticationDatabase admin --quiet \
   --eval '
-    const sample = db.getSiblingDB("openplanner").graph_REDACTED_SECRET_embeddings.findOne({embedding: {$exists: true}});
+    const sample = db.getSiblingDB("openplanner").graph_node_embeddings.findOne({embedding: {$exists: true}});
     if (sample) {
-      const result = db.getSiblingDB("openplanner").graph_REDACTED_SECRET_embeddings.aggregate([{
+      const result = db.getSiblingDB("openplanner").graph_node_embeddings.aggregate([{
         $vectorSearch: {
           index: "embedding_vector",
           path: "embedding",
@@ -151,7 +151,7 @@ mongosh --eval 'db.adminCommand("ping")'
 Atlas vector search indexes build asynchronously. Check status:
 ```bash
 mongosh -u openplannerRoot -p <password> --authenticationDatabase admin --quiet \
-  --eval 'db.getSiblingDB("openplanner").runCommand({listSearchIndexes: "graph_REDACTED_SECRET_embeddings"})'
+  --eval 'db.getSiblingDB("openplanner").runCommand({listSearchIndexes: "graph_node_embeddings"})'
 ```
 
 Status values: `INITIALIZING` → `BUILDING` → `READY`
@@ -159,7 +159,7 @@ Status values: `INITIALIZING` → `BUILDING` → `READY`
 ### Search Index Sizes
 
 ```bash
-mongosh --eval 'db.getSiblingDB("openplanner").graph_REDACTED_SECRET_embeddings.stats().size'
+mongosh --eval 'db.getSiblingDB("openplanner").graph_node_embeddings.stats().size'
 ```
 
 ## Rollback
@@ -177,8 +177,8 @@ The Community volume is preserved and can pick up where it left off. Note that v
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `MONGODB_ROOT_USERNAME` | `openplannerRoot` | MongoDB REDACTED_SECRET user |
-| `MONGODB_ROOT_PASSWORD` | `<from env>` | MongoDB REDACTED_SECRET password |
+| `MONGODB_ROOT_USERNAME` | `openplannerRoot` | MongoDB root user |
+| `MONGODB_ROOT_PASSWORD` | `<from env>` | MongoDB root password |
 | `MONGODB_DB` | `openplanner` | Application database name |
 | `OPENPLANNER_MONGO_APP_USERNAME` | `openplanner` | Application MongoDB user |
 | `OPENPLANNER_MONGO_APP_PASSWORD` | `<from env>` | Application user password |

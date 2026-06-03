@@ -354,7 +354,7 @@ LOAD_OUT=$(DEV_PROXY_URL="$BASE" \
   LOAD_TEST_REQUESTS="$LOAD_REQUESTS" \
   LOAD_TEST_MODEL="${LOAD_TEST_MODEL:-gpt-5.4}" \
   DEV_PROXY_AUTH_TOKEN="${DEV_PROXY_AUTH_TOKEN:-}" \
-  REDACTED_SECRET ./scripts/load-test.mjs 2>&1) || LOAD_STATUS=$?
+  node ./scripts/load-test.mjs 2>&1) || LOAD_STATUS=$?
 LOAD_STATUS=${LOAD_STATUS:-0}
 if [[ "$LOAD_STATUS" -eq 0 ]]; then
   pass "concurrent load smoke test (${LOAD_CONCURRENCY} concurrent, ${LOAD_REQUESTS} total)"

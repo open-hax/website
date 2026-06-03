@@ -2,7 +2,7 @@ import discord
 import asyncio
 import os
 
-TOKEN = REDACTED_SECRET'DISCORD_BOT_TOKEN')
+TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
 CHANNEL_ID = 1444189585373663417
 
 messages = [

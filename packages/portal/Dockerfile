@@ -1,4 +1,4 @@
-FROM REDACTED_SECRET:22-bookworm-slim
+FROM node:22-bookworm-slim
 
 WORKDIR /app
 
@@ -8,4 +8,4 @@ COPY index.html ./
 
 EXPOSE 8799
 
-CMD ["REDACTED_SECRET", "src/server.mjs"]
+CMD ["node", "src/server.mjs"]

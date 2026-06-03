@@ -98,9 +98,9 @@ Evidence: Test case asserting category retrieval returns non-nil after registrat
 The registered category must retain `:description`, `:parent`, and `:children`. Each field must match the input values.
 Evidence: Test asserting all three fields round-trip.
 
-### VAL-DSL-032: def-harm-category allows REDACTED_SECRET categories without parent
-A category like `:adversarial` with no `:parent` field (or `:parent nil`) must register successfully as a REDACTED_SECRET REDACTED_SECRET.
-Evidence: Test defining a REDACTED_SECRET category and asserting it has no parent.
+### VAL-DSL-032: def-harm-category allows root categories without parent
+A category like `:adversarial` with no `:parent` field (or `:parent nil`) must register successfully as a root node.
+Evidence: Test defining a root category and asserting it has no parent.
 
 ### VAL-DSL-033: def-harm-category validates children are keywords
 The `:children` field must be a collection of keywords. Passing non-keyword children (e.g., strings or numbers) must produce a validation error.
@@ -164,7 +164,7 @@ Evidence: Test setting up the full hierarchy from §2.2 and asserting descendant
 
 ### VAL-DSL-051: taxonomy/descendants of a leaf returns empty or self
 Calling `(taxonomy/descendants :persona-injection)` on a leaf family (not a category) must return an empty collection or the family itself, depending on design. It must not throw.
-Evidence: Test asserting consistent behavior on leaf REDACTED_SECRET.
+Evidence: Test asserting consistent behavior on leaf node.
 
 ### VAL-DSL-052: taxonomy/descendants of non-existent key returns empty or errors
 Calling `(taxonomy/descendants :nonexistent)` must either return an empty collection or throw an informative error — not return garbage data.

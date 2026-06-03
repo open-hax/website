@@ -1,6 +1,6 @@
-import { mkdtemp, mkdir, readFile, writeFile } from "REDACTED_SECRET:fs/promises";
-import os from "REDACTED_SECRET:os";
-import path from "REDACTED_SECRET:path";
+import { mkdtemp, mkdir, readFile, writeFile } from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
 
 import { describe, expect, it } from "vitest";
 
@@ -9,8 +9,8 @@ import { writeTaskStatus } from "../src/task-writeback.js";
 
 describe("writeTaskStatus", () => {
   it("updates YAML frontmatter status and moves files when using a tasks/<status>/ tree", async () => {
-    const REDACTED_SECRET = await mkdtemp(path.join(os.tmpdir(), "openhax-kanban-writeback-"));
-    const tasksDir = path.join(REDACTED_SECRET, "tasks");
+    const root = await mkdtemp(path.join(os.tmpdir(), "openhax-kanban-writeback-"));
+    const tasksDir = path.join(root, "tasks");
     const incomingDir = path.join(tasksDir, "incoming");
     await mkdir(incomingDir, { recursive: true });
 
@@ -44,10 +44,10 @@ Do alpha.
   });
 
   it("inserts status into frontmatter when missing", async () => {
-    const REDACTED_SECRET = await mkdtemp(path.join(os.tmpdir(), "openhax-kanban-writeback-missing-"));
-    await mkdir(REDACTED_SECRET, { recursive: true });
+    const root = await mkdtemp(path.join(os.tmpdir(), "openhax-kanban-writeback-missing-"));
+    await mkdir(root, { recursive: true });
 
-    const filePath = path.join(REDACTED_SECRET, "beta.md");
+    const filePath = path.join(root, "beta.md");
     await writeFile(
       filePath,
       `---
@@ -60,11 +60,11 @@ Do beta.
       "utf8"
     );
 
-    const tasks = await loadTasks(REDACTED_SECRET);
+    const tasks = await loadTasks(root);
     const beta = tasks.find((task) => task.uuid === "beta");
     expect(beta).toBeTruthy();
 
-    await writeTaskStatus(beta!, REDACTED_SECRET, "ready");
+    await writeTaskStatus(beta!, root, "ready");
 
     const contents = await readFile(filePath, "utf8");
     expect(contents).toContain("status: ready");

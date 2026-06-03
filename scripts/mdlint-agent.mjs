@@ -1,4 +1,4 @@
-#!/usr/bin/env REDACTED_SECRET
+#!/usr/bin/env node
 
 /*
   Markdown Lint AI Fixer
@@ -13,10 +13,10 @@
   - MODEL (default gpt-oss:20b-cloud)
 */
 
-import fs from "REDACTED_SECRET:fs/promises";
-import path from "REDACTED_SECRET:path";
-import process from "REDACTED_SECRET:process";
-import { fileURLToPath } from "REDACTED_SECRET:url";
+import fs from "node:fs/promises";
+import path from "node:path";
+import process from "node:process";
+import { fileURLToPath } from "node:url";
 import markdownlint from "markdownlint";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -32,7 +32,7 @@ const DEFAULT_GLOBS = [
   "docs/**/*.md",
   "spec/**/*.md",
 ];
-const DEFAULT_IGNORE = ["orgs/**", "**/dist/**", "**/build/**", ".git/**", "REDACTED_SECRET_modules/**"];
+const DEFAULT_IGNORE = ["orgs/**", "**/dist/**", "**/build/**", ".git/**", "node_modules/**"];
 
 function parseArgs() {
   const args = process.argv.slice(2);

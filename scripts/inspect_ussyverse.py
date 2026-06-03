@@ -2,7 +2,7 @@ import json
 import os
 import urllib.request
 
-TOKEN = REDACTED_SECRET"DISCORD_BOT_TOKEN")
+TOKEN = os.environ.get("DISCORD_BOT_TOKEN")
 
 def fetch_messages(channel_id):
     url = f"https://discord.com/api/v10/channels/{channel_id}/messages?limit=50"

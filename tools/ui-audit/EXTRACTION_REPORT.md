@@ -83,7 +83,7 @@ Analysis of **1,432 UI source files** across the `devel` monorepo reveals:
 
 | Component | Files | Category |
 |-----------|-------|----------|
-| App | 22 | Application REDACTED_SECRET |
+| App | 22 | Application root |
 | Home | 12 | Page |
 | Footer | 8 | Navigation |
 | Header | 8 | Navigation |

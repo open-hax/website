@@ -12,14 +12,14 @@ const hat = drumClip({ pattern: 'x-x-x-x-x-x-x-x-x-x-', instrument: 'F#2' }); //
 // The "Lamination Motif" - a descending, bureaucratic slide
 // Using degrees for chromatic: 0, -1, -2, -3 (though Scale.get might need positive indices)
 const motif = melodyClip({ 
-  REDACTED_SECRET: 'C3', 
+  root: 'C3', 
   scaleName: 'chromatic', 
   pattern: 'x-x-x-x-', 
   degrees: [0, 11, 10, 9] // Chromatic sliding down from C
 });
 
 const bass = melodyClip({ 
-  REDACTED_SECRET: 'C2', 
+  root: 'C2', 
   scaleName: 'minor', 
   pattern: 'x---x---', 
   degrees: [0, 0] 

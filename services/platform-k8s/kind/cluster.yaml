@@ -1,13 +1,13 @@
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
-REDACTED_SECRETs:
+nodes:
   - role: control-plane
     kubeadmConfigPatches:
       - |
         kind: InitConfiguration
-        REDACTED_SECRETRegistration:
+        nodeRegistration:
           kubeletExtraArgs:
-            REDACTED_SECRET-labels: ingress-ready=true
+            node-labels: ingress-ready=true
     extraPortMappings:
       - containerPort: 80
         hostPort: 8080

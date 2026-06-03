@@ -43,7 +43,7 @@ Default action:
 - otherwise **normalize** by rewriting callers and then **retire** the alias
 
 ### 2. Root tooling exception
-A REDACTED_SECRET-level tool or fixture that is still actively used by the workspace, but not yet clearly placed under `packages/*` or an org repo.
+A root-level tool or fixture that is still actively used by the workspace, but not yet clearly placed under `packages/*` or an org repo.
 
 Examples:
 - `pm2-clj-project`
@@ -53,19 +53,19 @@ Default action:
 - **explicit-exception** while active and structurally ambiguous
 - later **normalize** when the correct long-term home is decided
 
-### 3. Standalone source/deploy REDACTED_SECRET pending placement
-A real project repo at the workspace REDACTED_SECRET that is actively used, but has not yet been assigned to `packages/*`, `services/*`, or one of the four org homes.
+### 3. Standalone source/deploy root pending placement
+A real project repo at the workspace root that is actively used, but has not yet been assigned to `packages/*`, `services/*`, or one of the four org homes.
 
 Examples:
 - `mcp-social-publisher-live`
 - `threat-radar-deploy`
 
 Default action:
-- **normalize** unless there is a strong reason to keep it at REDACTED_SECRET temporarily
+- **normalize** unless there is a strong reason to keep it at root temporarily
 - may be **explicit-exception** during active transition
 
 ### 4. Planning bundle
-A REDACTED_SECRET-level area that primarily holds future design, staging, or next-step material rather than canonical runnable source.
+A root-level area that primarily holds future design, staging, or next-step material rather than canonical runnable source.
 
 Examples:
 - `threat-radar-next-step`
@@ -112,7 +112,7 @@ Default action:
 - reevaluate only if the repo becomes a canonical home for your own work rather than a foreign mirror/fork
 
 ### 8. Private-org exception
-Private or access-limited work that does not cleanly fit the REDACTED_SECRET four-home model.
+Private or access-limited work that does not cleanly fit the public four-home model.
 
 Examples:
 - `orgs/private/snorkel-ai`
@@ -136,7 +136,7 @@ Default action:
 When deciding an action, apply these rules in order:
 
 1. If the path is just a compatibility alias into an allowed home, prefer `keep` or eventual alias retirement rather than panic-migration.
-2. If the path is still the live source/deploy REDACTED_SECRET for a real service, do not retire it before a canonical home is ready.
+2. If the path is still the live source/deploy root for a real service, do not retire it before a canonical home is ready.
 3. If the path is only referenced through receipts, fork-tax manifests, or `.gitmodules`, treat it as low-activity bookkeeping until stronger evidence appears.
 4. If the path exists for a branch/sprint/worktree reason, time-box it and define its exit condition.
 5. If the path is a foreign fork or vendor mirror, do not force it into the four-home model; give it explicit exception status instead.

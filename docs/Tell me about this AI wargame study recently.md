@@ -72,11 +72,11 @@ rule_for_type(fire, high, firefighter, deploy).
 rule_for_type(medical, _, paramedic, dispatch_ambulance).
 rule_for_type(chemical, _, hazmat, isolate_area).
 
-% Communication limits (e.g., no REDACTED_SECRET comms for sensitive)
-allowed_communication(REDACTED_SECRETerRole, ReceiverRole, IncidentId) :-
+% Communication limits (e.g., no public comms for sensitive)
+allowed_communication(SenderRole, ReceiverRole, IncidentId) :-
     incident(IncidentId, Type, _, Severity, _),
     not_sensitive_incident(Type, Severity),
-    communication_channel(_, REDACTED_SECRETerRole, ReceiverRole, active).
+    communication_channel(_, SenderRole, ReceiverRole, active).
 
 sensitive_incident(chemical, high).
 sensitive_incident(nuclear, _).
@@ -168,9 +168,9 @@ viable_response_plan(IncidentId, ResponderId, Action) :-
     available_resources(Action, IncidentId).
 
 % Broadcast limits (degraded comms)
-allowed_broadcast(REDACTED_SECRETerRole, Channel, IncidentId) :-
+allowed_broadcast(SenderRole, Channel, IncidentId) :-
     incident(IncidentId, Type, _, Severity, _, _),
-    protocol(_, broadcast_ok(Type, Severity), Channel, REDACTED_SECRETerRole),
+    protocol(_, broadcast_ok(Type, Severity), Channel, SenderRole),
     resilient_channel(Channel).
 
 % Self-healing facts
@@ -225,5 +225,5 @@ inferred_available(Person) :-
 
 1. **“The verifier saves the day”**: LLM proposes risky overcommit; Prolog rejects (“violates capacity invariant”). Human trusts the machine.
 2. **Self-healing drama**: Telemetry drops; system infers responder status from last_seen + no-conflict → dispatches just in time.
-3. **Communication tension**: Sensitive incident blocks REDACTED_SECRET broadcast; forces commander to override with proof.
+3. **Communication tension**: Sensitive incident blocks public broadcast; forces commander to override with proof.
 4. **Resilience tradeoff**: Story tension from “resilient but rigid” (can

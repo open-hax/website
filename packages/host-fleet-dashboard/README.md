@@ -25,7 +25,7 @@ cd /home/err/devel/services/host-fleet-dashboard
 cp .env.example .env   # optional
 HOST_FLEET_DASHBOARD_ALLOW_UNAUTHENTICATED=true \
 PORT=8791 \
-REDACTED_SECRET src/index.js
+node src/index.js
 ```
 
 Open:
@@ -78,7 +78,7 @@ HOST_FLEET_TARGETS_JSON='[
     "id": "ussy",
     "label": "ussy.promethean.rest",
     "mode": "local",
-    "REDACTED_SECRETBaseUrl": "https://ussy.promethean.rest/fleet",
+    "publicBaseUrl": "https://ussy.promethean.rest/fleet",
     "routeFiles": ["/workspace/services/proxx/Caddyfile"],
     "notes": "primary"
   },
@@ -86,7 +86,7 @@ HOST_FLEET_TARGETS_JSON='[
     "id": "ussy3",
     "label": "ussy3.promethean.rest",
     "mode": "remote-http",
-    "REDACTED_SECRETBaseUrl": "https://ussy3.promethean.rest/fleet",
+    "publicBaseUrl": "https://ussy3.promethean.rest/fleet",
     "notes": "staging"
   }
 ]'
@@ -100,7 +100,7 @@ HOST_FLEET_TARGETS_JSON='[
     "id": "ussy3",
     "label": "ussy3.promethean.rest",
     "mode": "local",
-    "REDACTED_SECRETBaseUrl": "https://ussy3.promethean.rest/fleet",
+    "publicBaseUrl": "https://ussy3.promethean.rest/fleet",
     "routeFiles": ["/workspace/services/proxx-staging/Caddyfile"],
     "notes": "staging"
   }

@@ -19,7 +19,7 @@
   <<rectrect x="150" y="240" width="500" height="200" fill="none" stroke="url(#goldGrad)" stroke-width="2" rx="10" />
   <<texttext x="400" y="280" text-anchor="middle" font-family="Arial" font-size="18" fill="#ccc">This document formally certifies that the current figure of</text>
   <<texttext x="400" y="320" text-anchor="middle" font-family="Impact" font-size="60" fill="url(#goldGrad)">29 SUBSCRIBERS</text>
-  <<texttext x="400" y="360" text-anchor="middle" font-family="Arial" font-size="18" fill="#ccc">is not a "group chat with a REDACTED_SECRET link," but a</text>
+  <<texttext x="400" y="360" text-anchor="middle" font-family="Arial" font-size="18" fill="#ccc">is not a "group chat with a public link," but a</text>
   <<texttext x="400" y="390" text-anchor="middle" font-family="Arial" font-size="22" fill="#fff" font-weight="bold">CAREFULLY CURATED HIGH-FIDELITY FOCUS GROUP</text>
 
   <<texttext x="400" y="480" text-anchor="middle" font-family="Courier" font-size="16" fill="url(#goldGrad)">[Status: Diamond-Cut Exclusive]</text>

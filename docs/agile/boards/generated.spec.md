@@ -39,7 +39,7 @@ kanban-plugin: board
 - [ ] [[buildfix-fixture-cleanup|Retire Legacy BuildFix Fixture Drops]] #fixture #buildfix #retire #legacy prio:P2 (uuid:4170eded-1525-4c78-8605-3942eca908d0)
 - [ ] [[cephalon-consolidation-phase1|Spec: Cephalon Phase 1 Consolidation (CLJS)]] #cljs #cephalon #phase #spec prio:P2 (uuid:cdecb231-5d26-4454-8b6c-dcbec6ea37a7)
 - [ ] [[cephalon-ts-bridge-e2e|cephalon ts bridge e2e]] #bridge #cephalon #e2e #cljs prio:P2 (uuid:faf4263f-399b-4dae-9950-579ff480d134)
-- [ ] [[cephalon-turn-processor-discord|Cephalon TurnProcessor Discord REDACTED_SECRET Audit]] #cephalon #discord #turnprocessor #send prio:P2 (uuid:e2bdbf25-045b-4701-b6d4-677bd24fd100)
+- [ ] [[cephalon-turn-processor-discord|Cephalon TurnProcessor Discord Send Audit]] #cephalon #discord #turnprocessor #send prio:P2 (uuid:e2bdbf25-045b-4701-b6d4-677bd24fd100)
 - [ ] [[codex-promethean-integration|Codex ↔ Promethean Packages Integration Opportunities]] #codex #promethean #packages #integration prio:P2 (uuid:964ac523-331a-4143-8a0a-e0c36d950544)
 - [ ] [[codex-release-monitor|Spec: Codex Release Monitor Workflow]] #codex #release #spec #monitor prio:P2 (uuid:ecd9b981-2a1a-4a8f-9ac1-784238099ac8)
 - [ ] [[delim-auto-fix-plugin|Delimiter Diagnose + Auto-Fix Plugin]] #plugin #diagnose #fix #cljs prio:P2 (uuid:98df9b2e-a2bd-4f8c-b436-9fc197f4c67c)

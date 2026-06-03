@@ -26,8 +26,8 @@ Do not create one wrapper package per npm dependency by default.
 
 ```text
 Bad by default:
-  @openplanner/REDACTED_SECRET-fs
-  @openplanner/REDACTED_SECRET-path
+  @openplanner/node-fs
+  @openplanner/node-path
   @openplanner/mongodb-wrapper
   @openplanner/graphql-wrapper
 
@@ -47,7 +47,7 @@ Runtime namespaces own orchestration.
 
 ## Rationale
 
-Knoxx already demonstrates a useful `backend.REDACTED_SECRET.*` pattern: Node APIs are isolated behind CLJS-facing functions, JS arrays and objects are converted at the edge, and callers receive CLJS values or promises of CLJS values. That pattern should become a workspace convention, not a reflex to make every npm dependency its own package.
+Knoxx already demonstrates a useful `backend.node.*` pattern: Node APIs are isolated behind CLJS-facing functions, JS arrays and objects are converted at the edge, and callers receive CLJS values or promises of CLJS values. That pattern should become a workspace convention, not a reflex to make every npm dependency its own package.
 
 Proxx demonstrates the complementary policy-engine shape: policy loading, expression evaluation, policy execution, and routing are separated. OpenPlanner graph claim validation can reuse that architectural shape by passing normalized claim contexts into policy evaluation rather than embedding raw Mongo, HTTP, or JS objects in policy logic.
 
@@ -116,9 +116,9 @@ An adapter boundary isolates an external library, host API, or runtime dependenc
 Examples:
 
 ```clojure
-openplanner.runtime.REDACTED_SECRET.fs
-openplanner.runtime.REDACTED_SECRET.path
-openplanner.runtime.REDACTED_SECRET.crypto
+openplanner.runtime.node.fs
+openplanner.runtime.node.path
+openplanner.runtime.node.crypto
 
 openplanner.graph.claims.adapters.mongo
 openplanner.graph.semantic-field.adapters.vexx
@@ -127,7 +127,7 @@ openplanner.graph.weaver.adapters.graphql
 
 Rules:
 
-- Adapters may require npm/REDACTED_SECRET modules.
+- Adapters may require npm/node modules.
 - Adapters may use JS object inspection and conversion.
 - Adapters must return normalized CLJS values or `Promise<normalized CLJS>` to internal callers.
 - Adapters must not contain domain acceptance logic.
@@ -154,10 +154,10 @@ Rules:
 ## Normative rules
 
 1. Split packages by domain/change boundary first.
-2. Every CLJS package should have at most one REDACTED_SECRET JS boundary namespace unless complexity requires multiple explicit adapters.
+2. Every CLJS package should have at most one public JS boundary namespace unless complexity requires multiple explicit adapters.
 3. Pure namespaces may depend only on CLJS/CLJC pure libraries and sibling pure namespaces.
 4. Boundary/adapters are the only namespaces allowed to:
-   - require npm/REDACTED_SECRET modules
+   - require npm/node modules
    - inspect JS objects with `aget`/`aset`/property access
    - call host date parsing or construction
    - call `js/JSON`
@@ -203,15 +203,15 @@ raw host/dependency data
   -> accept / reject / defer / supersede
 ```
 
-## Shared runtime REDACTED_SECRET boundary recommendation
+## Shared runtime node boundary recommendation
 
 Create a shared runtime package only if reused outside Knoxx:
 
 ```text
-packages/runtime/REDACTED_SECRET-boundary/
-  src/openplanner/runtime/REDACTED_SECRET/fs.cljs
-  src/openplanner/runtime/REDACTED_SECRET/path.cljs
-  src/openplanner/runtime/REDACTED_SECRET/crypto.cljs
+packages/runtime/node-boundary/
+  src/openplanner/runtime/node/fs.cljs
+  src/openplanner/runtime/node/path.cljs
+  src/openplanner/runtime/node/crypto.cljs
 ```
 
 Promotion criteria:
@@ -220,13 +220,13 @@ Promotion criteria:
 - Knoxx semantics have stabilized enough to copy or move without broad churn.
 - The shared package can expose CLJS-normalized behavior without importing Knoxx domain assumptions.
 
-Until then, Knoxx `backend.REDACTED_SECRET.*` should remain the reference implementation rather than being churned preemptively.
+Until then, Knoxx `backend.node.*` should remain the reference implementation rather than being churned preemptively.
 
 ## Migration guidance
 
 1. Keep existing Knoxx wrappers as reference implementation.
 2. Implement new graph work with domain-first packages and explicit local boundaries.
-3. When a second consumer needs the same Node semantics, create `packages/runtime/REDACTED_SECRET-boundary`.
+3. When a second consumer needs the same Node semantics, create `packages/runtime/node-boundary`.
 4. Move/copy stable semantics into the shared package with tests.
 5. Update Knoxx only in an explicit follow-up change.
 

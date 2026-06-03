@@ -6,7 +6,7 @@ This report captures the current recursive submodule status and highlights recen
 
 ## Changed submodules since recorded pointers
 
-The following output is equivalent to `git submodule summary` and shows the range and top messages for each changed submodule at the REDACTED_SECRET level:
+The following output is equivalent to `git submodule summary` and shows the range and top messages for each changed submodule at the root level:
 
 ```
 * orgs/open-hax/codex 0d3a228...c13f329 (24):
@@ -133,5 +133,5 @@ Output of `git submodule status --recursive` as of this report:
 ## Next steps
 
 - Push the updated submodule commits (if not already pushed) and bump the superproject pointers for entries marked with `+`.
-- Re-run `git submodule status --recursive` and commit the pointer updates in the REDACTED_SECRET repository.
+- Re-run `git submodule status --recursive` and commit the pointer updates in the root repository.
 - Optionally regenerate per‑org manifests under `docs/manifests/` if you maintain those snapshots.

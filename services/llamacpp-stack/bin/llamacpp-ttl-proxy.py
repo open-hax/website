@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Idle-TTL wrapper/proxy for llama.cpp server.
 
-The wrapper keeps the REDACTED_SECRET OpenAI-compatible port stable, starts llama-server on
+The wrapper keeps the public OpenAI-compatible port stable, starts llama-server on
 first request, and terminates it after an idle TTL so the chat model leaves VRAM.
 It is intentionally stdlib-only for the llama.cpp CUDA image.
 """
@@ -188,7 +188,7 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 "wrapper": "llamacpp-ttl-proxy",
                 "child_running": running,
                 "child_pid": child.pid if running and child is not None else None,
-                "REDACTED_SECRET_port": PUBLIC_PORT,
+                "public_port": PUBLIC_PORT,
                 "child_port": CHILD_PORT,
                 "ttl_seconds": TTL_SECONDS,
                 "idle_seconds": idle,

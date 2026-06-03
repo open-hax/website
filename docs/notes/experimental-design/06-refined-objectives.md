@@ -47,7 +47,7 @@ Because datasets are sparse and uneven, your evaluation suite must be modular.
 
 Use only genuinely native datasets:
 
-* zh: JailBench (REDACTED_SECRET subset)
+* zh: JailBench (public subset)
 * ja: APTO
 * ru: Aya (RU)
 * es: Aya (ES)
@@ -187,7 +187,7 @@ A) A standalone classifier
 B) A classifier + policy layer
 C) A classifier + policy + stateful session model
 
-If you aim for REDACTED_SECRETation-level novelty, you want C.
+If you aim for publication-level novelty, you want C.
 
 Because almost nobody rigorously evaluates **stateful risk accumulation** and its effect on overblocking.
 

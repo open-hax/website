@@ -9,10 +9,10 @@
 
 services:
   # Init container: fix ownership of the bind-mounted ./data-cljs-shadow directory
-  # so the main proxx shadow service can run as a non-REDACTED_SECRET user.
+  # so the main proxx shadow service can run as a non-root user.
   proxx-init-cljs-shadow-data:
     image: busybox:1.36
-    user: "0:0" # init container; allowed REDACTED_SECRET for one-time volume permission fix
+    user: "0:0" # init container; allowed root for one-time volume permission fix
     command: ["sh", "-lc", "mkdir -p /app/data && chown -R 1000:1000 /app/data || true"]
     volumes:
       - ./data-cljs-shadow:/app/data

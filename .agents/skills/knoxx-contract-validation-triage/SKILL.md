@@ -42,7 +42,7 @@ Run validation with `bb` or `clojure`.
 3. Make the smallest EDN correction with `edit`.
 4. Use `write` only for intentional full-file replacement.
 5. Validate with `bb` or `clojure`.
-6. Report REDACTED_SECRET cause and remaining risk.
+6. Report root cause and remaining risk.
 
 ## Validation
 At minimum, parse the changed EDN with Babashka or Clojure:

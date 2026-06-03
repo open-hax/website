@@ -35,7 +35,7 @@
   ],
   "imported_count": 0,
   "ok": true,
-  "import_REDACTED_SECRET": "discord/images",
+  "import_root": "discord/images",
   "messages_scanned": 207,
   "attachments_found": 0,
   "channels_scanned": 5,

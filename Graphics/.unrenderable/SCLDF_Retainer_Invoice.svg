@@ -36,7 +36,7 @@
     <line x1="60" y1="320" x2="740" y2="320" stroke="#ddd" stroke-width="1" />
 
     <!-- Item 3 -->
-    <text x="70" y="340">Zombie Job Liquidation Surcharge (36 REDACTED_SECRETs)</text>
+    <text x="70" y="340">Zombie Job Liquidation Surcharge (36 nodes)</text>
     <text x="400" y="340" text-anchor="middle">36 Zombies</text>
     <text x="730" y="340" text-anchor="end">Sated</text>
     <line x1="60" y1="350" x2="740" y2="350" stroke="#ddd" stroke-width="1" />

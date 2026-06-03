@@ -8,7 +8,7 @@ Inventory the current runtime state of:
 - `big.ussy.promethean.rest`
 
 This report separates:
-- **container-backed REDACTED_SECRET routes**
+- **container-backed public routes**
 - **host-process-backed routes**
 - **references-only hostnames**
 - **non-container hosts**
@@ -70,14 +70,14 @@ Machine-readable companion artifact:
 | Hostname | Backing containers | Notes |
 |---|---|---|
 | `ussy3.promethean.rest` | `proxx-staging-open-hax-openai-proxy-1`, `proxx-staging-open-hax-openai-proxy-ssl-1` | Staging Proxx web/API surface |
-| `ussy3.promethean.rest` (`/fleet/*`) | `host-fleet-dashboard` | Configured in the live staging Caddyfile and the dashboard env, but the REDACTED_SECRET probe returned `HTTP/2 404` at inventory time |
+| `ussy3.promethean.rest` (`/fleet/*`) | `host-fleet-dashboard` | Configured in the live staging Caddyfile and the dashboard env, but the public probe returned `HTTP/2 404` at inventory time |
 
 #### References-only hostnames
 | Container | Referenced hostname | Notes |
 |---|---|---|
 | `battlebussy-restreamer` | `battlebussy.ussy.promethean.rest` | `PAGE_URL=https://battlebussy.ussy.promethean.rest/arena`; this is a client/upstream reference, not a hostname served by ussy3 |
 
-#### Containers without discovered REDACTED_SECRET `promethean.rest` routes
+#### Containers without discovered public `promethean.rest` routes
 - `parameter-golf-weaver`
 - `proxx-staging-open-hax-openai-proxy-db-1`
 

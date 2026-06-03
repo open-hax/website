@@ -24,20 +24,20 @@ spec:
               containerPort: 5432
           env:
             - name: POSTGRES_DB
-              value: REDACTED_SECRET
+              value: openai_proxy
             - name: POSTGRES_USER
-              value: REDACTED_SECRET
+              value: openai_proxy
             - name: POSTGRES_PASSWORD
-              value: REDACTED_SECRET
+              value: openai_proxy
           readinessProbe:
             exec:
-              command: ["/bin/sh", "-lc", "pg_isready -U REDACTED_SECRET -d REDACTED_SECRET"]
+              command: ["/bin/sh", "-lc", "pg_isready -U openai_proxy -d openai_proxy"]
             periodSeconds: 10
             timeoutSeconds: 5
             failureThreshold: 6
           livenessProbe:
             exec:
-              command: ["/bin/sh", "-lc", "pg_isready -U REDACTED_SECRET -d REDACTED_SECRET"]
+              command: ["/bin/sh", "-lc", "pg_isready -U openai_proxy -d openai_proxy"]
             initialDelaySeconds: 30
             periodSeconds: 20
             timeoutSeconds: 5

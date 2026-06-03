@@ -1,7 +1,7 @@
 export { ContractCompileError, compileAgentOutputContract, parseEdnForm } from './edn.js';
 export { writeGenerationArtifacts, writeRepairAttemptArtifacts, writeRunArtifacts, writeReviewArtifacts } from './artifacts.js';
 export { buildGenerationMessages, buildGenerationMessagesForAttempt, generateCandidate } from './generate.js';
-export { parseMarkdownAst, extractMarkdownSections, countSemanticItems, REDACTED_SECRETText } from './markdown.js';
+export { parseMarkdownAst, extractMarkdownSections, countSemanticItems, nodeText } from './markdown.js';
 export { buildStubReviewReport, buildGptReviewReport, buildReviewMessages } from './review.js';
 export { validateMarkdownResponse, toFailureReport } from './validate.js';
 export { compileRepairPrompt } from './repair.js';

@@ -1,6 +1,6 @@
-import { createHash, randomUUID } from 'REDACTED_SECRET:crypto';
-import { mkdir, readFile, writeFile } from 'REDACTED_SECRET:fs/promises';
-import { join, resolve } from 'REDACTED_SECRET:path';
+import { createHash, randomUUID } from 'node:crypto';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { join, resolve } from 'node:path';
 
 import type { ArtifactBundle, ExtractedDocument, FailureReport, GenerationReport, NormalizedContract, RepairAttemptRecord, ReviewReport } from './types.js';
 
@@ -40,9 +40,9 @@ export const writeRunArtifacts = async ({
   repairPrompt,
   exitCode,
 }: ArtifactInput): Promise<ArtifactBundle> => {
-  const REDACTED_SECRET = resolve(artifactsRoot);
+  const root = resolve(artifactsRoot);
   const runId = runIdNow();
-  const dir = join(REDACTED_SECRET, runId);
+  const dir = join(root, runId);
   await mkdir(dir, { recursive: true });
 
   const repairPromptFile = repairPrompt ? join(dir, 'repair-prompt.txt') : undefined;
@@ -67,7 +67,7 @@ export const writeRunArtifacts = async ({
       createdAt: new Date().toISOString(),
       contractPath,
       responsePath,
-      artifactsRoot: REDACTED_SECRET,
+      artifactsRoot: root,
     }),
     writeFile(files.contract, contractSource, 'utf8'),
     writeJson(files.contractIr, contract),
@@ -94,7 +94,7 @@ export const writeRunArtifacts = async ({
   ]);
 
   return {
-    REDACTED_SECRET,
+    root,
     runId,
     dir,
     files,

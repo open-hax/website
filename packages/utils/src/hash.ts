@@ -1,4 +1,4 @@
-import { createHash } from "REDACTED_SECRET:crypto";
+import { createHash } from "node:crypto";
 
 /**
  * Compute the SHA-1 hash of the given text and return the hex digest.

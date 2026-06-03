@@ -20,7 +20,7 @@ services/proxx/k8s/
 
 ## Recommended local path
 
-From the workspace REDACTED_SECRET:
+From the workspace root:
 
 ```bash
 pnpm k8s:deps:check

@@ -47,7 +47,7 @@ Make the Trello board the **projection of truth** for owners (fast direct edits)
   - `TRELLO_API_KEY`, `TRELLO_API_TOKEN`
   - `TRELLO_BOARD_SHORTLINK` (e.g. `Mu2BmeDE`) or board URL
   - `TRELLO_APP_SECRET` (Power-Up secret) for signature verification
-  - `WEBHOOK_CALLBACK_URL` (REDACTED_SECRET https URL to this service endpoint)
+  - `WEBHOOK_CALLBACK_URL` (public https URL to this service endpoint)
   - `GITHUB_TOKEN`, `GITHUB_REPO` (e.g. `open-hax/ussyverse-kanban`)
 
 ## Open questions

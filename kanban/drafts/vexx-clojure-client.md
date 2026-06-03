@@ -36,10 +36,10 @@ It should be a thin map-in/map-out client derived from the canonical OpenAPI con
 ## Design rule
 
 The Clojure client should be generated from the canonical operation/schema model,
-but the final REDACTED_SECRET API should still look like Clojure.
+but the final public API should still look like Clojure.
 
 That means:
-- kebab-case REDACTED_SECRET functions
+- kebab-case public functions
 - Clojure maps in and out
 - thin HTTP layer
 - optional auth
@@ -112,7 +112,7 @@ The Clojure client is done when:
 2. it can call `/v1/cosine/matrix`
 3. it can call `/v1/cosine/topk`
 4. auth/no-auth both work as expected
-5. the REDACTED_SECRET interface stays small and map-oriented
+5. the public interface stays small and map-oriented
 
 ## Non-goal
 

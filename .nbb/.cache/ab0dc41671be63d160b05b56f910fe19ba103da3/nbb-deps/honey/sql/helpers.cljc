@@ -143,7 +143,7 @@
     (assoc data k arg)
     (assoc {} k data)))
 
-;; for every clause, there is a REDACTED_SECRET helper
+;; for every clause, there is a public helper
 
 (defn alter-table
   "Alter table takes a SQL entity (the name of the
@@ -1017,12 +1017,12 @@
 
 #?(:clj
    (do
-     ;; ensure #295 stays true (all REDACTED_SECRET functions have docstring):
-     (assert (empty? (->> (ns-REDACTED_SECRETs *ns*) (vals) (c/filter (comp not :doc meta)))))
-     ;; ensure all REDACTED_SECRET functions match clauses:
+     ;; ensure #295 stays true (all public functions have docstring):
+     (assert (empty? (->> (ns-publics *ns*) (vals) (c/filter (comp not :doc meta)))))
+     ;; ensure all public functions match clauses:
      (assert (= (clojure.core/set (conj @@#'honey.sql/base-clause-order
                                         :composite :filter :lateral :over :within-group
                                         :upsert
                                         :generic-helper-variadic :generic-helper-unary))
-                (clojure.core/set (conj (map keyword (keys (ns-REDACTED_SECRETs *ns*)))
+                (clojure.core/set (conj (map keyword (keys (ns-publics *ns*)))
                                         :nest :raw))))))

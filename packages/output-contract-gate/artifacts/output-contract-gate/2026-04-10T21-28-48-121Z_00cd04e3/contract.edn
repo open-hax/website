@@ -5,7 +5,7 @@
   (target
     (format :markdown)
     (ast :mdast)
-    (REDACTED_SECRET :document))
+    (root :document))
 
   (structure
     (section
@@ -14,7 +14,7 @@
       (required true)
       (order 1)
       (cardinality :one)
-      (allowed-REDACTED_SECRET-types [:paragraph :list :blockquote :code :table]))
+      (allowed-node-types [:paragraph :list :blockquote :code :table]))
 
     (section
       (id :section/evidence)
@@ -22,7 +22,7 @@
       (required true)
       (order 2)
       (cardinality :one)
-      (allowed-REDACTED_SECRET-types [:paragraph :list :blockquote :code :table]))
+      (allowed-node-types [:paragraph :list :blockquote :code :table]))
 
     (section
       (id :section/frames)
@@ -30,7 +30,7 @@
       (required true)
       (order 3)
       (cardinality :one)
-      (allowed-REDACTED_SECRET-types [:paragraph :list :blockquote]))
+      (allowed-node-types [:paragraph :list :blockquote]))
 
     (section
       (id :section/countermoves)
@@ -38,7 +38,7 @@
       (required true)
       (order 4)
       (cardinality :one)
-      (allowed-REDACTED_SECRET-types [:paragraph :list :blockquote]))
+      (allowed-node-types [:paragraph :list :blockquote]))
 
     (section
       (id :section/next)
@@ -46,7 +46,7 @@
       (required true)
       (order 5)
       (cardinality :one)
-      (allowed-REDACTED_SECRET-types [:paragraph :list])
+      (allowed-node-types [:paragraph :list])
       (local-rules [:rule/next-exactly-one-action])))
 
   (rules
@@ -66,9 +66,9 @@
       (check :heading-order))
 
     (rule
-      (id :rule/allowed-REDACTED_SECRET-types)
+      (id :rule/allowed-node-types)
       (kind :deterministic)
-      (check :REDACTED_SECRET-type-allowlist))
+      (check :node-type-allowlist))
 
     (rule
       (id :rule/frames-cardinality)
@@ -109,9 +109,9 @@
       (text "Rewrite `## Frames` so it contains 2–3 plausible interpretations."))
 
     (template
-      (id :repair/disallowed-REDACTED_SECRET-type)
-      (when :rule/allowed-REDACTED_SECRET-types)
-      (text "Section `{{heading}}` contains `{{REDACTED_SECRETType}}` REDACTED_SECRETs which are not allowed. Use `## {{heading}}` as a level-2 markdown header for section headings. Do not use bold (`**...**`), emphasis, or deeper heading levels (`###`, `####`) inside sections. Flatten sub-section content into paragraphs, lists, or blockquotes.")))
+      (id :repair/disallowed-node-type)
+      (when :rule/allowed-node-types)
+      (text "Section `{{heading}}` contains `{{nodeType}}` nodes which are not allowed. Use `## {{heading}}` as a level-2 markdown header for section headings. Do not use bold (`**...**`), emphasis, or deeper heading levels (`###`, `####`) inside sections. Flatten sub-section content into paragraphs, lists, or blockquotes.")))
 
   (review
     (enabled true)

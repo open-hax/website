@@ -80,7 +80,7 @@ services:
       PROXY_KEY_RELOAD_MS: "${PROXY_KEY_RELOAD_MS:-5000}"
       PROXY_KEY_COOLDOWN_MS: "${PROXY_KEY_COOLDOWN_MS:-30000}"
 
-      DATABASE_URL: "postgresql://REDACTED_SECRET:REDACTED_SECRET@proxx-federation-peer-db:5432/REDACTED_SECRET" # pragma: allowlist secret
+      DATABASE_URL: "postgresql://federation_proxy:federation_proxy@proxx-federation-peer-db:5432/federation_proxy" # pragma: allowlist secret
 
       VITE_ALLOWED_HOSTS: "${VITE_ALLOWED_HOSTS:-}"
 
@@ -111,7 +111,7 @@ services:
       test:
         [
           "CMD",
-          "REDACTED_SECRET",
+          "node",
           "-e",
           "Promise.all([fetch('http://127.0.0.1:8789/health',{headers:{Authorization:'Bearer '+(process.env.PROXY_AUTH_TOKEN||'')}}), fetch('http://127.0.0.1:5174')]).then(([proxyResponse, webResponse]) => { if (!proxyResponse.ok || !webResponse.ok) { process.exit(1); } }).catch(() => process.exit(1))"
         ]
@@ -126,15 +126,15 @@ services:
   proxx-federation-peer-db:
     image: postgres:16-bookworm
     environment:
-      POSTGRES_DB: REDACTED_SECRET
-      POSTGRES_USER: REDACTED_SECRET
-      POSTGRES_PASSWORD: REDACTED_SECRET # pragma: allowlist secret
+      POSTGRES_DB: federation_proxy
+      POSTGRES_USER: federation_proxy
+      POSTGRES_PASSWORD: federation_proxy # pragma: allowlist secret
     ports:
       - "${FEDERATION_DB_PORT:-15434}:5432"
     volumes:
       - proxx-federation-peer-db-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U REDACTED_SECRET -d REDACTED_SECRET"]
+      test: ["CMD-SHELL", "pg_isready -U federation_proxy -d federation_proxy"]
       interval: 10s
       timeout: 5s
       retries: 5

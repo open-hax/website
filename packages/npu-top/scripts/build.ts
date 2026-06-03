@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
 
-import { chmod, mkdir, rm } from "REDACTED_SECRET:fs/promises";
+import { chmod, mkdir, rm } from "node:fs/promises";
 
 import solidPlugin from "@opentui/solid/bun-plugin";
 

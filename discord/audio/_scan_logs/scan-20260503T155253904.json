@@ -11,7 +11,7 @@
   ],
   "imported_count": 0,
   "ok": true,
-  "import_REDACTED_SECRET": "discord/audio",
+  "import_root": "discord/audio",
   "messages_scanned": 10,
   "attachments_found": 0,
   "channels_scanned": 1,

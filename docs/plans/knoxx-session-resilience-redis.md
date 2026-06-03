@@ -14,7 +14,7 @@ The current Knoxx session management has several issues:
 ### Frontend Issues
 
 The frontend stores session state in `localStorage` (`knoxx_chat_session_state`):
-- `isREDACTED_SECRETing` flag
+- `isSending` flag
 - `conversationId`
 - `activeRunId`
 - `messages` array
@@ -143,31 +143,31 @@ useEffect(() => {
     const savedState = localStorage.getItem(CHAT_SESSION_STATE_KEY);
     if (!savedState) return;
 
-    const { sessionId, conversationId, activeRunId, isREDACTED_SECRETing } = JSON.parse(savedState);
+    const { sessionId, conversationId, activeRunId, isSending } = JSON.parse(savedState);
     
-    if (!isREDACTED_SECRETing || !sessionId) return;
+    if (!isSending || !sessionId) return;
 
     try {
       const status = await getSessionStatus(sessionId);
       
       if (status.status === "running" && status.has_active_stream) {
         // Reconnect to active stream
-        setIsREDACTED_SECRETing(true);
+        setIsSending(true);
         // WebSocket will automatically reconnect and resume
       } else if (status.status === "running" && !status.has_active_stream) {
         // Agent is waiting for input - enable steer controls
-        setIsREDACTED_SECRETing(true);
+        setIsSending(true);
         setConversationId(status.conversation_id);
         activeRunIdRef.current = status.run_id;
       } else {
         // Session completed/failed while away
-        setIsREDACTED_SECRETing(false);
+        setIsSending(false);
         // Optionally fetch final state from OpenPlanner
       }
     } catch (error) {
       // Session not found in Redis - clear and start fresh
       localStorage.removeItem(CHAT_SESSION_STATE_KEY);
-      setIsREDACTED_SECRETing(false);
+      setIsSending(false);
     }
   };
 

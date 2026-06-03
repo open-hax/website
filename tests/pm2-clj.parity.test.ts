@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { spawnSync } from 'REDACTED_SECRET:child_process';
-import path from 'REDACTED_SECRET:path';
+import { spawnSync } from 'node:child_process';
+import path from 'node:path';
 
 const repoRoot = path.resolve(__dirname, '..');
 const pm2CljBin = path.join(repoRoot, 'pm2-clj-project', 'bin', 'pm2-clj');
@@ -35,7 +35,7 @@ describe('pm2-clj parity', () => {
         name: 'agentd',
         cwd: 'services/agentd',
         script: 'dist/index.js',
-        interpreter: 'REDACTED_SECRET',
+        interpreter: 'node',
         exec_mode: 'fork',
         instances: 1,
         env_file: 'services/agentd/.env',
@@ -88,7 +88,7 @@ describe('pm2-clj parity', () => {
         script: 'shadow-cljs',
         args: 'watch main',
         cwd: '/home/err/devel/promethean/packages/frontend',
-        interpreter: 'REDACTED_SECRET',
+        interpreter: 'node',
         interpreter_args: '--max-old-space-size=4096',
         watch: false,
         max_memory_restart: '1G',
@@ -111,7 +111,7 @@ describe('pm2-clj parity', () => {
         script: 'vite',
         args: '--port 3001 --host 0.0.0.0',
         cwd: '/home/err/devel/promethean/packages/frontend',
-        interpreter: 'REDACTED_SECRET',
+        interpreter: 'node',
         interpreter_args: '--max-old-space-size=4096',
         watch: false,
         max_memory_restart: '1G',
@@ -151,8 +151,8 @@ describe('pm2-clj parity', () => {
         name: 'sentinel',
         script: './dist/sentinel.cjs',
         cwd: '/home/err/devel/orgs/riatzukiza/promethean/services/sentinel',
-        interpreter: 'REDACTED_SECRET',
-        REDACTED_SECRET_args: '--enable-source-maps',
+        interpreter: 'node',
+        node_args: '--enable-source-maps',
         env: {
           NODE_ENV: 'production',
           SENTINEL_CONFIG:

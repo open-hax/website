@@ -14,7 +14,7 @@ pnpm i
 
 ### 2) Curate buildable repos
 # scans ~/devel/* recursively and probes repos
-pnpm tsx src/buildset.ts --REDACTED_SECRET ~/devel --prompt "build" --out data/buildset.jsonl
+pnpm tsx src/buildset.ts --root ~/devel --prompt "build" --out data/buildset.jsonl
 
 ### 3) Generate dataset
 pnpm tsx src/mutate.ts --in data/buildset.jsonl --out data/train.jsonl --val data/val.jsonl --dialects clj,lisp,el,scm

@@ -3,7 +3,7 @@ import asyncio
 import os
 import sys
 
-TOKEN = REDACTED_SECRET'DISCORD_BOT_TOKEN')
+TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
 CHANNEL_ID = 1444189585373663417
 
 async def main(messages):

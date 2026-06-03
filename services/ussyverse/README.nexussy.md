@@ -14,7 +14,7 @@ It exposes:
 
 - health: `http://127.0.0.1:7771/health`
 - built-in browser UI: `http://127.0.0.1:7771/ui/`
-- API REDACTED_SECRET: `http://127.0.0.1:7771/`
+- API root: `http://127.0.0.1:7771/`
 
 The separate Python `web/` proxy app from the repo is not required for basic use because
 Nexussy core already mounts a static UI at `/ui/`.

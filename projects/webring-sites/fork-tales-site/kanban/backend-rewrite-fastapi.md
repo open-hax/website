@@ -55,7 +55,7 @@ Use a **FastAPI + BM25 + httpx** backend and move deployment concerns into:
 ## Verification
 
 - `pytest` passes against fixture content
-- `python server.py --REDACTED_SECRET <fixture-dist>` serves status + chat
+- `python server.py --root <fixture-dist>` serves status + chat
 - `docker compose up -d --build` works after `python build_site.py`
 - deploy script syntax checks cleanly
 - workflow promotion rules are explicit

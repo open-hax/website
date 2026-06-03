@@ -1,6 +1,6 @@
 ---
 uuid: "kanban-specs-drafts-documentation-refresh-md"
-title: "Documentation refresh (workspace REDACTED_SECRET)"
+title: "Documentation refresh (workspace root)"
 status: incoming
 priority: P3
 labels: ["specs", "migrated-spec"]
@@ -12,10 +12,10 @@ category: "specs"
 > Source: `specs/drafts/documentation-refresh.md`
 > Migrated-to-kanban: `kanban/drafts/documentation-refresh.md`
 
-# Documentation refresh (workspace REDACTED_SECRET)
+# Documentation refresh (workspace root)
 
 ## Goal
-Update the REDACTED_SECRET README and a small set of workspace docs so they match the current repo layout and current tooling entrypoints.
+Update the root README and a small set of workspace docs so they match the current repo layout and current tooling entrypoints.
 
 ## Scope (intended)
 - Root `README.md`

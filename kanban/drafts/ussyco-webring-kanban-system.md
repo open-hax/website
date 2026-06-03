@@ -86,5 +86,5 @@ P2 (useful workflow/tooling; not production-critical).
 ## Definition of Done
 - A contributor can create a new webring site task by either:
   - copying `templates/webring-site.task.md`, or
-  - running `REDACTED_SECRET scripts/new-webring-site-task.mjs --subdomain ...`
+  - running `node scripts/new-webring-site-task.mjs --subdomain ...`
 - The resulting task appears under `tasks/incoming/` and syncs to Trello after merge-to-main.

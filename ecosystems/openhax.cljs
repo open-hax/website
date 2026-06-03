@@ -6,7 +6,7 @@
 
 ;; (clobber.macro/defapp "open-hax-workbench"
 ;;   {:script "bash"
-;;    :args ["-lc" "pnpm build:clojurescript && cp static/index.html REDACTED_SECRET/index.html && python3 -m http.server 8081 -d REDACTED_SECRET"]
+;;    :args ["-lc" "pnpm build:clojurescript && cp static/index.html public/index.html && python3 -m http.server 8081 -d public"]
 ;;    :cwd "orgs/open-hax/workbench"
 ;;    :interpreter "/usr/bin/env"
 ;;    :exec_mode "fork"

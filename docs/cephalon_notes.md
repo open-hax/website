@@ -227,7 +227,7 @@ Tool: read
 00002| 
 00003|   :builds
 00004|   {:cephalon
-00005|    {:target :REDACTED_SECRET-script
+00005|    {:target :node-script
 00006|     :output-to "dist/cephalon.js"
 00007|     :main promethean.main/-main
 00008|     :compiler-options {:externs ["externs.js"]}
@@ -254,7 +254,7 @@ Tool: bash
 **Input:**
 ```json
 {
-  "command": "REDACTED_SECRET -e \"console.log('Testing...'); require('./dist/cephalon.js')\" 2>&1 | head -50",
+  "command": "node -e \"console.log('Testing...'); require('./dist/cephalon.js')\" 2>&1 | head -50",
   "description": "Test run compiled output",
   "timeout": 5000,
   "workdir": "/home/err/devel/services/cephalon-cljs"
@@ -294,7 +294,7 @@ Testing...
 [LLM]   Tool: discord.channel.scroll - Scroll through channel messages (sugar over messages with before=oldest-seen-id). Use discord.list.channels to find a channel
 [LLM]   Tool: discord.dm.messages - Fetch messages from a DM channel with a user
 [LLM]   Tool: discord.search - Search messages in a Discord channel or DM. Supports filtering by query text and user ID. Falls back to client-side filtering if native search unavailable.
-[LLM]   Tool: discord.send - REDACTED_SECRET a message to a Discord channel from discord.list.channels.
+[LLM]   Tool: discord.send - Send a message to a Discord channel from discord.list.channels.
 [LLM]   Tool: discord.list.servers - List all Discord servers/guilds the bot is a member of. Use this BEFORE discord.list.channels
 [LLM]   Tool: discord.list.channels - List all channels in a Discord server/guild
 [LLM]   Tool: get_current_time - Get the current timestamp and ISO date
@@ -330,7 +330,7 @@ Tool: bash
 **Input:**
 ```json
 {
-  "command": "timeout 5 REDACTED_SECRET dist/cephalon.js 2>&1 | grep -A5 -B5 \"Vector's key\" || echo \"No error after 5 seconds\"",
+  "command": "timeout 5 node dist/cephalon.js 2>&1 | grep -A5 -B5 \"Vector's key\" || echo \"No error after 5 seconds\"",
   "description": "Run for 5 seconds and check for error",
   "timeout": 10000,
   "workdir": "/home/err/devel/services/cephalon-cljs"

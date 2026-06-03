@@ -13,13 +13,13 @@
   },
   "inclusionRule": "Project-like work or repo-like trees that currently live outside the allowed placement paths.",
   "exclusions": [
-    "REDACTED_SECRET workspace infrastructure directories such as docs/, tools/, src/, config/, system/, tests/, and similar non-project support trees",
+    "root workspace infrastructure directories such as docs/, tools/, src/, config/, system/, tests/, and similar non-project support trees",
     "empty or logs-only directories without evidence of active project work"
   ],
   "counts": {
     "topLevelAliases": 2,
     "topLevelStandaloneRoots": 7,
-    "REDACTED_SECRETLevelVendorOrForkRepos": 6,
+    "rootLevelVendorOrForkRepos": 6,
     "foreignOrgRepos": 9,
     "aggregationTrees": 3
   },
@@ -64,7 +64,7 @@
   "topLevelStandaloneRoots": [
     {
       "path": "pm2-clj-project",
-      "category": "top-level-standalone-REDACTED_SECRET",
+      "category": "top-level-standalone-root",
       "isSymlink": false,
       "resolvedPath": null,
       "gitTop": "/home/err/devel",
@@ -81,7 +81,7 @@
     },
     {
       "path": "reconstitute",
-      "category": "top-level-standalone-REDACTED_SECRET",
+      "category": "top-level-standalone-root",
       "isSymlink": false,
       "resolvedPath": null,
       "gitTop": "/home/err/devel",
@@ -98,7 +98,7 @@
     },
     {
       "path": "reconstitute-mcp",
-      "category": "top-level-standalone-REDACTED_SECRET",
+      "category": "top-level-standalone-root",
       "isSymlink": false,
       "resolvedPath": null,
       "gitTop": "/home/err/devel",
@@ -115,7 +115,7 @@
     },
     {
       "path": "mcp-social-publisher-live",
-      "category": "top-level-standalone-REDACTED_SECRET",
+      "category": "top-level-standalone-root",
       "isSymlink": false,
       "resolvedPath": null,
       "gitTop": "/home/err/devel/mcp-social-publisher-live",
@@ -127,12 +127,12 @@
       "descriptor": "@workspace/mcp-social-publisher",
       "suggestedHandling": "classify-or-explicit-exception",
       "notes": [
-        "Standalone repo at workspace REDACTED_SECRET rather than under packages/services/orgs."
+        "Standalone repo at workspace root rather than under packages/services/orgs."
       ]
     },
     {
       "path": "threat-radar-deploy",
-      "category": "top-level-standalone-REDACTED_SECRET",
+      "category": "top-level-standalone-root",
       "isSymlink": false,
       "resolvedPath": null,
       "gitTop": "/home/err/devel/threat-radar-deploy",
@@ -144,12 +144,12 @@
       "descriptor": "Mission Control for the News \u2014 news intelligence dashboard",
       "suggestedHandling": "classify-or-explicit-exception",
       "notes": [
-        "Standalone repo at workspace REDACTED_SECRET rather than under packages/services/orgs."
+        "Standalone repo at workspace root rather than under packages/services/orgs."
       ]
     },
     {
       "path": "verathar-server",
-      "category": "top-level-standalone-REDACTED_SECRET",
+      "category": "top-level-standalone-root",
       "isSymlink": false,
       "resolvedPath": null,
       "gitTop": "/home/err/devel/verathar-server",
@@ -161,12 +161,12 @@
       "descriptor": "# Verathar Server",
       "suggestedHandling": "classify-or-explicit-exception",
       "notes": [
-        "Standalone Rust repo at workspace REDACTED_SECRET rather than under packages/services/orgs."
+        "Standalone Rust repo at workspace root rather than under packages/services/orgs."
       ]
     },
     {
       "path": "threat-radar-next-step",
-      "category": "top-level-standalone-REDACTED_SECRET",
+      "category": "top-level-standalone-root",
       "isSymlink": false,
       "resolvedPath": null,
       "gitTop": "/home/err/devel",
@@ -182,10 +182,10 @@
       ]
     }
   ],
-  "REDACTED_SECRETLevelVendorOrForkRepos": [
+  "rootLevelVendorOrForkRepos": [
     {
       "path": "bevy_replicon",
-      "category": "REDACTED_SECRET-level-vendor-or-fork-repo",
+      "category": "root-level-vendor-or-fork-repo",
       "isSymlink": false,
       "resolvedPath": null,
       "gitTop": "/home/err/devel/bevy_replicon",
@@ -202,7 +202,7 @@
     },
     {
       "path": "egregoria",
-      "category": "REDACTED_SECRET-level-vendor-or-fork-repo",
+      "category": "root-level-vendor-or-fork-repo",
       "isSymlink": false,
       "resolvedPath": null,
       "gitTop": "/home/err/devel/egregoria",
@@ -219,7 +219,7 @@
     },
     {
       "path": "game_network",
-      "category": "REDACTED_SECRET-level-vendor-or-fork-repo",
+      "category": "root-level-vendor-or-fork-repo",
       "isSymlink": false,
       "resolvedPath": null,
       "gitTop": "/home/err/devel/game_network",
@@ -236,7 +236,7 @@
     },
     {
       "path": "ggrs",
-      "category": "REDACTED_SECRET-level-vendor-or-fork-repo",
+      "category": "root-level-vendor-or-fork-repo",
       "isSymlink": false,
       "resolvedPath": null,
       "gitTop": "/home/err/devel/ggrs",
@@ -253,7 +253,7 @@
     },
     {
       "path": "lightyear",
-      "category": "REDACTED_SECRET-level-vendor-or-fork-repo",
+      "category": "root-level-vendor-or-fork-repo",
       "isSymlink": false,
       "resolvedPath": null,
       "gitTop": "/home/err/devel/lightyear",
@@ -270,7 +270,7 @@
     },
     {
       "path": "gates-pr35-hardening-main",
-      "category": "REDACTED_SECRET-level-worktree-or-fork-repo",
+      "category": "root-level-worktree-or-fork-repo",
       "isSymlink": false,
       "resolvedPath": null,
       "gitTop": "/home/err/devel/gates-pr35-hardening-main",

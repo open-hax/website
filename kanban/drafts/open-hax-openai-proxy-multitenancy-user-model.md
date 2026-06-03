@@ -25,7 +25,7 @@ Draft
 
 This spec extends the system with an **opt-in** multi-tenant + federation model:
 - **Default path (unchanged):** local proxy, one operator, managing their own providers/credentials.
-- **Opt-in multi-tenancy:** tenants, memberships, tenant-scoped REDACTED_SECRET API keys.
+- **Opt-in multi-tenancy:** tenants, memberships, tenant-scoped root API keys.
 - **Opt-in federation:** delegated/share capability keys (proof-of-possession), revocation propagation, and explicit trust between proxies.
 
 This is the promoted repo-local draft for the tenant/federation identity model. Focused companion drafts:
@@ -47,7 +47,7 @@ This is the promoted repo-local draft for the tenant/federation identity model. 
    - one person can run the proxy to manage their own providers
    - no federation/multi-tenant complexity required
 2. **Opt-in multi-tenancy**: multiple tenants can share one proxy instance.
-3. **Opt-in key sharing**: each tenant can create **REDACTED_SECRET API keys** and **delegated/share keys** with explicit limits:
+3. **Opt-in key sharing**: each tenant can create **root API keys** and **delegated/share keys** with explicit limits:
    - time limits (expiry)
    - model/provider allowlists
    - rate / budget ceilings
@@ -74,7 +74,7 @@ This is the promoted repo-local draft for the tenant/federation identity model. 
   - `PROXY_ALLOW_UNAUTHENTICATED=true` for fully local/dev.
 
 ### Mode 1 — Multi-tenant (single proxy)
-- Tenants + memberships + REDACTED_SECRET tenant API keys.
+- Tenants + memberships + root tenant API keys.
 - Still no federation; keys only valid on this proxy.
 
 ### Mode 2 — Federated (proxy network)
@@ -150,17 +150,17 @@ This spec recommends **B first**, then evolve to **A** if/when needed.
 
 ### Actors
 - **API client** (machine): authenticates with either:
-  - local bearer token (`PROXY_AUTH_TOKEN` or local REDACTED_SECRET tenant API key), or
+  - local bearer token (`PROXY_AUTH_TOKEN` or local root tenant API key), or
   - federated proof-of-possession delegated key (Mode 2)
 - **UI user** (human): authenticates with GitHub OAuth (or future ATproto login) and receives cookie tokens
 - **Bootstrap admin**: legacy `PROXY_AUTH_TOKEN` (optional) to avoid locking yourself out
 
 ### How requests map to a tenant
 Order of precedence:
-1. If `PROXY_ALLOW_UNAUTHENTICATED=true`: treat as tenant `REDACTED_SECRET` (or disable multi-tenant features).
+1. If `PROXY_ALLOW_UNAUTHENTICATED=true`: treat as tenant `public` (or disable multi-tenant features).
 2. If `Authorization: Bearer <token>` matches `PROXY_AUTH_TOKEN`: treat as `admin` in default tenant.
-3. If `Authorization: Bearer <token>` matches a row in `tenant_api_keys` (REDACTED_SECRET key): tenant = that row’s `tenant_id`.
-4. If `Authorization: Bearer <token>` is a **delegated/share key** (Option D capability token; PASETO v4.REDACTED_SECRET) minted by this proxy or a trusted proxy in the federation:
+3. If `Authorization: Bearer <token>` matches a row in `tenant_api_keys` (root key): tenant = that row’s `tenant_id`.
+4. If `Authorization: Bearer <token>` is a **delegated/share key** (Option D capability token; PASETO v4.public) minted by this proxy or a trusted proxy in the federation:
    - require `X-OH-PoP` proof header
    - verify capability offline (issuer DID key discovery) and enforce `limits`
    - optionally call issuer introspection only when strict-budget enforcement is required
@@ -193,7 +193,7 @@ We want a network of proxy instances where:
 This requires separating **issuer authority** (who minted the key) from **where the key is used**.
 
 ### Key types
-- **Root tenant API key (REDACTED_SECRET secret):** stored hashed in `tenant_api_keys`; used for direct access *and* for minting delegated keys.
+- **Root tenant API key (opaque secret):** stored hashed in `tenant_api_keys`; used for direct access *and* for minting delegated keys.
 - **Delegated/share key (capability token):** a token that encodes limits + provenance and is either:
   - verifiable offline (signed), or
   - verifiable online (introspection against issuer)
@@ -230,8 +230,8 @@ This spec uses **two signatures**:
 - **Holder signature (PoP)**: the caller signs each request (proves the token wasn’t stolen by a proxy).
 
 #### Capability token (issuer-signed)
-- Format: **PASETO v4.REDACTED_SECRET** (Ed25519).
-- Stored/transported as an REDACTED_SECRET string.
+- Format: **PASETO v4.public** (Ed25519).
+- Stored/transported as an opaque string.
 - Payload fields (minimum):
   - `iss`: issuer proxy DID
   - `kid`: issuer key id (DID key reference) *(or put in PASETO footer)*
@@ -279,7 +279,7 @@ Each proxy needs an explicit trust configuration (no ambient trust):
 - issuer metadata (DID method + DID document resolution policy)
 - key discovery (DID doc keys and/or JWKS URL)
 - allowed tenant ids (optional allowlist)
-- (optional) web-of-trust policy: accept issuer only if endorsed by N trusted REDACTED_SECRETs
+- (optional) web-of-trust policy: accept issuer only if endorsed by N trusted roots
 
 This can live in:
 - a config file (`FEDERATION_TRUST_FILE=...`) **or**
@@ -287,7 +287,7 @@ This can live in:
 
 ### Minimal federation endpoints
 On each proxy (issuer):
-- `GET /.well-known/open-hax-proxy/issuer.json` → issuer metadata (issuer DID, REDACTED_SECRET endpoints, optional JWKS URL)
+- `GET /.well-known/open-hax-proxy/issuer.json` → issuer metadata (issuer DID, public endpoints, optional JWKS URL)
 - `POST /api/federation/introspect` → optional strict-budget introspection
 
 ATproto control-plane (issuer publishes signed records):
@@ -494,7 +494,7 @@ This draft is the canonical identity/capability model. Companion drafts remain u
 - A request with `Authorization: Bearer <tenant_api_key>` is accepted and tagged with `{tenant_id, key_id}` in logs.
 - A request with a delegated capability token is accepted **only with** a valid `X-OH-PoP` proof and is tagged with `{issuer, tenant_id, key_id, holder_did}`.
 - UI user can view their memberships and generate/revoke tenant API keys.
-- UI user can mint a delegated/share key (PASETO v4.REDACTED_SECRET) with limits and revoke it.
+- UI user can mint a delegated/share key (PASETO v4.public) with limits and revoke it.
 - A delegated/share key minted on one proxy can be validated on another proxy that trusts the issuer DID.
 - Revocation is propagated via ATproto records and enforced by subscribers after cache update.
 - Existing single-tenant deployments remain functional via `PROXY_AUTH_TOKEN` mapped to default tenant.
@@ -504,7 +504,7 @@ This draft is the canonical identity/capability model. Companion drafts remain u
 ## Next actions (implementation prep)
 - Confirm default mode behavior stays unchanged when `PROXY_MULTITENANCY_ENABLED` / `PROXY_FEDERATION_ENABLED` are unset.
 - Lock Option D details:
-  - capability = PASETO v4.REDACTED_SECRET
+  - capability = PASETO v4.public
   - PoP = `X-OH-PoP` Ed25519 JWS
   - `aud` default = single proxy DID
 - Decide initial trust bootstrap (manual trusted issuer list vs endorsements).

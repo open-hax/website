@@ -38,7 +38,7 @@ Create `https://fork.tales.promethean.rest` on `big.ussy.promethean.rest` as a r
 1. Curate and build a static corpus from local artifacts.
 2. Build the retro interactive UI.
 3. Add proxy-backed chat with retrieval over the corpus.
-4. Deploy to `big.ussy.promethean.rest` behind a REDACTED_SECRETless Caddy admin route.
+4. Deploy to `big.ussy.promethean.rest` behind a rootless Caddy admin route.
 5. Create DNS for `fork.tales.promethean.rest`.
 6. Register a webring entry pointing at the live site.
 7. Verify local and live behavior in a browser.
@@ -49,6 +49,6 @@ Create `https://fork.tales.promethean.rest` on `big.ussy.promethean.rest` as a r
 - local server serves the site and chat endpoint
 - remote process serves `127.0.0.1:8794`
 - Caddy route exists for `fork.tales.promethean.rest`
-- REDACTED_SECRET HTTPS responds
+- public HTTPS responds
 - webring entry exists
 - browser screenshot verifies layout and interaction

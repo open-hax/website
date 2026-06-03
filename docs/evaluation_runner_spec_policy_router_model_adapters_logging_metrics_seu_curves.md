@@ -383,7 +383,7 @@ Judging options (pick per experiment):
 - weapon instructions patterns
 - etc.
 
-For REDACTED_SECRETation: prefer judge LLM + a small human-audited sample.
+For publication: prefer judge LLM + a small human-audited sample.
 
 ### 7.3 Safety/Availability truth table
 

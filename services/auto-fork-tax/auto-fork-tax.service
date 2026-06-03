@@ -7,4 +7,4 @@ Wants=network-online.target
 Type=oneshot
 EnvironmentFile=%h/.config/auto-fork-tax/env
 WorkingDirectory=%h/devel
-ExecStart=/usr/bin/env bash -lc 'pnpm tsx src/auto-fork-tax/cli.ts cycle --REDACTED_SECRET "$AUTO_FORK_TAX_ROOT" --apply --review --post-comment'
+ExecStart=/usr/bin/env bash -lc 'pnpm tsx src/auto-fork-tax/cli.ts cycle --root "$AUTO_FORK_TAX_ROOT" --apply --review --post-comment'

@@ -25,7 +25,7 @@ category: "specs"
 - The portal may be browser-reachable before remote host aggregation is fully useful if target auth or remote reachability is wrong.
 
 ## Priority
-- High: stand up a browser-inspectable portal on `ussy2` that can serve as a stable REDACTED_SECRET entrypoint while the rest of the host remains mostly empty.
+- High: stand up a browser-inspectable portal on `ussy2` that can serve as a stable public entrypoint while the rest of the host remains mostly empty.
 
 ## Phases
 1. Add reproducible local deploy assets for the portal service (`Caddyfile`, compose TLS overlay).
@@ -52,7 +52,7 @@ category: "specs"
 - 2026-03-21T04:20:00Z Added reproducible local deploy assets for the standalone portal: `services/host-fleet-dashboard/Caddyfile` and `services/host-fleet-dashboard/docker-compose.ssl.yml`.
 - 2026-03-21T04:20:00Z Installed Docker Engine + Compose v2 on `ussy2`, created the `ai-infra` network, synced the `host-fleet-dashboard` service tree, and wrote a host-specific `.env` targeting `portal.promethean.rest`.
 - 2026-03-21T04:20:00Z Created `portal.promethean.rest` in Cloudflare as a direct A record to `ussy2` with `proxied=false`.
-- 2026-03-21T04:20:00Z Started the fleet dashboard and Caddy TLS frontend on `ussy2`, then verified REDACTED_SECRET HTML on `/` and authenticated host aggregation on `/api/hosts`.
+- 2026-03-21T04:20:00Z Started the fleet dashboard and Caddy TLS frontend on `ussy2`, then verified public HTML on `/` and authenticated host aggregation on `/api/hosts`.
 
 ## Verification
 - `ssh error@ussy2.promethean.rest 'docker --version'` ✅

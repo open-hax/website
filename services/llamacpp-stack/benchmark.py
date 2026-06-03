@@ -30,7 +30,7 @@ def benchmark_run(run_num):
     }
 
     import os
-    api_key = REDACTED_SECRET"PROXX_API_KEY", "")
+    api_key = os.environ.get("PROXX_API_KEY", "")
     headers = {"Content-Type": "application/json"}
     if api_key:
         headers["Authorization"] = f"Bearer {api_key}"

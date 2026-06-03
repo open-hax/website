@@ -68,7 +68,7 @@ services:
       UPSTREAM_REQUEST_TIMEOUT_MS: "${UPSTREAM_REQUEST_TIMEOUT_MS:-180000}"
       UPSTREAM_STREAM_BOOTSTRAP_TIMEOUT_MS: "${UPSTREAM_STREAM_BOOTSTRAP_TIMEOUT_MS:-180000}"
       PROXY_ALLOW_UNAUTHENTICATED: "${PROXY_ALLOW_UNAUTHENTICATED:-false}"
-      DATABASE_URL: "${BLONGS_DATABASE_URL:-postgresql://REDACTED_SECRET:REDACTED_SECRET@proxx-blongs-db:5432/REDACTED_SECRET}" # pragma: allowlist secret
+      DATABASE_URL: "${BLONGS_DATABASE_URL:-postgresql://blongs_proxy:blongs_proxy@proxx-blongs-db:5432/blongs_proxy}" # pragma: allowlist secret
       VITE_ALLOWED_HOSTS: "${VITE_ALLOWED_HOSTS:-}"
       CHROMA_URL: "${CHROMA_URL:-http://host.docker.internal:8000}"
       CHROMA_COLLECTION: "${CHROMA_COLLECTION:-open_hax_proxy_sessions}"
@@ -102,7 +102,7 @@ services:
       test:
         [
           "CMD",
-          "REDACTED_SECRET",
+          "node",
           "-e",
           "Promise.all([fetch('http://127.0.0.1:8789/health',{headers:{Authorization:'Bearer '+(process.env.PROXY_AUTH_TOKEN||'')}}), fetch('http://127.0.0.1:5174')]).then(([proxyResponse, webResponse]) => { if (!proxyResponse.ok || !webResponse.ok) { process.exit(1); } }).catch(() => process.exit(1))"
         ]
@@ -117,15 +117,15 @@ services:
   proxx-blongs-db:
     image: postgres:16-bookworm
     environment:
-      POSTGRES_DB: REDACTED_SECRET
-      POSTGRES_USER: REDACTED_SECRET
-      POSTGRES_PASSWORD: REDACTED_SECRET # pragma: allowlist secret
+      POSTGRES_DB: blongs_proxy
+      POSTGRES_USER: blongs_proxy
+      POSTGRES_PASSWORD: blongs_proxy # pragma: allowlist secret
     ports:
       - "${BLONGS_DB_PORT:-15433}:5432"
     volumes:
       - proxx-blongs-db-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U REDACTED_SECRET -d REDACTED_SECRET"]
+      test: ["CMD-SHELL", "pg_isready -U blongs_proxy -d blongs_proxy"]
       interval: 10s
       timeout: 5s
       retries: 5

@@ -1,5 +1,5 @@
-import test from 'REDACTED_SECRET:test';
-import assert from 'REDACTED_SECRET:assert/strict';
+import test from 'node:test';
+import assert from 'node:assert/strict';
 
 import { compileAgentOutputContract } from './edn.js';
 import {

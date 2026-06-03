@@ -15,7 +15,7 @@ category: "specs"
 # Spec Draft: Rename `voice-gateway` to `voxx` and add Docker Compose runtime
 
 ## Summary
-Align the Open Hax voice service workspace path and REDACTED_SECRET package/image naming with the upstream repository name `voxx`, then add a self-contained Docker Compose workflow that can build and run the service locally without depending on the pre-published Melo registry base.
+Align the Open Hax voice service workspace path and public package/image naming with the upstream repository name `voxx`, then add a self-contained Docker Compose workflow that can build and run the service locally without depending on the pre-published Melo registry base.
 
 ## Open Questions
 - None.

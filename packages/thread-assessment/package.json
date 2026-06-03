@@ -15,7 +15,7 @@
     "build": "tsc -p tsconfig.json",
     "clean": "rm -rf dist",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "REDACTED_SECRET --test dist/**/*.test.js"
+    "test": "node --test dist/**/*.test.js"
   },
   "dependencies": {
     "zod": "^3.23.8"

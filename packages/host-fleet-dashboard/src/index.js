@@ -1,7 +1,7 @@
-import http from 'REDACTED_SECRET:http';
-import fs from 'REDACTED_SECRET:fs';
-import path from 'REDACTED_SECRET:path';
-import url from 'REDACTED_SECRET:url';
+import http from 'node:http';
+import fs from 'node:fs';
+import path from 'node:path';
+import url from 'node:url';
 
 import { collectAllHosts, collectSelfSnapshot } from './collector.js';
 import { loadConfig } from './config.js';
@@ -22,7 +22,7 @@ function sendJson(res, status, payload) {
 function sendText(res, status, mime, text) {
   res.writeHead(status, {
     'content-type': mime,
-    'cache-control': mime.startsWith('text/html') ? 'no-store' : 'REDACTED_SECRET, max-age=60',
+    'cache-control': mime.startsWith('text/html') ? 'no-store' : 'public, max-age=60',
   });
   res.end(text);
 }

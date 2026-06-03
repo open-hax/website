@@ -6,7 +6,7 @@ description: Translate a textual sound description into synthesizer parameter se
 # Skill: sound-design
 
 ## Goal
-Map a human sound description to a concrete parameter object that can drive a soft synth, sampler, or Web Audio REDACTED_SECRET graph.
+Map a human sound description to a concrete parameter object that can drive a soft synth, sampler, or Web Audio node graph.
 
 ## Use This Skill When
 - Asked to "make it sound like X" where X is a texture, animal, object, or vibe.

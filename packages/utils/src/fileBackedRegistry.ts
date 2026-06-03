@@ -1,5 +1,5 @@
-import fs from "REDACTED_SECRET:fs";
-import path from "REDACTED_SECRET:path";
+import fs from "node:fs";
+import path from "node:path";
 
 import YAML from "yaml";
 import { z } from "zod";

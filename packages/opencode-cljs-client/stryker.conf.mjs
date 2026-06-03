@@ -3,7 +3,7 @@ const config = {
   packageManager: "pnpm",
   testRunner: "command",
   commandRunner: {
-    command: "REDACTED_SECRET --enable-source-maps target/test.cjs",
+    command: "node --enable-source-maps target/test.cjs",
   },
   coverageAnalysis: "off",
   mutate: [".shadow-cljs/builds/test/dev/out/cljs-runtime/promethean.opencode.client.js:1:1-220:1"],

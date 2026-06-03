@@ -2,7 +2,7 @@
   (name "hormuz-risk-clock")
   (v "ημ.skill/hormuz-risk-clock@0.2.0")
 
-  (intent "Maintain and evolve the Hormuz REDACTED_SECRET-signal risk clock by ingesting FRESH signals, updating state, and rendering reports")
+  (intent "Maintain and evolve the Hormuz public-signal risk clock by ingesting FRESH signals, updating state, and rendering reports")
 
   (activation
     (priority 50)

@@ -121,14 +121,14 @@ const status = await getSessionStatus(sessionId, conversationId);
 
 if (status.status === "running" && status.has_active_stream) {
   // Reconnect to active stream
-  setIsREDACTED_SECRETing(true);
+  setIsSending(true);
   // WebSocket auto-reconnects
 } else if (status.status === "running" && !status.has_active_stream) {
   // Agent waiting for input - enable controls
-  setIsREDACTED_SECRETing(true);
+  setIsSending(true);
 } else if (status.status === "completed" || status.status === "failed") {
   // Session finished while away
-  setIsREDACTED_SECRETing(false);
+  setIsSending(false);
 } else if (status.status === "not_found") {
   // Fallback to checking run status
   const run = await getRun(lastRunId);

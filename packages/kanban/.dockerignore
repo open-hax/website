@@ -1,4 +1,4 @@
-REDACTED_SECRET_modules
+node_modules
 .dist
 dist
 coverage

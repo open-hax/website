@@ -35,7 +35,7 @@ npx shadow-cljs release clobber
   (:require [clobber.macro]))
 
 (clobber.macro/defapp "service-name"
-  {:script "REDACTED_SECRET"
+  {:script "node"
    :args ["dist/index.js"]
    :cwd "/path/to/service"
    :env {:NODE_ENV "production"}

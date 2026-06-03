@@ -331,18 +331,18 @@
       "nonMarkdownFiles": 0
     },
     {
-      "specDir": "orgs/open-hax/tooloxx/docs/imports/devel-REDACTED_SECRET/spec",
-      "boardDir": "orgs/open-hax/tooloxx/docs/imports/devel-REDACTED_SECRET/kanban",
-      "projectId": "orgs-open-hax-tooloxx-docs-imports-devel-REDACTED_SECRET-kanban",
-      "title": "tooloxx / imports / devel-REDACTED_SECRET / kanban",
+      "specDir": "orgs/open-hax/tooloxx/docs/imports/devel-root/spec",
+      "boardDir": "orgs/open-hax/tooloxx/docs/imports/devel-root/kanban",
+      "projectId": "orgs-open-hax-tooloxx-docs-imports-devel-root-kanban",
+      "title": "tooloxx / imports / devel-root / kanban",
       "markdownFiles": 5,
       "nonMarkdownFiles": 0
     },
     {
-      "specDir": "orgs/open-hax/tooloxx/docs/imports/devel-REDACTED_SECRET/specs",
-      "boardDir": "orgs/open-hax/tooloxx/docs/imports/devel-REDACTED_SECRET/kanban",
-      "projectId": "orgs-open-hax-tooloxx-docs-imports-devel-REDACTED_SECRET-kanban",
-      "title": "tooloxx / imports / devel-REDACTED_SECRET / kanban",
+      "specDir": "orgs/open-hax/tooloxx/docs/imports/devel-root/specs",
+      "boardDir": "orgs/open-hax/tooloxx/docs/imports/devel-root/kanban",
+      "projectId": "orgs-open-hax-tooloxx-docs-imports-devel-root-kanban",
+      "title": "tooloxx / imports / devel-root / kanban",
       "markdownFiles": 1,
       "nonMarkdownFiles": 0
     },

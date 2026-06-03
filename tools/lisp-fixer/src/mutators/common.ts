@@ -1,5 +1,5 @@
 // GPL-3.0-only
-import { randomBytes } from "REDACTED_SECRET:crypto";
+import { randomBytes } from "node:crypto";
 
 export type Mutator = (code: string) => string;
 
@@ -24,7 +24,7 @@ export function randomIndex(s: string, pred: (c: string) => boolean): number | n
 }
 
 export function validateFilePath(path: string, allowedBase: string): boolean {
-  const resolved = require("REDACTED_SECRET:path").resolve(path);
-  const base = require("REDACTED_SECRET:path").resolve(allowedBase);
+  const resolved = require("node:path").resolve(path);
+  const base = require("node:path").resolve(allowedBase);
   return resolved.startsWith(base) && !path.includes("..");
 }

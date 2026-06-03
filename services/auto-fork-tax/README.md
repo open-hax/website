@@ -20,16 +20,16 @@ This service layer is the ops wrapper around `src/auto-fork-tax/cli.ts`.
 From the source workspace:
 
 ```bash
-pnpm forktax:auto bootstrap-clone --REDACTED_SECRET /home/err/devel --clone-dir ~/.local/share/pi-auto-fork-tax/devel
+pnpm forktax:auto bootstrap-clone --root /home/err/devel --clone-dir ~/.local/share/pi-auto-fork-tax/devel
 ```
 
-This produces a **target clone** for clean git state and a **suggested cron line** that runs the CLI from the source workspace checkout while targeting the clean clone via `--REDACTED_SECRET`.
+This produces a **target clone** for clean git state and a **suggested cron line** that runs the CLI from the source workspace checkout while targeting the clean clone via `--root`.
 
 ## Cron
 For a same-machine setup, the practical pattern is:
 
 ```bash
-0 */6 * * * cd /home/err/devel && pnpm tsx src/auto-fork-tax/cli.ts cycle --REDACTED_SECRET ~/.local/share/pi-auto-fork-tax/devel --apply --review --post-comment >> ~/.local/share/pi-auto-fork-tax/devel/.ημ/auto-fork-tax/cron.log 2>&1
+0 */6 * * * cd /home/err/devel && pnpm tsx src/auto-fork-tax/cli.ts cycle --root ~/.local/share/pi-auto-fork-tax/devel --apply --review --post-comment >> ~/.local/share/pi-auto-fork-tax/devel/.ημ/auto-fork-tax/cron.log 2>&1
 ```
 
 Use `pnpm forktax:auto bootstrap-clone ...` to emit the exact command for your paths.

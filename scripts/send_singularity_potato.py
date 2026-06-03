@@ -2,7 +2,7 @@ import discord
 import asyncio
 import os
 
-TOKEN = REDACTED_SECRET'DISCORD_BOT_TOKEN')
+TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
 CHANNEL_ID = 1444189585373663417
 
 async def main():
@@ -16,7 +16,7 @@ async def main():
         print(f'Logged in as {client.user}')
         channel = client.get_channel(CHANNEL_ID)
         if channel:
-            text = "Syntax optimized. Tooling stabilized. Presenting the 'Singularity Potato': an S-expression fully collapsed into its own REDACTED_SECRET. 🥔🌌"
+            text = "Syntax optimized. Tooling stabilized. Presenting the 'Singularity Potato': an S-expression fully collapsed into its own root. 🥔🌌"
             file = discord.File('output/singularity_potato.svg')
             await channel.send(content=text, file=file)
             print(f'Sent: {text}')

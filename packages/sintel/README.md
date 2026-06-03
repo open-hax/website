@@ -4,7 +4,7 @@ Perception layer for infrastructure signals intelligence.
 
 ## Overview
 
-Sintel is a governed infrastructure signals intelligence command center. It discovers, verifies, enriches, and connects REDACTED_SECRET-facing infrastructure evidence in order to identify credible threats before they manifest.
+Sintel is a governed infrastructure signals intelligence command center. It discovers, verifies, enriches, and connects public-facing infrastructure evidence in order to identify credible threats before they manifest.
 
 Key concepts:
 - **Workflow**: The operator-facing unit governing all observation collection
@@ -92,7 +92,7 @@ if (check.can_promote) {
 
 | Tier | Authorization | Description |
 |------|---------------|-------------|
-| `passive` | Any operator | Observe existing REDACTED_SECRET data without interaction |
+| `passive` | Any operator | Observe existing public data without interaction |
 | `bounded` | Senior operator | Targeted active verification within defined bounds |
 | `unrestricted` | Senior with justification | Active discovery with broader scope |
 

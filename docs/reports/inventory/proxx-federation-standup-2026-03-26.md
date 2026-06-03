@@ -18,17 +18,17 @@ The following Proxx-bearing stacks are now running alongside the canonical stack
 | `services/cephalon-hive/docker-compose.yml` | up | Proxx service recreated and attached to `ai-infra` |
 | `orgs/open-hax/proxx/docker-compose.yml` | up | Repo-local Proxx running on `18789`; web port overridden to `25176` at launch because `25174` was already occupied by `proxx-quiet-openai` |
 | `orgs/open-hax/proxx/docker-compose.glm5.yml` | up | Repo-local GLM5 variant running on `28791` |
-| `orgs/open-hax/proxx/docker-compose.federation-runtime.yml` | up | Four runtime federation REDACTED_SECRETs running on `ai-infra` |
-| `orgs/open-hax/proxx/docker-compose.federation-e2e.yml` | up | Four e2e federation REDACTED_SECRETs running on `18891-18894` |
+| `orgs/open-hax/proxx/docker-compose.federation-runtime.yml` | up | Four runtime federation nodes running on `ai-infra` |
+| `orgs/open-hax/proxx/docker-compose.federation-e2e.yml` | up | Four e2e federation nodes running on `18891-18894` |
 | `orgs/ussyverse/battlebussy/deploy/docker-compose.prod.yml` | up | Bundled OpenAI proxy running on `28889`; required adding a dedicated Postgres sidecar to support federation peer storage |
 
 Not stood up from the earlier manifest because it is currently absent:
 - `services/proxx/docker-compose.glm5.yml`
 
 ## Additional source changes required for successful standup
-- Fixed REDACTED_SECRET `docker-compose.yml` build context to `./orgs/open-hax/proxx`.
+- Fixed root `docker-compose.yml` build context to `./orgs/open-hax/proxx`.
 - Added federation identity defaults to repo-local stacks.
-- Added `host.docker.internal` mapping to federation e2e REDACTED_SECRETs.
+- Added `host.docker.internal` mapping to federation e2e nodes.
 - Attached Cephalon Hive Proxx to `ai-infra` with alias `cephalon-hive-proxx`.
 - Attached BattleBussy bundled proxy to `ai-infra` with alias `battlebussy-openai-proxy`.
 - Added a Postgres service plus `DATABASE_URL` to BattleBussy bundled proxy so `/api/ui/federation/peers` works.
@@ -45,7 +45,7 @@ The canonical `services/proxx/docker-compose.yml` instance now has peer registra
 - `federation-peer`
 - `repo-glm5`
 - `repo-proxx`
-- `REDACTED_SECRET-proxx`
+- `root-proxx`
 - `runtime-a1`
 - `runtime-a2`
 - `runtime-b1`
@@ -59,20 +59,20 @@ Also present on canonical were pre-existing peer IDs discovered during verificat
 Canonical peer count observed after standup: **18**
 
 ## Back-links to canonical
-Verified that every newly started peer/REDACTED_SECRET now contains a `canonical-proxx-local` peer registration, including:
-- REDACTED_SECRET stack
+Verified that every newly started peer/node now contains a `canonical-proxx-local` peer registration, including:
+- root stack
 - services federation peer
 - blongs
 - cephalon hive proxx
 - repo main
 - repo glm5
-- all four federation runtime REDACTED_SECRETs
-- all four federation e2e REDACTED_SECRETs
+- all four federation runtime nodes
+- all four federation e2e nodes
 - battlebussy bundled proxy
 
 ## Live containers observed
 - `proxx-local-proxx-1` → canonical on `8789`
-- `open-hax-openai-proxy-open-hax-openai-proxy-1` → REDACTED_SECRET on `18790`
+- `open-hax-openai-proxy-open-hax-openai-proxy-1` → root on `18790`
 - `proxx-federation-peer-proxx-federation-peer-1` → federation peer on `18792`
 - `proxx-blongs-proxx-blongs-1` → blongs on `5277`
 - `cephalon-hive-proxx-1` → cephalon on `18779`

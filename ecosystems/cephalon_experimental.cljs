@@ -25,7 +25,7 @@
    :kill-timeout 5000})
 
 (clobber.macro/defapp "duck-cephalon-cljs"
-  {:script "REDACTED_SECRET"
+  {:script "node"
    :cwd "./services/cephalon-cljs"
    :args ["dist/cephalon.js"]
    :env {:NODE_ENV "production"
@@ -41,7 +41,7 @@
    :kill-timeout 5000})
 
 (clobber.macro/defapp "duck-io"
-  {:script "REDACTED_SECRET"
+  {:script "node"
    :cwd "./orgs/octave-commons/cephalon-clj/cephalon-clj-discord-io"
    :args ["dist/duck.cjs"]
    :interpreter "none"

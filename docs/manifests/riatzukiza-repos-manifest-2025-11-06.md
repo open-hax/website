@@ -124,7 +124,7 @@ Root workspace: /home/err/devel
 - meteor-notes
 - roarar-bot
 - discord.js-template
-- REDACTED_SECRET-api-examples
+- public-api-examples
 - kettlepack
 - minecraft-mods-config
 - idealily

@@ -1,7 +1,7 @@
-#!/usr/bin/env REDACTED_SECRET
-import { readFile } from 'REDACTED_SECRET:fs/promises'
-import { join } from 'REDACTED_SECRET:path'
-import { env, exit } from 'REDACTED_SECRET:process'
+#!/usr/bin/env node
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
+import { env, exit } from 'node:process'
 
 const DEFAULT_NAMESPACE = env.SONAR_NAMESPACE ?? 'octave-commons'
 const DEFAULT_HOST = env.SONAR_HOST_URL ?? 'https://sonarcloud.io'

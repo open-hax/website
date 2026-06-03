@@ -64,13 +64,13 @@ Machine-readable companion artifact:
 | `packages/aether` | stay-prototype | `riatzukiza` | low | standalone-repo | Minimal metadata and no README keep it in packages for now.; @workspace scope |
 | `packages/cephalon-clj` | candidate-promote | `riatzukiza` | high | standalone-repo | Internal cognitive-system architecture with reproducible run docs points most strongly at riatzukiza. |
 | `packages/cephalon-ts` | candidate-promote | `riatzukiza` | high | standalone-repo | Mature enough to leave packages, but still primarily coupled to your internal ecosystem. |
-| `packages/embedding` | candidate-promote | `riatzukiza` | medium | existing-monorepo-package | Existing Promethean monorepo matches imply internal canonical-home drift more than a new standalone REDACTED_SECRET package.; existing org package match(es) present; Promethean verified-extraction overlap |
+| `packages/embedding` | candidate-promote | `riatzukiza` | medium | existing-monorepo-package | Existing Promethean monorepo matches imply internal canonical-home drift more than a new standalone public package.; existing org package match(es) present; Promethean verified-extraction overlap |
 | `packages/eta-mu-docs` | candidate-promote | `octave-commons` | medium-high | standalone-repo | The symbolic framing and substrate focus fit octave-commons better than a purely internal integration bucket.; @workspace scope |
 | `packages/eta-mu-truth` | candidate-promote | `octave-commons` | high | standalone-repo | Strongest current fit is octave-commons because the package identity is concept-heavy rather than productized.; @workspace scope |
 | `packages/event` | candidate-promote | `riatzukiza` | medium | existing-monorepo-package | Today it looks like mature Promethean plumbing; later it may deserve open-hax treatment if extracted cleanly.; existing org package match(es) present; Promethean verified-extraction overlap |
 | `packages/fsm` | candidate-promote | `riatzukiza` | medium | existing-monorepo-package | Current best fit is internal monorepo package with open-hax potential later.; existing org package match(es) present; Promethean verified-extraction overlap |
 | `packages/hermes` | stay-prototype | `riatzukiza` | low | standalone-repo | Too little surface area and documentation to justify promotion yet.; @workspace scope |
-| `packages/logger` | candidate-promote | `riatzukiza` | medium | existing-monorepo-package | Looks like internal ecosystem infrastructure more than a finished REDACTED_SECRET library.; existing org package match(es) present; Promethean verified-extraction overlap |
+| `packages/logger` | candidate-promote | `riatzukiza` | medium | existing-monorepo-package | Looks like internal ecosystem infrastructure more than a finished public library.; existing org package match(es) present; Promethean verified-extraction overlap |
 | `packages/mcp-foundation` | stay-prototype | `open-hax` | medium-low | standalone-repo | Promise points toward open-hax, but the maturity gate is not cleared yet.; @workspace scope |
 | `packages/mcp-oauth` | stay-prototype | `open-hax` | medium-low | standalone-repo | Likely future open-hax material, but not ready to leave packages.; @workspace scope |
 | `packages/npu-top` | candidate-promote | `open-hax` | high | standalone-repo | This already reads like an independently useful open-hax tool. |
@@ -83,7 +83,7 @@ Machine-readable companion artifact:
 | `packages/reconstituter` | candidate-promote | `open-hax` | high | standalone-repo | One of the clearest open-hax candidates in packages/*. |
 | `packages/signal-atproto` | candidate-promote | `open-hax` | medium-high | existing-monorepo-package | Because it is part of the current radar stack, signal-atproto should normalize with eta-mu-radar under open-hax.; eta-mu-radar target |
 | `packages/signal-embed-browser` | candidate-promote | `open-hax` | medium-high | existing-monorepo-package | Because it is part of the active radar web dependency surface, signal-embed-browser should normalize with eta-mu-radar under open-hax.; eta-mu-radar target |
-| `packages/test-utils` | candidate-promote | `riatzukiza` | medium | existing-monorepo-package | Shared internal helper more than standalone REDACTED_SECRET product right now.; existing org package match(es) present; Promethean verified-extraction overlap |
+| `packages/test-utils` | candidate-promote | `riatzukiza` | medium | existing-monorepo-package | Shared internal helper more than standalone public product right now.; existing org package match(es) present; Promethean verified-extraction overlap |
 | `packages/thread-assessment` | candidate-promote | `open-hax` | medium-high | existing-monorepo-package | Because it participates in the current radar-adjacent runtime surface, thread-assessment should consolidate into eta-mu-radar under open-hax.; eta-mu-radar target; @workspace scope |
 | `packages/utils` | candidate-promote | `riatzukiza` | medium | existing-monorepo-package | Looks mature, but current evidence points to internal ecosystem utility first.; existing org package match(es) present; Promethean verified-extraction overlap |
 
@@ -100,7 +100,7 @@ Machine-readable companion artifact:
 - matching Promethean package path: `orgs/octave-commons/promethean/packages/embedding`
 - matching Promethean package path: `orgs/riatzukiza/promethean/packages/embedding`
 - provisional top candidate org: `riatzukiza`
-- rationale: Existing Promethean monorepo matches imply internal canonical-home drift more than a new standalone REDACTED_SECRET package.
+- rationale: Existing Promethean monorepo matches imply internal canonical-home drift more than a new standalone public package.
 - User clarified that these overlapping modules were extracted because their usefulness was verified from Promethean.
 - Treat this overlap as Promethean corpus extraction rather than automatic slop or accidental duplication.
 
@@ -130,7 +130,7 @@ Machine-readable companion artifact:
 - matching Promethean package path: `orgs/octave-commons/promethean/packages/logger`
 - matching Promethean package path: `orgs/riatzukiza/promethean/packages/logger`
 - provisional top candidate org: `riatzukiza`
-- rationale: Looks like internal ecosystem infrastructure more than a finished REDACTED_SECRET library.
+- rationale: Looks like internal ecosystem infrastructure more than a finished public library.
 - User clarified that these overlapping modules were extracted because their usefulness was verified from Promethean.
 - Treat this overlap as Promethean corpus extraction rather than automatic slop or accidental duplication.
 
@@ -150,7 +150,7 @@ Machine-readable companion artifact:
 - matching Promethean package path: `orgs/octave-commons/promethean/packages/test-utils`
 - matching Promethean package path: `orgs/riatzukiza/promethean/packages/test-utils`
 - provisional top candidate org: `riatzukiza`
-- rationale: Shared internal helper more than standalone REDACTED_SECRET product right now.
+- rationale: Shared internal helper more than standalone public product right now.
 - User clarified that these overlapping modules were extracted because their usefulness was verified from Promethean.
 - Treat this overlap as Promethean corpus extraction rather than automatic slop or accidental duplication.
 
@@ -169,7 +169,7 @@ Machine-readable companion artifact:
 - existing match: `orgs/octave-commons/promethean/packages/embedding`
 - existing match: `orgs/riatzukiza/promethean/packages/embedding`
 - provisional top candidate org: `riatzukiza`
-- rationale: Existing Promethean monorepo matches imply internal canonical-home drift more than a new standalone REDACTED_SECRET package.
+- rationale: Existing Promethean monorepo matches imply internal canonical-home drift more than a new standalone public package.
 
 ### `packages/event`
 - existing match: `orgs/octave-commons/promethean/packages/event`
@@ -187,7 +187,7 @@ Machine-readable companion artifact:
 - existing match: `orgs/octave-commons/promethean/packages/logger`
 - existing match: `orgs/riatzukiza/promethean/packages/logger`
 - provisional top candidate org: `riatzukiza`
-- rationale: Looks like internal ecosystem infrastructure more than a finished REDACTED_SECRET library.
+- rationale: Looks like internal ecosystem infrastructure more than a finished public library.
 
 ### `packages/persistence`
 - existing match: `orgs/octave-commons/pantheon/packages/persistence`
@@ -200,7 +200,7 @@ Machine-readable companion artifact:
 - existing match: `orgs/octave-commons/promethean/packages/test-utils`
 - existing match: `orgs/riatzukiza/promethean/packages/test-utils`
 - provisional top candidate org: `riatzukiza`
-- rationale: Shared internal helper more than standalone REDACTED_SECRET product right now.
+- rationale: Shared internal helper more than standalone public product right now.
 
 ### `packages/utils`
 - existing match: `orgs/octave-commons/promethean/packages/utils`

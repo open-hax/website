@@ -9,4 +9,4 @@ A Silt-Husk is the final state of a survivor who has over-relied on the Resonanc
 - **Hollow Resonance**: If struck or spoken to, a Silt-Husk emits a clear, ringing tone that matches the frequency of the memory it holds. They are effectively organic tuning forks.
 
 ## Ecological Role
-The Husks serve as "relay REDACTED_SECRETs" for the Spire. By scattering Husks around the perimeter of the sanctuary, the Spire creates a mesh network of mimicked voices, making it impossible for refugees to know if the voice they hear is a survivor or a biological recording.
+The Husks serve as "relay nodes" for the Spire. By scattering Husks around the perimeter of the sanctuary, the Spire creates a mesh network of mimicked voices, making it impossible for refugees to know if the voice they hear is a survivor or a biological recording.

@@ -50,14 +50,14 @@ Still cloud-fragile:
 
 ## Risks
 - File-backed state on ephemeral disks will silently disappear during restarts/redeploys.
-- OAuth redirect/callback correctness depends on stable REDACTED_SECRET base URLs and trusted proxy headers.
+- OAuth redirect/callback correctness depends on stable public base URLs and trusted proxy headers.
 - Federation and multi-tenancy will increase deployment complexity if baseline cloud contracts stay implicit.
 
 ## Implementation phases
 
 ### Phase 1: Hosted deployment contract
 - Document required env vars for hosted deployment.
-- Define canonical REDACTED_SECRET base URL handling and callback construction.
+- Define canonical public base URL handling and callback construction.
 - Add deployment-mode assumptions to README/specs.
 
 ### Phase 2: Durable state externalization

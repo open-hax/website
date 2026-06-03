@@ -48,7 +48,7 @@ Create a deployment/projection script that mirrors the current local devel stack
 
 ## Validation
 - script passes `bash -n`
-- sync daemon passes `REDACTED_SECRET --check`
+- sync daemon passes `node --check`
 - remote canonical health endpoint reachable after deploy
 - remote cephalon-hive stack reachable after deploy
 - local and remote canonical peer records exist

@@ -2,7 +2,7 @@
   (:require [clobber.macro]))
 
 (clobber.macro/defapp "vivgrid-openai-proxy"
-  {:script "REDACTED_SECRET"
+  {:script "node"
    :cwd "./services/vivgrid-openai-proxy"
    :args ["--env-file-if-exists=.env" "dist/main.js"]
    :interpreter "/usr/bin/env"

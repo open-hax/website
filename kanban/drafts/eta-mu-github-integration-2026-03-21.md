@@ -82,15 +82,15 @@ The user wants:
 - Eta-mu repo contains a pi-based GitHub runner and review gate foundation.
 - `devel` has eta-mu workflow wiring and documented credential/ruleset expectations.
 - Workspace tooling can identify/admin-roll out eta-mu integration to writable submodules.
-- Verification covers the eta-mu repo build/tests and REDACTED_SECRET workflow/tooling sanity checks.
+- Verification covers the eta-mu repo build/tests and root workflow/tooling sanity checks.
 
 ## Execution log
 - 2026-03-21T00:00:00Z Draft created to track eta-mu GitHub integration planning and implementation.
 - 2026-03-21T19:00:00Z Investigated pi SDK/examples plus `orgs/open-hax/codex/.github/` workflows/rulesets to anchor the eta-mu design on the existing Codex promotion and review-response model.
 - 2026-03-21T19:10:00Z Scaffolded the standalone `open-hax/eta-mu-github` automation surface before later consolidating it into the eta-mu monorepo at `orgs/open-hax/eta-mu/packages/eta-mu-github`.
-- 2026-03-21T19:20:00Z Wired `devel` itself with `eta-mu` and `eta-mu-review-gate` GitHub workflows and added REDACTED_SECRET docs for secrets, branch-protection expectations, and rollout commands.
+- 2026-03-21T19:20:00Z Wired `devel` itself with `eta-mu` and `eta-mu-review-gate` GitHub workflows and added root docs for secrets, branch-protection expectations, and rollout commands.
 - 2026-03-21T19:25:00Z Added `src/github/eta-mu-rollout.ts` to inventory/install eta-mu workflow wrappers across admin-capable submodules and generated the first inventory report showing eligible rollout targets.
-- 2026-03-21T19:30:00Z Reworked `bin/setup-branch-protection` so it can include the REDACTED_SECRET repo, skip non-admin repos, and preserve/merge existing required checks while keeping review-thread resolution enabled.
-- 2026-03-21T19:35:00Z Verified eta-mu repo tests/build in the standalone repo checkout, validated the new REDACTED_SECRET workflow YAML files, checked shell syntax for the branch-protection helper, and confirmed the rollout inventory script parses and reports eligible repos.
-- 2026-03-21T20:05:00Z Opened rollout PRs for the REDACTED_SECRET repo plus nearly all admin-capable submodules on branch `eta-mu-rollout-20260321`; reused existing rollout PRs where they were already open and manually recovered the `octave-commons/promethean-agent-system` PR after the first automated create attempt failed.
-- 2026-03-21T20:10:00Z Applied remote branch protection to the REDACTED_SECRET repo and admin-capable submodules with `required_conversation_resolution` plus required check `coderabbit-review-gate`, making unresolved CodeRabbit review threads block merge acceptance on default branches.
+- 2026-03-21T19:30:00Z Reworked `bin/setup-branch-protection` so it can include the root repo, skip non-admin repos, and preserve/merge existing required checks while keeping review-thread resolution enabled.
+- 2026-03-21T19:35:00Z Verified eta-mu repo tests/build in the standalone repo checkout, validated the new root workflow YAML files, checked shell syntax for the branch-protection helper, and confirmed the rollout inventory script parses and reports eligible repos.
+- 2026-03-21T20:05:00Z Opened rollout PRs for the root repo plus nearly all admin-capable submodules on branch `eta-mu-rollout-20260321`; reused existing rollout PRs where they were already open and manually recovered the `octave-commons/promethean-agent-system` PR after the first automated create attempt failed.
+- 2026-03-21T20:10:00Z Applied remote branch protection to the root repo and admin-capable submodules with `required_conversation_resolution` plus required check `coderabbit-review-gate`, making unresolved CodeRabbit review threads block merge acceptance on default branches.

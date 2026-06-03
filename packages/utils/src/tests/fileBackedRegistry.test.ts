@@ -1,4 +1,4 @@
-import path from "REDACTED_SECRET:path";
+import path from "node:path";
 
 import test from "ava";
 import { z } from "zod";

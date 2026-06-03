@@ -10,13 +10,13 @@ You now have *four* first-class proto kinds, all `extends`-able:
 
 * **App proto**: `(def-app :api base ...opts)`
 * **Profile proto**: `(def-profile :prod base ...fragments)`
-* **Mixin proto**: `(def-mixin :REDACTED_SECRET ...opts)` (reusable patch blob for apps/profiles/stacks)
+* **Mixin proto**: `(def-mixin :node ...opts)` (reusable patch blob for apps/profiles/stacks)
 * **Stack proto**: `(def-stack :core base ...fragments)` (reusable ecosystem composition)
 
 And a couple quality-of-life helpers:
 
 * **Anonymous mixins**: `(mixin :cwd "." :env {...})`
-* **Combine mixins**: `(mix REDACTED_SECRET logging metrics)`
+* **Combine mixins**: `(mix node logging metrics)`
 * **Override an app by name only**: `(app :api :instances 2)` → `{:name "api" :instances 2}`
 * **Patch every app in a fragment**: `(each {:env {...}} (apps api worker))`
 * **Name scoping**: `(scope "svc")` as a mixin; app names become `svc-api`, `svc-worker`, etc.
@@ -243,7 +243,7 @@ And a couple quality-of-life helpers:
 
 (defn def-mixin
   "Define a named mixin proto.
-   (def-mixin :REDACTED_SECRET :cwd \".\" :env {...})"
+   (def-mixin :node :cwd \".\" :env {...})"
   [id & more]
   (mk-proto :mixin (->str-id id) nil (apply opts more)))
 
@@ -655,13 +655,13 @@ Only change is swapping `dsl/remove` → `internal/remove`, and stripping any re
 ## Pattern A: “runtime mixin” + “service mixin” + “apps”
 
 ```clojure
-(let [REDACTED_SECRET (def-mixin :REDACTED_SECRET
+(let [node (def-mixin :node
              :cwd "."
              :autorestart true
              :max_restarts 10
              :env {:NODE_ENV "development"})
 
-      svc (mix REDACTED_SECRET (scope "svc"))
+      svc (mix node (scope "svc"))
 
       api (def-app :api svc :script "dist/api.js")
       worker (def-app :worker svc :script "dist/worker.js")]

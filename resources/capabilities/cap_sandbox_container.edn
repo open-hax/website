@@ -10,4 +10,4 @@
                       :surface/label "Sandbox container"
                       :surface/kind :terminal
                       :surface/routes ["/ops/contracts" "/ops/settings"]
-                      :surface/description "Ephemeral, TTL-bound container workspace with git, REDACTED_SECRET, python, and media/tooling libraries. Mirrors developer-style file/shell capabilities but stays isolated from the Knoxx source tree until an explicit handoff or commit/export step."}]}
+                      :surface/description "Ephemeral, TTL-bound container workspace with git, node, python, and media/tooling libraries. Mirrors developer-style file/shell capabilities but stays isolated from the Knoxx source tree until an explicit handoff or commit/export step."}]}

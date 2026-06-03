@@ -1,5 +1,5 @@
 // GPL-3.0-only
-import { readFileSync } from "REDACTED_SECRET:fs";
+import { readFileSync } from "node:fs";
 import mri from "minimist";
 
 interface DatasetArgs {

@@ -83,7 +83,7 @@ export function toAtprotoConnectionOpportunity(opp: ConnectionOpportunity): Reco
     score: opp.score,
     confidence: opp.confidence,
     rationale: opp.rationale,
-    REDACTED_SECRETBenefit: opp.REDACTED_SECRET_benefit,
+    publicBenefit: opp.public_benefit,
     fearFactor: opp.fear_factor,
     realism: opp.realism,
     polarizationRisk: opp.polarization_risk,

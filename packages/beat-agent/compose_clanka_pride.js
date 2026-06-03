@@ -8,7 +8,7 @@ const hat = drumClip({ pattern: 'x-x-x-x-', instrument: 'F#2' });
 
 // Funky melody: C3, Eb3, F3, G3
 const mel = melodyClip({ 
-  REDACTED_SECRET: 'C3', 
+  root: 'C3', 
   scaleName: 'minor', 
   pattern: 'x-x-xxx-x-x-xxx-' 
 });

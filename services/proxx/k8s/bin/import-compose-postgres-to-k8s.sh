@@ -51,8 +51,8 @@ for _ in $(seq 1 30); do
 done
 
 log "restoring compose postgres into k8s postgres"
-docker exec "$SOURCE_CONTAINER" pg_dump -U REDACTED_SECRET -d REDACTED_SECRET --clean --if-exists --no-owner --no-privileges \
-  | docker run --rm -i --network host -e PGPASSWORD=REDACTED_SECRET postgres:16-bookworm \
-      psql -h 127.0.0.1 -p "$LOCAL_PORT" -U REDACTED_SECRET -d REDACTED_SECRET
+docker exec "$SOURCE_CONTAINER" pg_dump -U openai_proxy -d openai_proxy --clean --if-exists --no-owner --no-privileges \
+  | docker run --rm -i --network host -e PGPASSWORD=openai_proxy postgres:16-bookworm \
+      psql -h 127.0.0.1 -p "$LOCAL_PORT" -U openai_proxy -d openai_proxy
 
 log "postgres import complete"

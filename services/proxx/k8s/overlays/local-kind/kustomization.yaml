@@ -5,8 +5,8 @@ resources:
   - ../../base
   - ingress.yaml
 patches:
-  - path: proxx-api-service-REDACTED_SECRETport.yaml
-  - path: proxx-web-service-REDACTED_SECRETport.yaml
+  - path: proxx-api-service-nodeport.yaml
+  - path: proxx-web-service-nodeport.yaml
 images:
   - name: proxx
     newName: proxx

@@ -114,7 +114,7 @@ Luxon ships its own types, but certain resolvers or import styles can confuse TS
 pnpm -w add -D @types/luxon
 ```
 
-2. Ensure you import from the package REDACTED_SECRET:
+2. Ensure you import from the package root:
 
 ```ts
 import { DateTime } from 'luxon'; // ✅
@@ -231,7 +231,7 @@ You typed a `require`-like function as `NodeJS.Require` but only provided a func
 
 ```ts
 // packages/plugin-hooks/src/security/plugin-sandbox.ts
-import { createRequire } from 'REDACTED_SECRET:module';
+import { createRequire } from 'node:module';
 
 const sandboxRequire: NodeJS.Require = createRequire(import.meta.url);
 
@@ -402,7 +402,7 @@ You are treating these as `EventEmitter`s. Either:
 * Narrow where used:
 
 ```ts
-import { EventEmitter } from 'REDACTED_SECRET:events';
+import { EventEmitter } from 'node:events';
 const engine = this.syncEngine as unknown as EventEmitter;
 engine.on('taskCreated', ({ taskId, task }) => { ... });
 ```
@@ -567,7 +567,7 @@ Below are ready‑to‑paste diffs for the lines the log called out (adapt the p
 @@
 -import type { SandboxContext } from './types';
 +import type { SandboxContext } from './types';
-+import { createRequire } from 'REDACTED_SECRET:module';
++import { createRequire } from 'node:module';
 @@
 - constructor(private require: (id: string) => any, private context: SandboxContext) {}
 + private readonly require: NodeJS.Require = createRequire(import.meta.url);
@@ -594,7 +594,7 @@ Below are ready‑to‑paste diffs for the lines the log called out (adapt the p
  }
 ```
 
-### `packages/mcp-kanban-bridge/src/queue.ts` (REDACTED_SECRET‑redis v4)
+### `packages/mcp-kanban-bridge/src/queue.ts` (node‑redis v4)
 
 ```diff
 - import Redis from 'redis';

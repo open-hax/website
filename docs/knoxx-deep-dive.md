@@ -80,7 +80,7 @@ CMS publish to selected garden
   -> translation-worker writes translation_segments
   -> Knoxx /translations review UI loads and labels segments
   -> approved labels/corrections feed SFT export + graph memory
-  -> REDACTED_SECRET garden routes may serve translated content when available
+  -> public garden routes may serve translated content when available
 ```
 
 ### Key Properties
@@ -97,11 +97,11 @@ CMS publish to selected garden
 
 | Collection | Purpose |
 |------------|---------|
-| `translation_jobs` | Queued translation work items created from CMS/garden REDACTED_SECRETation |
+| `translation_jobs` | Queued translation work items created from CMS/garden publication |
 | `translation_segments` | Machine-translated segments awaiting review or already reviewed |
 | `translation_labels` | Human review labels and optional corrections |
-| `events` | Source documents and CMS REDACTED_SECRETation metadata |
-| `graph_REDACTED_SECRETs` / `graph_edges` | Approved translation examples for MT context enrichment |
+| `events` | Source documents and CMS publication metadata |
+| `graph_nodes` / `graph_edges` | Approved translation examples for MT context enrichment |
 
 ### Translation Worker
 
@@ -161,7 +161,7 @@ Traditional CMS systems have a fatal flaw: **the CMS database is disconnected fr
 BROKEN:
 ingestion -> Vector Store
 CMS -> Postgres documents table
-publish -> copy Postgres document into REDACTED_SECRET_docs
+publish -> copy Postgres document into public_docs
 ```
 
 Result: Knowledge and content are detached. The RAG system doesn't know what's published; the CMS doesn't know what's been ingested.
@@ -194,7 +194,7 @@ widget/query -> search OpenPlanner with visibility filters
    │ POST /cms/publish
    ▼
  ┌──────────┐
- │  REDACTED_SECRET  │◄──── visible to Layer 1 widget
+ │  public  │◄──── visible to Layer 1 widget
  └──────────┘
    │
    │ POST /cms/archive
@@ -211,7 +211,7 @@ widget/query -> search OpenPlanner with visibility filters
 - File explorer integration (ContextBar)
 - Markdown body editor
 - Title editor
-- Garden selector for REDACTED_SECRETation
+- Garden selector for publication
 - Visibility status badges
 - Save / Publish / Unpublish buttons
 - Integrated chat workspace for AI assistance
@@ -240,9 +240,9 @@ POST /api/cms/draft
 **Garden Publication**:
 
 - Gardens are curated knowledge spaces
-- Publishing to a garden marks the document as REDACTED_SECRET for that garden
+- Publishing to a garden marks the document as public for that garden
 - Gardens can have `target_languages` configured, triggering translation jobs
-- Publication metadata stored in `extra.metadata.garden_REDACTED_SECRETations`
+- Publication metadata stored in `extra.metadata.garden_publications`
 
 ### API Surface
 
@@ -254,9 +254,9 @@ POST /api/cms/draft
 | `PATCH /api/cms/documents/{id}` | Update content, visibility, metadata |
 | `DELETE /api/cms/documents/{id}` | Soft delete (set visibility=archived) |
 | `POST /api/cms/draft` | AI-generate draft from topic + sources |
-| `POST /api/cms/publish/{id}/{garden_id}` | Set visibility=REDACTED_SECRET for garden |
+| `POST /api/cms/publish/{id}/{garden_id}` | Set visibility=public for garden |
 | `DELETE /api/cms/publish/{id}/{garden_id}` | Unpublish from garden |
-| `POST /api/cms/archive/{id}` | Pull from REDACTED_SECRET |
+| `POST /api/cms/archive/{id}` | Pull from public |
 | `GET /api/cms/stats` | Counts by visibility, domain |
 
 ### Problems Solved
@@ -266,7 +266,7 @@ POST /api/cms/draft
 | **Split truth**: CMS and knowledge base diverge | OpenPlanner is the single source of truth for both |
 | **No AI assistance**: Manual authoring only | AI draft flow with grounded context from knowledge base |
 | **Binary publish**: No review/approval workflow | Visibility state machine with review gate |
-| **Garden blindness**: Documents published to void | Garden-targeted REDACTED_SECRETation with per-garden metadata |
+| **Garden blindness**: Documents published to void | Garden-targeted publication with per-garden metadata |
 | **Translation disconnect**: Published docs not translated | Publish triggers translation jobs automatically |
 
 ---

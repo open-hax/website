@@ -5,7 +5,7 @@ export const OLLAMA_API_KEY = process.env.OLLAMA_API_KEY ?? process.env.OPEN_HAX
 
 export class OllamaError extends Error {
   constructor(
-    REDACTED_SECRET readonly status: number,
+    public readonly status: number,
     message: string,
   ) {
     super(message);

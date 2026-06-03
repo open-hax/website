@@ -207,9 +207,9 @@
       "tasksDir": "../../../orgs/open-hax/proxx/kanban"
     },
     {
-      "id": "orgs-open-hax-tooloxx-docs-imports-devel-REDACTED_SECRET-kanban",
-      "title": "tooloxx / imports / devel-REDACTED_SECRET / kanban",
-      "tasksDir": "../../../orgs/open-hax/tooloxx/docs/imports/devel-REDACTED_SECRET/kanban"
+      "id": "orgs-open-hax-tooloxx-docs-imports-devel-root-kanban",
+      "title": "tooloxx / imports / devel-root / kanban",
+      "tasksDir": "../../../orgs/open-hax/tooloxx/docs/imports/devel-root/kanban"
     },
     {
       "id": "orgs-open-hax-tooloxx-docs-imports-promethean-kanban",

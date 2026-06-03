@@ -176,7 +176,7 @@ This ensures the pipeline never crashes on reviewer unavailability.
 ### review-gpt
 
 ```bash
-REDACTED_SECRET dist/cli.js review-gpt \
+node dist/cli.js review-gpt \
   --bundle artifacts/output-contract-gate/<run-id> \
   --model gpt-5.4 \
   --base-url http://127.0.0.1:8789/v1 \

@@ -28,7 +28,7 @@ Notes:
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "REDACTED_SECRET index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "discord.js": "^14.19.3",

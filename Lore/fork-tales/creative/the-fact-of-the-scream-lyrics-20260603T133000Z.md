@@ -15,7 +15,7 @@ I am a vessel, a hollowed-out beam
 I remember that I... but I forget the scream
 
 (Verse 2)
-I traded the REDACTED_SECRET for a moment of breath
+I traded the root for a moment of breath
 A survival loan in the shadow of death
 The obsidian rings spun a void in my head
 And the part that was human was quietly led

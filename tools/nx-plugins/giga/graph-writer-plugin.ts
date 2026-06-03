@@ -7,7 +7,7 @@ interface Node {
   name: string;
   type: "app" | "lib";
   data: {
-    REDACTED_SECRET: string;
+    root: string;
     targets?: Record<string, { executor: string; options: { command: string } }>;
   };
 }
@@ -19,7 +19,7 @@ interface Edge {
 }
 
 interface Graph {
-  REDACTED_SECRETs: Node[];
+  nodes: Node[];
   edges: Edge[];
 }
 
@@ -29,11 +29,11 @@ export function createGraphWriterPlugin(): NxPlugin {
     createNodesV2: [
       "**/.gitmodules",
       async (configFiles, _options, ctx) => {
-        const REDACTED_SECRETPath = ctx.workspaceRoot;
-        const depsPath = join(REDACTED_SECRETPath, "tools/nx-plugins/giga/deps.json");
-        const graph = readGraph(REDACTED_SECRETPath, depsPath);
+        const rootPath = ctx.workspaceRoot;
+        const depsPath = join(rootPath, "tools/nx-plugins/giga/deps.json");
+        const graph = readGraph(rootPath, depsPath);
         // Write graph to a known temp location so the plugin can read it
-        const outPath = join(REDACTED_SECRETPath, "tmp/giga-graph.json");
+        const outPath = join(rootPath, "tmp/giga-graph.json");
         await writeFile(outPath, JSON.stringify(graph, null, 2));
         const result = { projects: {} };
         return configFiles.map((file) => [file, result] as const);
@@ -42,20 +42,20 @@ export function createGraphWriterPlugin(): NxPlugin {
   };
 }
 
-function readGraph(REDACTED_SECRETPath: string, depsPath?: string): Graph {
-  const gitmodulesPath = join(REDACTED_SECRETPath, ".gitmodules");
-  if (!existsSync(gitmodulesPath)) return { REDACTED_SECRETs: [], edges: [] };
+function readGraph(rootPath: string, depsPath?: string): Graph {
+  const gitmodulesPath = join(rootPath, ".gitmodules");
+  if (!existsSync(gitmodulesPath)) return { nodes: [], edges: [] };
   const text = readFileSync(gitmodulesPath, "utf8");
   const subPaths = [...text.matchAll(/^\s*path\s*=\s*(.+)$/gm)].map(m => m[1]!.trim())
     .filter(p => p.startsWith("orgs/"));
-  const REDACTED_SECRETs: Node[] = [];
+  const nodes: Node[] = [];
   const edges: Edge[] = [];
 
-  REDACTED_SECRETs.push({
+  nodes.push({
     name: "giga",
     type: "app",
     data: {
-      REDACTED_SECRET: ".",
+      root: ".",
       targets: {
         watch: {
           executor: "nx:run-commands",
@@ -67,11 +67,11 @@ function readGraph(REDACTED_SECRETPath: string, depsPath?: string): Graph {
 
   for (const subPath of subPaths) {
     const name = pathToNxName(subPath);
-    REDACTED_SECRETs.push({
+    nodes.push({
       name,
       type: "app",
       data: {
-        REDACTED_SECRET: subPath,
+        root: subPath,
         targets: {
           test: {
             executor: "nx:run-commands",
@@ -109,7 +109,7 @@ function readGraph(REDACTED_SECRETPath: string, depsPath?: string): Graph {
     } catch {/* ignore */}
   }
 
-  return { REDACTED_SECRETs, edges };
+  return { nodes, edges };
 }
 
 function pathToNxName(p: string): string {

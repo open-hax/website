@@ -5,10 +5,10 @@
             [babashka.process :refer [process]]
             [clojure.string :as str]))
 
-(def REDACTED_SECRET-dir
+(def root-dir
   (-> *file* fs/real-path fs/parent fs/parent str))
 
-(def bridge-dir (str REDACTED_SECRET-dir "/orgs/octave-commons/cephalon-clj"))
+(def bridge-dir (str root-dir "/orgs/octave-commons/cephalon-clj"))
 (def admin-tui-dir (str bridge-dir "/cephalon-clj-admin-tui"))
 (def brain-dir (str bridge-dir "/cephalon-clj-brain"))
 

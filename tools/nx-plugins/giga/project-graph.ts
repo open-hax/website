@@ -1,6 +1,6 @@
 /*
   Standalone script to create a minimal project graph for giga without relying on Nx's conflict detection.
-  This reads .gitmodules and emits a REDACTED_SECRET list and edge list that can be consumed by `nx affected` via a minimal plugin or a custom project graph provider.
+  This reads .gitmodules and emits a node list and edge list that can be consumed by `nx affected` via a minimal plugin or a custom project graph provider.
 */
 
 import { readFileSync, existsSync } from "fs";
@@ -14,7 +14,7 @@ interface Node {
   name: string;
   type: "app" | "lib";
   data: {
-    REDACTED_SECRET: string;
+    root: string;
     targets?: Record<string, { executor: string; options: { command: string } }>;
   };
 }
@@ -38,15 +38,15 @@ function pathToNxName(p: string): string {
 
 function main(): void {
   const subPaths = readSubmodules().filter(p => p.startsWith("orgs/"));
-  const REDACTED_SECRETs: Node[] = [];
+  const nodes: Node[] = [];
   const edges: Edge[] = [];
 
-  // giga REDACTED_SECRET REDACTED_SECRET
-  REDACTED_SECRETs.push({
+  // giga root node
+  nodes.push({
     name: "giga",
     type: "app",
     data: {
-      REDACTED_SECRET: ".",
+      root: ".",
       targets: {
         watch: {
           executor: "nx:run-commands",
@@ -58,11 +58,11 @@ function main(): void {
 
   for (const subPath of subPaths) {
     const name = pathToNxName(subPath);
-    REDACTED_SECRETs.push({
+    nodes.push({
       name,
       type: "app",
       data: {
-        REDACTED_SECRET: subPath,
+        root: subPath,
         targets: {
           test: {
             executor: "nx:run-commands",
@@ -83,11 +83,11 @@ function main(): void {
         }
       }
     });
-    // Implicit edge from REDACTED_SECRET to every submodule
+    // Implicit edge from root to every submodule
     edges.push({ source: "giga", target: name, type: "implicit" });
   }
 
-  const graph = { REDACTED_SECRETs, edges };
+  const graph = { nodes, edges };
   console.log(`Writing giga project graph to ${OUT}`);
   writeFile(OUT, JSON.stringify(graph, null, 2));
 }

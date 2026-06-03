@@ -321,7 +321,7 @@ It still needs:
 
 ### 4.3 Better Framing: Fork Tales as a Paper Family
 
-The cleaner REDACTED_SECRETation strategy is to treat `fork_tales` as a research program and publish from the extracted descendants.
+The cleaner publication strategy is to treat `fork_tales` as a research program and publish from the extracted descendants.
 
 Possible papers:
 
@@ -486,7 +486,7 @@ Core thesis:
 
 ### 8.3 Important Strategic Advice
 
-Do not force `fork_tales` itself to be the polished REDACTED_SECRETation artifact.
+Do not force `fork_tales` itself to be the polished publication artifact.
 
 Use it as the provenance base and research ancestor.
 
@@ -502,7 +502,7 @@ That makes the decomposition a strength instead of an embarrassment.
 | `fork_tales/part64/deep-research-report.md` | flagship systems paper draft nucleus | graph-native runtime | high conceptually, medium empirically | primary writing base for a runtime paper |
 | `graph-runtime` | substrate paper core | TruthGraph/ViewGraph and auditable runtime substrate | medium-high | flagship paper repo or appendix/provenance companion |
 | `daimoi` | component paper core | packet, field, observer, collision model | medium | second paper or major section of flagship paper |
-| `simulacron` | theory and architecture note | layered entity and presence ecology | medium-low | conceptual companion, not first REDACTED_SECRETation target |
+| `simulacron` | theory and architecture note | layered entity and presence ecology | medium-low | conceptual companion, not first publication target |
 | `graph-weaver` | systems / tooling paper core | graph instrumentation and layered graph workbench | medium | separate tooling paper or implementation section |
 | `myrmex` / `graph-weaver-aco` | supporting subsystem | traversal and ingestion kernels | medium-low | implementation support, benchmarks, appendices |
 | `openplanner` | operational memory substrate | append-only lake and raw truth capture | high as infrastructure, lower as novel paper by itself here | canonical backend substrate in the modern stack |

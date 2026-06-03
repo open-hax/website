@@ -1,11 +1,11 @@
-import { existsSync, statSync } from 'REDACTED_SECRET:fs';
-import { createRequire } from 'REDACTED_SECRET:module';
-import { resolve } from 'REDACTED_SECRET:path';
+import { existsSync, statSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { resolve } from 'node:path';
 
 const require = createRequire(import.meta.url);
 
 const COMMAND_SCRIPTS = new Set([
-  'REDACTED_SECRET',
+  'node',
   'npm',
   'pnpm',
   'bun',

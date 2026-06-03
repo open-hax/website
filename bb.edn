@@ -104,18 +104,18 @@
                    :task (do
                            (build:clean)
                            (shell "rm -rf promethean/packages/*/dist")
-                           (shell "rm -rf promethean/packages/*/REDACTED_SECRET")
+                           (shell "rm -rf promethean/packages/*/public")
                            (println "All artifacts cleaned!"))}
   
   workspace:status {:doc "Show status of all Clojure projects"
                     :task (do
                             (println "=== Clojure Projects Status ===")
                             (println "JVM Projects:")
-                            (shell "find . -name 'deps.edn' -not -path './REDACTED_SECRET_modules/*'")
+                            (shell "find . -name 'deps.edn' -not -path './node_modules/*'")
                             (println "\nClojureScript Projects:")
-                            (shell "find . -name 'shadow-cljs.edn' -not -path './REDACTED_SECRET_modules/*'")
+                            (shell "find . -name 'shadow-cljs.edn' -not -path './node_modules/*'")
                             (println "\nBabashka Projects:")
-                            (shell "find . -name 'bb.edn' -not -path './REDACTED_SECRET_modules/*'"))}
+                            (shell "find . -name 'bb.edn' -not -path './node_modules/*'"))}
 
   ;; === Development Server Tasks ===
   dev:all {:doc "Start all development servers"

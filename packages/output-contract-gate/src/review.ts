@@ -1,5 +1,5 @@
 import type { FailureReport, GptReviewConfig, GptReviewMessage, NormalizedContract, ReviewCriterion, ReviewCriterionScore, ReviewReport } from './types.js';
-import { extractMarkdownSections, REDACTED_SECRETText } from './markdown.js';
+import { extractMarkdownSections, nodeText } from './markdown.js';
 
 const clamp01 = (value: number): number => Math.max(0, Math.min(1, value));
 
@@ -16,7 +16,7 @@ const sectionText = (markdown: string, heading: string): string => {
   const document = extractMarkdownSections(markdown);
   const section = document.sections.find((entry) => entry.heading === heading);
   if (!section) return '';
-  return section.REDACTED_SECRETs.map((REDACTED_SECRET) => REDACTED_SECRETText(REDACTED_SECRET)).join(' ').trim();
+  return section.nodes.map((node) => nodeText(node)).join(' ').trim();
 };
 
 const fallbackCriterion = (criterion: ReviewCriterion): ReviewCriterionScore => ({

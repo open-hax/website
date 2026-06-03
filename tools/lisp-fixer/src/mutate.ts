@@ -1,7 +1,7 @@
 // GPL-3.0-only
-import { readFileSync, writeFileSync } from "REDACTED_SECRET:fs";
-import { spawnSync } from "REDACTED_SECRET:child_process";
-import * as path from "REDACTED_SECRET:path";
+import { readFileSync, writeFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import * as path from "node:path";
 import mri from "minimist";
 import fg from "fast-glob";
 import { autoCloseParens } from "./sexp.js";
@@ -9,7 +9,7 @@ import { dropRandomCloseParen, duplicateRandomCloseParen, flipQuote, strayReader
 import { clj_drop_ns_require, cl_incorrect_package, elisp_wrong_provide } from "./mutators/ns_pkg.js";
 import { macro_to_fn, quote_level_off } from "./mutators/macro.js";
 
-type BuildRec = { REDACTED_SECRET: string; dialects: string[] };
+type BuildRec = { root: string; dialects: string[] };
 type Pair = {
   repo: string; dialect: string; path: string; prompt_type: "diff" | "fim";
   broken?: string; fixed?: string; prefix?: string; suffix?: string; middle?: string;
@@ -64,8 +64,8 @@ async function main() {
   const tempFiles: string[] = [];
 
   // Use streaming for large datasets
-  const { createReadStream } = require("REDACTED_SECRET:fs");
-  const { createInterface } = require("REDACTED_SECRET:readline");
+  const { createReadStream } = require("node:fs");
+  const { createInterface } = require("node:readline");
   
   try {
     const fileStream = createReadStream(args.in);
@@ -78,17 +78,17 @@ async function main() {
         const rec = JSON.parse(line) as BuildRec & { repo?: string; prompt?: string };
         
         // Validate record structure
-        if (!rec.REDACTED_SECRET || !rec.dialects || !Array.isArray(rec.dialects)) {
+        if (!rec.root || !rec.dialects || !Array.isArray(rec.dialects)) {
           console.warn("Skipping invalid record:", line);
           continue;
         }
         
         if (!rec.dialects.some(d => allow.has(d))) continue;
         
-        const files = await fg(["**/*.{clj,cljs,cljc,lisp,lsp,el,scm,rkt}"], { cwd: rec.REDACTED_SECRET, dot: true });
+        const files = await fg(["**/*.{clj,cljs,cljc,lisp,lsp,el,scm,rkt}"], { cwd: rec.root, dot: true });
 
         for (const rel of files) {
-          const abs = path.join(rec.REDACTED_SECRET, rel);
+          const abs = path.join(rec.root, rel);
           
           // Validate file path against allowed base
           if (!path.resolve(abs).startsWith(allowedBase)) {
@@ -120,9 +120,9 @@ async function main() {
           const fixedBroken = autoCloseParens(broken);
           
           // Write broken snapshot to secure temp
-          const { mkdtempSync } = require("REDACTED_SECRET:fs");
-          const { join } = require("REDACTED_SECRET:path");
-          const { tmpdir } = require("REDACTED_SECRET:os");
+          const { mkdtempSync } = require("node:fs");
+          const { join } = require("node:path");
+          const { tmpdir } = require("node:os");
           
           const tempDir = mkdtempSync(join(tmpdir(), 'lisp-fixer-'));
           const tmp = join(tempDir, path.basename(rel) + ".broken");
@@ -137,9 +137,9 @@ async function main() {
           }
           
           // Test build
-          const res = build(rec.REDACTED_SECRET, prompt);
+          const res = build(rec.root, prompt);
           const p: Pair = {
-            repo: path.basename(rec.REDACTED_SECRET),
+            repo: path.basename(rec.root),
             dialect: extToDialect(path.extname(rel)),
             path: rel,
             prompt_type: Math.random() < 0.5 ? "diff" : "fim",
@@ -171,7 +171,7 @@ async function main() {
     // Cleanup temp files
     for (const tmp of tempFiles) {
       try {
-        require("REDACTED_SECRET:fs").unlinkSync(tmp);
+        require("node:fs").unlinkSync(tmp);
       } catch {
         // Ignore cleanup errors
       }

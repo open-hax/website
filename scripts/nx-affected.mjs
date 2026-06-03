@@ -5,7 +5,7 @@ import { join } from "path";
 const [target, ...flags] = process.argv.slice(2);
 const printOnly = flags.includes("--print");
 if (!target) {
-  console.error("Usage: REDACTED_SECRET scripts/nx-affected.mjs <target>");
+  console.error("Usage: node scripts/nx-affected.mjs <target>");
   process.exit(2);
 }
 
@@ -23,7 +23,7 @@ const EXCLUDE_PREFIXES = [
   ".sisyphus/",
   "archives/",
   "docs/notes/",
-  "REDACTED_SECRET_modules/",
+  "node_modules/",
   ".worktrees/",
   "tmp/",
   "temp/",

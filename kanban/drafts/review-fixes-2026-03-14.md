@@ -80,7 +80,7 @@ Verify each reported finding against the current codebase and apply targeted fix
   - `init()` only ignores Postgres undefined-table (42P01) and otherwise logs + throws.
   - `flushPendingWrites()` now batches multi-row upserts.
 - ✅ Fixed: `responses-compat`:
-  - `sleepMs` uses `REDACTED_SECRET:timers/promises`.
+  - `sleepMs` uses `node:timers/promises`.
   - per-chunk delay is configurable via `STREAM_CHUNK_DELAY_MS(_MIN/_MAX)` and defaults to 0.
 - ℹ️ No change needed: `RuntimeCredentialStore.removeAccount(...)` did not swallow errors in current code.
 - ℹ️ No change needed: `proxy.test.ts` already had only a single JWT helper (`makeJwt`).

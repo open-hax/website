@@ -27,7 +27,7 @@ Note: Some repos also have fork remotes (e.g., `fork` → `riatzukiza/*`); group
 - riatzukiza/openhax → git@github.com:riatzukiza/openhax.git
 - riatzukiza/riatzukiza.github.io → git@github.com:riatzukiza/riatzukiza.github.io.git
 - stt → git@github.com:riatzukiza/stt.git
-- devel (workspace REDACTED_SECRET) → git@github.com:riatzukiza/devel.git
+- devel (workspace root) → git@github.com:riatzukiza/devel.git
 
 ## github.com/openai (1)
 - openai/codex → org-14957082@github.com:openai/codex.git

@@ -1,12 +1,12 @@
-#!/usr/bin/env REDACTED_SECRET
+#!/usr/bin/env node
 /**
  * Sintel CLI
  * 
  * Command-line interface for infrastructure signals intelligence.
  */
 
-import { parseArgs } from 'REDACTED_SECRET:util';
-import { createRequire } from 'REDACTED_SECRET:module';
+import { parseArgs } from 'node:util';
+import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 const pkg = require('../../package.json');

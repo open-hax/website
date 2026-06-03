@@ -1,4 +1,4 @@
-const path = require("REDACTED_SECRET:path");
+const path = require("node:path");
 
 const serviceRoot = __dirname;
 const kanbanPkg = path.resolve(serviceRoot, "../../../orgs/open-hax/eta-mu/packages/kanban");
@@ -11,7 +11,7 @@ module.exports = {
   apps: [
     {
       name: "eta-mu-kanban",
-      script: "REDACTED_SECRET",
+      script: "node",
       args: ["dist/cli.js", "serve", "--config", configPath, "--host", host, "--port", port],
       cwd: kanbanPkg,
       env: {

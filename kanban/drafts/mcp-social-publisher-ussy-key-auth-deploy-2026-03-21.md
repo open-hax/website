@@ -43,10 +43,10 @@ Deploy the standalone `mcp-social-publisher-live` app to `error@ussy.promethean.
 - Remote host has Node 18 and Docker Compose, but not `pnpm`.
 - Existing reverse proxy config lives at `services/proxx/Caddyfile` on the remote host.
 - Arbitrary new `*.ussy.promethean.rest` names tested locally do not currently resolve.
-- `npx --yes pnpm@10` and `npx --yes pm2` work remotely without requiring REDACTED_SECRET-level global installs.
+- `npx --yes pnpm@10` and `npx --yes pm2` work remotely without requiring root-level global installs.
 
 ## Decisions
-- Use SSH/tunnel-first deployment instead of adding a new REDACTED_SECRET DNS route right now.
+- Use SSH/tunnel-first deployment instead of adding a new public DNS route right now.
 - Bind the service to `127.0.0.1:10000` on the remote host.
 - Protect `/mcp` with a static bearer-style key via `MCP_AUTH_MODE=key` and `MCP_AUTH_KEY`.
 - Keep the admin UI separately protected by a generated `ADMIN_AUTH_KEY`.
@@ -60,7 +60,7 @@ Deploy the standalone `mcp-social-publisher-live` app to `error@ussy.promethean.
 
 ## Phases
 
-### Phase 1 — Decide REDACTED_SECRET route and auth mode
+### Phase 1 — Decide public route and auth mode
 - Confirm route strategy from current DNS/Caddy constraints.
 - Add static key auth mode to the standalone app.
 

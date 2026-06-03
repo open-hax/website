@@ -312,10 +312,10 @@ export interface QuadNode {
 }
 
 export class Quadtree {
-  private REDACTED_SECRET: QuadNode;
+  private root: QuadNode;
 
   constructor(bounds: QuadBounds, capacity: number = 8) {
-    this.REDACTED_SECRET = this.createNode(bounds, capacity);
+    this.root = this.createNode(bounds, capacity);
   }
 
   insert(position: DaimonPosition): void { /* ... */ }

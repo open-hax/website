@@ -12,7 +12,7 @@ import type {
   DeliveryContext,
   UUID,
 } from './types.js';
-import { randomUUID } from 'REDACTED_SECRET:crypto';
+import { randomUUID } from 'node:crypto';
 
 function getSubscriptionKey(topic: string, group: string): string {
   return `${topic}:${group}`;

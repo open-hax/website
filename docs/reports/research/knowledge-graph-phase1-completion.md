@@ -7,7 +7,7 @@
 **Complete Knowledge Graph Infrastructure** - Fully functional system for analyzing development ecosystem relationships with:
 
 #### **Core Components**
-- **📊 Database Layer**: SQLite-based storage with full graph schema (REDACTED_SECRETs, edges, relationships)
+- **📊 Database Layer**: SQLite-based storage with full graph schema (nodes, edges, relationships)
 - **🔍 Content Processors**: Markdown, TypeScript, and package.json analysis engines  
 - **🏗️ Graph Builder**: Orchestrates content processing and relationship extraction
 - **🛠️ CLI Interface**: Command-line tools for repository and file processing
@@ -32,7 +32,7 @@ bun src/cli.ts build test-docs
 ✅ Processed 3 files (README.md, test.ts, package.json)
 ✅ Extracted 6 links (3 wikilinks, 3 external)
 ✅ Identified 2 imports and 3 dependencies
-✅ Created complete knowledge graph with 9 REDACTED_SECRETs and 8 edges
+✅ Created complete knowledge graph with 9 nodes and 8 edges
 ```
 
 **Single File Processing**:
@@ -63,7 +63,7 @@ promethean/packages/knowledge-graph/
 #### **Database Schema**
 ```sql
 -- Nodes table for entities
-CREATE TABLE REDACTED_SECRETs (
+CREATE TABLE nodes (
   id TEXT PRIMARY KEY,
   type TEXT NOT NULL,
   data JSON NOT NULL,
@@ -118,7 +118,7 @@ for (const data of extracted) {
 **Infrastructure Complete**: All core components tested and working
 - ✅ Database operations (CRUD, queries, transactions)
 - ✅ Content processors (markdown, TypeScript, dependencies)
-- ✅ Graph building logic (REDACTED_SECRET/edge creation, relationship mapping)
+- ✅ Graph building logic (node/edge creation, relationship mapping)
 - ✅ CLI interface (repository and file processing)
 - ✅ Testing framework (unit tests, sample data)
 

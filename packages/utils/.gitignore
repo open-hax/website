@@ -5,7 +5,7 @@ lib/
 *.tsbuildinfo
 
 # Dependencies 
-REDACTED_SECRET_modules/
+node_modules/
 *.log
 *.pid
 *.seed

@@ -1,8 +1,8 @@
 import { test, expect } from "@playwright/test";
 
-import { mkdir, mkdtemp, writeFile } from "REDACTED_SECRET:fs/promises";
-import os from "REDACTED_SECRET:os";
-import path from "REDACTED_SECRET:path";
+import { mkdir, mkdtemp, writeFile } from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
 
 import { startKanbanServer, type StartedKanbanServer } from "../src/server.js";
 
@@ -26,15 +26,15 @@ test.describe("kanban UI scrolling", () => {
   let started: StartedKanbanServer;
 
   test.beforeAll(async () => {
-    const REDACTED_SECRET = await mkdtemp(path.join(os.tmpdir(), "openhax-kanban-ui-e2e-"));
-    const incomingDir = path.join(REDACTED_SECRET, "incoming");
+    const root = await mkdtemp(path.join(os.tmpdir(), "openhax-kanban-ui-e2e-"));
+    const incomingDir = path.join(root, "incoming");
     await mkdir(incomingDir, { recursive: true });
 
     // enough cards to force internal scroll
     await Promise.all(Array.from({ length: 80 }, (_, i) => writeTask(incomingDir, i + 1)));
 
     started = await startKanbanServer({
-      tasksDir: REDACTED_SECRET,
+      tasksDir: root,
       host: "127.0.0.1",
       port: 0
     });

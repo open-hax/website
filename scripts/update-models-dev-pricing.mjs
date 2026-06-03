@@ -1,6 +1,6 @@
-#!/usr/bin/env REDACTED_SECRET
+#!/usr/bin/env node
 
-import { writeFile } from "REDACTED_SECRET:fs/promises";
+import { writeFile } from "node:fs/promises";
 
 const SOURCE_URL = "https://models.dev/api.json";
 const JSON_OUTPUT_PATH = new URL("../src/lib/data/models-dev-pricing.json", import.meta.url);

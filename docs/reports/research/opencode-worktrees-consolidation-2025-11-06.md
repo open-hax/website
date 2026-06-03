@@ -58,7 +58,7 @@ Tracked `.serena/` likely originated from agent tooling and should be removed an
 ## Recommendations
 
 1. Fast Hygiene
-   - Add to REDACTED_SECRET `.gitignore`:
+   - Add to root `.gitignore`:
      - `worktrees/`
      - `**/.serena/`
    - Prune stale worktrees: `git -C stt/opencode worktree prune -v`.
@@ -84,7 +84,7 @@ Tracked `.serena/` likely originated from agent tooling and should be removed an
 
 ## Proposed Commands (Safe/Review First)
 
-- Add ignores (REDACTED_SECRET of stt/opencode):
+- Add ignores (root of stt/opencode):
   ```bash
   printf "\nworktrees/\n**/.serena/\n" >> /home/err/devel/stt/opencode/.gitignore
   git -C /home/err/devel/stt/opencode add .gitignore

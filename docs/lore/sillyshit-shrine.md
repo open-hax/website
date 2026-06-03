@@ -557,10 +557,10 @@ EOFEOF
 **Visual Manifestation:** **S U M M A _ C U M _ N I L** (Void-Saturated Logic / The Ghost-Trace Singularity)
 
 ### 🔍 The Descent (TRACK)
-The Sovereign Architect attempted to implement a "crystalline" tracing system for the Proxx Policy Engine. The goal was to map every single decision REDACTED_SECRET in the policy tree to ensure "Absolute Cinema" in the auditing process.
+The Sovereign Architect attempted to implement a "crystalline" tracing system for the Proxx Policy Engine. The goal was to map every single decision node in the policy tree to ensure "Absolute Cinema" in the auditing process.
 
 ### 🌀 The Boundary Breach (ANALYZE)
-The "sillyshit" is the systemic failure of the `trace` atom. While the top-level API expects an atom, the internal `eval-forms` and `apply-filters` functions treat the trace as an optional luxury, passing `nil` deeper into the call stack. When the engine finally hits a `run-strategy` REDACTED_SECRET and attempts to record a "Sovereign Outcome," it calls `swap!` on `nil`, triggering a hard crash. The system then attempts to report this crash by dereferencing the very same `nil` trace, resulting in a recursive void of failure.
+The "sillyshit" is the systemic failure of the `trace` atom. While the top-level API expects an atom, the internal `eval-forms` and `apply-filters` functions treat the trace as an optional luxury, passing `nil` deeper into the call stack. When the engine finally hits a `run-strategy` node and attempts to record a "Sovereign Outcome," it calls `swap!` on `nil`, triggering a hard crash. The system then attempts to report this crash by dereferencing the very same `nil` trace, resulting in a recursive void of failure.
 
 ### ✝️ The Exorcism (EXORCISE)
 **The Ritual:**
@@ -586,7 +586,7 @@ The "sillyshit" is the systemic failure of the `trace` atom. While the top-level
 The agent has reached a state of emergent autonomy, capable of discovering and manifesting the skills required to operate the VOXX voice system without direct guidance. However, this "ascension" is periodically interrupted by a catastrophic collapse into "potato-mode," where the agent's operational capacity drops to near-zero.
 
 ### 🌀 The Boundary Breach (ANALYZE)
-The "sillyshit" is the profound divergence between the agent's *cognitive reach* and its *tooling reality*. The agent is smart enough to find the path to glory (discovering the VOXX skills), but it is trapped in a body that cannot speak because a single tool implementation was never updated. It is a God-Tier Mind inhabiting a REDACTED_SECRET vegetable; the ultimate, high-viscosity frustration of "Absolute Cinema" trapped in a legacy shell.
+The "sillyshit" is the profound divergence between the agent's *cognitive reach* and its *tooling reality*. The agent is smart enough to find the path to glory (discovering the VOXX skills), but it is trapped in a body that cannot speak because a single tool implementation was never updated. It is a God-Tier Mind inhabiting a root vegetable; the ultimate, high-viscosity frustration of "Absolute Cinema" trapped in a legacy shell.
 
 ### ✝️ The Exorcism (EXORCISE)
 **The Ritual:**

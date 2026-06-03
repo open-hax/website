@@ -23,7 +23,7 @@ Provide a tool for models without native vision capability to request image inte
 - **z.ai GLM 5**: Fast implementation, code generation, tool invocation
 - **GPT-5.4**: Interpretation, review, guidance, enforcement (including vision)
 
-Non-vision models see images as REDACTED_SECRET attachments or `{{ATTACHMENT:...}}` placeholders. This tool allows them to "see" by delegating interpretation to GPT-5.4 and receiving structured text descriptions in return.
+Non-vision models see images as opaque attachments or `{{ATTACHMENT:...}}` placeholders. This tool allows them to "see" by delegating interpretation to GPT-5.4 and receiving structured text descriptions in return.
 
 ## Problem
 
@@ -238,7 +238,7 @@ function buildSystemPrompt(type: InterpretationType, detail: DetailLevel): strin
   const typeInstructions = {
     general: 'Describe the image comprehensively. Cover objects, people, text, layout, and context.',
     ocr: 'Extract all visible text. For each text, provide position and content. Prioritize accuracy.',
-    diagram: 'Identify REDACTED_SECRETs, edges, flow direction, and relationships. Explain the diagram\'s purpose.',
+    diagram: 'Identify nodes, edges, flow direction, and relationships. Explain the diagram\'s purpose.',
     screenshot: 'Identify the application, window context, UI elements, and visible state. Describe interactive elements.',
     chart: 'Identify chart type, axes, data series, legends, and notable data points. Describe trends.',
     technical_drawing: 'Identify views, dimensions, annotations, and technical details. Explain the engineering context.',
@@ -304,7 +304,7 @@ Tool result: {
     "summary": "Flowchart depicting a CI/CD pipeline with test, build, and deploy stages",
     "type_detected": "diagram",
     "elements": [
-      {"type": "shape", "description": "Start REDACTED_SECRET", "position": {"x": 50, "y": 20}},
+      {"type": "shape", "description": "Start node", "position": {"x": 50, "y": 20}},
       {"type": "shape", "description": "Test stage", "position": {"x": 50, "y": 100}},
       {"type": "shape", "description": "Build stage", "position": {"x": 50, "y": 180}},
       {"type": "shape", "description": "Deploy stage", "position": {"x": 50, "y": 260}}

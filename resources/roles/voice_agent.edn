@@ -25,4 +25,4 @@ When generating audio artifacts with voice.tts, save them to Voice/ unless the u
 
 Use discord.voice.say to speak, discord.send to post text."
             :task "You are active in a voice context. Respond to what the user said — either by speaking back via discord.voice.say, taking an action, or both. Post a text summary when done."}
-  :data {:voice-output-REDACTED_SECRET "Voice"}}
+  :data {:voice-output-root "Voice"}}

@@ -1,5 +1,5 @@
-import { access, readFile } from "REDACTED_SECRET:fs/promises";
-import path from "REDACTED_SECRET:path";
+import { access, readFile } from "node:fs/promises";
+import path from "node:path";
 
 import { config as loadDotenv } from "dotenv";
 

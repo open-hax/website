@@ -30,14 +30,14 @@ if ! command -v detect-secrets >/dev/null 2>&1; then
   exit 1
 fi
 
-repo_REDACTED_SECRET=$(git rev-parse --show-toplevel)
+repo_root=$(git rev-parse --show-toplevel)
 MAX_GIT_BLOB_BYTES=${MAX_GIT_BLOB_BYTES:-104857600}
 staged_paths=()
 scan_paths=()
 
 while IFS= read -r -d '' path; do
   staged_paths+=("$path")
-done < <(git -C "$repo_REDACTED_SECRET" diff --cached --name-only --diff-filter=ACMR -z --)
+done < <(git -C "$repo_root" diff --cached --name-only --diff-filter=ACMR -z --)
 
 if [[ ${#staged_paths[@]} -eq 0 ]]; then
   log "No staged files to scan"
@@ -49,7 +49,7 @@ if [[ "${SKIP_GIT_ARTIFACT_GUARD:-0}" != "1" ]]; then
   oversized_paths=()
 
   for path in "${staged_paths[@]}"; do
-    object_type=$(git -C "$repo_REDACTED_SECRET" cat-file -t ":$path" 2>/dev/null || true)
+    object_type=$(git -C "$repo_root" cat-file -t ":$path" 2>/dev/null || true)
     if [[ "$object_type" != "blob" ]]; then
       continue
     fi
@@ -58,7 +58,7 @@ if [[ "${SKIP_GIT_ARTIFACT_GUARD:-0}" != "1" ]]; then
       blocked_paths+=("$path")
     fi
 
-    blob_size=$(git -C "$repo_REDACTED_SECRET" cat-file -s ":$path" 2>/dev/null || printf '0')
+    blob_size=$(git -C "$repo_root" cat-file -s ":$path" 2>/dev/null || printf '0')
     if (( blob_size > MAX_GIT_BLOB_BYTES )); then
       oversized_paths+=("$(format_mib "$blob_size")  $path")
     fi
@@ -87,7 +87,7 @@ for path in "${staged_paths[@]}"; do
       continue
       ;;
   esac
-  object_type=$(git -C "$repo_REDACTED_SECRET" cat-file -t ":$path" 2>/dev/null || true)
+  object_type=$(git -C "$repo_root" cat-file -t ":$path" 2>/dev/null || true)
   if [[ "$object_type" == "blob" ]]; then
     scan_paths+=("$path")
   fi
@@ -99,14 +99,14 @@ if [[ ${#scan_paths[@]} -eq 0 ]]; then
 fi
 
 baseline_args=()
-if [[ -f "$repo_REDACTED_SECRET/.secrets.baseline" ]]; then
-  baseline_args+=(--baseline "$repo_REDACTED_SECRET/.secrets.baseline")
-elif [[ -f "$repo_REDACTED_SECRET/.detect-secrets.baseline" ]]; then
-  baseline_args+=(--baseline "$repo_REDACTED_SECRET/.detect-secrets.baseline")
+if [[ -f "$repo_root/.secrets.baseline" ]]; then
+  baseline_args+=(--baseline "$repo_root/.secrets.baseline")
+elif [[ -f "$repo_root/.detect-secrets.baseline" ]]; then
+  baseline_args+=(--baseline "$repo_root/.detect-secrets.baseline")
 fi
 
 log "Scanning ${#scan_paths[@]} staged file(s) for secrets"
-if (cd "$repo_REDACTED_SECRET" && detect-secrets-hook "${baseline_args[@]}" "${scan_paths[@]}"); then
+if (cd "$repo_root" && detect-secrets-hook "${baseline_args[@]}" "${scan_paths[@]}"); then
   log "No secrets detected"
   exit 0
 fi

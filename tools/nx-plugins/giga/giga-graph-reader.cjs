@@ -41,21 +41,21 @@ function createGraphReaderPlugin() {
       {
         files: ["tmp/giga-graph.json"],
         createNodes: async (_, ctx) => {
-          const REDACTED_SECRETPath = ctx.workspaceRoot;
-          const graphPath = import_path.join(REDACTED_SECRETPath, "tmp/giga-graph.json");
+          const rootPath = ctx.workspaceRoot;
+          const graphPath = import_path.join(rootPath, "tmp/giga-graph.json");
           if (!import_fs.existsSync(graphPath)) {
             return {};
           }
           const graph = JSON.parse(import_fs.readFileSync(graphPath, "utf8"));
           const config = {};
-          for (const REDACTED_SECRET of graph.REDACTED_SECRETs) {
-            config[REDACTED_SECRET.name] = {
+          for (const node of graph.nodes) {
+            config[node.name] = {
               projectConfiguration: {
-                name: REDACTED_SECRET.name,
-                REDACTED_SECRET: REDACTED_SECRET.data.REDACTED_SECRET,
-                projectType: REDACTED_SECRET.type === "lib" ? "library" : "application",
-                sourceRoot: `${REDACTED_SECRET.data.REDACTED_SECRET}/src`,
-                targets: REDACTED_SECRET.data.targets
+                name: node.name,
+                root: node.data.root,
+                projectType: node.type === "lib" ? "library" : "application",
+                sourceRoot: `${node.data.root}/src`,
+                targets: node.data.targets
               }
             };
           }

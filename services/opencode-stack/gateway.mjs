@@ -1,7 +1,7 @@
-import { createHmac, randomBytes, timingSafeEqual } from "REDACTED_SECRET:crypto";
-import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "REDACTED_SECRET:fs";
-import { dirname, join } from "REDACTED_SECRET:path";
-import { URL } from "REDACTED_SECRET:url";
+import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
+import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { URL } from "node:url";
 
 const env = process.env;
 const dataDir = env.OPENCODE_GATEWAY_DATA_DIR || "/srv/opencode-stack-data";
@@ -9,11 +9,11 @@ const secretsDir = join(dataDir, "secrets");
 const allowlistPath = join(dataDir, "allowlist.json");
 const sessionSecretPath = join(secretsDir, "session-secret.txt");
 const adminPasswordPath = join(secretsDir, "admin-password.txt");
-const REDACTED_SECRETPort = toPort(env.OPENCODE_GATEWAY_PUBLIC_PORT, 4180);
+const publicPort = toPort(env.OPENCODE_GATEWAY_PUBLIC_PORT, 4180);
 const adminPort = toPort(env.OPENCODE_GATEWAY_ADMIN_PORT, 4181);
-const REDACTED_SECRETHost = env.OPENCODE_GATEWAY_PUBLIC_HOST || "0.0.0.0";
+const publicHost = env.OPENCODE_GATEWAY_PUBLIC_HOST || "0.0.0.0";
 const adminHost = env.OPENCODE_GATEWAY_ADMIN_HOST || "0.0.0.0";
-const REDACTED_SECRETSessionTtlSeconds = toInt(env.OPENCODE_GATEWAY_SESSION_TTL_SECONDS, 24 * 60 * 60);
+const publicSessionTtlSeconds = toInt(env.OPENCODE_GATEWAY_SESSION_TTL_SECONDS, 24 * 60 * 60);
 const adminSessionTtlSeconds = toInt(env.OPENCODE_GATEWAY_ADMIN_SESSION_TTL_SECONDS, 12 * 60 * 60);
 const upstreamUrl = new URL(env.OPENCODE_UPSTREAM_URL || "http://127.0.0.1:4096");
 const janusUrl = new URL(env.OPENCODE_GATEWAY_JANUS_URL || "http://mcp-stack:8788");
@@ -52,9 +52,9 @@ let allowlist = loadAllowlist();
 
 setInterval(cleanPendingStates, 60 * 1000).unref();
 
-const REDACTED_SECRETServer = Bun.serve({
-  hostname: REDACTED_SECRETHost,
-  port: REDACTED_SECRETPort,
+const publicServer = Bun.serve({
+  hostname: publicHost,
+  port: publicPort,
   fetch: handlePublicRequest,
   websocket: {
     async open(websocket) {
@@ -119,7 +119,7 @@ const adminServer = Bun.serve({
   fetch: handleAdminRequest,
 });
 
-console.log(`[opencode-gateway] REDACTED_SECRET gateway listening on ${REDACTED_SECRETServer.url}`);
+console.log(`[opencode-gateway] public gateway listening on ${publicServer.url}`);
 console.log(`[opencode-gateway] admin gateway listening on http://127.0.0.1:${adminPort}`);
 console.log(`[opencode-gateway] allowlist file: ${allowlistPath}`);
 console.log(`[opencode-gateway] admin password file: ${adminPasswordPath}`);
@@ -171,7 +171,7 @@ async function handlePublicRequest(requestObject, server) {
   }
 
   if (path === opencodeLoginPath && requestObject.method === "GET") {
-    const session = readSessionCookie(requestObject, sessionCookieName, "REDACTED_SECRET");
+    const session = readSessionCookie(requestObject, sessionCookieName, "public");
     if (session && isAllowedLogin(session.login)) {
       return redirect(url.searchParams.get("next") || opencodeBasePath);
     }
@@ -255,13 +255,13 @@ async function handlePublicRequest(requestObject, server) {
     const cookie = createSignedCookie({
       name: sessionCookieName,
       payload: {
-        kind: "REDACTED_SECRET",
+        kind: "public",
         login: normalizedLogin,
         id: githubUser.id,
-        exp: nowSeconds() + REDACTED_SECRETSessionTtlSeconds,
+        exp: nowSeconds() + publicSessionTtlSeconds,
       },
       secure: shouldUseSecureCookies(requestObject),
-      maxAge: REDACTED_SECRETSessionTtlSeconds,
+      maxAge: publicSessionTtlSeconds,
     });
 
     return redirect(pending.next, 303, [cookie]);
@@ -271,7 +271,7 @@ async function handlePublicRequest(requestObject, server) {
     return redirect(opencodeLoginPath, 303, [expireCookie(sessionCookieName)]);
   }
 
-  const session = readSessionCookie(requestObject, sessionCookieName, "REDACTED_SECRET");
+  const session = readSessionCookie(requestObject, sessionCookieName, "public");
   if (!session || !isAllowedLogin(session.login)) {
     if (shouldReturnHtml(requestObject)) {
       return redirect(`${opencodeLoginPath}?next=${encodeURIComponent(url.pathname + url.search)}`);
@@ -993,7 +993,7 @@ function pageTemplate({ title, eyebrow, headline, body }) {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${escapeHtml(title)}</title>
   <style>
-    :REDACTED_SECRET {
+    :root {
       color-scheme: light;
       --bg: #f3ede3;
       --ink: #1f1b16;

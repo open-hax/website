@@ -68,7 +68,7 @@ sync_repo_tree() {
 
   rsync -az --delete \
     --exclude '/.git/' \
-    --exclude '/REDACTED_SECRET_modules/' \
+    --exclude '/node_modules/' \
     --exclude '/dist/' \
     --exclude '/.env' \
     --exclude '/keys.json' \
@@ -137,7 +137,7 @@ if [[ -n "$DEPLOY_SOURCE_COMPOSE_PROJECT_NAME" ]]; then
 fi
 compose_args+=(-f docker-compose.yml)
 docker compose "${compose_args[@]}" exec -T open-hax-openai-proxy-db \
-  pg_dump -U REDACTED_SECRET -d REDACTED_SECRET --data-only --column-inserts \
+  pg_dump -U openai_proxy -d openai_proxy --data-only --column-inserts \
   --table=providers \
   --table=accounts \
   --table=account_health \
@@ -167,7 +167,7 @@ if [[ -n "$DEPLOY_COMPOSE_PROJECT_NAME" ]]; then
 fi
 compose_args+=(-f docker-compose.yml)
 docker compose "${compose_args[@]}" exec -T open-hax-openai-proxy-db \
-  psql -U REDACTED_SECRET -d REDACTED_SECRET \
+  psql -U openai_proxy -d openai_proxy \
   -c "TRUNCATE TABLE sessions, refresh_tokens, access_tokens, tenant_api_keys, tenant_memberships, users, tenants, account_health, account_cooldown, accounts, providers, models, config CASCADE;" >/dev/null
 EOF
 
@@ -186,7 +186,7 @@ if [[ -n "$DEPLOY_COMPOSE_PROJECT_NAME" ]]; then
   compose_args+=(--project-name "$DEPLOY_COMPOSE_PROJECT_NAME")
 fi
 compose_args+=(-f docker-compose.yml)
-docker compose "${compose_args[@]}" exec -T open-hax-openai-proxy-db psql -U REDACTED_SECRET -d REDACTED_SECRET < "$DEPLOY_PATH/db-backups/operational-sync.sql"
+docker compose "${compose_args[@]}" exec -T open-hax-openai-proxy-db psql -U openai_proxy -d openai_proxy < "$DEPLOY_PATH/db-backups/operational-sync.sql"
 rm -f "$DEPLOY_PATH/db-backups/operational-sync.sql"
 EOF
 

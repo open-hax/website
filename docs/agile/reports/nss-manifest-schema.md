@@ -7,7 +7,7 @@ Date: 2025-11-05
 ```yaml
 version: "0.1.0"
 generatedAt: "2025-11-05T00:00:00.000Z"
-REDACTED_SECRET: "/home/err/devel"
+root: "/home/err/devel"
 generator:
   name: "nss manifest init"
   version: "0.1.0"
@@ -17,7 +17,7 @@ profiles: []
 
 - `version`: schema revision, locked to `0.1.0` for compatibility checks.
 - `generatedAt`: ISO-8601 timestamp for reproducibility and drift detection.
-- `REDACTED_SECRET`: canonical absolute path of the workspace REDACTED_SECRET used during generation.
+- `root`: canonical absolute path of the workspace root used during generation.
 - `generator`: metadata for the CLI version that produced the manifest.
 - `repositories`: ordered list of repository descriptors (see below).
 - `profiles`: reusable subsets of repositories for selective operations (workstation, CI, etc.).
@@ -26,9 +26,9 @@ profiles: []
 | Field | Type | Notes |
 | --- | --- | --- |
 | `name` | string | Human-readable handle derived from `.gitmodules` section |
-| `path` | string | Path relative to manifest `REDACTED_SECRET`; `.` for REDACTED_SECRET repo |
+| `path` | string | Path relative to manifest `root`; `.` for root repo |
 | `url` | string | Remote URL or relative local path |
-| `depth` | integer | Nesting depth from manifest REDACTED_SECRET |
+| `depth` | integer | Nesting depth from manifest root |
 | `category` | enum | `core`, `support`, `test`, `sandbox`, `local` |
 | `auth` | discriminated union | Strategy-specific fields below |
 | `branch` | string? | Default branch to track (omitted for test/sandbox snapshots) |

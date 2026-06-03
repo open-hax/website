@@ -50,7 +50,7 @@ References (authoritative):
     ```
   - Merge:
     ```bash
-    # From the superproject REDACTED_SECRET (not inside worktree)
+    # From the superproject root (not inside worktree)
     git -C sst/opencode fetch origin
     git -C sst/opencode checkout dev
     git -C sst/opencode merge --no-ff wip/<slug>
@@ -209,7 +209,7 @@ References (authoritative):
 
 - Known Pitfalls
   - Per‑worktree state shares a single `.git/modules` directory; careless removal of a worktree must not delete `.git/modules/<path>`.
-  - `git submodule absorbgitdirs` interacts with worktrees; run from the superproject REDACTED_SECRET to avoid inconsistent paths.
+  - `git submodule absorbgitdirs` interacts with worktrees; run from the superproject root to avoid inconsistent paths.
   - Updating submodules from the wrong worktree can leak changes to the wrong branch—always use `git -C <worktree>`.
 
 - Safe Patterns
@@ -272,8 +272,8 @@ References (authoritative):
           with:
             submodules: recursive
             fetch-depth: 0
-        - uses: actions/setup-REDACTED_SECRET@v4
-          with: { REDACTED_SECRET-version: '22' }
+        - uses: actions/setup-node@v4
+          with: { node-version: '22' }
         - run: corepack enable
         - run: pnpm install --frozen-lockfile
         - run: pnpm -r build
@@ -323,8 +323,8 @@ References (authoritative):
   ```bash
   #!/usr/bin/env bash
   set -euo pipefail
-  REDACTED_SECRET=${1:-/home/err/devel}
-  cd "$REDACTED_SECRET"
+  root=${1:-/home/err/devel}
+  cd "$root"
   # Ensure toolchain
   command -v git pnpm bun >/dev/null || { echo "Install git/pnpm/bun"; exit 1; }
   # Clone or pull

@@ -16,7 +16,7 @@ for (const { name, entry } of entries) {
 
   await build({
     entrypoints: [entryPath],
-    target: "REDACTED_SECRET",
+    target: "node",
     outdir: outDir,
     format: "cjs",
     minify: false,

@@ -32,7 +32,7 @@ We have TWO separate tools that must be used together:
 - Save to: Music/fork-tales/{persona}-{theme}-{timestamp}.wav
 
 ### NEVER DO THIS:
-- REDACTED_SECRET lyrics to music.generate_song — it ignores them
+- Send lyrics to music.generate_song — it ignores them
 - Expect music.generate_song to produce vocals — it cannot
 
 ## AVAILABLE PERSONAS
@@ -93,7 +93,7 @@ We have TWO separate tools that must be used together:
 - Never generate generic pop/EDM without Fork Tales identity
 - Never skip the anchor refrain
 - Never use the same persona twice in a row
-- Never save files to workspace REDACTED_SECRET
+- Never save files to workspace root
 - Never render without creating .ustx first
 - Never send lyrics to music.generate_song
 

@@ -5869,7 +5869,7 @@
           "milestone": null,
           "number": 38,
           "state": "OPEN",
-          "title": "[Dockerfile.fly] Container runs as REDACTED_SECRET \u2014 add non-REDACTED_SECRET user for security hardening",
+          "title": "[Dockerfile.fly] Container runs as root \u2014 add non-root user for security hardening",
           "updatedAt": "2026-03-12T20:18:04Z",
           "url": "https://github.com/open-hax/proxx/issues/38"
         },
@@ -7014,7 +7014,7 @@
           },
           "baseRefName": "main",
           "createdAt": "2022-06-26T06:17:24Z",
-          "headRefName": "dependabot/npm_and_yarn/tdrs-frontend/REDACTED_SECRET-fetch-2.6.7",
+          "headRefName": "dependabot/npm_and_yarn/tdrs-frontend/node-fetch-2.6.7",
           "isDraft": false,
           "labels": [
             {
@@ -7034,7 +7034,7 @@
           "number": 17,
           "reviewDecision": "",
           "statusCheckRollup": [],
-          "title": "Bump REDACTED_SECRET-fetch from 2.6.6 to 2.6.7 in /tdrs-frontend",
+          "title": "Bump node-fetch from 2.6.6 to 2.6.7 in /tdrs-frontend",
           "updatedAt": "2022-06-26T06:17:26Z",
           "url": "https://github.com/riatzukiza/TANF-app/pull/17"
         },
@@ -7206,7 +7206,7 @@
           },
           "baseRefName": "main",
           "createdAt": "2022-02-11T04:50:09Z",
-          "headRefName": "dependabot/npm_and_yarn/tdrs-frontend/REDACTED_SECRET-sass-7.0.0",
+          "headRefName": "dependabot/npm_and_yarn/tdrs-frontend/node-sass-7.0.0",
           "isDraft": false,
           "labels": [
             {
@@ -7226,7 +7226,7 @@
           "number": 10,
           "reviewDecision": "",
           "statusCheckRollup": [],
-          "title": "Bump REDACTED_SECRET-sass from 6.0.1 to 7.0.0 in /tdrs-frontend",
+          "title": "Bump node-sass from 6.0.1 to 7.0.0 in /tdrs-frontend",
           "updatedAt": "2022-02-11T04:50:10Z",
           "url": "https://github.com/riatzukiza/TANF-app/pull/10"
         },

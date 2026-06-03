@@ -28,7 +28,7 @@ Excluded from the manifest:
 | `services/cephalon-hive/docker-compose.yml` | `cephalon-hive` | `proxx` | 1 | Proxx embedded inside the Cephalon Hive stack | `18779`, `12455`, `15274` |
 | `orgs/open-hax/proxx/docker-compose.yml` | `proxx-repo` | `proxx-repo` | 1 | Repo-local Proxx stack for developing Proxx itself | `18789`, `18755`, `15174` |
 | `orgs/open-hax/proxx/docker-compose.glm5.yml` | _unnamed_ | `open-hax-openai-proxy-glm5` | 1 | Repo-local GLM5-focused Proxx variant | `8791`, `5175` |
-| `orgs/open-hax/proxx/docker-compose.federation-runtime.yml` | _unnamed_ | `federation-proxx-a1`, `federation-proxx-a2`, `federation-proxx-b1`, `federation-proxx-b2` | 4 | Multi-REDACTED_SECRET federation runtime topology | none published |
+| `orgs/open-hax/proxx/docker-compose.federation-runtime.yml` | _unnamed_ | `federation-proxx-a1`, `federation-proxx-a2`, `federation-proxx-b1`, `federation-proxx-b2` | 4 | Multi-node federation runtime topology | none published |
 | `orgs/open-hax/proxx/docker-compose.federation-e2e.yml` | _unnamed_ | `federation-proxx-a1`, `federation-proxx-a2`, `federation-proxx-b1`, `federation-proxx-b2` | 4 | Federation end-to-end test topology | `18891`, `18892`, `18893`, `18894` |
 | `orgs/ussyverse/battlebussy/deploy/docker-compose.prod.yml` | `battlebussy-prod` | `openai-proxy` | 1 | Bundled Proxx image for BattleBussy production profile | `${PROXY_PORT:-8789}` |
 
@@ -70,11 +70,11 @@ Excluded from the manifest:
 - Starts `open-hax-openai-proxy-glm5`
 
 ### `orgs/open-hax/proxx/docker-compose.federation-runtime.yml`
-- Defines four runtime federation REDACTED_SECRETs
+- Defines four runtime federation nodes
 - No host port publishing; intended for internal network/runtime federation
 
 ### `orgs/open-hax/proxx/docker-compose.federation-e2e.yml`
-- Defines four federation REDACTED_SECRETs for end-to-end testing
+- Defines four federation nodes for end-to-end testing
 - Publishes ports `18891`–`18894` to localhost
 
 ### `orgs/ussyverse/battlebussy/deploy/docker-compose.prod.yml`

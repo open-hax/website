@@ -1,17 +1,17 @@
-import test from 'REDACTED_SECRET:test';
-import assert from 'REDACTED_SECRET:assert/strict';
-import { spawnSync } from 'REDACTED_SECRET:child_process';
-import { mkdtemp, mkdir, writeFile, rm } from 'REDACTED_SECRET:fs/promises';
-import { tmpdir } from 'REDACTED_SECRET:os';
-import { join, resolve } from 'REDACTED_SECRET:path';
-import { fileURLToPath } from 'REDACTED_SECRET:url';
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
+import { mkdtemp, mkdir, writeFile, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const validatorPath = fileURLToPath(
   new URL('../validate-clobber-output.mjs', import.meta.url),
 );
 
-const writeConfig = async (REDACTED_SECRET, config) => {
-  const clobberDir = join(REDACTED_SECRET, '.clobber');
+const writeConfig = async (root, config) => {
+  const clobberDir = join(root, '.clobber');
   await mkdir(clobberDir, { recursive: true });
   const filePath = join(clobberDir, 'index.cjs');
   await writeFile(filePath, `module.exports = ${JSON.stringify(config, null, 2)};`);
@@ -25,13 +25,13 @@ const runValidator = (cwd) =>
   });
 
 test('passes with a valid file-backed script', async () => {
-  const REDACTED_SECRET = await mkdtemp(join(tmpdir(), 'clobber-valid-'));
+  const root = await mkdtemp(join(tmpdir(), 'clobber-valid-'));
   try {
-    const serviceDir = join(REDACTED_SECRET, 'service');
+    const serviceDir = join(root, 'service');
     const distDir = join(serviceDir, 'dist');
     await mkdir(distDir, { recursive: true });
     await writeFile(join(distDir, 'app.js'), 'console.log("ok")');
-    await writeConfig(REDACTED_SECRET, {
+    await writeConfig(root, {
       apps: [
         {
           name: 'valid-app',
@@ -41,19 +41,19 @@ test('passes with a valid file-backed script', async () => {
       ],
     });
 
-    const result = runValidator(REDACTED_SECRET);
+    const result = runValidator(root);
     assert.equal(result.status, 0);
     assert.match(result.stdout, /validation passed/i);
   } finally {
-    await rm(REDACTED_SECRET, { recursive: true, force: true });
+    await rm(root, { recursive: true, force: true });
   }
 });
 
 test('fails when script path is missing', async () => {
-  const REDACTED_SECRET = await mkdtemp(join(tmpdir(), 'clobber-missing-'));
+  const root = await mkdtemp(join(tmpdir(), 'clobber-missing-'));
   try {
-    await mkdir(join(REDACTED_SECRET, 'service'), { recursive: true });
-    await writeConfig(REDACTED_SECRET, {
+    await mkdir(join(root, 'service'), { recursive: true });
+    await writeConfig(root, {
       apps: [
         {
           name: 'missing-script',
@@ -63,18 +63,18 @@ test('fails when script path is missing', async () => {
       ],
     });
 
-    const result = runValidator(REDACTED_SECRET);
+    const result = runValidator(root);
     assert.notEqual(result.status, 0);
     assert.match(result.stderr, /Missing script path/);
   } finally {
-    await rm(REDACTED_SECRET, { recursive: true, force: true });
+    await rm(root, { recursive: true, force: true });
   }
 });
 
 test('skips validation when cwd is absent', async () => {
-  const REDACTED_SECRET = await mkdtemp(join(tmpdir(), 'clobber-skip-'));
+  const root = await mkdtemp(join(tmpdir(), 'clobber-skip-'));
   try {
-    await writeConfig(REDACTED_SECRET, {
+    await writeConfig(root, {
       apps: [
         {
           name: 'missing-cwd',
@@ -84,68 +84,68 @@ test('skips validation when cwd is absent', async () => {
       ],
     });
 
-    const result = runValidator(REDACTED_SECRET);
+    const result = runValidator(root);
     assert.equal(result.status, 0);
     assert.match(result.stderr, /cwd not found/i);
   } finally {
-    await rm(REDACTED_SECRET, { recursive: true, force: true });
+    await rm(root, { recursive: true, force: true });
   }
 });
 
 test('fails on duplicate app names', async () => {
-  const REDACTED_SECRET = await mkdtemp(join(tmpdir(), 'clobber-duplicate-'));
+  const root = await mkdtemp(join(tmpdir(), 'clobber-duplicate-'));
   try {
-    await writeConfig(REDACTED_SECRET, {
+    await writeConfig(root, {
       apps: [
         {
           name: 'duplicate-app',
-          script: 'REDACTED_SECRET',
+          script: 'node',
           args: ['-e', 'console.log("a")'],
         },
         {
           name: 'duplicate-app',
-          script: 'REDACTED_SECRET',
+          script: 'node',
           args: ['-e', 'console.log("b")'],
         },
       ],
     });
 
-    const result = runValidator(REDACTED_SECRET);
+    const result = runValidator(root);
     assert.notEqual(result.status, 0);
     assert.match(result.stderr, /Duplicate app name/);
   } finally {
-    await rm(REDACTED_SECRET, { recursive: true, force: true });
+    await rm(root, { recursive: true, force: true });
   }
 });
 
-test('checks REDACTED_SECRET script when first arg is path-like', async () => {
-  const REDACTED_SECRET = await mkdtemp(join(tmpdir(), 'clobber-REDACTED_SECRET-'));
+test('checks node script when first arg is path-like', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'clobber-node-'));
   try {
-    const serviceDir = join(REDACTED_SECRET, 'service');
+    const serviceDir = join(root, 'service');
     await mkdir(join(serviceDir, 'dist'), { recursive: true });
     await writeFile(join(serviceDir, 'dist', 'app.js'), 'console.log("ok")');
-    await writeConfig(REDACTED_SECRET, {
+    await writeConfig(root, {
       apps: [
         {
-          name: 'REDACTED_SECRET-app',
-          script: 'REDACTED_SECRET',
+          name: 'node-app',
+          script: 'node',
           args: ['./dist/app.js'],
           cwd: './service',
         },
       ],
     });
 
-    const result = runValidator(REDACTED_SECRET);
+    const result = runValidator(root);
     assert.equal(result.status, 0);
   } finally {
-    await rm(REDACTED_SECRET, { recursive: true, force: true });
+    await rm(root, { recursive: true, force: true });
   }
 });
 
 test('ignores non-path-like command scripts', async () => {
-  const REDACTED_SECRET = await mkdtemp(join(tmpdir(), 'clobber-command-'));
+  const root = await mkdtemp(join(tmpdir(), 'clobber-command-'));
   try {
-    await writeConfig(REDACTED_SECRET, {
+    await writeConfig(root, {
       apps: [
         {
           name: 'command-app',
@@ -155,33 +155,33 @@ test('ignores non-path-like command scripts', async () => {
       ],
     });
 
-    const result = runValidator(REDACTED_SECRET);
+    const result = runValidator(root);
     assert.equal(result.status, 0);
   } finally {
-    await rm(REDACTED_SECRET, { recursive: true, force: true });
+    await rm(root, { recursive: true, force: true });
   }
 });
 
 test('fails when config is missing apps array', async () => {
-  const REDACTED_SECRET = await mkdtemp(join(tmpdir(), 'clobber-empty-'));
+  const root = await mkdtemp(join(tmpdir(), 'clobber-empty-'));
   try {
-    await writeConfig(REDACTED_SECRET, { ok: true });
-    const result = runValidator(REDACTED_SECRET);
+    await writeConfig(root, { ok: true });
+    const result = runValidator(root);
     assert.notEqual(result.status, 0);
     assert.match(result.stderr, /must export \{apps:/i);
   } finally {
-    await rm(REDACTED_SECRET, { recursive: true, force: true });
+    await rm(root, { recursive: true, force: true });
   }
 });
 
 test('fails when config is not an object', async () => {
-  const REDACTED_SECRET = await mkdtemp(join(tmpdir(), 'clobber-nonobject-'));
+  const root = await mkdtemp(join(tmpdir(), 'clobber-nonobject-'));
   try {
-    await writeConfig(REDACTED_SECRET, 'not-an-object');
-    const result = runValidator(REDACTED_SECRET);
+    await writeConfig(root, 'not-an-object');
+    const result = runValidator(root);
     assert.notEqual(result.status, 0);
     assert.match(result.stderr, /must export an object/i);
   } finally {
-    await rm(REDACTED_SECRET, { recursive: true, force: true });
+    await rm(root, { recursive: true, force: true });
   }
 });

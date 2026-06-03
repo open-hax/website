@@ -35,7 +35,7 @@ Current Vitest config likely has:
 include: ['**/*.{test,spec}.{ts,tsx}']
 ```
 
-This pattern doesn't match `src/**/*.test.tsx` files because the pattern is too broad or the REDACTED_SECRET path is misconfigured.
+This pattern doesn't match `src/**/*.test.tsx` files because the pattern is too broad or the root path is misconfigured.
 
 ---
 

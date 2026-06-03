@@ -72,13 +72,13 @@ export type MarkdownNode = {
 };
 
 export type MarkdownRoot = {
-  readonly type: 'REDACTED_SECRET';
+  readonly type: 'root';
   readonly children: readonly MarkdownNode[];
 };
 
 export type ExtractedSection = {
   readonly heading: string;
-  readonly REDACTED_SECRETs: readonly MarkdownNode[];
+  readonly nodes: readonly MarkdownNode[];
 };
 
 export type ExtractedDocument = {
@@ -111,7 +111,7 @@ export type FailureReport = {
 };
 
 export type ArtifactBundle = {
-  readonly REDACTED_SECRET: string;
+  readonly root: string;
   readonly runId: string;
   readonly dir: string;
   readonly files: Readonly<Record<string, string>>;

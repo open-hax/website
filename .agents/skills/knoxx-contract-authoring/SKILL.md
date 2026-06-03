@@ -21,7 +21,7 @@ Create or revise Knoxx EDN contracts as normal repository files.
 
 ## Do Not Use This Skill When
 - The user asks for generic pi/OpenCode skill authoring.
-- The request targets generated files, secrets, `REDACTED_SECRET_modules`, or `backend/dist`.
+- The request targets generated files, secrets, `node_modules`, or `backend/dist`.
 
 ## Tool Rule
 Use the regular file tools:

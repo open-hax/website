@@ -5,7 +5,7 @@ globs:
   - "spec/**/*.md"
 ignores:
   - ".git/**"
-  - "REDACTED_SECRET_modules/**"
+  - "node_modules/**"
   - "orgs/**"
   - "**/dist/**"
   - "**/build/**"

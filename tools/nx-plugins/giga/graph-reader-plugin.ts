@@ -6,7 +6,7 @@ interface Node {
   name: string;
   type: "app" | "lib";
   data: {
-    REDACTED_SECRET: string;
+    root: string;
     targets?: Record<string, { executor: string; options: { command: string } }>;
   };
 }
@@ -18,7 +18,7 @@ interface Edge {
 }
 
 interface Graph {
-  REDACTED_SECRETs: Node[];
+  nodes: Node[];
   edges: Edge[];
 }
 
@@ -29,8 +29,8 @@ export function createGraphReaderPlugin(): Plugin {
       {
         files: ["tmp/giga-graph.json"],
         createNodes: async (_, ctx) => {
-          const REDACTED_SECRETPath = ctx.workspaceRoot;
-          const graphPath = join(REDACTED_SECRETPath, "tmp/giga-graph.json");
+          const rootPath = ctx.workspaceRoot;
+          const graphPath = join(rootPath, "tmp/giga-graph.json");
           if (!existsSync(graphPath)) {
             return {};
           }
@@ -38,14 +38,14 @@ export function createGraphReaderPlugin(): Plugin {
           const graph: Graph = JSON.parse(readFileSync(graphPath, "utf8"));
           const config: Record<string, { projectConfiguration: ProjectConfiguration; dependencies?: readonly string[] }> = {};
 
-          for (const REDACTED_SECRET of graph.REDACTED_SECRETs) {
-            config[REDACTED_SECRET.name] = {
+          for (const node of graph.nodes) {
+            config[node.name] = {
               projectConfiguration: {
-                name: REDACTED_SECRET.name,
-                REDACTED_SECRET: REDACTED_SECRET.data.REDACTED_SECRET,
-                projectType: REDACTED_SECRET.type === "lib" ? "library" : "application",
-                sourceRoot: `${REDACTED_SECRET.data.REDACTED_SECRET}/src`,
-                targets: REDACTED_SECRET.data.targets,
+                name: node.name,
+                root: node.data.root,
+                projectType: node.type === "lib" ? "library" : "application",
+                sourceRoot: `${node.data.root}/src`,
+                targets: node.data.targets,
               },
             };
           }
