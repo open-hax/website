@@ -1,5 +1,5 @@
 # Dependencies
-REDACTED_SECRET_modules/
+node_modules/
 .pnpm-store/
 .pnpm-debug.log
 
@@ -19,7 +19,7 @@ target/
 .shadow-cljs/
 .lsp/
 .clojure/
-.cljs_REDACTED_SECRET_repl/
+.cljs_node_repl/
 .pnp.*
 .yarn/
 
@@ -36,6 +36,7 @@ logs/
 
 # Secrets (keep patterns, never track contents)
 .env
+**/.envrc
 .env.*
 !.env.example
 keys.json
@@ -82,13 +83,13 @@ desktop.ini
 *~
 
 # Docker volumes / runtime secrets
-services/openplannerREDACTED_SECRET/
+services/openplanner/runtime-secrets/
 
 # Pi session HTML dumps
 pi-session-*.html
 
 # Node compile cache
-REDACTED_SECRET-compile-cache/
+node-compile-cache/
 
 # docs/inbox — duplicate of inbox/, not reference material
 docs/inbox/
@@ -103,3 +104,13 @@ services/cephalon-hive/quartz-garden/proxx-api/*.png
 # Database archives
 *.duckdb
 .envrc
+node_modules/
+node-compile-cache
+
+# Build artifacts (generated; never track — were wrongly committed pre-2026-06)
+*.tsbuildinfo
+.cpcache/
+**/.cpcache/
+*.basis
+# detect-secrets scratch output (the canonical baseline is .secrets.baseline)
+.secrets.baseline.new
