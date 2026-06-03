@@ -29,11 +29,12 @@ export PROXY_MODELS_FILE="$SERVICE_ROOT/models.json"
 export PROXY_REQUEST_LOGS_FILE="$SERVICE_ROOT/data/request-logs.jsonl"
 export PROXX_EVENT_STORE_TTL_MS="${PROXX_EVENT_STORE_TTL_MS:-${PROXX_EVENT_TTL_MS:-3600000}}"
 export PROXX_EVENT_STORE_TTL_SWEEP_MS="${PROXX_EVENT_STORE_TTL_SWEEP_MS:-${PROXX_EVENT_TTL_SWEEP_MS:-300000}}"
-export DATABASE_URL="${PROXX_DEV_DATABASE_URL:-postgresql://REDACTED_SECRET:REDACTED_SECRET@127.0.0.1:${PROXX_DEV_DB_PORT:-15439}/REDACTED_SECRET}" # pragma: allowlist secret
+export DATABASE_URL="${PROXX_DEV_DATABASE_URL:-postgresql://openai_proxy:openai_proxy@127.0.0.1:${PROXX_DEV_DB_PORT:-15439}/openai_proxy}" # local development only # pragma: allowlist secret
 export PROXX_CLJS_RUNTIME_REQUIRED="true"
 export PROXX_CLJS_POLICY_SHADOW="true"
 export PROXX_CLJS_POLICY_AUTHORITATIVE="true"
-export PROXX_CLJS_POLICY_MANIFEST="$SERVICE_ROOT/policies/runtime/00-manifest.edn"
+# Contracts are owned by the open-hax/services repo (contracts/proxx).
+export PROXX_CLJS_POLICY_MANIFEST="$SERVICE_ROOT/../../orgs/open-hax/services/contracts/proxx/policies/runtime/00-manifest.edn"
 export OLLAMA_BASE_URL="${OLLAMA_BASE_URL_HOST:-http://127.0.0.1:11434}"
 export CHROMA_URL="${CHROMA_URL_HOST:-http://127.0.0.1:8000}"
 export HOST_DASHBOARD_RUNTIME_ROOT="$SERVICE_ROOT"

@@ -1,4 +1,4 @@
-const path = require("REDACTED_SECRET:path");
+const path = require("node:path");
 
 const serviceRoot = __dirname;
 const repoRoot = path.resolve(serviceRoot, "../../orgs/open-hax/proxx");
@@ -17,11 +17,12 @@ const commonEnv = {
   PROXY_REQUEST_LOGS_FILE: path.join(serviceRoot, "data/request-logs.jsonl"),
   PROXX_EVENT_STORE_TTL_MS: process.env.PROXX_EVENT_STORE_TTL_MS ?? process.env.PROXX_EVENT_TTL_MS ?? String(60 * 60 * 1000),
   PROXX_EVENT_STORE_TTL_SWEEP_MS: process.env.PROXX_EVENT_STORE_TTL_SWEEP_MS ?? process.env.PROXX_EVENT_TTL_SWEEP_MS ?? String(5 * 60 * 1000),
-  DATABASE_URL: process.env.PROXX_DEV_DATABASE_URL ?? "postgresql://REDACTED_SECRET:REDACTED_SECRET@127.0.0.1:15439/REDACTED_SECRET", // pragma: allowlist secret
+  DATABASE_URL: process.env.PROXX_DEV_DATABASE_URL ?? "postgresql://openai_proxy:openai_proxy@127.0.0.1:15439/openai_proxy", // pragma: allowlist secret
   PROXX_CLJS_RUNTIME_REQUIRED: "true",
   PROXX_CLJS_POLICY_SHADOW: "true",
   PROXX_CLJS_POLICY_AUTHORITATIVE: "true",
-  PROXX_CLJS_POLICY_MANIFEST: path.join(serviceRoot, "policies/runtime/00-manifest.edn"),
+  // Contracts are owned by the open-hax/services repo (contracts/proxx).
+  PROXX_CLJS_POLICY_MANIFEST: path.resolve(serviceRoot, "../../orgs/open-hax/services/contracts/proxx/policies/runtime/00-manifest.edn"),
   OLLAMA_BASE_URL: process.env.OLLAMA_BASE_URL ?? "http://127.0.0.1:11434",
   CHROMA_URL: process.env.CHROMA_URL ?? "http://127.0.0.1:8000",
   HOST_DASHBOARD_RUNTIME_ROOT: serviceRoot,

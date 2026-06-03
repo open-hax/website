@@ -21,13 +21,13 @@ services:
     expose:
       - "5432"
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:REDACTED_SECRET}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:REDACTED_SECRET}
+      POSTGRES_USER: ${POSTGRES_USER:-knoxx}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-knoxx-local-dev}
       POSTGRES_DB: ${POSTGRES_DB:-knoxx}
     volumes:
       - knoxx-postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:REDACTED_SECRET} -d ${POSTGRES_DB:-knoxx}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-knoxx} -d ${POSTGRES_DB:-knoxx}"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -79,15 +79,15 @@ services:
       NODE_ENV: production
       HOST: 0.0.0.0
       PORT: "8000"
-      DATABASE_URL: postgresql://${POSTGRES_USER:REDACTED_SECRET}:${POSTGRES_PASSWORD:REDACTED_SECRET}@knoxx-postgres:5432/${POSTGRES_DB:-knoxx}
-      KNOXX_POLICY_DATABASE_URL: postgresql://${POSTGRES_USER:REDACTED_SECRET}:${POSTGRES_PASSWORD:REDACTED_SECRET}@knoxx-postgres:5432/${POSTGRES_DB:-knoxx}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-knoxx}:${POSTGRES_PASSWORD:-knoxx-local-dev}@knoxx-postgres:5432/${POSTGRES_DB:-knoxx}
+      KNOXX_POLICY_DATABASE_URL: postgresql://${POSTGRES_USER:-knoxx}:${POSTGRES_PASSWORD:-knoxx-local-dev}@knoxx-postgres:5432/${POSTGRES_DB:-knoxx}
       REDIS_URL: redis://knoxx-redis:6379
       PROXX_BASE_URL: http://host.docker.internal:8789
       OPENPLANNER_BASE_URL: http://host.docker.internal:7777
       CONTRACTS_DIR: /app/contracts
       KMS_INGESTION_URL: http://knoxx-ingestion:3003
       KNOXX_PUBLIC_BASE_URL: https://knoxx.promethean.rest
-      KNOXX_GITHUB_OAUTH_PRIVATE_KEY_FILE: REDACTED_SECRET
+      KNOXX_GITHUB_OAUTH_PRIVATE_KEY_FILE: REDACTED_SECRET # pragma: allowlist secret
       KNOXX_SHUTDOWN_GRACE_MS: "25000"
       PI_CACHE_RETENTION: long
       KNOXX_SANDBOX_ROOT_DIR: ${KNOXX_SANDBOX_ROOT_DIR:-/home/error/devel/services/openplanner/runtime/knoxx-sandboxes}
@@ -98,7 +98,8 @@ services:
       - knoxx-runs:/runs/knoxx-agent
       - /var/run/docker.sock:/var/run/docker.sock
       - ${KNOXX_SANDBOX_ROOT_DIR:-/home/error/devel/services/openplanner/runtime/knoxx-sandboxes}:${KNOXX_SANDBOX_ROOT_DIR:-/home/error/devel/services/openplanner/runtime/knoxx-sandboxes}
-      - ../../orgs/open-hax/openplanner/packages/agents/knoxx/contracts:/app/contracts:ro
+      # Contracts are owned by the open-hax/services repo (contracts/knoxx).
+      - ../../orgs/open-hax/services/contracts/knoxx:/app/contracts:ro
       - ./cloud/github-app-key.pem:REDACTED_SECRET:ro
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -170,14 +171,14 @@ services:
         condition: service_healthy
     environment:
       PORT: "3003"
-      DATABASE_URL: postgresql://${POSTGRES_USER:REDACTED_SECRET}:${POSTGRES_PASSWORD:REDACTED_SECRET}@knoxx-postgres:5432/${POSTGRES_DB:-knoxx}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-knoxx}:${POSTGRES_PASSWORD:-knoxx-local-dev}@knoxx-postgres:5432/${POSTGRES_DB:-knoxx}
       REDIS_URL: redis://knoxx-redis:6379
       KNOXX_BACKEND_URL: http://backend:8000
       OPENPLANNER_BASE_URL: ${OPENPLANNER_BASE_URL:-http://host.docker.internal:7777}
-      OPENPLANNER_API_KEY: ${OPENPLANNER_API_KEY:REDACTED_SECRET}
+      OPENPLANNER_API_KEY: ${OPENPLANNER_API_KEY:-change-me}
       PROXX_BASE_URL: ${PROXX_BASE_URL:-http://host.docker.internal:8789}
-      PROXX_AUTH_TOKEN: ${PROXX_AUTH_TOKEN:REDACTED_SECRET-open-hax-proxy-token}
-      KNOXX_API_KEY: ${KNOXX_API_KEY:REDACTED_SECRET}
+      PROXX_AUTH_TOKEN: ${PROXX_AUTH_TOKEN:-change-me-open-hax-proxy-token}
+      KNOXX_API_KEY: ${KNOXX_API_KEY:-change-me}
       WORKSPACE_PATH: /app/workspace
       WORKSPACE_PROJECT_NAME: ${WORKSPACE_PROJECT_NAME:-workspace}
       KNOXX_OPENPLANNER_PROJECT: ${WORKSPACE_PROJECT_NAME:-workspace}

@@ -47,7 +47,7 @@ services:
       PROXY_PORT: "8789"
       PORT: "8789"
       OPENAI_OAUTH_CALLBACK_PORT: "${OPENAI_OAUTH_CALLBACK_PORT:-1455}"
-      PROXY_AUTH_TOKEN: "${PROXY_AUTH_TOKEN:REDACTED_SECRET-open-hax-proxy-token}"
+      PROXY_AUTH_TOKEN: "${PROXY_AUTH_TOKEN:-REDACTED_SECRET-open-hax-proxy-token}"
       # Seed credentials directory (keys.json here is for initial seeding only).
       # See seeds/README.md for details.
       PROXY_KEYS_FILE: /workspace/service-config/seeds/keys.json
@@ -106,6 +106,8 @@ services:
       IMAGE_COST_USD_DEFAULT: "${IMAGE_COST_USD_DEFAULT:-0}"
       IMAGE_COST_USD_BY_PROVIDER: "${IMAGE_COST_USD_BY_PROVIDER:-}"
       OLLAMA_BASE_URL: "${OLLAMA_BASE_URL:-http://ollama:11434}"
+      LLAMACPP_CHAT_BASE_URL: "${LLAMACPP_CHAT_BASE_URL:-http://llamacpp-chat:8080}"
+      LLAMACPP_EMBED_BASE_URL: "${LLAMACPP_EMBED_BASE_URL:-http://llamacpp-embed:8081}"
       ZAI_API_KEY: "${ZAI_API_KEY:-}"
       ZHIPU_API_KEY: "${ZHIPU_API_KEY:-}"
       ZAI_PROVIDER_ID: "${ZAI_PROVIDER_ID:-zai}"
@@ -135,7 +137,7 @@ services:
       EMBED_MAX_BATCH_ITEMS: "${EMBED_MAX_BATCH_ITEMS:-64}"
       EMBED_MAX_INPUT_CHARS: "${EMBED_MAX_INPUT_CHARS:-200000}"
       PROXY_ALLOW_UNAUTHENTICATED: "${PROXY_ALLOW_UNAUTHENTICATED:-false}"
-      DATABASE_URL: "${DATABASE_URL:-postgresql://REDACTED_SECRET:REDACTED_SECRET@proxx-local-db:5432/REDACTED_SECRET}" # pragma: allowlist secret
+      DATABASE_URL: "${DATABASE_URL:-postgresql://openai_proxy:openai_proxy@proxx-local-db:5432/openai_proxy}" # pragma: allowlist secret
       VITE_ALLOWED_HOSTS: "${VITE_ALLOWED_HOSTS:-}"
       CHROMA_URL: "${CHROMA_URL:-http://host.docker.internal:8000}"
       CHROMA_COLLECTION: "${CHROMA_COLLECTION:-open_hax_proxy_sessions}"
@@ -179,7 +181,8 @@ services:
       # rebuilding the image. The container keeps image-provided REDACTED_SECRET_modules
       # while running the mounted dist/main.js.
       - ../../orgs/open-hax/proxx/dist:/app/dist:ro
-      - ./policies:/etc/proxx/policies:ro
+      # Contracts are owned by the open-hax/services repo (contracts/proxx).
+      - ../../orgs/open-hax/services/contracts/proxx/policies:/etc/proxx/policies:ro
       - ./:/workspace/runtime-repo:ro
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
@@ -235,7 +238,7 @@ services:
       PROXY_PORT: "8789"
       PORT: "8789"
       OPENAI_OAUTH_CALLBACK_PORT: "${OPENAI_OAUTH_CALLBACK_PORT:-1455}"
-      PROXY_AUTH_TOKEN: "${PROXY_AUTH_TOKEN:REDACTED_SECRET-open-hax-proxy-token}"
+      PROXY_AUTH_TOKEN: "${PROXY_AUTH_TOKEN:-REDACTED_SECRET-open-hax-proxy-token}"
       PROXY_KEYS_FILE: /workspace/service-config/seeds/keys.json
       PROXY_MODELS_FILE: /workspace/service-config/models.json
       PROXY_REQUEST_LOGS_FILE: /app/data/request-logs.jsonl
@@ -279,6 +282,8 @@ services:
       IMAGE_COST_USD_DEFAULT: "${IMAGE_COST_USD_DEFAULT:-0}"
       IMAGE_COST_USD_BY_PROVIDER: "${IMAGE_COST_USD_BY_PROVIDER:-}"
       OLLAMA_BASE_URL: "${OLLAMA_BASE_URL:-http://ollama:11434}"
+      LLAMACPP_CHAT_BASE_URL: "${LLAMACPP_CHAT_BASE_URL:-http://llamacpp-chat:8080}"
+      LLAMACPP_EMBED_BASE_URL: "${LLAMACPP_EMBED_BASE_URL:-http://llamacpp-embed:8081}"
       ZAI_API_KEY: "${ZAI_API_KEY:-}"
       ZHIPU_API_KEY: "${ZHIPU_API_KEY:-}"
       ZAI_PROVIDER_ID: "${ZAI_PROVIDER_ID:-zai}"
@@ -308,7 +313,7 @@ services:
       EMBED_MAX_BATCH_ITEMS: "${EMBED_MAX_BATCH_ITEMS:-64}"
       EMBED_MAX_INPUT_CHARS: "${EMBED_MAX_INPUT_CHARS:-200000}"
       PROXY_ALLOW_UNAUTHENTICATED: "${PROXY_ALLOW_UNAUTHENTICATED:-false}"
-      DATABASE_URL: "${DATABASE_URL:-postgresql://REDACTED_SECRET:REDACTED_SECRET@proxx-local-db:5432/REDACTED_SECRET}" # pragma: allowlist secret
+      DATABASE_URL: "${DATABASE_URL:-postgresql://openai_proxy:openai_proxy@proxx-local-db:5432/openai_proxy}" # pragma: allowlist secret
       VITE_ALLOWED_HOSTS: "${VITE_ALLOWED_HOSTS:-}"
       CHROMA_URL: "${CHROMA_URL:-http://host.docker.internal:8000}"
       CHROMA_COLLECTION: "${CHROMA_COLLECTION:-open_hax_proxy_sessions}"
@@ -345,7 +350,8 @@ services:
       - ./models.json:/workspace/service-config/models.json:ro
       - ./seeds:/workspace/service-config/seeds:ro
       - ./data:/app/data
-      - ./policies:/etc/proxx/policies:ro
+      # Contracts are owned by the open-hax/services repo (contracts/proxx).
+      - ../../orgs/open-hax/services/contracts/proxx/policies:/etc/proxx/policies:ro
       - ./:/workspace/runtime-repo:ro
       - /var/run/docker.sock:/var/run/docker.sock
     stop_signal: SIGTERM
@@ -363,15 +369,15 @@ services:
   proxx-local-db:
     image: postgres:16-bookworm
     environment:
-      POSTGRES_DB: REDACTED_SECRET
-      POSTGRES_USER: REDACTED_SECRET
-      POSTGRES_PASSWORD: REDACTED_SECRET # pragma: allowlist secret
+      POSTGRES_DB: openai_proxy
+      POSTGRES_USER: openai_proxy
+      POSTGRES_PASSWORD: openai_proxy # pragma: allowlist secret
     ports:
       - "${PROXY_DB_PORT:-15432}:5432"
     volumes:
       - open-hax-openai-proxy_open-hax-openai-proxy-db-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U REDACTED_SECRET -d REDACTED_SECRET"]
+      test: ["CMD-SHELL", "pg_isready -U openai_proxy -d openai_proxy"]
       interval: 10s
       timeout: 5s
       retries: 5
