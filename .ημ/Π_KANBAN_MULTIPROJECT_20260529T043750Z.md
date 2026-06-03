@@ -1,6 +1,6 @@
 # Kanban multi-project migration 20260529T043750Z
 
-Implemented multi-project service config and REDACTED_SECRET-owned spec migration.
+Implemented multi-project service config and root-owned spec migration.
 
 Validation:
 - package tests/build passed

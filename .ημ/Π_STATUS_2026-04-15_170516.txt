@@ -82,7 +82,7 @@ status_digest: c40d1d334fc3c6aa
 1 .D N... 100644 100644 000000 19fecefd62a781ac47e4b0c1f3caa91017b792ec 19fecefd62a781ac47e4b0c1f3caa91017b792ec hormuz_clock_v4_bundle/reports/morning_update_2026-04-06.md
 1 .D N... 100644 100644 000000 a43f556b843d23d70301395a04e792776933579b a43f556b843d23d70301395a04e792776933579b hormuz_clock_v4_bundle/reports/v4_snapshot.md
 1 .D N... 100644 100644 000000 5fc84dd5183af158219a26118766ad651f037337 5fc84dd5183af158219a26118766ad651f037337 hormuz_clock_v4_bundle/scripts/animate_transition.py
-1 .D N... 100644 100644 000000 8749c08bdd0257ac95eb4aa46b8127d1047954f7 8749c08bdd0257ac95eb4aa46b8127d1047954f7 hormuz_clock_v4_bundle/scripts/export_REDACTED_SECRET_packet.py
+1 .D N... 100644 100644 000000 8749c08bdd0257ac95eb4aa46b8127d1047954f7 8749c08bdd0257ac95eb4aa46b8127d1047954f7 hormuz_clock_v4_bundle/scripts/export_threat_radar_packet.py
 1 .D N... 100644 100644 000000 d03890581e38d663d08cdaede79724a88c3818f1 d03890581e38d663d08cdaede79724a88c3818f1 hormuz_clock_v4_bundle/scripts/extract_signals.py
 1 .D N... 100644 100644 000000 c438e5fcb5eca1c3994036b83549bfee3cbda803 c438e5fcb5eca1c3994036b83549bfee3cbda803 hormuz_clock_v4_bundle/scripts/generate_v4_clock.py
 1 .D N... 100644 100644 000000 14b51a873834522cab3ba336c755bf1c2f75fed4 14b51a873834522cab3ba336c755bf1c2f75fed4 hormuz_clock_v4_bundle/scripts/normalize_signals.py
@@ -144,7 +144,7 @@ status_digest: c40d1d334fc3c6aa
 1 .D N... 100644 100644 000000 c13a0538f391abe7e576c2c1b437a924ee6e5d1e c13a0538f391abe7e576c2c1b437a924ee6e5d1e mirror-prs.js
 1 .D N... 100755 100755 000000 a1513c4151d5a4594161d867def3bc68ad0d21e6 a1513c4151d5a4594161d867def3bc68ad0d21e6 mirror-prs.ts
 1 .M N... 100644 100644 100644 79d516cfa1379e62fa291e3d17bf86388202bcc6 79d516cfa1379e62fa291e3d17bf86388202bcc6 models.example.json
-1 .D N... 120000 120000 000000 2fc3185edfef424e8ed6bc73b0b7fe1b986d3de3 2fc3185edfef424e8ed6bc73b0b7fe1b986d3de3 REDACTED_SECRET_modules
+1 .D N... 120000 120000 000000 2fc3185edfef424e8ed6bc73b0b7fe1b986d3de3 2fc3185edfef424e8ed6bc73b0b7fe1b986d3de3 node_modules
 1 .D N... 100755 100755 000000 7185014d97c21f3b77986b9342f839f844c963a2 7185014d97c21f3b77986b9342f839f844c963a2 oci-retry-launch.sh
 1 .D N... 100755 100755 000000 fe07d8d246bc19fc38cedb928ef3f607708d359b fe07d8d246bc19fc38cedb928ef3f607708d359b oci-setup-instance.sh
 1 .D N... 100644 100644 000000 08c3c5d6ecd80406550bb6a97659d5f80cacf89c 08c3c5d6ecd80406550bb6a97659d5f80cacf89c ollama-native.ts
@@ -297,7 +297,7 @@ status_digest: c40d1d334fc3c6aa
 1 .D N... 100644 100644 000000 cba0636da4c5a5ac1f97361638a487664ea94593 cba0636da4c5a5ac1f97361638a487664ea94593 threat-radar-next-step/orgs/riatzukiza/threat-radar-mcp/src/repositories/interface.ts
 1 .D N... 100644 100644 000000 43847c24eb45643a2668a2b1eba6e2c526a0c9de 43847c24eb45643a2668a2b1eba6e2c526a0c9de threat-radar-next-step/orgs/riatzukiza/threat-radar-mcp/src/repositories/postgres.ts
 1 .D N... 100644 100644 000000 3d0e5f3ebeaa2986036f026ba247d68d0b008eba 3d0e5f3ebeaa2986036f026ba247d68d0b008eba threat-radar-next-step/orgs/riatzukiza/threat-radar-web/src/lib/api.ts
-1 .D N... 100644 100644 000000 9607c340beb801896756218ca33bfa78aefb97e8 9607c340beb801896756218ca33bfa78aefb97e8 threat-radar-next-step/packages/radar-core/sql/001_REDACTED_SECRET.sql
+1 .D N... 100644 100644 000000 9607c340beb801896756218ca33bfa78aefb97e8 9607c340beb801896756218ca33bfa78aefb97e8 threat-radar-next-step/packages/radar-core/sql/001_threat_radar.sql
 1 .D N... 100644 100644 000000 ac6da6c61d8ead0a262624f50065d00f9af0bb08 ac6da6c61d8ead0a262624f50065d00f9af0bb08 threat-radar-next-step/packages/radar-core/src/postgres-types.ts
 1 .D N... 100644 100644 000000 e5bc909942db9680aed687b7cf0ef620cd67cc54 e5bc909942db9680aed687b7cf0ef620cd67cc54 threat-radar-next-step/specs/control-plane-tool-surface.md
 1 .D N... 100644 100644 000000 b68cd6ac211f6c7ff7ec66b20dbc0271e2da0651 b68cd6ac211f6c7ff7ec66b20dbc0271e2da0651 threat-radar-next-step/specs/validation-contract.md

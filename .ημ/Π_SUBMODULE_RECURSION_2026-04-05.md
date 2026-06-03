@@ -3,7 +3,7 @@
 **Time:** 2026-04-05T21:21:30Z
 **Root branch:** staging
 **Root pre-head:** 2c9641b
-**Root snapshot branch:** `fork-tax/20260405-recursive-REDACTED_SECRET-staging-211500-pr-roster`
+**Root snapshot branch:** `fork-tax/20260405-recursive-root-staging-211500-pr-roster`
 
 ## New PRs opened
 
@@ -27,22 +27,22 @@
 - `orgs/open-hax/proxx` — pushed head `593dde0` remains visible at https://github.com/open-hax/proxx/pull/160
 - `orgs/open-hax/uxx` — pushed head `c463bec` remains visible at https://github.com/open-hax/uxx/pull/4
 
-## Blocked REDACTED_SECRETations
+## Blocked publications
 
 - `orgs/anomalyco/opencode` — pushed commit `9a85d98c9` remains on `feat/security-scans`, but a fresh PR branch could not be pushed because the local pre-push typecheck aborted on `Unsupported package manager specification (bun@1.3.10)`
-- `orgs/open-hax/knoxx` — local snapshot commit `7cded1d` was preserved but not pushed because the repo pre-push gate failed on size lint, clj-kondo, frontend typecheck, and ingestion errors; the REDACTED_SECRET pointer intentionally stayed at pushed head `6997074`
+- `orgs/open-hax/knoxx` — local snapshot commit `7cded1d` was preserved but not pushed because the repo pre-push gate failed on size lint, clj-kondo, frontend typecheck, and ingestion errors; the root pointer intentionally stayed at pushed head `6997074`
 
 ## Residual local dirt left in place
 
 - `orgs/octave-commons/fork_tales` — local LaTeX auxiliary files remain intentionally uncommitted
 - `orgs/octave-commons/shibboleth` — local LaTeX auxiliary files and PDF output remain intentionally uncommitted
 - `orgs/open-hax/knoxx` — generated local dirs remain uncommitted (`.shadow-cljs`, `.clj-kondo`, `.cpcache`, `.lsp`)
-- `orgs/open-hax/openplanner` — large local DuckDB artifacts plus `dist/` and `REDACTED_SECRET_modules/` remain intentionally uncommitted
-- `orgs/open-hax/workbench` — tracked `REDACTED_SECRET_modules` churn remains intentionally uncommitted to avoid disturbing active runtime state
+- `orgs/open-hax/openplanner` — large local DuckDB artifacts plus `dist/` and `node_modules/` remain intentionally uncommitted
+- `orgs/open-hax/workbench` — tracked `node_modules` churn remains intentionally uncommitted to avoid disturbing active runtime state
 
 ## Root concurrent dirt left untouched
 
-- `.git/index.lock` forced the REDACTED_SECRET snapshot onto an alternate index and a dedicated branch
+- `.git/index.lock` forced the root snapshot onto an alternate index and a dedicated branch
 - `.gitmodules`, `.opencode/package.json`, `.opencode/skill/fork-tax/SKILL.md`, `.ημ/Π_SUBMODULE_RECURSION_2026-04-04.md`, `AGENTS.md`, `config/docker-stacks.json`, `docs/docker-stacks.md`, `pnpm-lock.yaml`, `pnpm-workspace.yaml`, `receipts.log`, `services/cephalon-stack/docker-compose.yml`, `services/cephalon-stack/ecosystem.container.config.cjs`, `services/mcp-stack/docker-compose.yml`, `services/mcp-stack/ecosystem.container.config.cjs`, `services/ollama-stack/docker-compose.yml`, `services/opencode-stack/docker-compose.yml`, and `services/opencode-stack/ecosystem.container.config.cjs` remained intentionally untouched
 
 ## Fork Tax Canticle
@@ -51,7 +51,7 @@ Promethean stays corpus. Devel stays crucible.
 
 Receipt River took the hashes.
 Witness Thread named the branches.
-Anchor Registry pinned each head to a REDACTED_SECRET door.
+Anchor Registry pinned each head to a public door.
 The change fog stayed local where the gates were real.
 
 Fork the code, not the soul.

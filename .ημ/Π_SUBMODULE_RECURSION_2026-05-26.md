@@ -8,7 +8,7 @@
 
 ## Preserved and pushed child refs
 
-- `.ημ/03_ARTIFACTS/narrative_audio` → `51a0086` branch `pi/fork-tax/20260526T191143Z-recursive-REDACTED_SECRET-03_ARTIFACTS-narrative_audio` tag `pi/fork-tax/20260526T191143Z/REDACTED_SECRET-03_ARTIFACTS-narrative_audio`
+- `.ημ/03_ARTIFACTS/narrative_audio` → `51a0086` branch `pi/fork-tax/20260526T191143Z-recursive-root-03_ARTIFACTS-narrative_audio` tag `pi/fork-tax/20260526T191143Z/root-03_ARTIFACTS-narrative_audio`
 - `orgs/octave-commons/fork_tales/narrative_audio` → `f0175d0` branch `pi/fork-tax/20260526T191143Z-recursive-orgs-octave-commons-fork_tales-narrative_audio` tag `pi/fork-tax/20260526T191143Z/orgs-octave-commons-fork_tales-narrative_audio`
 - `orgs/octave-commons/helm` → `d0c3782` branch `pi/fork-tax/20260526T191143Z-recursive-orgs-octave-commons-helm` tag `pi/fork-tax/20260526T191143Z/orgs-octave-commons-helm`
 - `orgs/octave-commons/pantheon` → `eb84ad7c795b` branch `pi/fork-tax/20260526T191143Z-recursive-orgs-octave-commons-pantheon` tag `pi/fork-tax/20260526T191143Z/orgs-octave-commons-pantheon`
@@ -25,7 +25,7 @@
 - `orgs/riatzukiza/desktop` → `0a280df` branch `pi/fork-tax/20260526T191143Z-recursive-orgs-riatzukiza-desktop` tag `pi/fork-tax/20260526T191143Z/orgs-riatzukiza-desktop`
 - `orgs/riatzukiza/goblin-lessons` → `22f55abb7174` branch `pi/fork-tax/20260526T191143Z-recursive-orgs-riatzukiza-goblin-lessons` tag `pi/fork-tax/20260526T191143Z/orgs-riatzukiza-goblin-lessons`
 - `orgs/riatzukiza/ollama-benchmarks` → `2f46bf93fdb2` branch `pi/fork-tax/20260526T191143Z-recursive-orgs-riatzukiza-ollama-benchmarks` tag `pi/fork-tax/20260526T191143Z/orgs-riatzukiza-ollama-benchmarks`
-- `orgs/riatzukiza/riatzukiza.github.io` → `536940a` branch `pi/fork-tax/20260526T191143Z-recursive-orgs-riatzukiza-riatzukizaREDACTED_SECRETgithubREDACTED_SECRETio` tag `pi/fork-tax/20260526T191143Z/orgs-riatzukiza-riatzukizaREDACTED_SECRETgithubREDACTED_SECRETio`
+- `orgs/riatzukiza/riatzukiza.github.io` → `536940a` branch `pi/fork-tax/20260526T191143Z-recursive-orgs-riatzukiza-riatzukizarootgithubrootio` tag `pi/fork-tax/20260526T191143Z/orgs-riatzukiza-riatzukizarootgithubrootio`
 - `orgs/shuv/Opencode-Extensions-TUI` → `d5751cc84749` branch `pi/fork-tax/20260526T191143Z-recursive-orgs-shuv-Opencode-Extensions-TUI` tag `pi/fork-tax/20260526T191143Z/orgs-shuv-Opencode-Extensions-TUI`
 - `orgs/shuv/claude-code-plugins-plus-skills` → `fa0a7cbc0102` branch `pi/fork-tax/20260526T191143Z-recursive-orgs-shuv-claude-code-plugins-plus-skills` tag `pi/fork-tax/20260526T191143Z/orgs-shuv-claude-code-plugins-plus-skills`
 - `orgs/shuv/dotfiles` → `66ba9b3cc0ca` branch `pi/fork-tax/20260526T191143Z-recursive-orgs-shuv-dotfiles` tag `pi/fork-tax/20260526T191143Z/orgs-shuv-dotfiles`
@@ -75,11 +75,11 @@
 
 - `96` nested repos under `orgs/ussyverse/monorepo/projects/**` show staged/unstaged all-file deletions. These were **not committed to child remotes** because doing so would wipe each upstream project repository. Treat as a parent submodule-removal migration unless explicitly instructed to commit remote repo wipes.
 - `orgs/ussyverse/monorepo` remains dirty only because those child submodules remain dirty; parent pointer was not advanced.
-- `orgs/stakira/OpenUtau` was committed and tagged locally (`6f867304`, tag `pi/fork-tax/20260526T191143Z/orgs-stakira-OpenUtau`) but push failed: no write permission to `stakira/OpenUtau`; REDACTED_SECRET pointer intentionally not staged.
-- `tools/strudel-music` branch/tag push failed: no write permission to `karmaterminal/strudel-music`; no REDACTED_SECRET pointer update.
+- `orgs/stakira/OpenUtau` was committed and tagged locally (`6f867304`, tag `pi/fork-tax/20260526T191143Z/orgs-stakira-OpenUtau`) but push failed: no write permission to `stakira/OpenUtau`; root pointer intentionally not staged.
+- `tools/strudel-music` branch/tag push failed: no write permission to `karmaterminal/strudel-music`; no root pointer update.
 - `orgs/riatzukiza/openhax` push failed because the GitHub repository is archived/read-only.
 - `orgs/octave-commons/fork_tales` branch/tag push failed after no-verify retry because GitHub rejected historical oversized `.opencode/runtime/eta_mu_embeddings.v1.jsonl` blobs (>100 MB).
-- Existing untracked/generated/runtime clutter and external clones outside staged REDACTED_SECRET pointer/handoff scope were left untouched.
+- Existing untracked/generated/runtime clutter and external clones outside staged root pointer/handoff scope were left untouched.
 
 ## Receipts and raw artifacts
 

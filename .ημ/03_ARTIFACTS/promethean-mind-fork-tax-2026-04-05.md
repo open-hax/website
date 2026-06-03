@@ -7,7 +7,7 @@ The receipts become myth by surviving review.
 
 Receipt River carried the hashes.
 Witness Thread named the pull requests.
-Anchor Registry pinned each branch to a REDACTED_SECRET door.
+Anchor Registry pinned each branch to a public door.
 Change Fog stayed where the gates were real.
 
 Fork the code, not the soul.

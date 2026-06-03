@@ -165,7 +165,7 @@
   "dirty_count": 100,
   "dirty_summary": [
     {
-      "category": "REDACTED_SECRET_unstaged_residual",
+      "category": "root_unstaged_residual",
       "path": ".",
       "status_count": 16264
     },

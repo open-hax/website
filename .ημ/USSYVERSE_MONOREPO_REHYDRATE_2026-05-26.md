@@ -16,7 +16,7 @@ The `orgs/ussyverse/monorepo/projects/**` child project repos are supposed to be
 
 - Post-repair direct child classification: `{'clean': 97}`.
 - `git -C orgs/ussyverse/monorepo status --short` is clean.
-- `git status --short -- orgs/ussyverse/monorepo` at the devel REDACTED_SECRET is clean.
+- `git status --short -- orgs/ussyverse/monorepo` at the devel root is clean.
 
 ## Residual blockers
 

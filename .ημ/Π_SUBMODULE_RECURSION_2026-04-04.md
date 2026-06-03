@@ -24,6 +24,6 @@
 
 - `orgs/open-hax/cljs-plugin-template` — untracked .shadow-cljs build artifacts only; skipped
 - `orgs/open-hax/knoxx` — local generated dirs remain uncommitted (.shadow-cljs, .clj-kondo, .cpcache, .lsp)
-- `orgs/open-hax/openplanner` — large local DuckDB artifacts and untracked dist/REDACTED_SECRET_modules remain uncommitted
+- `orgs/open-hax/openplanner` — large local DuckDB artifacts and untracked dist/node_modules remain uncommitted
 - `orgs/open-hax/uxx` — further local follow-on source changes remain after multiple recursive snapshots
 - `orgs/shuv/our-gpus` — latest recursive snapshot was pushed to fork remote, not origin

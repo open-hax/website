@@ -97,8 +97,8 @@
  specs/drafts/resume-oss-ats-audit-2026-03-17.md    |  28 -
  specs/drafts/resume-page-tiering-2026-03-18.md     |  29 -
  specs/drafts/review-fixes-2026-03-14.md            |  72 --
- .../REDACTED_SECRET-module-exception-policy-2026-03-21.md     |  59 --
- .../REDACTED_SECRET-module-usage-manifest-2026-03-21.md       |  49 --
+ .../root-module-exception-policy-2026-03-21.md     |  59 --
+ .../root-module-usage-manifest-2026-03-21.md       |  49 --
  ...limit-rewrite-and-artifact-guards-2026-03-20.md |  34 -
  .../service-devops-homes-proxx-voxx-2026-03-19.md  |  71 --
  .../services-pr-promotion-inventory-2026-03-21.md  |  38 -
