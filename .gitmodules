@@ -1603,3 +1603,9 @@
 	path = orgs/open-hax/services
 	url = https://github.com/open-hax/services.git
 	branch = main
+[submodule "orgs/open-hax/floxx"]
+	path = orgs/open-hax/floxx
+	url = git@github.com:open-hax/floxx.git
+[submodule "orgs/open-hax/knoxx"]
+	path = orgs/open-hax/knoxx
+	url = git@github.com:open-hax/knoxx.git
