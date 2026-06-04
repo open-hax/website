@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+  <head><title>Test CLJS</title></head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/cljs/app.js"></script>
+    <script>
+      setTimeout(() => {
+        const root = document.getElementById('root');
+        console.log('Root content:', root.innerHTML.substring(0, 200));
+      }, 2000);
+    </script>
+  </body>
+</html>

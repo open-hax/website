@@ -1,0 +1,30 @@
+{:source-paths ["src/cljs" "test/cljs"]
+ :dependencies [[lilactown/helix "0.2.2"]]
+
+ :js-options
+ {:js-package-dirs ["./node_modules"]}
+
+ :dev-http
+ {8080 {:roots ["." "dist" "public"]
+        :push-state/index "index.html"}}
+
+ :builds
+ {:app
+  {:target :browser
+   :output-dir "dist/cljs"
+   :asset-path "/cljs"
+   :modules {:app {:init-fn open-hax.website.core/init}}
+   :devtools
+   {:after-load open-hax.website.core/after-load}
+   :compiler-options
+   {:output-feature-set :es-next
+    :source-map true}}
+
+  :test
+  {:target :node-test
+   :output-to "target/test/website-test.cjs"
+   :ns-regexp "-test$"
+   :autorun true
+   :compiler-options
+   {:output-feature-set :es-next
+    :source-map true}}}}

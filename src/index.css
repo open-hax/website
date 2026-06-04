@@ -1,0 +1,14 @@
+@import '@open-hax/uxx/dist/tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-default);
+  color: var(--fg-default);
+}

@@ -1,0 +1,7 @@
+/node_modules/
+/dist/
+/.shadow-cljs/
+/.clj-kondo/.cache/
+/.lsp/
+*.log
+.DS_Store
