@@ -85,7 +85,17 @@ application.
 
 Before this site is deployable, `pnpm build` must assemble one directory
 containing the shell, the compiled app, the stylesheet and the static assets.
-That directory is the only thing a deploy ships.
+
+That matters more than it looks, because this site deploys to the DigitalOcean
+lane as a container image: a builder stage runs the release build, and the
+serving stage is nginx plus a single `COPY --from=build` of that directory.
+Nothing is built on the runner or on the host, and nothing else from the
+checkout ships. The build toolchain — node, pnpm, java, clojure — belongs in the
+builder stage.
+
+The published content root is **not** part of the image. It is a host directory
+bind-mounted read-only into the serving container, written by Knoxx on the same
+host, so replacing this site's image never touches published translations.
 
 ## SPA fallback, stated rather than inherited
 
