@@ -30,6 +30,14 @@ pnpm build
   - `components/` - Reusable components
   - `sections/` - Page sections
 
+## Translation target
+
+This site is the intended first publication target for Knoxx's contract-owned
+publication pipeline. [`docs/translation-target-contract.md`](docs/translation-target-contract.md)
+records what that requires of this repository — a content source, locale routing,
+a reader-side manifest contract, and a build that emits one directory — and what
+it deliberately does not.
+
 ## Domain
 
 - Production: `open-hax.promethean.rest`
