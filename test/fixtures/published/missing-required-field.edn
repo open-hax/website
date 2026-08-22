@@ -1,0 +1,14 @@
+;; FIXTURE: a route with no :route/media-type.
+;; EXPECTED: :invalid, loudly. A reader that rendered a blank page here would
+;; turn a writer defect into an invisible outage; instead the site keeps
+;; serving its own sections and says, on the page, that the manifest is broken.
+;;
+;; PROVENANCE: knoxx.backend.infra.publication-target-static-site
+;; (card knoxx-publication-static-site-target).
+{:manifest/version 1
+ :manifest/generated-at "2026-08-21T18:04:11Z"
+ :manifest/routes
+ [{:route/path "/es/notes/hello"
+   :route/locale :es
+   :route/document "notes/hello"
+   :route/artifact "artifacts/notes/hello/es/rev-7f3a91c.html"}]}
