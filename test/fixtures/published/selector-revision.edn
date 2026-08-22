@@ -1,0 +1,16 @@
+;; FIXTURE: a selector keyword where a concrete revision belongs.
+;; EXPECTED: :invalid, loudly. :source/current gives a stable-looking identity
+;; to a moving target, which is why publish-idempotency-key refuses one
+;; upstream and why a served path may not carry one.
+;;
+;; PROVENANCE: knoxx.backend.infra.publication-target-static-site
+;; (card knoxx-publication-static-site-target).
+{:manifest/version 1
+ :manifest/generated-at "2026-08-21T18:04:11Z"
+ :manifest/routes
+ [{:route/path "/es/notes/hello"
+   :route/locale :es
+   :route/document "notes/hello"
+   :route/revision :source/current
+   :route/artifact "artifacts/notes/hello/es/rev-7f3a91c.html"
+   :route/media-type "text/html"}]}

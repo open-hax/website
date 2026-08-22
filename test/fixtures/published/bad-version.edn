@@ -1,0 +1,13 @@
+;; FIXTURE: a manifest version this reader does not understand.
+;; EXPECTED: :invalid, loudly. The whole point of the version field is that the
+;; writer may change shape; reading it optimistically defeats it.
+;;
+;; PROVENANCE: knoxx.backend.infra.publication-target-static-site
+;; (card knoxx-publication-static-site-target).
+{:manifest/version 99
+ :manifest/generated-at "2026-08-21T18:04:11Z"
+ :manifest/routes
+ [{:route/path "/es/notes/hello"
+   :route/locale :es
+   :route/artifact "artifacts/notes/hello/es/rev-7f3a91c.html"
+   :route/media-type "text/html"}]}

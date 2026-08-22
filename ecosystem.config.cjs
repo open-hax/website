@@ -1,4 +1,9 @@
-const path = require("path");
+// pm2 process definitions for local development.
+//
+// Both processes write into dist/site, the single build output directory the
+// dev server and a deployment both serve. Run `pnpm prepare:dev` first: it
+// stages assets, generates the gallery manifest and writes the per-locale HTML
+// shells, none of which the watchers produce.
 const cwd = __dirname;
 
 module.exports = {
@@ -6,7 +11,7 @@ module.exports = {
     {
       name: "website-css",
       script: "pnpm",
-      args: ["exec", "tailwindcss", "-c", "tailwind.config.ts", "-i", "src/index.css", "-o", "dist/app.css", "--watch"],
+      args: ["exec", "tailwindcss", "-c", "tailwind.config.ts", "-i", "src/index.css", "-o", "dist/site/app.css", "--watch"],
       cwd,
       env: {
         NODE_ENV: "development",

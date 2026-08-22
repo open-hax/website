@@ -1,0 +1,14 @@
+;; FIXTURE: an artifact reference pointing at another origin.
+;; EXPECTED: :invalid, loudly, and no request is made. The seam between Knoxx
+;; and this site is files; a manifest that hands the site a URL is asking it to
+;; become a client of the writer, which is the one thing the epic forbids.
+;;
+;; PROVENANCE: knoxx.backend.infra.publication-target-static-site
+;; (card knoxx-publication-static-site-target).
+{:manifest/version 1
+ :manifest/generated-at "2026-08-21T18:04:11Z"
+ :manifest/routes
+ [{:route/path "/es/notes/hello"
+   :route/locale :es
+   :route/artifact "https://knoxx.internal/artifacts/notes/hello/es/rev-7f3a91c.html"
+   :route/media-type "text/html"}]}
