@@ -43,9 +43,14 @@ embed no translatable literals.**
 **The published site is a static build artifact. No secrets, no runtime
 application authority, no backend needed to serve a locale.**
 
-- `pnpm build` produces exactly one self-contained directory, `dist/site/`,
+- `pnpm build:site` produces exactly one self-contained directory, `dist/site/`,
   containing one `index.html` per locale (`/`, `/es/`, `/fr/`, `/de/`, `/ja/`),
-  the bundle, the stylesheet, the favicon and the staged assets.
+  the bundle, the stylesheet, the favicon and the staged assets. `pnpm build`
+  is an alias for it. The `build:site` spelling is the one the deployment
+  contract names — `digitalocean/services/website/service.yaml` declares
+  `command: pnpm run build:site` in `open-hax/services`, and
+  `build-images.yml` refuses to build the image when this package declares no
+  such script rather than guessing at another one.
   `scripts/verify-dist.mjs` proves it — one docroot, no symlinks, no absolute
   paths, no reference that leaves the directory — and `pnpm build` fails if it
   cannot.
@@ -148,7 +153,8 @@ broken images. The decision:
 pnpm install
 pnpm test                # shadow-cljs :test build, :autorun
 pnpm lint                # clj-kondo, zero warnings
-pnpm build               # dist/site, then verify:dist
+pnpm build:site          # dist/site, then verify:dist — the deployment contract
+pnpm build               # alias for build:site
 pnpm verify:dist         # self-containment check alone
 pnpm dev                 # one docroot at http://localhost:8080
 ```
