@@ -32,6 +32,22 @@ for nothing this site needs.
 **The manifest is the published fact.** An artifact file that no route names is
 not rendered by this site.
 
+That rule is enforced at two levels, and it is worth being precise about which
+does what. The content root is served under `/published/` **inside** the public
+docroot — there is no allowlist, and nginx does not consult the manifest. What
+keeps an unlisted path from being fetchable is that it is normally *absent*: the
+writer reclaims artifact files, unlinking a removed route's artifact after the
+manifest commit and the superseded revision's artifact when a new one is
+published. `try_files $uri =404` then answers 404 for it, which is the same
+answer an allowlist would give.
+
+Two residuals, stated rather than implied. Reclaim is best-effort: a failed
+unlink logs and leaves an orphan file that stays fetchable at a path nothing
+renders. And crash-orphaned `*.tmp-*` files are deliberately retained, bounded by
+crash frequency. Neither is a disclosure of anything unpublished — the content
+root has exactly one writer and only published artifacts ever reach it — but
+both mean "not in the manifest" is a rendering guarantee, not a storage one.
+
 ## Manifest wire contract
 
 Declared in `law.published-manifest` as *this reader's expectation* — stated in
