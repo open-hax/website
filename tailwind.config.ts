@@ -21,7 +21,9 @@ function withAlpha(hex: string) {
 
 const config = {
   darkMode: 'class',
-  content: ['./index.html', './src/**/*.{ts,tsx,cljs,clj,cljc}'],
+  // The HTML shells are generated from src/cljc (domain/html_document.cljc),
+  // so there is no index.html at the repository root to scan.
+  content: ['./src/**/*.{ts,tsx,cljs,clj,cljc}'],
   theme: {
     extend: {
       colors: {

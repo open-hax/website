@@ -1,17 +1,28 @@
-{:source-paths ["src/cljs" "test/cljs"]
+;; ONE build output directory: dist/site.
+;;
+;; The previous layout emitted dist/cljs/app.js and dist/app.css while
+;; index.html sat at the repo root, and :dev-http merged three roots
+;; ["." "dist" "public"]. No single docroot could reproduce that, so what the
+;; developer saw and what a deployment could serve were different sites. Both
+;; dev and release now serve exactly the directory that ships.
+{:source-paths ["src/cljc" "src/cljs" "test/cljc" "test/cljs"]
  :dependencies [[lilactown/helix "0.2.2"]]
 
  :js-options
  {:js-package-dirs ["./node_modules"]}
 
  :dev-http
- {8080 {:roots ["." "dist" "public"]
+ {8080 {:roots ["dist/site"]
+        ;; The SPA fallback. Published document paths are client-routed —
+        ;; docs/decisions/0001-spa-fallback-over-prerendering.md records why —
+        ;; and the deployment must exclude /published/ from this fallback so a
+        ;; missing manifest stays a 404 instead of becoming the shell.
         :push-state/index "index.html"}}
 
  :builds
  {:app
   {:target :browser
-   :output-dir "dist/cljs"
+   :output-dir "dist/site/cljs"
    :asset-path "/cljs"
    :modules {:app {:init-fn open-hax.website.core/init}}
    :devtools
@@ -19,6 +30,15 @@
    :compiler-options
    {:output-feature-set :es-next
     :source-map true}}
+
+  ;; Emits one index.html per locale from the same locale dictionaries the app
+  ;; renders from, so a translated <title> cannot drift from a translated page.
+  :html
+  {:target :node-script
+   :main open-hax.website.build.html/main
+   :output-to "target/build/html.cjs"
+   :compiler-options
+   {:output-feature-set :es-next}}
 
   :test
   {:target :node-test

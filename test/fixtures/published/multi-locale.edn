@@ -1,0 +1,34 @@
+;; FIXTURE: one document in two locales, plus a second document in one of them.
+;; EXPECTED: :ok, three routes. /es/notes/hello and /fr/notes/hello both render
+;; with their own lang. The switcher on notes/hello offers es and fr only; on
+;; notes/solo it offers es only. Published locales are (:es :fr).
+;;
+;; PROVENANCE: knoxx.backend.infra.publication-target-static-site
+;; (card knoxx-publication-static-site-target).
+{:manifest/version 1
+ :manifest/generated-at "2026-08-21T18:11:02Z"
+ :manifest/routes
+ [{:route/path "/es/notes/hello"
+   :route/locale :es
+   :route/document "notes/hello"
+   :route/revision "rev-7f3a91c"
+   :route/artifact "artifacts/notes/hello/es/rev-7f3a91c.html"
+   :route/media-type "text/html"
+   :route/title "Hola"
+   :publication/id "pub-0d41ab9c"}
+  {:route/path "/fr/notes/hello"
+   :route/locale :fr
+   :route/document "notes/hello"
+   :route/revision "rev-7f3a91c"
+   :route/artifact "artifacts/notes/hello/fr/rev-7f3a91c.html"
+   :route/media-type "text/html"
+   :route/title "Bonjour"
+   :publication/id "pub-2b8ce410"}
+  {:route/path "/es/notes/solo"
+   :route/locale :es
+   :route/document "notes/solo"
+   :route/revision "rev-11c0de5"
+   :route/artifact "artifacts/notes/solo/es/rev-11c0de5.html"
+   :route/media-type "text/html"
+   :route/title "Solo"
+   :publication/id "pub-6d1f0a72"}]}

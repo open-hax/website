@@ -5,11 +5,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "concurrently -k -n CSS,SHADOW \"tailwindcss -c tailwind.config.ts -i src/index.css -o dist/app.css --watch\" \"shadow-cljs watch app\"",
-    "build": "tailwindcss -c tailwind.config.ts -i src/index.css -o dist/app.css && shadow-cljs release app",
-    "preview": "vite preview",
-    "watch:cljs": "shadow-cljs watch app",
-    "build:cljs": "shadow-cljs release app"
+    "prepare:dev": "node scripts/stage-assets.mjs && node scripts/scan-assets.mjs && pnpm exec shadow-cljs release html && node target/build/html.cjs dist/site && node scripts/copy-static.mjs",
+    "dev": "pnpm run prepare:dev && concurrently -k -n CSS,SHADOW \"tailwindcss -c tailwind.config.ts -i src/index.css -o dist/site/app.css --watch\" \"shadow-cljs watch app\"",
+    "build:site": "node scripts/build-site.mjs",
+    "build": "pnpm run build:site",
+    "verify:dist": "node scripts/verify-dist.mjs",
+    "stage:assets": "node scripts/stage-assets.mjs",
+    "gen:assets": "node scripts/scan-assets.mjs",
+    "test": "shadow-cljs compile test",
+    "lint": "clj-kondo --lint src test"
   },
   "dependencies": {
     "@open-hax/uxx": "0.2.4",

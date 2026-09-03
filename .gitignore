@@ -1,7 +1,15 @@
 /node_modules/
 /dist/
+/target/
 /.shadow-cljs/
 /.clj-kondo/.cache/
 /.lsp/
 *.log
 .DS_Store
+
+# Gallery assets are staged into the build output from roots resolved at build
+# time (OPENHAX_GRAPHICS_ROOT / OPENHAX_MUSIC_ROOT). They were previously two
+# committed symlinks with absolute paths into one developer's home directory,
+# which is dangling in every other checkout. Never commit them again.
+/public/graphics
+/public/music
