@@ -1,110 +1,140 @@
 # Translation target contract
 
-> Status: **contract statement, not implementation.** Nothing described here is
-> built. This document records what this site must become in order to be the
-> first publication target of Knoxx's contract-owned publication pipeline, and
-> what it deliberately does not take on.
+> Status: **implemented.** This site is Knoxx's first publication target, and
+> the contract below is the one the code enforces, not a proposal. Where a rule
+> has a home in source, this document names it and does not restate it — a
+> second copy of a contract is a second thing to drift.
 >
-> Work is tracked as `knoxx-translated-publication-to-website` on the Knoxx
-> board. The website's own cards there are `website-published-content-source`
-> and `website-manifest-contract-tests`.
-
-## Where this site stands today
-
-Honestly: it is a single-language brochure with no content source.
-
-- Every string is compiled in. `src/cljs/open_hax/website/sections/hero.cljs`
-  carries "OpenHax", "Art, Music, and Programs", and the body copy as literals;
-  the other sections are the same shape.
-- `index.html` hardcodes `lang="en"`.
-- There is no routing. `core.cljs` mounts the app; `app.cljs` composes sections.
-  There is no path handling of any kind, and therefore no locale prefix.
-- The only external data is `src/cljs/open_hax/website/data/assets.cljs`, an
-  auto-generated manifest of images and audio produced by `scripts/scan-assets.mjs`
-  at build time — not content, and not translated.
-
-So "translate the website" is not a matter of extracting strings. The site has no
-seam through which anything outside this repository can contribute a page.
+> | concern | authority |
+> |---|---|
+> | manifest shape and reader rules | `src/cljc/open_hax/website/law/published_manifest.cljc` |
+> | decisions over a decoded manifest | `src/cljc/open_hax/website/domain/published.cljc` |
+> | locale set and path grammar | `src/cljc/open_hax/website/domain/locale.cljc` |
+> | HTTP behaviour | `services:digitalocean/services/website/nginx.conf` |
+> | the directory and its writer | `services:docs/published-content-root.md` |
+> | cross-repo manifest agreement | `foresight:docs/notes/published-content-manifest-cross-repo-contract.md` |
 
 ## The seam: a manifest on disk
 
 The site does **not** call Knoxx. It reads a manifest and files from a directory
-that Knoxx writes and this site mounts read-only.
+Knoxx writes and this site mounts read-only.
 
 ```text
-knoxx ──writes──> content root ──read-only──> website nginx ──serves──> browser
+knoxx ──rw──> /srv/open-hax/state/website-content ──ro──> nginx ──> browser
+                                                    served at /published/
 ```
 
-That choice is deliberate and is the reason this site was picked as the first
-target: when Knoxx is down, the site still serves everything last published. A
-request-time API would trade that away for nothing this site needs.
+That choice is why this site was the first target: when Knoxx is down, the site
+still serves everything last published. A request-time API would trade that away
+for nothing this site needs.
 
-Consequences that fall on this repository:
+**The manifest is the published fact.** An artifact file that no route names is
+not rendered by this site.
 
-- **The manifest is the authority.** A file present in the content root but
-  absent from the manifest is not public. The site renders what the manifest
-  declares, and nothing else.
-- **Absent and empty are normal.** The first deploy, and every deploy before the
-  first publication, has no manifest. That must render the site exactly as it
-  renders today — the existing sections, no error, no blank page.
-- **Published content is not the site's own content.** The hero and the asset
-  galleries belong to this repository. Published documents do not. Keep them
-  separated; migrating the existing sections into Knoxx is explicitly out of
-  scope.
+## Manifest wire contract
 
-## What this site must provide
+Declared in `law.published-manifest` as *this reader's expectation* — stated in
+this repository rather than copied from Knoxx's writer schema, because two repos
+that meet at a directory and never share a compile must each be able to fail
+alone. A reader that borrows the writer's schema cannot detect the writer
+changing it.
 
-1. **Locale routing.** Default locale at the root, a path prefix per additional
-   locale, unknown prefixes resolving to the default rather than 404ing.
-2. **`lang` per rendered locale**, replacing the hardcoded `lang="en"`.
-3. **A switcher that offers only published locales.** Listing a language with no
-   content behind it is worse than listing none.
-4. **A declared reader-side expectation of the manifest**, with fixtures in this
-   repo and tests in the existing `shadow-cljs` `:test` build. The manifest is a
-   writer in Knoxx CLJS and a reader in website CLJS with a filesystem and a
-   deploy in between, and no shared compile — the exact configuration that
-   produced five same-shaped defects in Knoxx's MCP work, every one an undeclared
-   boundary.
-5. **A build that emits one directory.** See below; this is a prerequisite for
-   being deployable at all.
+- **Version.** `:manifest/version`, and `supported-versions` is `#{1}`. An
+  unsupported version fails loudly rather than being read optimistically: the
+  point of the field is that the writer can change shape, and guessing defeats
+  it.
+- **Routes.** `:manifest/routes`, each requiring
+  `[:route/path :route/locale :route/artifact :route/media-type]`. Optional and
+  read: `:route/document`, `:route/revision`, `:route/encoding`, `:route/title`,
+  `:publication/id`.
+- **Ordering.** The manifest owns each route's public path including its locale
+  prefix; the reader resolves a request path against it and does not re-derive
+  paths. Switcher order comes from the site's locale order, not the manifest's.
+- **Failure semantics**, and they are deliberately asymmetric:
 
-## The build output problem
+  | input | outcome |
+  |---|---|
+  | absent (no file) | ok, no routes, `:source :absent` |
+  | `:manifest/routes` empty | ok, no routes |
+  | unknown field | ignored, dropped from the decoded route |
+  | required field missing | invalid, loudly |
+  | unsupported `:manifest/version` | invalid, loudly |
+  | `:route/revision` a selector keyword | invalid, loudly |
+  | `:route/artifact` not a relative path | invalid, loudly |
 
-`shadow-cljs.edn` serves development from three merged roots:
+  An absent manifest is the normal state of every deploy before the first
+  publication, so it must serve. A malformed manifest is a writer defect, and a
+  reader that renders a blank page instead of reporting it turns a writer defect
+  into an invisible outage.
 
-```clojure
-:dev-http {8080 {:roots ["." "dist" "public"] :push-state/index "index.html"}}
-```
+- **No artifact reference may leave this origin.** `relative-path?` rejects a
+  scheme, a `//` authority and any `..` traversal, and `artifact-url` never
+  returns an absolute URL. This is the reader-side mechanism behind the one
+  prohibition: no request from the site reaches a Knoxx origin.
 
-`index.html` is at the repository root, the compiled app lands in `dist/cljs/`,
-the stylesheet in `dist/app.css`, and static assets live in `public/`. A single
-nginx docroot cannot reproduce a three-root merge, so a production deploy has to
-choose one directory — and the open deployment branch (`open-hax/services#19`)
-chose `public/`, which contains only `graphics/` and `music/` and none of the
-application.
+`decode` is pure and takes already-parsed EDN, so every rule above is testable
+with no browser, no server and no deploy. Fixtures live in
+`test/fixtures/published/`.
 
-Before this site is deployable, `pnpm build` must assemble one directory
-containing the shell, the compiled app, the stylesheet and the static assets.
+## HTTP behaviour
 
-That matters more than it looks, because this site deploys to the DigitalOcean
-lane as a container image: a builder stage runs the release build, and the
-serving stage is nginx plus a single `COPY --from=build` of that directory.
-Nothing is built on the runner or on the host, and nothing else from the
-checkout ships. The build toolchain — node, pnpm, java, clojure — belongs in the
-builder stage.
+Normative, and implemented in the serving config. There is one policy, not a
+choice between two:
+
+| request | response |
+|---|---|
+| `/published/…` present | 200, `no-cache`; `.edn` typed `application/edn` |
+| `/published/…` absent | **404** — never the app shell |
+| `/es`, `/fr`, `/de`, `/ja` and their subpaths | that locale's shell |
+| a locale shell missing from the build | **404** — a deployment defect |
+| any other path with no file behind it | 200 with the default-locale shell |
+
+Two consequences worth stating plainly:
+
+- **`/published/` never falls back to the shell.** Answering
+  `/published/manifest.edn` with 200 `text/html` would turn "nothing published
+  yet" — the ordinary pre-first-publication state — into a hard reader failure.
+  A 404 is what that state means. The `^~` prefix keeps any later regex location
+  from stealing these paths and reintroducing the fallback.
+- **Locale prefixes keep their locale.** Per-locale shells carry localized
+  `lang`, title and canonical metadata, so falling through to `/index.html`
+  would serve the default locale for `/es/notes/hello`. Each locale gets its own
+  fallback to its own shell.
+
+An unknown locale prefix resolves to the **default locale**, not a 404: a stale
+or guessed link should land somewhere readable. That is a deliberate difference
+from a missing *known* locale shell, which is a build defect and 404s.
+
+The shell is what makes an empty content root a valid state — the site's own
+sections are compiled into the bundle and do not come through the publication
+seam.
+
+## What this site provides
+
+1. **Locale routing.** Default locale at `/`, a path prefix per additional
+   locale, unknown prefixes resolving to the default.
+2. **`lang` per rendered locale**, from per-locale shells generated at build
+   time by `build.html` out of the same dictionaries the running app uses, so a
+   translated `<title>` cannot drift from a translated page.
+3. **A switcher that offers only locales with content.** `switcher-options`
+   distinguishes locales this build carries copy for from locales the manifest
+   carries documents for — the distinction that is easy to get wrong. Offering a
+   locale the manifest lacks is worse than offering no switcher at all.
+4. **Reader-side contract tests** over committed fixtures, in the existing
+   `shadow-cljs` `:test` build.
+5. **A build that emits one directory.** `pnpm run build:site` → `dist/site`,
+   the only directory copied into the serving image. Dev serves from three
+   merged roots (`["." "dist" "public"]`) and one docroot cannot reproduce that.
+
+## Deployment shape
+
+Built in CI as a container image: a builder stage runs `build:site`, the serving
+stage is nginx plus a single `COPY --from=build` of `dist/site`. Nothing is built
+on the runner or on the host, and nothing else from the checkout ships.
 
 The published content root is **not** part of the image. It is a host directory
-bind-mounted read-only into the serving container, written by Knoxx on the same
-host, so replacing this site's image never touches published translations.
-
-## SPA fallback, stated rather than inherited
-
-Static hosting with client-side routing needs a catch-all rewrite to the shell,
-which means an unknown path returns 200 with the shell rather than a 404. For a
-brochure that is fine. For published documents addressable by locale and path it
-is a decision with real consequences for links, crawlers and error reporting, and
-the alternative — pre-rendering a file per published path, which the manifest
-makes possible — should be chosen deliberately and the reasoning recorded.
+bind-mounted read-only, written by Knoxx on the same host, so replacing this
+site's image never touches published translations.
 
 ## Non-goals
 

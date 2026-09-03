@@ -32,11 +32,11 @@ pnpm build
 
 ## Translation target
 
-This site is the intended first publication target for Knoxx's contract-owned
-publication pipeline. [`docs/translation-target-contract.md`](docs/translation-target-contract.md)
-records what that requires of this repository — a content source, locale routing,
-a reader-side manifest contract, and a build that emits one directory — and what
-it deliberately does not.
+This site is Knoxx's first publication target.
+[`docs/translation-target-contract.md`](docs/translation-target-contract.md)
+is the implemented contract: the manifest wire shape and its failure semantics,
+the HTTP behaviour for published paths and locale prefixes, and where each rule
+lives in source.
 
 ## Domain
 
