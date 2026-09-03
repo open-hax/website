@@ -13,6 +13,7 @@
 > | HTTP behaviour | `services:digitalocean/services/website/nginx.conf` |
 > | the directory and its writer | `services:docs/published-content-root.md` |
 > | cross-repo manifest agreement | `foresight:docs/notes/published-content-manifest-cross-repo-contract.md` |
+> | why published paths are not pre-rendered | `docs/decisions/0001-spa-fallback-over-prerendering.md` |
 
 ## The seam: a manifest on disk
 
@@ -87,15 +88,30 @@ choice between two:
 | `/published/…` absent | **404** — never the app shell |
 | `/es`, `/fr`, `/de`, `/ja` and their subpaths | that locale's shell |
 | a locale shell missing from the build | **404** — a deployment defect |
-| any other path with no file behind it | 200 with the default-locale shell |
+| a path the manifest does not name | **200** with the shell, then an explicit not-found view |
+| any other path with no file behind it | 200 with the shell for that locale |
 
-Two consequences worth stating plainly:
+**A missing published document answers 200, not 404, and that is the decided
+policy** — see `docs/decisions/0001-spa-fallback-over-prerendering.md`.
+Pre-rendering published paths is not available: the manifest is deploy-time
+state, not build input, so reading it at build time would invert the publication
+direction, break the empty-content-root rule, and give the content root a second
+writer. The 200 is mitigated rather than accepted bare: the client resolves the
+path against the manifest and renders an explicit not-found view in the right
+language, and `set-robots-noindex!` marks exactly that view `noindex` so the
+soft-404 is not indexable.
 
-- **`/published/` never falls back to the shell.** Answering
+Three more rules worth stating plainly:
+
+- **`/published/` never falls back to the shell**, defended twice. Answering
   `/published/manifest.edn` with 200 `text/html` would turn "nothing published
   yet" — the ordinary pre-first-publication state — into a hard reader failure.
   A 404 is what that state means. The `^~` prefix keeps any later regex location
-  from stealing these paths and reintroducing the fallback.
+  from stealing these paths and reintroducing the fallback. Independently of the
+  host, `extern.fetch` treats a `text/html` answer to a data request as
+  **absent** and `infra.published-manifest` rejects a body starting with `<`, so
+  a misconfigured deployment degrades to "nothing published" rather than "the
+  manifest is corrupt".
 - **Locale prefixes keep their locale.** Per-locale shells carry localized
   `lang`, title and canonical metadata, so falling through to `/index.html`
   would serve the default locale for `/es/notes/hello`. Each locale gets its own
