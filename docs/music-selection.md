@@ -46,7 +46,8 @@ data: selected identities, titles, song/embed URLs, cover/audio references,
 duration, and explicit public flags. Its profile record preserves the capture
 date, selection rule, source response SHA-256, and canonical normalizer source
 SHA-256. Full provider responses remain temporary local inspection material.
-No credentials, account identifiers, lyrics, or downloaded media library are
+The profile URL contains the public creator handle `@misstakenid`. No private
+account identifiers, credentials, lyrics, or downloaded media library are
 committed in that data.
 
 ## Player and delivery behavior

@@ -83,7 +83,7 @@ These are the changed English messages and corresponding proposed translations. 
 | `:hero/cta-github` | Me contacter sur GitHub |
 | `:products/heading` | Projets logiciels |
 | `:products/lede` | Des outils libres que je développe ou auxquels je contribue. Découvrez le code, les idées et les personnes derrière chaque projet. |
-| `:products/knoxx-description` | Un environnement d'agents avec conversations, outils et règles. Un projet distinct de l'écosystème OpenHax. |
+| `:products/knoxx-description` | Un environnement d'agents avec conversations, outils et règles. Un projet distinct au sein de l'écosystème OpenHax. |
 | `:graphics/heading` | Art et graphisme |
 | `:graphics/lede` | {count} œuvres visuelles : études géométriques, motifs génératifs et illustrations numériques. |
 | `:hero/client-lede` | Un site web pour votre entreprise ? Je crée des sites clairs et singuliers qui donnent une place à votre travail. Contactez-moi pour parler de votre projet. |

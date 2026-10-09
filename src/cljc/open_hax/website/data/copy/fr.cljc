@@ -23,7 +23,7 @@
 
    :products/heading "Projets logiciels"
    :products/lede "Des outils libres que je développe ou auxquels je contribue. Découvrez le code, les idées et les personnes derrière chaque projet."
-   :products/knoxx-description "Un environnement d'agents avec conversations, outils et règles. Un projet distinct de l'écosystème OpenHax."
+   :products/knoxx-description "Un environnement d'agents avec conversations, outils et règles. Un projet distinct au sein de l'écosystème OpenHax."
    :products/proxx-description "Proxy de modèles, fédération et courtier de baux d'identifiants. Acheminez les requêtes d'IA avec intelligence."
    :products/openplanner-description "API de mémoire, de graphe et de planification. Reliez les connaissances et orchestrez des flux de travail complexes."
 

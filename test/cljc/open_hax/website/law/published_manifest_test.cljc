@@ -140,6 +140,36 @@
     (is (not (law/relative-path? "")))
     (is (not (law/relative-path? nil)))))
 
+(deftest browser-path-normalization-cannot-escape-the-content-root
+  (testing "unencoded writer paths retain their existing meaning"
+    (doseq [path ["artifacts/open-hax.documents/start-here/en/rev-7f3a91c.html"
+                 "artifacts/cms.org-one/doc-demo/es/79b620.html"
+                 "/published/manifest.edn"]]
+      (is (law/relative-path? path) path)))
+  (testing "URL escapes and backslashes are rejected before fetch interprets them"
+    (doseq [path ["artifacts/%2e%2e/%2e%2e/index.html"
+                 "artifacts/%2E%2E/index.html"
+                 "artifacts/.%2e/index.html"
+                 "artifacts/%2f..%2findex.html"
+                 "artifacts/%5c..%5cindex.html"
+                 "artifacts/%252e%252e/%252findex.html"
+                 "artifacts/..\\..\\index.html"
+                 "\\\\knoxx.internal\\x.html"
+                 "artifacts/.\t./index.html"
+                 "\nhttps://knoxx.internal/x.html"
+                 " //knoxx.internal/x.html"]]
+      (let [route {:route/path "/es/demo"
+                   :route/locale :es
+                   :route/artifact path
+                   :route/media-type "text/html"}
+            decoded (law/decode {:manifest/version 1 :manifest/routes [route]})]
+        (is (not (law/relative-path? path)) path)
+        (is (= :invalid (:published/status decoded)) path)
+        (is (= [:manifest.error/non-relative-artifact]
+               (mapv :error/kind (:published/errors decoded))) path)
+        (is (empty? (:published/routes decoded)) path)
+        (is (nil? (published/artifact-url route)) path)))))
+
 (deftest a-manifest-that-is-not-a-map-fails-loudly
   (doseq [value [[] "nope" 42]]
     (let [decoded (law/decode value)]

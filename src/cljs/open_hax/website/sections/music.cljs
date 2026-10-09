@@ -106,6 +106,7 @@
                                (d/p {:class-name "text-white font-medium"} (:title playing))
                                (d/audio {:key (:id playing)
                                          :src (:src playing)
+                                         :auto-play true
                                          :controls true
                                          :preload "none"
                                          :aria-label (copy/text-with locale :music/play {:title (:title playing)})

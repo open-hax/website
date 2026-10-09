@@ -57,7 +57,7 @@
         [query set-query] (hooks/use-state "")
         [category set-category] (hooks/use-state "")
         [visible-count set-visible-count] (hooks/use-state gallery/page-size)
-        featured (take 12 (gallery/featured-items assets/graphics))
+        featured (gallery/featured-items assets/graphics)
         page (gallery/collection-page assets/graphics query category visible-count)]
     (d/div {:class-name "max-w-7xl mx-auto"}
            (d/div {:class-name "text-center mb-12"}

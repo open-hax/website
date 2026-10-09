@@ -63,16 +63,22 @@
 
 (defn relative-path?
   "True when `s` is a path inside this origin: rooted or bare, with no scheme,
-  no `//` authority, and no `..` traversal.
+  no `//` authority, no `..` traversal, and no URL escapes, backslashes,
+  controls or surrounding whitespace that browser URL parsing could reinterpret.
 
   This is the reader-side mechanism behind the epic's one prohibition — no
   request from the site reaches a Knoxx origin. An artifact reference is a
   file path under the content root, and a manifest that supplies a URL instead
-  is rejected rather than fetched."
+  is rejected rather than fetched. Knoxx emits literal paths from sanitized
+  filesystem segments; percent-encoded paths are not part of that wire format."
   [s]
   (boolean
    (and (string? s)
         (not (str/blank? s))
+        (= s (str/trim s))
+        (not (str/includes? s "%"))
+        (not (str/includes? s "\\"))
+        (not (re-find #"[\u0000-\u001F\u007F]" s))
         (not (re-find #"^[a-zA-Z][a-zA-Z0-9+.-]*:" s))
         (not (str/starts-with? s "//"))
         (not (some #{".."} (str/split s #"/"))))))

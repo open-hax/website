@@ -38,6 +38,23 @@
 (def artwork
   {:id 123 :title "Spiral study" :category "ink" :src "/graphics/ink/spiral.svg"})
 
+(deftest the-featured-gallery-renders-the-whole-selection-in-editorial-order
+  (let [featured (mapv (fn [order]
+                         (assoc artwork
+                                :id order :title (str "Featured study " order)
+                                :src (str "/graphics/featured/" order ".svg")
+                                :featured? true :feature-order order))
+                       (range 18))
+        collection-only (assoc artwork :id 99 :src "/graphics/collection-only.svg")]
+    (with-redefs [assets/graphics (conj (vec (reverse featured)) collection-only)]
+      (let [markup (.renderToStaticMarkup rdom-server ($ graphics/GraphicsSection {:locale :en}))
+            selection (subs markup 0 (str/index-of markup (copy/text :en :graphics/collection)))
+            images (mapv second (re-seq #"<img[^>]*src=\"([^\"]+)\"" selection))]
+        (is (= 18 (count images)))
+        (is (= (mapv :src featured) images)
+            "Every featured artwork is visible in its declared order, beyond twelve cards.")
+        (is (not (str/includes? selection (:src collection-only))))))))
+
 (deftest artwork-cards-are-buttons-with-visible-captions
   (let [markup (.renderToStaticMarkup
                 rdom-server

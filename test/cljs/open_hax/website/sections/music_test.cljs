@@ -3,6 +3,7 @@
             [cljs.test :refer [deftest is testing]]
             [clojure.string :as str]
             [helix.core :refer [$]]
+            [helix.hooks :as hooks]
             [open-hax.website.data.assets :as assets]
             [open-hax.website.data.suno :as suno]
             [open-hax.website.sections.music :as music]))
@@ -84,3 +85,43 @@
     (is (str/starts-with? markup "<button"))
     (is (str/includes? markup "type=\"button\""))
     (is (str/includes? markup "Local study"))))
+
+(deftest a-local-play-click-renders-the-selected-audio-ready-to-start
+  (let [tracks [{:id 1 :title "Local study" :src "/music/study.mp3" :duration "3:20"}
+                {:id 2 :title "Second study" :src "/music/second.mp3" :duration "2:10"}]
+        state (atom [nil nil])
+        hook-index (atom 0)
+        clicks (atom {})
+        track-row music/TrackRow
+        use-state (fn [initial]
+                    (let [index @hook-index]
+                      (swap! hook-index inc)
+                      [(get @state index initial)
+                       #(swap! state assoc index %)]))
+        render-section (fn []
+                         (reset! hook-index 0)
+                         (render ($ music/MusicSection {:locale :en})))]
+    ;; Retain the real row and its actual button handler. Only the hook storage
+    ;; is bound so server rendering can observe the state after that click;
+    ;; this proves the media flags and selection, not a browser playback result.
+    (with-redefs [assets/music tracks
+                  hooks/use-state use-state
+                  music/TrackRow (fn [^js props]
+                                   (let [^js button (track-row props nil)
+                                         ^js button-props (.-props button)
+                                         track (.-track props)]
+                                     (swap! clicks assoc (:id track) (.-onClick button-props))
+                                     button))]
+      (let [initial (render-section)]
+        (is (not (str/includes? initial "<audio")))
+        (is (not (str/includes? initial "<iframe")))
+        (is (not (str/includes? initial "autoplay"))))
+      (doseq [track tracks]
+        ((get @clicks (:id track)))
+        (let [markup (render-section)
+              audio (re-find #"<audio[^>]*>" markup)]
+          (is (= track (first @state)))
+          (is (str/includes? (or audio "") (str "src=\"" (:src track) "\"")))
+          (is (str/includes? (or audio "") "autoplay=\"\""))
+          (is (str/includes? (or audio "") "controls=\"\""))
+          (is (not (str/includes? markup "<iframe"))))))))
