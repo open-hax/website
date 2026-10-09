@@ -7,8 +7,8 @@
   root behaves exactly like a deploy with an empty one.
 
   Every string reaching the DOM comes from `open-hax.website.domain.copy`;
-  every path decision comes from `open-hax.website.domain.published`. This
-  namespace only wires them to React."
+  path decisions come from the pure domain layer. This namespace only wires
+  them to React."
   (:require ["react-dom/client" :as rdom]
             [helix.core :refer [$ defnc]]
             [helix.dom :as d]
@@ -16,6 +16,7 @@
             [open-hax.website.components.footer :as footer]
             [open-hax.website.components.manifest-error :as manifest-error]
             [open-hax.website.components.navigation :as nav]
+            [open-hax.website.domain.navigation :as navigation]
             [open-hax.website.domain.published :as published]
             [open-hax.website.extern.dom :as dom]
             [open-hax.website.infra.published-manifest :as manifest]
@@ -30,10 +31,10 @@
   "The site's OWN content. Compiled in, always present, never published
   through the publication seam — the epic's non-goals are explicit that these
   sections do not migrate into Knoxx."
-  [{:keys [locale manifest]}]
+  [{:keys [locale destinations manifest]}]
   (d/main
    (d/div {:id "hero"}
-          ($ hero/HeroSection {:locale locale}))
+          ($ hero/HeroSection {:locale locale :destinations destinations}))
    (d/div {:id "products" :class-name "py-24 px-4 sm:px-6 lg:px-8"}
           ($ products/ProductsSection {:locale locale}))
    (d/div {:id "graphics" :class-name "py-24 px-4 sm:px-6 lg:px-8 bg-slate-900/50"}
@@ -49,7 +50,8 @@
         [path set-path] (hooks/use-state (dom/location-path))
         location (published/resolve-location manifest-state path)
         loc (:locale/id location)
-        view (:view/kind location)]
+        view (:view/kind location)
+        destinations (navigation/destinations loc)]
 
     (hooks/use-effect
      :once
@@ -72,13 +74,14 @@
     (d/div {:class-name "min-h-screen bg-slate-950 text-slate-100 font-sans"}
            ($ nav/Navigation
               {:locale loc
+               :destinations destinations
                :switcher-options (published/switcher-options manifest-state location)})
            (case view
              :document ($ published-views/PublishedDocument
                           {:locale loc
                            :route (:view/route location)})
              :not-found ($ published-views/PublishedNotFound {:locale loc})
-             ($ SiteSections {:locale loc :manifest manifest-state}))
+             ($ SiteSections {:locale loc :destinations destinations :manifest manifest-state}))
            ($ footer/Footer {:locale loc
                              :year (.getFullYear (js/Date.))})
            (when-not (law/valid? manifest-state)

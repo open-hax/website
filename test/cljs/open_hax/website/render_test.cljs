@@ -16,8 +16,10 @@
             [open-hax.website.components.footer :as footer]
             [open-hax.website.components.language-switcher :as switcher]
             [open-hax.website.components.manifest-error :as manifest-error]
+            [open-hax.website.components.navigation :as navigation-views]
             [open-hax.website.domain.copy :as copy]
             [open-hax.website.domain.locale :as locale]
+            [open-hax.website.domain.navigation :as navigation]
             [open-hax.website.domain.published :as published]
             [open-hax.website.law.published-manifest :as law]
             [open-hax.website.law.published-manifest-fixtures :as fixtures]
@@ -46,17 +48,39 @@
 
 (deftest the-hero-renders-every-locale-in-that-locale
   (doseq [loc locale/supported-locales]
-    (let [markup (render ($ hero/HeroSection {:locale loc}))]
+    (let [destinations (navigation/destinations loc)
+          markup (render ($ hero/HeroSection {:locale loc :destinations destinations}))]
       (is (str/includes? markup "OpenHax") (str loc " brand"))
       (doseq [k [:hero/tagline :hero/lede :hero/cta-work :hero/cta-github]]
         (is (str/includes? markup (text loc k))
-            (str loc " " k))))))
+            (str loc " " k)))
+      (doseq [destination [:graphics :personal-github]]
+        (is (str/includes? markup (str "href=\"" (get destinations destination) "\""))
+            (str loc " " destination))))))
 
 (deftest the-hero-in-one-locale-is-not-the-hero-in-another
   (testing "the failure mode a fn? assertion cannot see"
-    (let [markup (mapv #(render ($ hero/HeroSection {:locale %})) locale/supported-locales)]
+    (let [markup (mapv #(render ($ hero/HeroSection
+                                  {:locale % :destinations (navigation/destinations %)}))
+                      locale/supported-locales)]
       (is (= (count markup) (count (set markup)))
           "five locales produced fewer than five distinct renderings"))))
+
+(deftest the-hero-renders-supplied-destinations-without-choosing-routes
+  (let [destinations {:graphics "/portfolio/art" :personal-github "https://github.com/example"}
+        markup (render ($ hero/HeroSection {:locale :en :destinations destinations}))]
+    (doseq [href (vals destinations)]
+      (is (str/includes? markup (str "href=\"" href "\""))))
+    (is (not (str/includes? markup "href=\"#graphics\"")))
+    (is (not (str/includes? markup "https://github.com/riatzukiza")))))
+
+(deftest navigation-renders-the-same-resolved-destinations
+  (doseq [loc locale/supported-locales]
+    (let [destinations (navigation/destinations loc)
+          markup (render ($ navigation-views/Navigation
+                            {:locale loc :destinations destinations :switcher-options []}))]
+      (doseq [href (vals destinations)]
+        (is (str/includes? markup (str "href=\"" href "\"")) (str loc " " href))))))
 
 (deftest the-product-cards-translate-descriptions-and-tags-but-not-names
   (doseq [loc locale/supported-locales]

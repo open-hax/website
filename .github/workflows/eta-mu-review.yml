@@ -1,0 +1,77 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+name: eta-mu evidence review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  review:
+    name: Evidence-first review (eta-mu)
+    uses: open-hax/eta-mu/.github/workflows/opencode-code-review.yml@e8eea02d31030215984375980b765803fc72d80d
+    with:
+      pr_head_sha: ${{ github.event.pull_request.head.sha }}
+      opencode_version: 1.18.31
+      setup_eta_mu_toolchain: false
+      evidence_gates_script: |
+        # The shared workflow initially bounds pr.diff to 300 KB. Preserve the
+        # complete exact-head diff and inventory before the reviewer indexes it.
+        run_gate complete_review_diff bash -euo pipefail -c '
+          git diff --find-renames "${PR_BASE_SHA}...${PR_HEAD_SHA}" > .opencode/review-evidence/pr.diff
+          git diff --name-status "${PR_BASE_SHA}...${PR_HEAD_SHA}" > .opencode/review-evidence/changed-files.txt
+          test -s .opencode/review-evidence/pr.diff
+          test -s .opencode/review-evidence/changed-files.txt
+        '
+
+        # Use only the website toolchain; no private dependency mirror is needed.
+        # run_gate records the strict subprocess exit, including setup failures.
+        run_gate toolchain bash -euo pipefail -c '
+          : "${JAVA_HOME_21_X64:?The runner must provide Java 21}"
+          test -x "$JAVA_HOME_21_X64/bin/java"
+          export JAVA_HOME="$JAVA_HOME_21_X64"
+          review_bin="$RUNNER_TEMP/website-review-bin"
+          mkdir -p "$review_bin" "$RUNNER_TEMP/website-clj-kondo"
+          export PATH="$review_bin:$JAVA_HOME/bin:$PATH"
+          corepack enable --install-directory "$review_bin"
+          corepack prepare pnpm@10.14.0 --activate
+          test "$(pnpm --version)" = 10.14.0
+          curl --fail --location --silent --show-error --retry 3 --max-time 60 \
+            https://github.com/clj-kondo/clj-kondo/releases/download/v2025.10.23/clj-kondo-2025.10.23-linux-amd64.zip \
+            --output "$RUNNER_TEMP/website-clj-kondo.zip"
+          unzip -q "$RUNNER_TEMP/website-clj-kondo.zip" -d "$RUNNER_TEMP/website-clj-kondo"
+          install -m 755 "$RUNNER_TEMP/website-clj-kondo/clj-kondo" "$review_bin/clj-kondo"
+          test "$(clj-kondo --version)" = "clj-kondo v2025.10.23"
+          java -version
+        '
+
+        toolchain_status="$(awk -F= '$1 == "toolchain" {print $2}' "$statuses")"
+        if [[ "$toolchain_status" == 0 ]]; then
+          export JAVA_HOME="$JAVA_HOME_21_X64"
+          export PATH="$RUNNER_TEMP/website-review-bin:$JAVA_HOME/bin:$PATH"
+          run_gate install pnpm install --frozen-lockfile
+          install_status="$(awk -F= '$1 == "install" {print $2}' "$statuses")"
+          if [[ "$install_status" == 0 ]]; then
+            run_gate lint pnpm lint
+            run_gate test pnpm test
+            run_gate build pnpm build
+            run_gate generated_assets git diff --exit-code HEAD -- src/cljc/open_hax/website/data/assets.cljc
+          else
+            for gate in lint test build generated_assets; do
+              echo "$gate=125" >> "$statuses"
+            done
+          fi
+        else
+          for gate in install lint test build generated_assets; do
+            echo "$gate=125" >> "$statuses"
+          done
+        fi
+
+        # Imported artwork stays byte-identical; check the maintained source.
+        run_gate diff_hygiene git diff --check "${PR_BASE_SHA}...${PR_HEAD_SHA}" -- . ':!assets/graphics/**'
+    secrets:
+      ETA_MU_APP_ID: ${{ secrets.ETA_MU_APP_ID }}
+      ETA_MU_APP_PRIVATE_KEY: ${{ secrets.ETA_MU_APP_PRIVATE_KEY }}

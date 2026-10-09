@@ -7,7 +7,7 @@
             [open-hax.website.domain.gallery :as gallery]
             [open-hax.website.domain.copy :as copy]))
 
-(defnc HeroSection [{:keys [locale]}]
+(defnc HeroSection [{:keys [locale destinations]}]
   (let [art (first (gallery/featured-items assets/graphics))]
    (d/section
    {:class-name "relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-32 pb-20"}
@@ -24,16 +24,16 @@
           (d/p {:class-name "text-base sm:text-lg leading-relaxed text-slate-300 mb-8 max-w-xl"}
                (copy/text locale :hero/lede))
           (d/div {:class-name "flex flex-wrap items-center gap-4"}
-                 (d/a {:href "#graphics"
+                 (d/a {:href (:graphics destinations)
                        :class-name "px-8 py-3 bg-white text-slate-950 font-semibold rounded-lg hover:bg-slate-100 transition"}
                       (copy/text locale :hero/cta-work))
-                 (d/a {:href "https://github.com/riatzukiza" :target "_blank" :rel "noreferrer"
+                 (d/a {:href (:personal-github destinations) :target "_blank" :rel "noreferrer"
                        :class-name "px-8 py-3 border border-slate-600 text-slate-200 font-semibold rounded-lg hover:border-slate-400 hover:text-white transition"}
                       (copy/text locale :hero/cta-github)))
           (d/div {:class-name "mt-8 pt-6 border-t border-slate-800 text-sm leading-relaxed text-slate-300 max-w-xl"}
                  (d/p (copy/text locale :hero/client-lede))))
     (when art
-      (d/a {:href "#graphics"
+      (d/a {:href (:graphics destinations)
             :class-name "block rounded-2xl border border-slate-700 bg-slate-900/70 p-4 sm:p-6 shadow-2xl hover:border-slate-500 transition"}
            (d/img {:src (:src art) :alt (:title art)
                    :class-name "w-full aspect-[2/1] object-contain rounded-xl bg-slate-950"
