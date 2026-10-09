@@ -70,8 +70,10 @@ identity. Cover images remain public provider references. No remote songs or
 covers were bulk-downloaded or staged.
 
 The existing native player remains available for intentionally staged local
-tracks and uses `preload="none"` with no autoplay. An empty selection and empty
-local collection render no music section. On 2026-10-09, Chromium loaded all six cover images successfully and initially
+tracks. Selecting a local track mounts its native audio controls with
+`preload="none"` and requests autoplay from that user action. The initial render
+contains no audio element or Suno iframe. An empty selection and empty local
+collection render no music section. On 2026-10-09, Chromium loaded all six cover images successfully and initially
 rendered no iframe. Selecting We Are The Place loaded the exact official embed;
 clicking its play control produced an advancing playhead with duration 187.6
 seconds, readyState 4, paused false, and no audio error. Each of the other five selected players was then tested: all six reached an
