@@ -1,15 +1,16 @@
 (ns open-hax.website.data.copy.ja
   "Japanese message catalogue.
 
-  Reviewed translation data, not machine output: this file is edited by a
-  person and the build never translates. Key set and `{placeholder}` names are
+  Translation data requires human review before publication. See
+  `docs/site-copy-review.md` for the current approval status. The build never
+  translates. Key set and `{placeholder}` names are
   fixed by `open-hax.website.data.copy.en` and enforced by
   `open-hax.website.law.copy`.
 
-  The two `{count}` sentences are the clearest argument for templating rather
-  than concatenation: Japanese needs the counter `点` immediately after the
-  numeral and places the clause differently from English, so no arrangement of
-  a translated fragment plus a number produces this text.")
+  Count templates keep Japanese counters specific to each message: artwork
+  uses `点`, while songs use `曲`. The counter follows its numeral, and the
+  clause order differs from English, so translated fragments and a number
+  cannot replace the complete template.")
 
 (def messages
   {:brand/name "OpenHax"

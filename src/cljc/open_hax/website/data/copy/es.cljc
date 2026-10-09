@@ -1,8 +1,9 @@
 (ns open-hax.website.data.copy.es
   "Spanish message catalogue.
 
-  Reviewed translation data, not machine output: this file is edited by a
-  person and the build never translates. Key set and `{placeholder}` names are
+  Translation data requires human review before publication. See
+  `docs/site-copy-review.md` for the current approval status. The build never
+  translates. Key set and `{placeholder}` names are
   fixed by `open-hax.website.data.copy.en` and enforced by
   `open-hax.website.law.copy`.")
 
