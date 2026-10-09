@@ -12,21 +12,13 @@ permissions:
 jobs:
   review:
     name: Evidence-first review (eta-mu)
-    uses: open-hax/eta-mu/.github/workflows/opencode-code-review.yml@e8eea02d31030215984375980b765803fc72d80d
+    uses: open-hax/eta-mu/.github/workflows/opencode-code-review.yml@d98ab446d56ddfd24542df49b102b851f2a767fa
     with:
       pr_head_sha: ${{ github.event.pull_request.head.sha }}
       opencode_version: 1.18.31
       setup_eta_mu_toolchain: false
       evidence_gates_script: |
-        # The shared workflow initially bounds pr.diff to 300 KB. Preserve the
-        # complete exact-head diff and inventory before the reviewer indexes it.
-        run_gate complete_review_diff bash -euo pipefail -c '
-          git diff --find-renames "${PR_BASE_SHA}...${PR_HEAD_SHA}" > .opencode/review-evidence/pr.diff
-          git diff --name-status "${PR_BASE_SHA}...${PR_HEAD_SHA}" > .opencode/review-evidence/changed-files.txt
-          test -s .opencode/review-evidence/pr.diff
-          test -s .opencode/review-evidence/changed-files.txt
-        '
-
+        # The shared workflow owns full-diff custody, paging and its preview.
         # Use only the website toolchain; no private dependency mirror is needed.
         # run_gate records the strict subprocess exit, including setup failures.
         run_gate toolchain bash -euo pipefail -c '
