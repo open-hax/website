@@ -173,4 +173,3 @@ These are the changed English messages and corresponding proposed translations. 
 | `:music/local-lede` | さらに{count}曲。 |
 | `:nav/products` | ソフトウェア |
 | `:nav/graphics` | アート |
-
