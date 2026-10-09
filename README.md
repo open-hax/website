@@ -1,7 +1,7 @@
 # OpenHax Website
 
-Portfolio website for the OpenHax organization, showcasing our products, art,
-and music — in five languages, plus whatever Knoxx has published.
+Personal portfolio for OpenHax, showcasing original artwork, published music,
+and open-source software in five languages, plus whatever Knoxx has published.
 
 Read [`AGENTS.md`](AGENTS.md) before changing anything. It is the binding house
 law for this repository: where copy lives, what the published artifact is, and
@@ -20,7 +20,7 @@ why the asset directories are staged rather than symlinked.
 pnpm install
 
 pnpm dev          # one docroot at http://localhost:8080
-pnpm test         # shadow-cljs :test build (:autorun)
+pnpm test         # asset checks + compile and run the Node test runner
 pnpm lint         # clj-kondo, zero warnings
 pnpm build        # dist/site/, then prove it is self-contained
 ```
@@ -93,14 +93,25 @@ OPENHAX_MUSIC_ROOT=/path/to/music \
 pnpm build
 ```
 
-Both default to the paths the previous committed symlinks pointed at, so the
-author's workflow is unchanged. `scripts/scan-assets.mjs` then regenerates
+The defaults are the committed `assets/graphics/` snapshot and optional
+`assets/music/` directory. All 442 accepted artwork originals therefore ship in
+ordinary CI and container builds. `OPENHAX_ASSET_LIMIT` can cap a local preview;
+the default includes the complete snapshot. `scripts/scan-assets.mjs` regenerates
 `src/cljc/open_hax/website/data/assets.cljc` from what was actually staged, so
 the gallery can never reference a file the artifact does not contain.
 
 **Zero staged assets is a valid build.** The galleries render empty and the
 count sentences read `0`. See `AGENTS.md`, "Assets are staged, never symlinked",
-for why this replaced two committed absolute symlinks.
+for why this replaced two committed absolute symlinks. Selection, exclusions,
+and source hashes are documented in [`docs/artwork-selection.md`](docs/artwork-selection.md).
+
+## Published music
+
+Six songs from the confirmed Erroneously (`@misstakenid`) profile use official
+Suno players that load after a listener selects a card. The static snapshot
+contains exact public clip identities and normalized titles; it does not ship
+a downloaded music library. The selection and canonical Calliope metadata
+boundary are documented in [`docs/music-selection.md`](docs/music-selection.md).
 
 ## Domain
 

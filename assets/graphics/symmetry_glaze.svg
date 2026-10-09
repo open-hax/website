@@ -1,0 +1,52 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="glazeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff00ff;stop-opacity:1" />
+      <stop offset="20%" style="stop-color:#00ffff;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#ffff00;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#00ff00;stop-opacity:1" />
+      <stop offset="80%" style="stop-color:#0000ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff00ff;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" fill="#0a0a0f" />
+  
+  <!-- Recursive-style geometric construct -->
+  <g transform="translate(400, 400)" filter="url(#glow)">
+    <!-- Layer 1: The Outer Ring -->
+    <circle cx="0" cy="0" r="300" stroke="url(#glazeGrad)" stroke-width="2" fill="none" opacity="0.6" />
+    
+    <!-- Layer 2: The Shattered Hexagon -->
+    <polygon points="0,-250 216,-125 216,125 0,250 -216,125 -216,-125" stroke="url(#glazeGrad)" stroke-width="1" fill="none" opacity="0.8" />
+    
+    <!-- Layer 3: Inner Intersections -->
+    <g stroke="url(#glazeGrad)" stroke-width="0.5" fill="none" opacity="0.5">
+      <line x1="-216" y1="-125" x2="216" y2="125" />
+      <line x1="-216" y1="125" x2="216" y2="-125" />
+      <line x1="0" y1="-250" x2="0" y2="250" />
+      <line x1="-216" y1="0" x2="216" y2="0" />
+    </g>
+    
+    <!-- Layer 4: The Core Glaze (Recursive circles) -->
+    <circle cx="0" cy="0" r="100" stroke="url(#glazeGrad)" stroke-width="4" fill="none" />
+    <circle cx="0" cy="0" r="80" stroke="url(#glazeGrad)" stroke-width="2" fill="none" opacity="0.7" />
+    <circle cx="0" cy="0" r="60" stroke="url(#glazeGrad)" stroke-width="1" fill="none" opacity="0.5" />
+    <circle cx="0" cy="0" r="40" stroke="url(#glazeGrad)" stroke-width="3" fill="none" />
+    <circle cx="0" cy="0" r="20" stroke="url(#glazeGrad)" stroke-width="1" fill="none" />
+    
+    <!-- Orbitals -->
+    <circle cx="150" cy="0" r="10" fill="url(#glazeGrad)" />
+    <circle cx="-150" cy="0" r="10" fill="url(#glazeGrad)" />
+    <circle cx="0" cy="150" r="10" fill="url(#glazeGrad)" />
+    <circle cx="0" cy="-150" r="10" fill="url(#glazeGrad)" />
+  </g>
+  
+  <text x="400" y="750" text-anchor="middle" fill="url(#glazeGrad)" font-family="monospace" font-size="14" opacity="0.8">SYMMETRY COUNCIL // DATA-REDUCTION-GLAZE-01</text>
+</svg>

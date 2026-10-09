@@ -1,7 +1,10 @@
 (ns open-hax.website.sections.graphics-test
-  (:require [cljs.test :refer [deftest is testing]]
+  (:require ["react-dom/server" :as rdom-server]
+            [cljs.test :refer [deftest is testing]]
             [clojure.string :as str]
+            [helix.core :refer [$]]
             [open-hax.website.data.assets :as assets]
+            [open-hax.website.domain.copy :as copy]
             [open-hax.website.sections.graphics :as graphics]))
 
 (deftest graphics-section-exists
@@ -31,3 +34,30 @@
 (deftest asset-ids-are-stable-and-unique
   (testing "ids are derived from the path, so a regeneration does not churn React keys"
     (is (= (count assets/graphics) (count (set (map :id assets/graphics)))))))
+
+(def artwork
+  {:id 123 :title "Spiral study" :category "ink" :src "/graphics/ink/spiral.svg"})
+
+(deftest artwork-cards-are-buttons-with-visible-captions
+  (let [markup (.renderToStaticMarkup
+                rdom-server
+                ($ graphics/GalleryItem {:locale :en :item artwork :on-click identity}))]
+    (is (str/starts-with? markup "<button"))
+    (is (str/includes? markup "type=\"button\""))
+    (is (str/includes? markup (copy/text-with :en :graphics/open {:title (:title artwork)})))
+    (is (str/includes? markup "object-contain"))
+    (is (str/includes? markup "<h4"))
+    (is (str/includes? markup (:title artwork)))
+    (is (str/includes? markup (:category artwork)))
+    (is (not (str/includes? markup "opacity-0")))))
+
+(deftest an-open-lightbox-has-dialog-and-close-semantics
+  (let [markup (.renderToStaticMarkup
+                rdom-server
+                ($ graphics/Lightbox {:locale :en :item artwork :on-close identity}))]
+    (is (str/includes? markup "role=\"dialog\""))
+    (is (str/includes? markup "aria-modal=\"true\""))
+    (is (str/includes? markup "aria-labelledby=\"graphics-lightbox-title\""))
+    (is (str/includes? markup "id=\"graphics-lightbox-title\""))
+    (is (str/includes? markup (copy/text :en :graphics/close)))
+    (is (str/includes? markup (:src artwork)))))

@@ -13,7 +13,7 @@
   [{:product/id :knoxx
     :product/name "Knoxx"
     :product/icon "🧠"
-    :product/href "https://github.com/open-hax/openplanner/tree/main/packages/agents/knoxx"
+    :product/href "https://github.com/open-hax/knoxx"
     :product/description-key :products/knoxx-description
     :product/tag-keys [:tag/agents :tag/policy :tag/runtime]}
    {:product/id :proxx

@@ -131,8 +131,10 @@ broken images. The decision:
 1. Absolute symlinks are never committed. `public/graphics` and `public/music`
    are gitignored.
 2. `scripts/stage-assets.mjs` resolves roots from `OPENHAX_GRAPHICS_ROOT` and
-   `OPENHAX_MUSIC_ROOT` — defaulting to the two paths above, so the author's
-   workflow is unchanged — and stages what actually exists into `dist/site/`.
+   `OPENHAX_MUSIC_ROOT` — defaulting to repository-owned `assets/graphics/` and
+   optional `assets/music/` — and stages what actually exists into `dist/site/`.
+   Ordinary builds include the committed artwork snapshot. Explicit preview
+   roots may be absent; hidden quarantine directories and symlinks are skipped.
 3. `scripts/scan-assets.mjs` regenerates
    `src/cljc/open_hax/website/data/assets.cljc` **from what was staged**, so the
    gallery manifest cannot claim a file the artifact does not contain. It is a
@@ -151,7 +153,7 @@ broken images. The decision:
 
 ```bash
 pnpm install
-pnpm test                # shadow-cljs :test build, :autorun
+pnpm test                # asset checks, compile :test, run Node with failure exit codes
 pnpm lint                # clj-kondo, zero warnings
 pnpm build:site          # dist/site, then verify:dist — the deployment contract
 pnpm build               # alias for build:site

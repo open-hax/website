@@ -15,7 +15,7 @@
 
 (defnc LanguageSwitcher [{:keys [locale options]}]
   (when (seq options)
-    (d/nav {:class-name "flex items-center gap-2"
+    (d/nav {:class-name "flex flex-wrap items-center gap-1 sm:gap-2"
             :aria-label (copy/text locale :nav/language)}
            (for [{:keys [locale/id locale/label locale/tag locale/href locale/current?]} options]
              (d/a {:key (str id)
@@ -23,8 +23,8 @@
                    :hrefLang tag
                    :lang tag
                    :aria-current (when current? "true")
-                   :class-name (str "text-xs px-2 py-1 rounded border transition "
+                   :class-name (str "text-xs px-0.5 sm:px-2 py-1 rounded border transition "
                                     (if current?
                                       "border-slate-600 text-white"
-                                      "border-transparent text-slate-400 hover:text-slate-200"))}
+                                      "border-transparent text-slate-300 hover:text-slate-200"))}
                   label)))))

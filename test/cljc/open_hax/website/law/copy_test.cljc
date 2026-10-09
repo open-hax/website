@@ -96,8 +96,8 @@
     (let [en (copy/text-with :en :music/lede {:count 12})
           ja (copy/text-with :ja :music/lede {:count 12})
           de (copy/text-with :de :graphics/lede {:count 7})]
-      (is (str/starts-with? en "12 sonic"))
-      (is (str/includes? ja "12 点の"))
+      (is (str/starts-with? en "12 selected"))
+      (is (str/includes? ja "12曲"))
       (is (str/starts-with? de "7 visuelle"))
       (is (not (str/includes? en "{count}")))
       (is (not (str/includes? ja "{count}")))

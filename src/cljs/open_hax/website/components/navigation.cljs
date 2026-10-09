@@ -22,12 +22,12 @@
                          "bg-slate-950/90 backdrop-blur-md border-b border-slate-800"
                          "bg-transparent"))}
      (d/div {:class-name "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}
-            (d/div {:class-name "flex items-center justify-between h-16"}
+            (d/div {:class-name "flex flex-col items-start gap-2 py-3 sm:py-0 sm:flex-row sm:items-center sm:justify-between sm:h-16"}
                    (d/a {:href (locale/locale-root locale)
                          :class-name "text-xl font-bold text-white tracking-tight"}
                         (copy/text locale :brand/name))
-                   (d/div {:class-name "flex items-center gap-8"}
-                          (d/nav {:class-name "hidden md:flex items-center gap-8"}
+                   (d/div {:class-name "flex items-center gap-4 xl:gap-8 max-w-full"}
+                          (d/nav {:class-name "hidden xl:flex items-center gap-6"}
                                  (d/a {:href "#products" :class-name "text-sm text-slate-300 hover:text-white transition"}
                                       (copy/text locale :nav/products))
                                  (d/a {:href "#graphics" :class-name "text-sm text-slate-300 hover:text-white transition"}
@@ -36,6 +36,16 @@
                                       (copy/text locale :nav/music))
                                  (d/a {:href "https://github.com/open-hax" :target "_blank" :rel "noreferrer"
                                        :class-name "text-sm text-slate-300 hover:text-white transition"}
-                                      (copy/text locale :link/github)))
+                                      (copy/text locale :link/github))
+                                 (d/a {:href "https://github.com/riatzukiza" :target "_blank" :rel "noreferrer"
+                                       :class-name "text-sm px-3 py-2 rounded-lg border border-slate-700 text-slate-200 hover:border-slate-400 transition"}
+                                      (copy/text locale :hero/cta-github)))
                           ($ switcher/LanguageSwitcher {:locale locale
-                                                        :options switcher-options})))))))
+                                                        :options switcher-options})))
+            (d/nav {:class-name "xl:hidden flex flex-wrap justify-between gap-x-4 gap-y-2 pb-3 text-sm"}
+                   (d/a {:href "#products" :class-name "text-slate-300"} (copy/text locale :nav/products))
+                   (d/a {:href "#graphics" :class-name "text-slate-300"} (copy/text locale :nav/graphics))
+                   (d/a {:href "#music" :class-name "text-slate-300"} (copy/text locale :nav/music))
+                   (d/a {:href "https://github.com/riatzukiza" :target "_blank" :rel "noreferrer"
+                         :class-name "text-slate-200"}
+                        (copy/text locale :link/github)))))))
