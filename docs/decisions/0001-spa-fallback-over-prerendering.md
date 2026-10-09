@@ -78,6 +78,28 @@ locale roots (`/`, `/es/`, `/fr/`, `/de/`, `/ja/`) are real files and never have
 this problem. A host that supports per-prefix fallbacks can remove it for
 documents too — see the follow-up below.
 
+## Artifact fetching and content trust
+
+The manifest uses `extern.fetch/text`, which treats an HTML response to its
+data-file request as an absent SPA fallback. A manifest-named artifact uses
+`extern.fetch/artifact-text`: a successful `text/html` response is its actual
+content. Both paths retain the same relative-path guard, HTTP-status handling,
+`cache: no-store`, and omitted credentials. Missing artifact requests therefore
+depend on the content root's required 404 behavior.
+
+A matched publication's `:route/locale` selects the document's language and
+current switcher option. Publication paths such as `/cms/<org>/<id>/es` do not
+need the site's leading `/es` prefix. The site's own pages continue to use its
+locale-prefix grammar.
+
+The reader validates manifest paths and metadata; it does not independently
+sanitize artifact HTML or verify its body against the declared media type.
+Knoxx's production `publication-runtime/render-fragment` escapes source and
+translated text before producing paragraph and line-break markup. The website
+trusts those single-writer publication bytes when inserting the artifact into
+the document view. This fetch correction does not change that rendering trust
+boundary or record translation approval.
+
 ## Follow-up owned by another repository
 
 `open-hax/services` (`services-website-content-root`,

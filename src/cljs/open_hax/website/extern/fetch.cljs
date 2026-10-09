@@ -21,14 +21,8 @@
   (let [content-type (or (.get (.-headers response) "content-type") "")]
     (str/starts-with? (str/lower-case content-type) "text/html")))
 
-(defn text
-  "GET `path`, resolving to one of
-
-    {:fetch/status :ok      :fetch/body \"...\"}
-    {:fetch/status :absent}
-    {:fetch/status :error   :fetch/message \"...\" :fetch/http-status n}
-    {:fetch/status :refused :fetch/message \"...\"}"
-  [path]
+(defn- request-text
+  [path data-file?]
   (if-not (law/relative-path? path)
     (js/Promise.resolve
      {:fetch/status :refused
@@ -44,7 +38,7 @@
                     :fetch/http-status (.-status response)
                     :fetch/message (str "HTTP " (.-status response) " for " path)}
 
-                   (html-response? response)
+                   (and data-file? (html-response? response))
                    {:fetch/status :absent}
 
                    :else
@@ -53,3 +47,20 @@
         (.catch (fn [err]
                   {:fetch/status :error
                    :fetch/message (or (.-message err) (str err))})))))
+
+(defn text
+  "GET a data file, treating an HTML SPA fallback as absent.
+
+  Resolves to `:ok` with `:fetch/body`, `:absent`, `:error` with a message,
+  or `:refused` for a non-relative request."
+  [path]
+  (request-text path true))
+
+(defn artifact-text
+  "GET the artifact named by a validated publication route.
+
+  HTML is valid artifact content, so its Content-Type does not mean the file
+  is absent. The same relative-path, HTTP-status and request policy applies.
+  The static host must return 404 for missing files under `/published/`."
+  [path]
+  (request-text path false))
