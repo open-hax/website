@@ -16,7 +16,7 @@
     {:artifact/status :error   :artifact/message \"...\"}"
   [route]
   (if-let [url (published/artifact-url route)]
-    (-> (fetch/text url)
+    (-> (fetch/artifact-text url)
         (.then (fn [{:keys [fetch/status fetch/body fetch/message]}]
                  (case status
                    :ok {:artifact/status :ok

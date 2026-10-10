@@ -16,8 +16,8 @@
                                (copy/text-with locale :footer/copyright {:year year}))
                           (d/div {:class-name "flex items-center gap-6"}
                                  (d/a {:href "https://github.com/open-hax" :target "_blank" :rel "noreferrer"
-                                       :class-name "text-sm text-slate-400 hover:text-slate-200 transition"}
+                                       :class-name "text-sm text-slate-300 hover:text-slate-200 transition"}
                                       (copy/text locale :link/github))
                                  (d/a {:href "https://promethean.rest" :target "_blank" :rel "noreferrer"
-                                       :class-name "text-sm text-slate-400 hover:text-slate-200 transition"}
+                                       :class-name "text-sm text-slate-300 hover:text-slate-200 transition"}
                                       (copy/text locale :brand/promethean)))))))

@@ -37,6 +37,8 @@ function collect(root, pattern) {
       return;
     }
     for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name))) {
+      // Quarantine and VCS directories are never public gallery inputs.
+      if (entry.name.startsWith('.')) continue;
       const full = join(dir, entry.name);
       if (entry.isDirectory()) walk(full);
       else if (entry.isFile() && pattern.test(entry.name)) found.push(full);

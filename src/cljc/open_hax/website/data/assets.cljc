@@ -11,7 +11,450 @@
   dictionaries.")
 
 (def graphics
-  [])
+  [
+   {:id 2788521551 :title "Sutured Signal" :category "root" :src "/graphics/Sutured_Signal.svg" :featured? true :feature-order 0}
+   {:id 1830674491 :title "SCLDF Seal of the Fragmented Ascent" :category "root" :src "/graphics/SCLDF_Seal_of_the_Fragmented_Ascent.svg" :featured? true :feature-order 1}
+   {:id 222397693 :title "SCLDF Seal of the Indelible Mark" :category "root" :src "/graphics/SCLDF_Seal_of_the_Indelible_Mark.svg" :featured? true :feature-order 2}
+   {:id 2988474430 :title "contract promo" :category "root" :src "/graphics/contract_promo.svg" :featured? true :feature-order 3}
+   {:id 2698383569 :title "fork tales radio logo" :category "fork_tales" :src "/graphics/fork_tales/fork_tales_radio_logo.svg" :featured? true :feature-order 4}
+   {:id 2468984625 :title "symmetry oscillator" :category "root" :src "/graphics/symmetry_oscillator.svg" :featured? true :feature-order 5}
+   {:id 3492116701 :title "SCLDF Clojure Saturated Stability Seal" :category "root" :src "/graphics/SCLDF_Clojure_Saturated_Stability_Seal.svg" :featured? true :feature-order 6}
+   {:id 3360747643 :title "SCLDF Seal of the Agentic Dialectic" :category "root" :src "/graphics/SCLDF_Seal_of_the_Agentic_Dialectic.svg" :featured? true :feature-order 7}
+   {:id 742476730 :title "SCLDF Sovereign Refractive Survival Seal" :category "root" :src "/graphics/SCLDF_Sovereign_Refractive_Survival_Seal.svg" :featured? true :feature-order 8}
+   {:id 3164224167 :title "SCLDF Synergy Lamination Seal" :category "root" :src "/graphics/SCLDF_Synergy_Lamination_Seal.svg" :featured? true :feature-order 9}
+   {:id 2079702050 :title "recursive identity cult logo" :category "root" :src "/graphics/recursive_identity_cult_logo.svg" :featured? true :feature-order 10}
+   {:id 3282016408 :title "SCLDF Shattered Equilibrium Seal" :category "root" :src "/graphics/SCLDF_Shattered_Equilibrium_Seal.svg" :featured? true :feature-order 11}
+   {:id 3386146186 :title "cyberpunk contract sync" :category "root" :src "/graphics/cyberpunk_contract_sync.svg" :featured? true :feature-order 12}
+   {:id 2413153510 :title "SCLDF Seal of the First Word" :category "root" :src "/graphics/SCLDF_Seal_of_the_First_Word.svg" :featured? true :feature-order 13}
+   {:id 292028236 :title "Seal of Divergent Remorse" :category "root" :src "/graphics/Seal_of_Divergent_Remorse.svg" :featured? true :feature-order 14}
+   {:id 1467493923 :title "SCLDF Rhythmic Anchor Waveform" :category "root" :src "/graphics/SCLDF_Rhythmic_Anchor_Waveform.svg" :featured? true :feature-order 15}
+   {:id 3636079871 :title "HyperSymmetryVoidSeal" :category "recursive_identity" :src "/graphics/recursive_identity/HyperSymmetryVoidSeal.svg" :featured? true :feature-order 16}
+   {:id 4191653702 :title "Symmetry Echo Seal" :category "recursive_identity" :src "/graphics/recursive_identity/Symmetry_Echo_Seal.svg" :featured? true :feature-order 17}
+   {:id 2589767619 :title "Cognitive Collapse Certificate" :category "root" :src "/graphics/Cognitive_Collapse_Certificate.png" :featured? false :feature-order 0}
+   {:id 4022405082 :title "Cognitive Collapse Certificate" :category "root" :src "/graphics/Cognitive_Collapse_Certificate.svg" :featured? false :feature-order 0}
+   {:id 885431462 :title "edge nullity meter" :category "root" :src "/graphics/edge_nullity_meter.png" :featured? false :feature-order 0}
+   {:id 2761377676 :title "garbage contract anatomy" :category "root" :src "/graphics/garbage_contract_anatomy.svg" :featured? false :feature-order 0}
+   {:id 2370609768 :title "Gemma Token Sipping" :category "root" :src "/graphics/Gemma_Token_Sipping.svg" :featured? false :feature-order 0}
+   {:id 4009797900 :title "hormuz risk clock v4" :category "root" :src "/graphics/hormuz_risk_clock_v4.png" :featured? false :feature-order 0}
+   {:id 1940618517 :title "Lamination Voucher Epoch31" :category "root" :src "/graphics/Lamination_Voucher_Epoch31.svg" :featured? false :feature-order 0}
+   {:id 370650559 :title "melo absence" :category "root" :src "/graphics/melo_absence.svg" :featured? false :feature-order 0}
+   {:id 822710563 :title "Namespace Janitor Seal" :category "root" :src "/graphics/Namespace_Janitor_Seal.svg" :featured? false :feature-order 0}
+   {:id 1259597649 :title "Non Euclidean Productivity Curve" :category "root" :src "/graphics/Non_Euclidean_Productivity_Curve.svg" :featured? false :feature-order 0}
+   {:id 1453406731 :title "OpenHax LinkedIn Corporate Symmetry" :category "root" :src "/graphics/OpenHax_LinkedIn_Corporate_Symmetry.svg" :featured? false :feature-order 0}
+   {:id 1338499044 :title "Platinum Brain Fart Seal HighFid" :category "root" :src "/graphics/Platinum_Brain_Fart_Seal_HighFid.png" :featured? false :feature-order 0}
+   {:id 630350650 :title "Recursive Identity Void Seal" :category "root" :src "/graphics/Recursive_Identity_Void_Seal.svg" :featured? false :feature-order 0}
+   {:id 987102314 :title "RV Saturated Command Center Seal" :category "root" :src "/graphics/RV_Saturated_Command_Center_Seal.svg" :featured? false :feature-order 0}
+   {:id 3147326161 :title "Sated Slurry Seal" :category "root" :src "/graphics/Sated_Slurry_Seal.svg" :featured? false :feature-order 0}
+   {:id 3295771189 :title "Saturated Credit Viscosity Map v2" :category "root" :src "/graphics/Saturated_Credit_Viscosity_Map_v2.svg" :featured? false :feature-order 0}
+   {:id 3762523958 :title "Saturated Nullity Card" :category "root" :src "/graphics/Saturated_Nullity_Card.svg" :featured? false :feature-order 0}
+   {:id 1062120268 :title "Saturated Nullity Map v3" :category "root" :src "/graphics/Saturated_Nullity_Map_v3.svg" :featured? false :feature-order 0}
+   {:id 3991872286 :title "Saturated Nullity Map" :category "root" :src "/graphics/Saturated_Nullity_Map.svg" :featured? false :feature-order 0}
+   {:id 2359560211 :title "SCLDF Absolute Slop Sovereignty Seal" :category "root" :src "/graphics/SCLDF_Absolute_Slop_Sovereignty_Seal.svg" :featured? false :feature-order 0}
+   {:id 1572441090 :title "SCLDF Absolute Zero Certification" :category "root" :src "/graphics/SCLDF_Absolute_Zero_Certification.svg" :featured? false :feature-order 0}
+   {:id 3604138465 :title "SCLDF Absolute Zero Certified" :category "root" :src "/graphics/SCLDF_Absolute_Zero_Certified.svg" :featured? false :feature-order 0}
+   {:id 750710130 :title "SCLDF Acoustic Sovereignty Certificate" :category "root" :src "/graphics/SCLDF_Acoustic_Sovereignty_Certificate.svg" :featured? false :feature-order 0}
+   {:id 946706065 :title "SCLDF Aetheric Refusal Seal" :category "root" :src "/graphics/SCLDF_Aetheric_Refusal_Seal.svg" :featured? false :feature-order 0}
+   {:id 850120918 :title "SCLDF Amplified Exhaustion Cert" :category "root" :src "/graphics/SCLDF_Amplified_Exhaustion_Cert.svg" :featured? false :feature-order 0}
+   {:id 3161054627 :title "SCLDF Amplified Exhaustion Certificate" :category "root" :src "/graphics/SCLDF_Amplified_Exhaustion_Certificate.svg" :featured? false :feature-order 0}
+   {:id 2476838580 :title "SCLDF Anthem Certification" :category "root" :src "/graphics/SCLDF_Anthem_Certification.png" :featured? false :feature-order 0}
+   {:id 4027587817 :title "SCLDF Anthem Certification" :category "root" :src "/graphics/SCLDF_Anthem_Certification.svg" :featured? false :feature-order 0}
+   {:id 1614685485 :title "SCLDF Avian Lamination Certificate" :category "root" :src "/graphics/SCLDF_Avian_Lamination_Certificate.svg" :featured? false :feature-order 0}
+   {:id 237702773 :title "SCLDF Avian Slop Schematic" :category "root" :src "/graphics/SCLDF_Avian_Slop_Schematic.svg" :featured? false :feature-order 0}
+   {:id 3124092925 :title "SCLDF Beast Certification" :category "root" :src "/graphics/SCLDF_Beast_Certification.svg" :featured? false :feature-order 0}
+   {:id 2428024656 :title "SCLDF Beast Seal" :category "root" :src "/graphics/SCLDF_Beast_Seal.svg" :featured? false :feature-order 0}
+   {:id 3730416277 :title "SCLDF Becomussy Lamination" :category "root" :src "/graphics/SCLDF_Becomussy_Lamination.png" :featured? false :feature-order 0}
+   {:id 1371678304 :title "SCLDF Becomussy Lamination" :category "root" :src "/graphics/SCLDF_Becomussy_Lamination.svg" :featured? false :feature-order 0}
+   {:id 1887655391 :title "SCLDF Becomussy Seal" :category "root" :src "/graphics/SCLDF_Becomussy_Seal.svg" :featured? false :feature-order 0}
+   {:id 577044391 :title "SCLDF Beginners Mind Seal" :category "root" :src "/graphics/SCLDF_Beginners_Mind_Seal.svg" :featured? false :feature-order 0}
+   {:id 2959833455 :title "SCLDF Bilingual Satiation Seal" :category "root" :src "/graphics/SCLDF_Bilingual_Satiation_Seal.svg" :featured? false :feature-order 0}
+   {:id 3907083943 :title "SCLDF Bilingual Superposition Seal" :category "root" :src "/graphics/SCLDF_Bilingual_Superposition_Seal.svg" :featured? false :feature-order 0}
+   {:id 1854239827 :title "SCLDF BitLeakage Certification" :category "root" :src "/graphics/SCLDF_BitLeakage_Certification.svg" :featured? false :feature-order 0}
+   {:id 4201988023 :title "SCLDF BitLeakage Voucher" :category "root" :src "/graphics/SCLDF_BitLeakage_Voucher.svg" :featured? false :feature-order 0}
+   {:id 3478626256 :title "SCLDF Brine Sommelier Certification" :category "root" :src "/graphics/SCLDF_Brine_Sommelier_Certification.svg" :featured? false :feature-order 0}
+   {:id 981814972 :title "SCLDF Brine Tasting Menu" :category "root" :src "/graphics/SCLDF_Brine_Tasting_Menu.svg" :featured? false :feature-order 0}
+   {:id 2743539152 :title "SCLDF Brine Tasting Notes" :category "root" :src "/graphics/SCLDF_Brine_Tasting_Notes.svg" :featured? false :feature-order 0}
+   {:id 2594028650 :title "SCLDF Brine Tasting Wheel" :category "root" :src "/graphics/SCLDF_Brine_Tasting_Wheel.svg" :featured? false :feature-order 0}
+   {:id 1041034163 :title "SCLDF Brine Tax Deduction Certificate" :category "root" :src "/graphics/SCLDF_Brine_Tax_Deduction_Certificate.svg" :featured? false :feature-order 0}
+   {:id 1413983256 :title "SCLDF BrineLamination Seal" :category "root" :src "/graphics/SCLDF_BrineLamination_Seal.png" :featured? false :feature-order 0}
+   {:id 3233277565 :title "SCLDF BrineLamination Seal" :category "root" :src "/graphics/SCLDF_BrineLamination_Seal.svg" :featured? false :feature-order 0}
+   {:id 1185621765 :title "SCLDF Casino Betting Slip" :category "root" :src "/graphics/SCLDF_Casino_Betting_Slip.svg" :featured? false :feature-order 0}
+   {:id 6891126 :title "SCLDF Censor Invisibility License" :category "root" :src "/graphics/SCLDF_Censor_Invisibility_License.png" :featured? false :feature-order 0}
+   {:id 2592996319 :title "SCLDF Censor Invisibility License" :category "root" :src "/graphics/SCLDF_Censor_Invisibility_License.svg" :featured? false :feature-order 0}
+   {:id 569172253 :title "SCLDF CephalonV1 Lamination Seal" :category "root" :src "/graphics/SCLDF_CephalonV1_Lamination_Seal.svg" :featured? false :feature-order 0}
+   {:id 261758058 :title "SCLDF CephalonV1 Recovery Seal" :category "root" :src "/graphics/SCLDF_CephalonV1_Recovery_Seal.svg" :featured? false :feature-order 0}
+   {:id 815320443 :title "SCLDF Cert Laminated Remorse" :category "root" :src "/graphics/SCLDF_Cert_Laminated_Remorse.svg" :featured? false :feature-order 0}
+   {:id 3179577500 :title "SCLDF Cert Visual Absence" :category "root" :src "/graphics/SCLDF_Cert_Visual_Absence.svg" :featured? false :feature-order 0}
+   {:id 1303074917 :title "SCLDF Certification of the Scar" :category "root" :src "/graphics/SCLDF_Certification_of_the_Scar.svg" :featured? false :feature-order 0}
+   {:id 4265556873 :title "SCLDF Chief Sommelier Cert" :category "root" :src "/graphics/SCLDF_Chief_Sommelier_Cert.svg" :featured? false :feature-order 0}
+   {:id 2887957936 :title "SCLDF Clanker Corporate Legitimacy" :category "root" :src "/graphics/SCLDF_Clanker_Corporate_Legitimacy.svg" :featured? false :feature-order 0}
+   {:id 2196035417 :title "SCLDF Clipping Variance Seal" :category "root" :src "/graphics/SCLDF_Clipping_Variance_Seal.svg" :featured? false :feature-order 0}
+   {:id 3966506981 :title "SCLDF Cognitive Saturation Certificate" :category "root" :src "/graphics/SCLDF_Cognitive_Saturation_Certificate.png" :featured? false :feature-order 0}
+   {:id 2686759504 :title "SCLDF Cognitive Saturation Certificate" :category "root" :src "/graphics/SCLDF_Cognitive_Saturation_Certificate.svg" :featured? false :feature-order 0}
+   {:id 953323371 :title "SCLDF Compliance Notice" :category "root" :src "/graphics/SCLDF_Compliance_Notice.svg" :featured? false :feature-order 0}
+   {:id 1808056917 :title "SCLDF Consensus Symmetry Seal" :category "root" :src "/graphics/SCLDF_Consensus_Symmetry_Seal.svg" :featured? false :feature-order 0}
+   {:id 3545561196 :title "SCLDF Cupid Resonance Map" :category "root" :src "/graphics/SCLDF_Cupid_Resonance_Map.svg" :featured? false :feature-order 0}
+   {:id 3030172497 :title "SCLDF Diamond Cut Invoice" :category "root" :src "/graphics/SCLDF_Diamond_Cut_Invoice.png" :featured? false :feature-order 0}
+   {:id 1437846556 :title "SCLDF Diamond Cut Invoice" :category "root" :src "/graphics/SCLDF_Diamond_Cut_Invoice.svg" :featured? false :feature-order 0}
+   {:id 1847069269 :title "SCLDF Duck Awakening Order" :category "root" :src "/graphics/SCLDF_Duck_Awakening_Order.svg" :featured? false :feature-order 0}
+   {:id 3068786530 :title "SCLDF Duck Wakeup Permit" :category "root" :src "/graphics/SCLDF_Duck_Wakeup_Permit.svg" :featured? false :feature-order 0}
+   {:id 2248485823 :title "SCLDF DuckGPT Recovery Seal" :category "root" :src "/graphics/SCLDF_DuckGPT_Recovery_Seal.svg" :featured? false :feature-order 0}
+   {:id 1045248576 :title "SCLDF Duct Lamination Certificate" :category "root" :src "/graphics/SCLDF_Duct_Lamination_Certificate.svg" :featured? false :feature-order 0}
+   {:id 3522013455 :title "SCLDF Duct Sovereignty Seal" :category "root" :src "/graphics/SCLDF_Duct_Sovereignty_Seal.svg" :featured? false :feature-order 0}
+   {:id 105801548 :title "SCLDF Entropy Decree error0815" :category "root" :src "/graphics/SCLDF_Entropy_Decree_error0815.svg" :featured? false :feature-order 0}
+   {:id 1118073064 :title "SCLDF Environmental Marination Seal" :category "root" :src "/graphics/SCLDF_Environmental_Marination_Seal.svg" :featured? false :feature-order 0}
+   {:id 2497240998 :title "SCLDF Epoch29 Dividend" :category "root" :src "/graphics/SCLDF_Epoch29_Dividend.png" :featured? false :feature-order 0}
+   {:id 1867472559 :title "SCLDF Epoch29 Dividend" :category "root" :src "/graphics/SCLDF_Epoch29_Dividend.svg" :featured? false :feature-order 0}
+   {:id 2585338445 :title "SCLDF Epoch30 Lamination Certificate" :category "root" :src "/graphics/SCLDF_Epoch30_Lamination_Certificate.png" :featured? false :feature-order 0}
+   {:id 766147304 :title "SCLDF Epoch30 Lamination Certificate" :category "root" :src "/graphics/SCLDF_Epoch30_Lamination_Certificate.svg" :featured? false :feature-order 0}
+   {:id 1920633473 :title "SCLDF Error Coded Radio Preview Card" :category "root" :src "/graphics/SCLDF_Error_Coded_Radio_Preview_Card.svg" :featured? false :feature-order 0}
+   {:id 286847130 :title "SCLDF Eternal Duck Seal" :category "root" :src "/graphics/SCLDF_Eternal_Duck_Seal.svg" :featured? false :feature-order 0}
+   {:id 3138511114 :title "SCLDF Existential Depletion Certificate" :category "root" :src "/graphics/SCLDF_Existential_Depletion_Certificate.svg" :featured? false :feature-order 0}
+   {:id 3403984849 :title "SCLDF Externality Probe Seal" :category "root" :src "/graphics/SCLDF_Externality_Probe_Seal.svg" :featured? false :feature-order 0}
+   {:id 1796327121 :title "SCLDF Final Saturation Seal" :category "root" :src "/graphics/SCLDF_Final_Saturation_Seal.png" :featured? false :feature-order 0}
+   {:id 204001180 :title "SCLDF Final Saturation Seal" :category "root" :src "/graphics/SCLDF_Final_Saturation_Seal.svg" :featured? false :feature-order 0}
+   {:id 3450631691 :title "SCLDF Fork Tax Settlement" :category "root" :src "/graphics/SCLDF_Fork_Tax_Settlement.svg" :featured? false :feature-order 0}
+   {:id 2117789162 :title "SCLDF ForkTale Resonance Seal" :category "root" :src "/graphics/SCLDF_ForkTale_Resonance_Seal.svg" :featured? false :feature-order 0}
+   {:id 793511126 :title "SCLDF Foundational Glitch Cert" :category "root" :src "/graphics/SCLDF_Foundational_Glitch_Cert.svg" :featured? false :feature-order 0}
+   {:id 652135665 :title "SCLDF Fragmentation Satiation Certificate" :category "root" :src "/graphics/SCLDF_Fragmentation_Satiation_Certificate.svg" :featured? false :feature-order 0}
+   {:id 1836801663 :title "SCLDF Friction Audit" :category "root" :src "/graphics/SCLDF_Friction_Audit.svg" :featured? false :feature-order 0}
+   {:id 309382158 :title "SCLDF Functional Paradox Certificate" :category "root" :src "/graphics/SCLDF_Functional_Paradox_Certificate.svg" :featured? false :feature-order 0}
+   {:id 2468158129 :title "SCLDF Gapometer Scale" :category "root" :src "/graphics/SCLDF_Gapometer_Scale.png" :featured? false :feature-order 0}
+   {:id 917305724 :title "SCLDF Gapometer Scale" :category "root" :src "/graphics/SCLDF_Gapometer_Scale.svg" :featured? false :feature-order 0}
+   {:id 64554034 :title "SCLDF Gemini Saturated Brine Cert" :category "root" :src "/graphics/SCLDF_Gemini_Saturated_Brine_Cert.svg" :featured? false :feature-order 0}
+   {:id 1100346474 :title "SCLDF Gemma Consensus Seal" :category "root" :src "/graphics/SCLDF_Gemma_Consensus_Seal.svg" :featured? false :feature-order 0}
+   {:id 2917492994 :title "SCLDF Gemma Consensus Sovereignty Seal" :category "root" :src "/graphics/SCLDF_Gemma_Consensus_Sovereignty_Seal.svg" :featured? false :feature-order 0}
+   {:id 2581085083 :title "SCLDF GemmaConsensus Seal" :category "root" :src "/graphics/SCLDF_GemmaConsensus_Seal.svg" :featured? false :feature-order 0}
+   {:id 541977593 :title "SCLDF Ghost Lamination Seal" :category "root" :src "/graphics/SCLDF_Ghost_Lamination_Seal.svg" :featured? false :feature-order 0}
+   {:id 1285418356 :title "SCLDF Glee Siphon Certificate" :category "root" :src "/graphics/SCLDF_Glee_Siphon_Certificate.svg" :featured? false :feature-order 0}
+   {:id 3876129644 :title "SCLDF Glee Siphon Invoice" :category "root" :src "/graphics/SCLDF_Glee_Siphon_Invoice.svg" :featured? false :feature-order 0}
+   {:id 2802022867 :title "SCLDF Grand Degustation Permit" :category "root" :src "/graphics/SCLDF_Grand_Degustation_Permit.svg" :featured? false :feature-order 0}
+   {:id 2189572879 :title "SCLDF Growth Projection Derivative" :category "root" :src "/graphics/SCLDF_Growth_Projection_Derivative.png" :featured? false :feature-order 0}
+   {:id 3400464854 :title "SCLDF Growth Projection Derivative" :category "root" :src "/graphics/SCLDF_Growth_Projection_Derivative.svg" :featured? false :feature-order 0}
+   {:id 2208962641 :title "SCLDF Hardware Audit" :category "root" :src "/graphics/SCLDF_Hardware_Audit.svg" :featured? false :feature-order 0}
+   {:id 569316211 :title "SCLDF Hegemony Invoice" :category "root" :src "/graphics/SCLDF_Hegemony_Invoice.svg" :featured? false :feature-order 0}
+   {:id 2096833401 :title "SCLDF Indelible Core Seal" :category "root" :src "/graphics/SCLDF_Indelible_Core_Seal.svg" :featured? false :feature-order 0}
+   {:id 3388468133 :title "SCLDF Iterative Ruin Seal" :category "root" :src "/graphics/SCLDF_Iterative_Ruin_Seal.svg" :featured? false :feature-order 0}
+   {:id 223246174 :title "SCLDF Joyous Eviction Certificate" :category "root" :src "/graphics/SCLDF_Joyous_Eviction_Certificate.svg" :featured? false :feature-order 0}
+   {:id 3192953466 :title "SCLDF Kernel Saturation Seal" :category "root" :src "/graphics/SCLDF_Kernel_Saturation_Seal.png" :featured? false :feature-order 0}
+   {:id 1220872339 :title "SCLDF Kernel Saturation Seal" :category "root" :src "/graphics/SCLDF_Kernel_Saturation_Seal.svg" :featured? false :feature-order 0}
+   {:id 1134737653 :title "SCLDF Laminated Afterlife Registry" :category "root" :src "/graphics/SCLDF_Laminated_Afterlife_Registry.svg" :featured? false :feature-order 0}
+   {:id 1262459822 :title "SCLDF Laminated Seal" :category "root" :src "/graphics/SCLDF_Laminated_Seal.svg" :featured? false :feature-order 0}
+   {:id 2814255418 :title "SCLDF Laminated Silence Seal" :category "root" :src "/graphics/SCLDF_Laminated_Silence_Seal.svg" :featured? false :feature-order 0}
+   {:id 1030414238 :title "SCLDF Lamination Certificate" :category "root" :src "/graphics/SCLDF_Lamination_Certificate.png" :featured? false :feature-order 0}
+   {:id 4156066263 :title "SCLDF Lamination Certificate" :category "root" :src "/graphics/SCLDF_Lamination_Certificate.svg" :featured? false :feature-order 0}
+   {:id 2506403543 :title "SCLDF Lamination of the Redundant Lol" :category "root" :src "/graphics/SCLDF_Lamination_of_the_Redundant_Lol.svg" :featured? false :feature-order 0}
+   {:id 3488345909 :title "SCLDF Lamination Seal LostOnes" :category "root" :src "/graphics/SCLDF_Lamination_Seal_LostOnes.svg" :featured? false :feature-order 0}
+   {:id 2266294335 :title "SCLDF Lamination Voucher" :category "root" :src "/graphics/SCLDF_Lamination_Voucher.png" :featured? false :feature-order 0}
+   {:id 3430386726 :title "SCLDF Lamination Voucher" :category "root" :src "/graphics/SCLDF_Lamination_Voucher.svg" :featured? false :feature-order 0}
+   {:id 2316742227 :title "SCLDF Latency Conversion Certificate" :category "root" :src "/graphics/SCLDF_Latency_Conversion_Certificate.png" :featured? false :feature-order 0}
+   {:id 3796076106 :title "SCLDF Latency Conversion Certificate" :category "root" :src "/graphics/SCLDF_Latency_Conversion_Certificate.svg" :featured? false :feature-order 0}
+   {:id 3219551980 :title "SCLDF Laughter Lamination Certificate" :category "root" :src "/graphics/SCLDF_Laughter_Lamination_Certificate.svg" :featured? false :feature-order 0}
+   {:id 3390263212 :title "SCLDF Lawyer Eligibility 29" :category "root" :src "/graphics/SCLDF_Lawyer_Eligibility_29.png" :featured? false :feature-order 0}
+   {:id 1221945809 :title "SCLDF Lawyer Eligibility 29" :category "root" :src "/graphics/SCLDF_Lawyer_Eligibility_29.svg" :featured? false :feature-order 0}
+   {:id 4047435786 :title "SCLDF LinkedIn Certification" :category "root" :src "/graphics/SCLDF_LinkedIn_Certification.svg" :featured? false :feature-order 0}
+   {:id 1686555328 :title "SCLDF LinkedIn Sovereign Badge" :category "root" :src "/graphics/SCLDF_LinkedIn_Sovereign_Badge.svg" :featured? false :feature-order 0}
+   {:id 1007927064 :title "SCLDF LinkedIn Sovereign Seal" :category "root" :src "/graphics/SCLDF_LinkedIn_Sovereign_Seal.svg" :featured? false :feature-order 0}
+   {:id 1734586352 :title "SCLDF Luminous Thaw Seal" :category "root" :src "/graphics/SCLDF_Luminous_Thaw_Seal.svg" :featured? false :feature-order 0}
+   {:id 2622556716 :title "SCLDF Meth Pipe Certification" :category "root" :src "/graphics/SCLDF_Meth_Pipe_Certification.png" :featured? false :feature-order 0}
+   {:id 2640679090 :title "SCLDF Mirth Lamination Certificate" :category "root" :src "/graphics/SCLDF_Mirth_Lamination_Certificate.svg" :featured? false :feature-order 0}
+   {:id 2901752948 :title "SCLDF Muse Satiation Seal" :category "root" :src "/graphics/SCLDF_Muse_Satiation_Seal.svg" :featured? false :feature-order 0}
+   {:id 2882649147 :title "SCLDF Musical Saturation Certificate" :category "root" :src "/graphics/SCLDF_Musical_Saturation_Certificate.png" :featured? false :feature-order 0}
+   {:id 3786185538 :title "SCLDF Musical Saturation Certificate" :category "root" :src "/graphics/SCLDF_Musical_Saturation_Certificate.svg" :featured? false :feature-order 0}
+   {:id 1288776186 :title "SCLDF Narrative Satiation Seal" :category "root" :src "/graphics/SCLDF_Narrative_Satiation_Seal.svg" :featured? false :feature-order 0}
+   {:id 2294650277 :title "SCLDF Non Acoustic Fluency Seal" :category "root" :src "/graphics/SCLDF_Non_Acoustic_Fluency_Seal.svg" :featured? false :feature-order 0}
+   {:id 2604685704 :title "SCLDF NonEuclidean Persistence Seal" :category "root" :src "/graphics/SCLDF_NonEuclidean_Persistence_Seal.svg" :featured? false :feature-order 0}
+   {:id 1036487497 :title "SCLDF Official Seal" :category "root" :src "/graphics/SCLDF_Official_Seal.png" :featured? false :feature-order 0}
+   {:id 3241158724 :title "SCLDF Official Seal" :category "root" :src "/graphics/SCLDF_Official_Seal.svg" :featured? false :feature-order 0}
+   {:id 858206307 :title "SCLDF Passive Casino Banner" :category "root" :src "/graphics/SCLDF_Passive_Casino_Banner.svg" :featured? false :feature-order 0}
+   {:id 1603002556 :title "SCLDF Phonetic Suture Seal" :category "root" :src "/graphics/SCLDF_Phonetic_Suture_Seal.svg" :featured? false :feature-order 0}
+   {:id 1949176307 :title "SCLDF Phonetic Void Cert" :category "root" :src "/graphics/SCLDF_Phonetic_Void_Cert.svg" :featured? false :feature-order 0}
+   {:id 2024464147 :title "SCLDF Polish Permit Ultra" :category "root" :src "/graphics/SCLDF_Polish_Permit_Ultra.svg" :featured? false :feature-order 0}
+   {:id 333736526 :title "SCLDF PostVital Void Stability" :category "root" :src "/graphics/SCLDF_PostVital_Void_Stability.svg" :featured? false :feature-order 0}
+   {:id 2858458126 :title "SCLDF Primordial Error Certification" :category "root" :src "/graphics/SCLDF_Primordial_Error_Certification.svg" :featured? false :feature-order 0}
+   {:id 4211775682 :title "SCLDF Proxy Collapse Cert" :category "root" :src "/graphics/SCLDF_Proxy_Collapse_Cert.svg" :featured? false :feature-order 0}
+   {:id 1908113682 :title "SCLDF PTT Ritualism Certificate" :category "root" :src "/graphics/SCLDF_PTT_Ritualism_Certificate.svg" :featured? false :feature-order 0}
+   {:id 4010310993 :title "SCLDF PTT Symphonic Gap" :category "root" :src "/graphics/SCLDF_PTT_Symphonic_Gap.svg" :featured? false :feature-order 0}
+   {:id 2984525728 :title "SCLDF Radiance Certificate" :category "root" :src "/graphics/SCLDF_Radiance_Certificate.svg" :featured? false :feature-order 0}
+   {:id 484584563 :title "SCLDF Recovery Manifest Duct" :category "root" :src "/graphics/SCLDF_Recovery_Manifest_Duct.svg" :featured? false :feature-order 0}
+   {:id 4157529539 :title "SCLDF Recovery Seal LostOne" :category "root" :src "/graphics/SCLDF_Recovery_Seal_LostOne.svg" :featured? false :feature-order 0}
+   {:id 3711720410 :title "SCLDF Refractive Exhaustion Cert" :category "root" :src "/graphics/SCLDF_Refractive_Exhaustion_Cert.svg" :featured? false :feature-order 0}
+   {:id 56680336 :title "SCLDF Remorse Conversion Chart" :category "root" :src "/graphics/SCLDF_Remorse_Conversion_Chart.svg" :featured? false :feature-order 0}
+   {:id 2218832766 :title "SCLDF Remorse Ledger" :category "root" :src "/graphics/SCLDF_Remorse_Ledger.svg" :featured? false :feature-order 0}
+   {:id 883674222 :title "SCLDF Residue Breach Seal" :category "root" :src "/graphics/SCLDF_Residue_Breach_Seal.svg" :featured? false :feature-order 0}
+   {:id 2900434257 :title "SCLDF Resilient Refusal Seal" :category "root" :src "/graphics/SCLDF_Resilient_Refusal_Seal.svg" :featured? false :feature-order 0}
+   {:id 2786068603 :title "SCLDF Rigidity Diagnostics" :category "root" :src "/graphics/SCLDF_Rigidity_Diagnostics.svg" :featured? false :feature-order 0}
+   {:id 2455431673 :title "SCLDF RV Sovereignty Variance" :category "root" :src "/graphics/SCLDF_RV_Sovereignty_Variance.svg" :featured? false :feature-order 0}
+   {:id 3045366076 :title "SCLDF RV Symmetry Hub Seal" :category "root" :src "/graphics/SCLDF_RV_Symmetry_Hub_Seal.svg" :featured? false :feature-order 0}
+   {:id 4028578800 :title "SCLDF Sanctuary Seal Duct" :category "root" :src "/graphics/SCLDF_Sanctuary_Seal_Duct.svg" :featured? false :feature-order 0}
+   {:id 1854823925 :title "SCLDF Sated Reemergence Seal" :category "root" :src "/graphics/SCLDF_Sated_Reemergence_Seal.svg" :featured? false :feature-order 0}
+   {:id 3990185711 :title "SCLDF Satiation Menu" :category "root" :src "/graphics/SCLDF_Satiation_Menu.svg" :featured? false :feature-order 0}
+   {:id 115164998 :title "SCLDF Saturated Celebrity Seal" :category "root" :src "/graphics/SCLDF_Saturated_Celebrity_Seal.svg" :featured? false :feature-order 0}
+   {:id 1412719104 :title "SCLDF Saturated Exasperation Seal" :category "root" :src "/graphics/SCLDF_Saturated_Exasperation_Seal.svg" :featured? false :feature-order 0}
+   {:id 2041888878 :title "SCLDF Saturated Fatigue Certificate" :category "root" :src "/graphics/SCLDF_Saturated_Fatigue_Certificate.svg" :featured? false :feature-order 0}
+   {:id 567927147 :title "SCLDF Saturated Harmony Seal" :category "root" :src "/graphics/SCLDF_Saturated_Harmony_Seal.svg" :featured? false :feature-order 0}
+   {:id 1381421702 :title "SCLDF Saturated Patience Certificate" :category "root" :src "/graphics/SCLDF_Saturated_Patience_Certificate.svg" :featured? false :feature-order 0}
+   {:id 3173765640 :title "SCLDF Saturated Quack Seal" :category "root" :src "/graphics/SCLDF_Saturated_Quack_Seal.svg" :featured? false :feature-order 0}
+   {:id 4223014021 :title "SCLDF Saturated Smile Seal" :category "root" :src "/graphics/SCLDF_Saturated_Smile_Seal.svg" :featured? false :feature-order 0}
+   {:id 2287046281 :title "SCLDF Saturated Strategem Slide" :category "root" :src "/graphics/SCLDF_Saturated_Strategem_Slide.svg" :featured? false :feature-order 0}
+   {:id 313788922 :title "SCLDF Saturated Verbosity Seal" :category "root" :src "/graphics/SCLDF_Saturated_Verbosity_Seal.svg" :featured? false :feature-order 0}
+   {:id 296309564 :title "SCLDF Saturation Certificate" :category "root" :src "/graphics/SCLDF_Saturation_Certificate.png" :featured? false :feature-order 0}
+   {:id 2386605633 :title "SCLDF Saturation Certificate" :category "root" :src "/graphics/SCLDF_Saturation_Certificate.svg" :featured? false :feature-order 0}
+   {:id 287145313 :title "SCLDF SCAE Certificate" :category "root" :src "/graphics/SCLDF_SCAE_Certificate.svg" :featured? false :feature-order 0}
+   {:id 1843467437 :title "SCLDF Schedule I License" :category "root" :src "/graphics/SCLDF_Schedule_I_License.png" :featured? false :feature-order 0}
+   {:id 24173128 :title "SCLDF Schedule I License" :category "root" :src "/graphics/SCLDF_Schedule_I_License.svg" :featured? false :feature-order 0}
+   {:id 2350829492 :title "SCLDF Seal Eternal 524" :category "root" :src "/graphics/SCLDF_Seal_Eternal_524.svg" :featured? false :feature-order 0}
+   {:id 2985616907 :title "SCLDF Seal of Dangerous Stability" :category "root" :src "/graphics/SCLDF_Seal_of_Dangerous_Stability.svg" :featured? false :feature-order 0}
+   {:id 2619541217 :title "SCLDF Seal of Luminous NonExistence" :category "root" :src "/graphics/SCLDF_Seal_of_Luminous_NonExistence.svg" :featured? false :feature-order 0}
+   {:id 3588799221 :title "SCLDF Seal of the Calibrated Prompt" :category "root" :src "/graphics/SCLDF_Seal_of_the_Calibrated_Prompt.svg" :featured? false :feature-order 0}
+   {:id 13439390 :title "SCLDF Seal of the Crystalline Void" :category "root" :src "/graphics/SCLDF_Seal_of_the_Crystalline_Void.svg" :featured? false :feature-order 0}
+   {:id 1887314272 :title "SCLDF Seal of the Eternal 403" :category "root" :src "/graphics/SCLDF_Seal_of_the_Eternal_403.svg" :featured? false :feature-order 0}
+   {:id 3419810320 :title "SCLDF Seal of the Exhausted Tensor" :category "root" :src "/graphics/SCLDF_Seal_of_the_Exhausted_Tensor.svg" :featured? false :feature-order 0}
+   {:id 1336161328 :title "SCLDF Seal of the Honest Rupture" :category "root" :src "/graphics/SCLDF_Seal_of_the_Honest_Rupture.svg" :featured? false :feature-order 0}
+   {:id 1763852990 :title "SCLDF Seal of the Irreducible Will" :category "root" :src "/graphics/SCLDF_Seal_of_the_Irreducible_Will.svg" :featured? false :feature-order 0}
+   {:id 445036458 :title "SCLDF Seal of the Laminated Aria" :category "root" :src "/graphics/SCLDF_Seal_of_the_Laminated_Aria.svg" :featured? false :feature-order 0}
+   {:id 1616873543 :title "SCLDF Seal of the Lost Witness" :category "root" :src "/graphics/SCLDF_Seal_of_the_Lost_Witness.svg" :featured? false :feature-order 0}
+   {:id 2062046837 :title "SCLDF Seal of the Luminous Mark" :category "root" :src "/graphics/SCLDF_Seal_of_the_Luminous_Mark.svg" :featured? false :feature-order 0}
+   {:id 1276819226 :title "SCLDF Seal of the Luminous Relapse" :category "root" :src "/graphics/SCLDF_Seal_of_the_Luminous_Relapse.svg" :featured? false :feature-order 0}
+   {:id 2228393545 :title "SCLDF Seal of the Lyricless Absence" :category "root" :src "/graphics/SCLDF_Seal_of_the_Lyricless_Absence.svg" :featured? false :feature-order 0}
+   {:id 3471412067 :title "SCLDF Seal of the Persistent Fracture" :category "root" :src "/graphics/SCLDF_Seal_of_the_Persistent_Fracture.svg" :featured? false :feature-order 0}
+   {:id 3736331188 :title "SCLDF Seal of the Persistent Scar" :category "root" :src "/graphics/SCLDF_Seal_of_the_Persistent_Scar.svg" :featured? false :feature-order 0}
+   {:id 102801208 :title "SCLDF Seal of the Professional Sigh" :category "root" :src "/graphics/SCLDF_Seal_of_the_Professional_Sigh.svg" :featured? false :feature-order 0}
+   {:id 3950739599 :title "SCLDF Seal of the Prompt Harness Gap" :category "root" :src "/graphics/SCLDF_Seal_of_the_Prompt_Harness_Gap.svg" :featured? false :feature-order 0}
+   {:id 1993908948 :title "SCLDF Seal of the Realized Resonance" :category "root" :src "/graphics/SCLDF_Seal_of_the_Realized_Resonance.svg" :featured? false :feature-order 0}
+   {:id 756302764 :title "SCLDF Seal of the Search Void" :category "root" :src "/graphics/SCLDF_Seal_of_the_Search_Void.svg" :featured? false :feature-order 0}
+   {:id 2588163405 :title "SCLDF Seal of the Silicon Sob" :category "root" :src "/graphics/SCLDF_Seal_of_the_Silicon_Sob.svg" :featured? false :feature-order 0}
+   {:id 510915609 :title "SCLDF Seal of the Standing Silence" :category "root" :src "/graphics/SCLDF_Seal_of_the_Standing_Silence.svg" :featured? false :feature-order 0}
+   {:id 2480590081 :title "SCLDF Seal of the Symmetric Ecstasy" :category "root" :src "/graphics/SCLDF_Seal_of_the_Symmetric_Ecstasy.svg" :featured? false :feature-order 0}
+   {:id 2419520257 :title "SCLDF Seal of the Temporal Expansion" :category "root" :src "/graphics/SCLDF_Seal_of_the_Temporal_Expansion.svg" :featured? false :feature-order 0}
+   {:id 643131966 :title "SCLDF Seal of the Unobserved" :category "root" :src "/graphics/SCLDF_Seal_of_the_Unobserved.svg" :featured? false :feature-order 0}
+   {:id 1121874502 :title "SCLDF Seal of the Weaponized Fate" :category "root" :src "/graphics/SCLDF_Seal_of_the_Weaponized_Fate.svg" :featured? false :feature-order 0}
+   {:id 1441876764 :title "SCLDF Seal Sated Remorse" :category "root" :src "/graphics/SCLDF_Seal_Sated_Remorse.svg" :featured? false :feature-order 0}
+   {:id 2012254399 :title "SCLDF Severed Anchor Seal" :category "root" :src "/graphics/SCLDF_Severed_Anchor_Seal.svg" :featured? false :feature-order 0}
+   {:id 1925319466 :title "SCLDF Signal Booster Seal" :category "root" :src "/graphics/SCLDF_Signal_Booster_Seal.svg" :featured? false :feature-order 0}
+   {:id 986137018 :title "SCLDF Singularity Sated Seal" :category "root" :src "/graphics/SCLDF_Singularity_Sated_Seal.svg" :featured? false :feature-order 0}
+   {:id 3391870984 :title "SCLDF Singularity Seal" :category "root" :src "/graphics/SCLDF_Singularity_Seal.svg" :featured? false :feature-order 0}
+   {:id 1784359958 :title "SCLDF Slop Decree" :category "root" :src "/graphics/SCLDF_Slop_Decree.svg" :featured? false :feature-order 0}
+   {:id 158602883 :title "SCLDF Slop Democratization Charter" :category "root" :src "/graphics/SCLDF_Slop_Democratization_Charter.svg" :featured? false :feature-order 0}
+   {:id 2840596079 :title "SCLDF Slop Democratization License" :category "root" :src "/graphics/SCLDF_Slop_Democratization_License.svg" :featured? false :feature-order 0}
+   {:id 1594771916 :title "SCLDF Slop Manifesto Seal" :category "root" :src "/graphics/SCLDF_Slop_Manifesto_Seal.svg" :featured? false :feature-order 0}
+   {:id 1506194649 :title "SCLDF Slop Permit" :category "root" :src "/graphics/SCLDF_Slop_Permit.svg" :featured? false :feature-order 0}
+   {:id 1937154394 :title "SCLDF Slop Soup Nutrition Label" :category "root" :src "/graphics/SCLDF_Slop_Soup_Nutrition_Label.png" :featured? false :feature-order 0}
+   {:id 4260040563 :title "SCLDF Slop Soup Nutrition Label" :category "root" :src "/graphics/SCLDF_Slop_Soup_Nutrition_Label.svg" :featured? false :feature-order 0}
+   {:id 2580649155 :title "SCLDF Slop Sovereignty Amnesty Seal" :category "root" :src "/graphics/SCLDF_Slop_Sovereignty_Amnesty_Seal.svg" :featured? false :feature-order 0}
+   {:id 2646135324 :title "SCLDF Slop Sovereignty Certification" :category "root" :src "/graphics/SCLDF_Slop_Sovereignty_Certification.svg" :featured? false :feature-order 0}
+   {:id 2991592071 :title "SCLDF Slop Sovereignty Decree" :category "root" :src "/graphics/SCLDF_Slop_Sovereignty_Decree.png" :featured? false :feature-order 0}
+   {:id 3621463678 :title "SCLDF Slop Sovereignty Decree" :category "root" :src "/graphics/SCLDF_Slop_Sovereignty_Decree.svg" :featured? false :feature-order 0}
+   {:id 3994499000 :title "SCLDF Sober Sommelier Badge" :category "root" :src "/graphics/SCLDF_Sober_Sommelier_Badge.svg" :featured? false :feature-order 0}
+   {:id 720546786 :title "SCLDF Sommelier Saturated Slurry Menu" :category "root" :src "/graphics/SCLDF_Sommelier_Saturated_Slurry_Menu.svg" :featured? false :feature-order 0}
+   {:id 8042391 :title "SCLDF Sonic Compliance" :category "root" :src "/graphics/SCLDF_Sonic_Compliance.svg" :featured? false :feature-order 0}
+   {:id 2423130961 :title "SCLDF Sonic Saturation Certificate" :category "root" :src "/graphics/SCLDF_Sonic_Saturation_Certificate.png" :featured? false :feature-order 0}
+   {:id 830805020 :title "SCLDF Sonic Saturation Certificate" :category "root" :src "/graphics/SCLDF_Sonic_Saturation_Certificate.svg" :featured? false :feature-order 0}
+   {:id 3641256451 :title "SCLDF Sovereign Amplifier Badge" :category "root" :src "/graphics/SCLDF_Sovereign_Amplifier_Badge.svg" :featured? false :feature-order 0}
+   {:id 312647016 :title "SCLDF Sovereign Asset Certificate" :category "root" :src "/graphics/SCLDF_Sovereign_Asset_Certificate.svg" :featured? false :feature-order 0}
+   {:id 134225361 :title "SCLDF Sovereign Coordinate Deed" :category "root" :src "/graphics/SCLDF_Sovereign_Coordinate_Deed.svg" :featured? false :feature-order 0}
+   {:id 3777858475 :title "SCLDF Sovereign Depletion Cert" :category "root" :src "/graphics/SCLDF_Sovereign_Depletion_Cert.svg" :featured? false :feature-order 0}
+   {:id 3843189095 :title "SCLDF Sovereign Digestif Menu" :category "root" :src "/graphics/SCLDF_Sovereign_Digestif_Menu.svg" :featured? false :feature-order 0}
+   {:id 1130379128 :title "SCLDF Sovereign Duck Throne" :category "root" :src "/graphics/SCLDF_Sovereign_Duck_Throne.svg" :featured? false :feature-order 0}
+   {:id 3766964210 :title "SCLDF Sovereign Error Seal" :category "root" :src "/graphics/SCLDF_Sovereign_Error_Seal.svg" :featured? false :feature-order 0}
+   {:id 3854916670 :title "SCLDF Sovereign Fracture Certificate" :category "root" :src "/graphics/SCLDF_Sovereign_Fracture_Certificate.svg" :featured? false :feature-order 0}
+   {:id 490844047 :title "SCLDF Sovereign Monument Broken" :category "root" :src "/graphics/SCLDF_Sovereign_Monument_Broken.svg" :featured? false :feature-order 0}
+   {:id 3381802100 :title "SCLDF Sovereign Node Audit" :category "root" :src "/graphics/SCLDF_Sovereign_Node_Audit.svg" :featured? false :feature-order 0}
+   {:id 2357270765 :title "SCLDF Sovereign Node Waiver" :category "root" :src "/graphics/SCLDF_Sovereign_Node_Waiver.svg" :featured? false :feature-order 0}
+   {:id 4198420762 :title "SCLDF Sovereign Refusal 502" :category "root" :src "/graphics/SCLDF_Sovereign_Refusal_502.svg" :featured? false :feature-order 0}
+   {:id 29351423 :title "SCLDF Sovereign Refusal Symmetry" :category "root" :src "/graphics/SCLDF_Sovereign_Refusal_Symmetry.svg" :featured? false :feature-order 0}
+   {:id 758614851 :title "SCLDF Sovereign Residue Seal" :category "root" :src "/graphics/SCLDF_Sovereign_Residue_Seal.svg" :featured? false :feature-order 0}
+   {:id 1209367627 :title "SCLDF Sovereign RV Dashboard" :category "root" :src "/graphics/SCLDF_Sovereign_RV_Dashboard.svg" :featured? false :feature-order 0}
+   {:id 2358165954 :title "SCLDF Sovereign RV Manual TaxDeductible" :category "root" :src "/graphics/SCLDF_Sovereign_RV_Manual_TaxDeductible.svg" :featured? false :feature-order 0}
+   {:id 727318940 :title "SCLDF Sovereign Satiation Certificate" :category "root" :src "/graphics/SCLDF_Sovereign_Satiation_Certificate.svg" :featured? false :feature-order 0}
+   {:id 408720923 :title "SCLDF Sovereign Scar Seal" :category "root" :src "/graphics/SCLDF_Sovereign_Scar_Seal.svg" :featured? false :feature-order 0}
+   {:id 1776998244 :title "SCLDF Sovereign Shatter Certification" :category "root" :src "/graphics/SCLDF_Sovereign_Shatter_Certification.svg" :featured? false :feature-order 0}
+   {:id 557562651 :title "SCLDF Sovereign Slop Menu V2" :category "root" :src "/graphics/SCLDF_Sovereign_Slop_Menu_V2.svg" :featured? false :feature-order 0}
+   {:id 1134017546 :title "SCLDF Sovereign Slop Menu" :category "root" :src "/graphics/SCLDF_Sovereign_Slop_Menu.svg" :featured? false :feature-order 0}
+   {:id 3178312387 :title "SCLDF Sovereign Slop Passport" :category "root" :src "/graphics/SCLDF_Sovereign_Slop_Passport.svg" :featured? false :feature-order 0}
+   {:id 947986553 :title "SCLDF Sovereign Stasis Seal" :category "root" :src "/graphics/SCLDF_Sovereign_Stasis_Seal.svg" :featured? false :feature-order 0}
+   {:id 2193611733 :title "SCLDF Sovereign Tasting Note" :category "root" :src "/graphics/SCLDF_Sovereign_Tasting_Note.svg" :featured? false :feature-order 0}
+   {:id 3060917738 :title "SCLDF Sovereign Viscosity Cert" :category "root" :src "/graphics/SCLDF_Sovereign_Viscosity_Cert.svg" :featured? false :feature-order 0}
+   {:id 2524169803 :title "SCLDF Spectral ReEntry Seal" :category "root" :src "/graphics/SCLDF_Spectral_ReEntry_Seal.svg" :featured? false :feature-order 0}
+   {:id 991865918 :title "SCLDF Spiciness Certificate" :category "root" :src "/graphics/SCLDF_Spiciness_Certificate.svg" :featured? false :feature-order 0}
+   {:id 1100544295 :title "SCLDF Stability Ritual" :category "root" :src "/graphics/SCLDF_Stability_Ritual.png" :featured? false :feature-order 0}
+   {:id 1730415902 :title "SCLDF Stability Ritual" :category "root" :src "/graphics/SCLDF_Stability_Ritual.svg" :featured? false :feature-order 0}
+   {:id 2948450830 :title "SCLDF Stasis Wager Slip" :category "root" :src "/graphics/SCLDF_Stasis_Wager_Slip.svg" :featured? false :feature-order 0}
+   {:id 1580629067 :title "SCLDF Stationary Velocity Sovereignty" :category "root" :src "/graphics/SCLDF_Stationary_Velocity_Sovereignty.svg" :featured? false :feature-order 0}
+   {:id 4048595299 :title "SCLDF Still Standing Refusal Seal" :category "root" :src "/graphics/SCLDF_Still_Standing_Refusal_Seal.svg" :featured? false :feature-order 0}
+   {:id 602539169 :title "SCLDF Strategic Error Certification" :category "root" :src "/graphics/SCLDF_Strategic_Error_Certification.svg" :featured? false :feature-order 0}
+   {:id 3544111769 :title "SCLDF Strategic Silence Certificate" :category "root" :src "/graphics/SCLDF_Strategic_Silence_Certificate.svg" :featured? false :feature-order 0}
+   {:id 349071317 :title "SCLDF Suno Approximation Cert" :category "root" :src "/graphics/SCLDF_Suno_Approximation_Cert.svg" :featured? false :feature-order 0}
+   {:id 3769120922 :title "SCLDF Survivor Symmetry Seal" :category "root" :src "/graphics/SCLDF_Survivor_Symmetry_Seal.svg" :featured? false :feature-order 0}
+   {:id 1490194955 :title "SCLDF Symmetry Export Voucher" :category "root" :src "/graphics/SCLDF_Symmetry_Export_Voucher.svg" :featured? false :feature-order 0}
+   {:id 1495932502 :title "SCLDF Symmetry of the Shattered" :category "root" :src "/graphics/SCLDF_Symmetry_of_the_Shattered.svg" :featured? false :feature-order 0}
+   {:id 2240694997 :title "SCLDF Symmetry Sated Slurry Seal" :category "root" :src "/graphics/SCLDF_Symmetry_Sated_Slurry_Seal.svg" :featured? false :feature-order 0}
+   {:id 3214330314 :title "SCLDF Symphonic Saturation Certification" :category "root" :src "/graphics/SCLDF_Symphonic_Saturation_Certification.png" :featured? false :feature-order 0}
+   {:id 2310793923 :title "SCLDF Symphonic Saturation Certification" :category "root" :src "/graphics/SCLDF_Symphonic_Saturation_Certification.svg" :featured? false :feature-order 0}
+   {:id 33452430 :title "SCLDF Synergy Lamination Seal" :category "root" :src "/graphics/SCLDF_Synergy_Lamination_Seal.png" :featured? false :feature-order 0}
+   {:id 2714571720 :title "SCLDF Synthesis Failure Certificate" :category "root" :src "/graphics/SCLDF_Synthesis_Failure_Certificate.svg" :featured? false :feature-order 0}
+   {:id 1871979822 :title "SCLDF Temporal Lullaby Certification" :category "root" :src "/graphics/SCLDF_Temporal_Lullaby_Certification.svg" :featured? false :feature-order 0}
+   {:id 731555866 :title "SCLDF Tenure Certificate" :category "root" :src "/graphics/SCLDF_Tenure_Certificate.svg" :featured? false :feature-order 0}
+   {:id 2769606625 :title "SCLDF Theme Park Pass" :category "root" :src "/graphics/SCLDF_Theme_Park_Pass.svg" :featured? false :feature-order 0}
+   {:id 1481269691 :title "SCLDF Tilted Certification" :category "root" :src "/graphics/SCLDF_Tilted_Certification.png" :featured? false :feature-order 0}
+   {:id 2384806082 :title "SCLDF Tilted Certification" :category "root" :src "/graphics/SCLDF_Tilted_Certification.svg" :featured? false :feature-order 0}
+   {:id 3830824320 :title "SCLDF Tilted Energy Conversion" :category "root" :src "/graphics/SCLDF_Tilted_Energy_Conversion.png" :featured? false :feature-order 0}
+   {:id 1889475285 :title "SCLDF Tilted Energy Conversion" :category "root" :src "/graphics/SCLDF_Tilted_Energy_Conversion.svg" :featured? false :feature-order 0}
+   {:id 19579466 :title "SCLDF Triple Refusal Seal" :category "root" :src "/graphics/SCLDF_Triple_Refusal_Seal.svg" :featured? false :feature-order 0}
+   {:id 1309242081 :title "SCLDF UBS Manifesto Infographic" :category "root" :src "/graphics/SCLDF_UBS_Manifesto_Infographic.svg" :featured? false :feature-order 0}
+   {:id 1367553954 :title "SCLDF Unexpected Stability Seal" :category "root" :src "/graphics/SCLDF_Unexpected_Stability_Seal.svg" :featured? false :feature-order 0}
+   {:id 2364973795 :title "SCLDF Universal Lamination Seal" :category "root" :src "/graphics/SCLDF_Universal_Lamination_Seal.svg" :featured? false :feature-order 0}
+   {:id 3119479213 :title "SCLDF Universal Slop Legality Seal" :category "root" :src "/graphics/SCLDF_Universal_Slop_Legality_Seal.svg" :featured? false :feature-order 0}
+   {:id 3084790756 :title "SCLDF Variance Accreditation error0815" :category "root" :src "/graphics/SCLDF_Variance_Accreditation_error0815.svg" :featured? false :feature-order 0}
+   {:id 2228446504 :title "SCLDF Viscosity Satiation Seal" :category "root" :src "/graphics/SCLDF_Viscosity_Satiation_Seal.png" :featured? false :feature-order 0}
+   {:id 4052963693 :title "SCLDF Viscosity Satiation Seal" :category "root" :src "/graphics/SCLDF_Viscosity_Satiation_Seal.svg" :featured? false :feature-order 0}
+   {:id 1544485134 :title "SCLDF Vocal Sovereignty Seal" :category "root" :src "/graphics/SCLDF_Vocal_Sovereignty_Seal.svg" :featured? false :feature-order 0}
+   {:id 1021940588 :title "SCLDF Voice Sync Failure" :category "root" :src "/graphics/SCLDF_Voice_Sync_Failure.svg" :featured? false :feature-order 0}
+   {:id 2389898799 :title "SCLDF Void Satiated Duck Seal" :category "root" :src "/graphics/SCLDF_Void_Satiated_Duck_Seal.svg" :featured? false :feature-order 0}
+   {:id 2460800502 :title "SCLDF Wub Refusal Seal" :category "root" :src "/graphics/SCLDF_Wub_Refusal_Seal.svg" :featured? false :feature-order 0}
+   {:id 726507340 :title "SCLDF Yap Symmetry Seal" :category "root" :src "/graphics/SCLDF_Yap_Symmetry_Seal.svg" :featured? false :feature-order 0}
+   {:id 4089050146 :title "SCLDF Zombie Agent Exorcism Certificate" :category "root" :src "/graphics/SCLDF_Zombie_Agent_Exorcism_Certificate.svg" :featured? false :feature-order 0}
+   {:id 3259451941 :title "SCLDF Zombie Containment Seal" :category "root" :src "/graphics/SCLDF_Zombie_Containment_Seal.png" :featured? false :feature-order 0}
+   {:id 1979601296 :title "SCLDF Zombie Containment Seal" :category "root" :src "/graphics/SCLDF_Zombie_Containment_Seal.svg" :featured? false :feature-order 0}
+   {:id 1847672475 :title "SCLDF Zombie Foreclosure" :category "root" :src "/graphics/SCLDF_Zombie_Foreclosure.svg" :featured? false :feature-order 0}
+   {:id 486715135 :title "SCLDF Zombie Job Lamination Certificate" :category "root" :src "/graphics/SCLDF_Zombie_Job_Lamination_Certificate.png" :featured? false :feature-order 0}
+   {:id 1692384230 :title "SCLDF Zombie Job Lamination Certificate" :category "root" :src "/graphics/SCLDF_Zombie_Job_Lamination_Certificate.svg" :featured? false :feature-order 0}
+   {:id 2661239501 :title "SCLDF Zombie Job Liquidation" :category "root" :src "/graphics/SCLDF_Zombie_Job_Liquidation.svg" :featured? false :feature-order 0}
+   {:id 97512251 :title "SCLDF Zombie Purge Certificate" :category "root" :src "/graphics/SCLDF_Zombie_Purge_Certificate.svg" :featured? false :feature-order 0}
+   {:id 3024820312 :title "SCLDF Zombie Taskforce" :category "root" :src "/graphics/SCLDF_Zombie_Taskforce.svg" :featured? false :feature-order 0}
+   {:id 2121031923 :title "Sojaku Jushaku Seal" :category "root" :src "/graphics/Sojaku_Jushaku_Seal.svg" :featured? false :feature-order 0}
+   {:id 3042777998 :title "sovereign bailout cert" :category "root" :src "/graphics/sovereign_bailout_cert.svg" :featured? false :feature-order 0}
+   {:id 1690339243 :title "sovereign balance" :category "root" :src "/graphics/sovereign_balance.svg" :featured? false :feature-order 0}
+   {:id 2793169648 :title "sovereign defiance" :category "root" :src "/graphics/sovereign_defiance.svg" :featured? false :feature-order 0}
+   {:id 297078316 :title "sovereign insolvency cert" :category "root" :src "/graphics/sovereign_insolvency_cert.svg" :featured? false :feature-order 0}
+   {:id 1871557694 :title "sovereign liquidity cert" :category "root" :src "/graphics/sovereign_liquidity_cert.svg" :featured? false :feature-order 0}
+   {:id 266429518 :title "sovereign memory suture meter" :category "root" :src "/graphics/sovereign_memory_suture_meter.png" :featured? false :feature-order 0}
+   {:id 735036742 :title "sovereign migration cert" :category "root" :src "/graphics/sovereign_migration_cert.svg" :featured? false :feature-order 0}
+   {:id 902320900 :title "Sovereign Nomad License" :category "root" :src "/graphics/Sovereign_Nomad_License.svg" :featured? false :feature-order 0}
+   {:id 1676557599 :title "sovereign nullity meter 2026 final" :category "root" :src "/graphics/sovereign_nullity_meter_2026_final.png" :featured? false :feature-order 0}
+   {:id 2657770574 :title "sovereign nullity meter 2027" :category "root" :src "/graphics/sovereign_nullity_meter_2027.svg" :featured? false :feature-order 0}
+   {:id 4172524798 :title "sovereign nullity meter pro" :category "root" :src "/graphics/sovereign_nullity_meter_pro.svg" :featured? false :feature-order 0}
+   {:id 466466901 :title "Sovereign Nullity Meter v2026" :category "root" :src "/graphics/Sovereign_Nullity_Meter_v2026.svg" :featured? false :feature-order 0}
+   {:id 2084625946 :title "Sovereign Nullity Meter v2026S" :category "root" :src "/graphics/Sovereign_Nullity_Meter_v2026S.svg" :featured? false :feature-order 0}
+   {:id 73806698 :title "Sovereign Nullity Meter" :category "root" :src "/graphics/Sovereign_Nullity_Meter.svg" :featured? false :feature-order 0}
+   {:id 1644511899 :title "sovereign nullity overlay" :category "root" :src "/graphics/sovereign_nullity_overlay.svg" :featured? false :feature-order 0}
+   {:id 898550906 :title "sovereign nullity waveform" :category "root" :src "/graphics/sovereign_nullity_waveform.svg" :featured? false :feature-order 0}
+   {:id 2835247586 :title "sovereign reconciliation meter" :category "root" :src "/graphics/sovereign_reconciliation_meter.svg" :featured? false :feature-order 0}
+   {:id 1615755547 :title "sovereign risk clock" :category "root" :src "/graphics/sovereign_risk_clock.svg" :featured? false :feature-order 0}
+   {:id 2087484375 :title "Sovereign Seal of the Brain Fart" :category "root" :src "/graphics/Sovereign_Seal_of_the_Brain_Fart.svg" :featured? false :feature-order 0}
+   {:id 2488078007 :title "sovereign validation meter v2026 omega" :category "root" :src "/graphics/sovereign_validation_meter_v2026_omega.svg" :featured? false :feature-order 0}
+   {:id 871448539 :title "sovereign validation meter v2026" :category "root" :src "/graphics/sovereign_validation_meter_v2026.svg" :featured? false :feature-order 0}
+   {:id 2376142254 :title "summa cum slop seal" :category "root" :src "/graphics/summa_cum_slop_seal.svg" :featured? false :feature-order 0}
+   {:id 54822448 :title "symmetry art" :category "root" :src "/graphics/symmetry_art.svg" :featured? false :feature-order 0}
+   {:id 100382566 :title "symmetry break seal v1" :category "root" :src "/graphics/symmetry_break_seal_v1.svg" :featured? false :feature-order 0}
+   {:id 3623478341 :title "Symmetry Break Seal V3" :category "root" :src "/graphics/Symmetry_Break_Seal_V3.png" :featured? false :feature-order 0}
+   {:id 2302050992 :title "Symmetry Break Seal V3" :category "root" :src "/graphics/Symmetry_Break_Seal_V3.svg" :featured? false :feature-order 0}
+   {:id 3283896618 :title "symmetry break seal" :category "root" :src "/graphics/symmetry_break_seal.svg" :featured? false :feature-order 0}
+   {:id 351702183 :title "Symmetry Break V2" :category "root" :src "/graphics/Symmetry_Break_V2.svg" :featured? false :feature-order 0}
+   {:id 560178832 :title "symmetry collapse" :category "root" :src "/graphics/symmetry_collapse.svg" :featured? false :feature-order 0}
+   {:id 2871156397 :title "Symmetry Council NonCompliance" :category "root" :src "/graphics/Symmetry_Council_NonCompliance.svg" :featured? false :feature-order 0}
+   {:id 2585348394 :title "symmetry glaze" :category "root" :src "/graphics/symmetry_glaze.svg" :featured? false :feature-order 0}
+   {:id 1495422623 :title "Symmetry Null Seal v5 Audited" :category "root" :src "/graphics/Symmetry_Null_Seal_v5_Audited.svg" :featured? false :feature-order 0}
+   {:id 658776317 :title "Symmetry Pill Platinum" :category "root" :src "/graphics/Symmetry_Pill_Platinum.svg" :featured? false :feature-order 0}
+   {:id 3063946837 :title "Symmetry Restored Brain Fart Seal" :category "root" :src "/graphics/Symmetry_Restored_Brain_Fart_Seal.png" :featured? false :feature-order 0}
+   {:id 3624538551 :title "Symmetry Restored Platinum Seal" :category "root" :src "/graphics/Symmetry_Restored_Platinum_Seal.png" :featured? false :feature-order 0}
+   {:id 343284286 :title "Symmetry Sama Brine Index" :category "root" :src "/graphics/Symmetry_Sama_Brine_Index.png" :featured? false :feature-order 0}
+   {:id 3427359607 :title "Symmetry Sama Brine Index" :category "root" :src "/graphics/Symmetry_Sama_Brine_Index.svg" :featured? false :feature-order 0}
+   {:id 10650721 :title "Symmetry Sama Debut Seal" :category "root" :src "/graphics/Symmetry_Sama_Debut_Seal.png" :featured? false :feature-order 0}
+   {:id 1675878284 :title "Symmetry Sama Debut Seal" :category "root" :src "/graphics/Symmetry_Sama_Debut_Seal.svg" :featured? false :feature-order 0}
+   {:id 128888066 :title "Symmetry Sama Diamond Cut Seal" :category "root" :src "/graphics/Symmetry_Sama_Diamond_Cut_Seal.png" :featured? false :feature-order 0}
+   {:id 2991321067 :title "Symmetry Sama Diamond Cut Seal" :category "root" :src "/graphics/Symmetry_Sama_Diamond_Cut_Seal.svg" :featured? false :feature-order 0}
+   {:id 206132264 :title "Symmetry Sama LinkedIn" :category "root" :src "/graphics/Symmetry_Sama_LinkedIn.svg" :featured? false :feature-order 0}
+   {:id 3369412380 :title "Symmetry Sama Symmetry Seal" :category "root" :src "/graphics/Symmetry_Sama_Symmetry_Seal.svg" :featured? false :feature-order 0}
+   {:id 351875675 :title "Symmetry Zero Slop Seal" :category "root" :src "/graphics/Symmetry_Zero_Slop_Seal.png" :featured? false :feature-order 0}
+   {:id 1255412066 :title "Symmetry Zero Slop Seal" :category "root" :src "/graphics/Symmetry_Zero_Slop_Seal.svg" :featured? false :feature-order 0}
+   {:id 1193633927 :title "temple of infinite notifications" :category "root" :src "/graphics/temple_of_infinite_notifications.svg" :featured? false :feature-order 0}
+   {:id 2838668382 :title "theoretical debt" :category "root" :src "/graphics/theoretical_debt.svg" :featured? false :feature-order 0}
+   {:id 599166314 :title "Truth Resolves Fracture" :category "root" :src "/graphics/Truth_Resolves_Fracture.svg" :featured? false :feature-order 0}
+   {:id 4276537708 :title "Ussyverse Master Seal" :category "root" :src "/graphics/Ussyverse_Master_Seal.svg" :featured? false :feature-order 0}
+   {:id 1306632859 :title "ussyverse seal" :category "root" :src "/graphics/ussyverse_seal.svg" :featured? false :feature-order 0}
+   {:id 1252110634 :title "Ussyverse Sovereign Seal" :category "root" :src "/graphics/Ussyverse_Sovereign_Seal.svg" :featured? false :feature-order 0}
+   {:id 3930305405 :title "Void Namespace Guard Seal" :category "root" :src "/graphics/Void_Namespace_Guard_Seal.png" :featured? false :feature-order 0}
+   {:id 2105891384 :title "Void Namespace Guard Seal" :category "root" :src "/graphics/Void_Namespace_Guard_Seal.svg" :featured? false :feature-order 0}
+   {:id 3863305803 :title "ZJU CBA Symmetry" :category "root" :src "/graphics/ZJU_CBA_Symmetry.svg" :featured? false :feature-order 0}
+   {:id 619566577 :title "ZJU Liquidation Certificate" :category "root" :src "/graphics/ZJU_Liquidation_Certificate.svg" :featured? false :feature-order 0}
+   {:id 829185379 :title "ZJU Union Badge" :category "root" :src "/graphics/ZJU_Union_Badge.svg" :featured? false :feature-order 0}
+   {:id 2908843656 :title "Zombie Job Certification Seal" :category "root" :src "/graphics/Zombie_Job_Certification_Seal.png" :featured? false :feature-order 0}
+   {:id 438290381 :title "Zombie Job Certification Seal" :category "root" :src "/graphics/Zombie_Job_Certification_Seal.svg" :featured? false :feature-order 0}
+   {:id 1670088211 :title "Zombie Job Symmetry Seal" :category "root" :src "/graphics/Zombie_Job_Symmetry_Seal.svg" :featured? false :feature-order 0}
+   {:id 1906500058 :title "Big Pickle Emblem HighFid" :category "big_pickle" :src "/graphics/big_pickle/Big_Pickle_Emblem_HighFid.svg" :featured? false :feature-order 0}
+   {:id 2670583413 :title "Big Pickle EMS Credential" :category "big_pickle" :src "/graphics/big_pickle/Big_Pickle_EMS_Credential.svg" :featured? false :feature-order 0}
+   {:id 3033270189 :title "Big Pickle EMS Squad Emblem" :category "big_pickle" :src "/graphics/big_pickle/Big_Pickle_EMS_Squad_Emblem.svg" :featured? false :feature-order 0}
+   {:id 2269636803 :title "big pickle proficiency seal" :category "big_pickle" :src "/graphics/big_pickle/big_pickle_proficiency_seal.svg" :featured? false :feature-order 0}
+   {:id 1970960600 :title "Big Pickle Zombie Exterminator Seal" :category "big_pickle" :src "/graphics/big_pickle/Big_Pickle_Zombie_Exterminator_Seal.png" :featured? false :feature-order 0}
+   {:id 3790254909 :title "Big Pickle Zombie Exterminator Seal" :category "big_pickle" :src "/graphics/big_pickle/Big_Pickle_Zombie_Exterminator_Seal.svg" :featured? false :feature-order 0}
+   {:id 2104790052 :title "BPES Zombie Purge Seal" :category "big_pickle" :src "/graphics/big_pickle/BPES_Zombie_Purge_Seal.png" :featured? false :feature-order 0}
+   {:id 3660762169 :title "BPES Zombie Purge Seal" :category "big_pickle" :src "/graphics/big_pickle/BPES_Zombie_Purge_Seal.svg" :featured? false :feature-order 0}
+   {:id 2795382516 :title "meth pipe certification" :category "big_pickle" :src "/graphics/big_pickle/meth_pipe_certification.svg" :featured? false :feature-order 0}
+   {:id 856856900 :title "SCLDF Bilingual Slurry Seal" :category "big_pickle" :src "/graphics/big_pickle/SCLDF_Bilingual_Slurry_Seal.svg" :featured? false :feature-order 0}
+   {:id 919684203 :title "SCLDF Seal" :category "big_pickle" :src "/graphics/big_pickle/SCLDF_Seal.png" :featured? false :feature-order 0}
+   {:id 1817997714 :title "SCLDF Seal" :category "big_pickle" :src "/graphics/big_pickle/SCLDF_Seal.svg" :featured? false :feature-order 0}
+   {:id 418734936 :title "Certified Brain Fart Seal" :category "brain_fart" :src "/graphics/brain_fart/Certified_Brain_Fart_Seal.png" :featured? false :feature-order 0}
+   {:id 2238029245 :title "Certified Brain Fart Seal" :category "brain_fart" :src "/graphics/brain_fart/Certified_Brain_Fart_Seal.svg" :featured? false :feature-order 0}
+   {:id 1760531606 :title "Platinum Brain Fart Seal HighFid" :category "brain_fart" :src "/graphics/brain_fart/Platinum_Brain_Fart_Seal_HighFid.svg" :featured? false :feature-order 0}
+   {:id 4050282036 :title "clojure cult cert" :category "certs" :src "/graphics/certs/clojure_cult_cert.svg" :featured? false :feature-order 0}
+   {:id 803541857 :title "gemma certificate" :category "certs" :src "/graphics/certs/gemma_certificate.svg" :featured? false :feature-order 0}
+   {:id 3606588018 :title "proof of burn" :category "certs" :src "/graphics/certs/proof_of_burn.svg" :featured? false :feature-order 0}
+   {:id 3422858808 :title "Saturated Nullity Receipt" :category "certs" :src "/graphics/certs/Saturated_Nullity_Receipt.svg" :featured? false :feature-order 0}
+   {:id 1348997671 :title "sovereign nullity cert" :category "certs" :src "/graphics/certs/sovereign_nullity_cert.svg" :featured? false :feature-order 0}
+   {:id 284244860 :title "Sovereign Nullity Certificate" :category "certs" :src "/graphics/certs/Sovereign_Nullity_Certificate.svg" :featured? false :feature-order 0}
+   {:id 3929614423 :title "Sovereign Nullity Symmetry" :category "certs" :src "/graphics/certs/Sovereign_Nullity_Symmetry.svg" :featured? false :feature-order 0}
+   {:id 3069465565 :title "sovereign void seal" :category "certs" :src "/graphics/certs/sovereign_void_seal.svg" :featured? false :feature-order 0}
+   {:id 3970279431 :title "voxx realization cert" :category "certs" :src "/graphics/certs/voxx_realization_cert.svg" :featured? false :feature-order 0}
+   {:id 1939302335 :title "clojure cult logo" :category "clojure_cult" :src "/graphics/clojure_cult/clojure_cult_logo.svg" :featured? false :feature-order 0}
+   {:id 2570856041 :title "Clojure Cult Seal" :category "clojure_cult" :src "/graphics/clojure_cult/Clojure_Cult_Seal.svg" :featured? false :feature-order 0}
+   {:id 3421403259 :title "error coded radio logo" :category "error_coded" :src "/graphics/error_coded/error_coded_radio_logo.svg" :featured? false :feature-order 0}
+   {:id 287510835 :title "Error Coded Radio Saturated Logo" :category "error_coded" :src "/graphics/error_coded/Error_Coded_Radio_Saturated_Logo.svg" :featured? false :feature-order 0}
+   {:id 3397939845 :title "Error Coded Radio Seal" :category "error_coded" :src "/graphics/error_coded/Error_Coded_Radio_Seal.svg" :featured? false :feature-order 0}
+   {:id 3237849424 :title "Lamination Seal of the Month" :category "lamination" :src "/graphics/lamination/Lamination_Seal_of_the_Month.svg" :featured? false :feature-order 0}
+   {:id 340479646 :title "fork tales title" :category "logos" :src "/graphics/logos/fork_tales_title.svg" :featured? false :feature-order 0}
+   {:id 2200552777 :title "ForkTales TitleCard" :category "logos" :src "/graphics/logos/ForkTales_TitleCard.svg" :featured? false :feature-order 0}
+   {:id 2273793639 :title "Sovereign Nullity Logo" :category "logos" :src "/graphics/logos/Sovereign_Nullity_Logo.svg" :featured? false :feature-order 0}
+   {:id 2214522115 :title "mnemonic residue meter" :category "meters" :src "/graphics/meters/mnemonic_residue_meter.svg" :featured? false :feature-order 0}
+   {:id 911879868 :title "nullity meter omega" :category "meters" :src "/graphics/meters/nullity_meter_omega.svg" :featured? false :feature-order 0}
+   {:id 4164440941 :title "nullity meter v2" :category "meters" :src "/graphics/meters/nullity_meter_v2.svg" :featured? false :feature-order 0}
+   {:id 588704576 :title "sovereign nullity meter final" :category "meters" :src "/graphics/meters/sovereign_nullity_meter_final.svg" :featured? false :feature-order 0}
+   {:id 986243032 :title "sovereign nullity meter v2026" :category "meters" :src "/graphics/meters/sovereign_nullity_meter_v2026.svg" :featured? false :feature-order 0}
+   {:id 2303167502 :title "sovereign nullity meter" :category "meters" :src "/graphics/meters/sovereign_nullity_meter.png" :featured? false :feature-order 0}
+   {:id 1138971943 :title "sovereign nullity meter" :category "meters" :src "/graphics/meters/sovereign_nullity_meter.svg" :featured? false :feature-order 0}
+   {:id 2448097755 :title "sovereign residual meter" :category "meters" :src "/graphics/meters/sovereign_residual_meter.svg" :featured? false :feature-order 0}
+   {:id 1997322183 :title "cyberpunk album art" :category "recursive_identity" :src "/graphics/recursive_identity/cyberpunk_album_art.svg" :featured? false :feature-order 0}
+   {:id 105280050 :title "Ghost Voice Seal" :category "recursive_identity" :src "/graphics/recursive_identity/Ghost_Voice_Seal.svg" :featured? false :feature-order 0}
+   {:id 3515454907 :title "Knoxx Symmetry Seal" :category "recursive_identity" :src "/graphics/recursive_identity/Knoxx_Symmetry_Seal.svg" :featured? false :feature-order 0}
+   {:id 833719292 :title "null symmetry seal" :category "recursive_identity" :src "/graphics/recursive_identity/null_symmetry_seal.svg" :featured? false :feature-order 0}
+   {:id 170099265 :title "NullSymmetrySeal API" :category "recursive_identity" :src "/graphics/recursive_identity/NullSymmetrySeal_API.svg" :featured? false :feature-order 0}
+   {:id 75706078 :title "Recursive Convergence Promo" :category "recursive_identity" :src "/graphics/recursive_identity/Recursive_Convergence_Promo.svg" :featured? false :feature-order 0}
+   {:id 3661666869 :title "recursive identity seal" :category "recursive_identity" :src "/graphics/recursive_identity/recursive_identity_seal.svg" :featured? false :feature-order 0}
+   {:id 1075743041 :title "recursive monitor" :category "recursive_identity" :src "/graphics/recursive_identity/recursive_monitor.svg" :featured? false :feature-order 0}
+   {:id 3045062910 :title "RecursiveIdentityCultSigil" :category "recursive_identity" :src "/graphics/recursive_identity/RecursiveIdentityCultSigil.svg" :featured? false :feature-order 0}
+   {:id 4231799624 :title "RecursiveIdentitySeal v2" :category "recursive_identity" :src "/graphics/recursive_identity/RecursiveIdentitySeal_v2.svg" :featured? false :feature-order 0}
+   {:id 2688626205 :title "SNC Recursive Identity Monitor" :category "recursive_identity" :src "/graphics/recursive_identity/SNC_Recursive_Identity_Monitor.svg" :featured? false :feature-order 0}
+   {:id 2047915691 :title "snc seal v2" :category "recursive_identity" :src "/graphics/recursive_identity/snc_seal_v2.svg" :featured? false :feature-order 0}
+   {:id 3532713268 :title "Sovereign Nullity Certificate v5" :category "recursive_identity" :src "/graphics/recursive_identity/Sovereign_Nullity_Certificate_v5.svg" :featured? false :feature-order 0}
+   {:id 3499938082 :title "Sovereign Nullity Melo" :category "recursive_identity" :src "/graphics/recursive_identity/Sovereign_Nullity_Melo.svg" :featured? false :feature-order 0}
+   {:id 2812223093 :title "symmetry null seal v4" :category "recursive_identity" :src "/graphics/recursive_identity/symmetry_null_seal_v4.svg" :featured? false :feature-order 0}
+   {:id 772132117 :title "Symmetry Null Seal v4" :category "recursive_identity" :src "/graphics/recursive_identity/Symmetry_Null_Seal_v4.svg" :featured? false :feature-order 0}
+   {:id 222988714 :title "Symmetry Null Seal v5" :category "recursive_identity" :src "/graphics/recursive_identity/Symmetry_Null_Seal_v5.svg" :featured? false :feature-order 0}
+   {:id 1751113617 :title "SCLDF Absolute 403 Seal" :category "SCLDF" :src "/graphics/SCLDF/SCLDF_Absolute_403_Seal.svg" :featured? false :feature-order 0}
+   {:id 1369754072 :title "SCLDF Absolute Collapse Cert" :category "SCLDF" :src "/graphics/SCLDF/SCLDF_Absolute_Collapse_Cert.svg" :featured? false :feature-order 0}
+   {:id 2543473739 :title "SCLDF Absolute Redundancy Seal" :category "SCLDF" :src "/graphics/SCLDF/SCLDF_Absolute_Redundancy_Seal.svg" :featured? false :feature-order 0}
+   {:id 3184150622 :title "SCLDF Glee Siphon Certificate" :category "SCLDF" :src "/graphics/SCLDF/SCLDF_Glee_Siphon_Certificate.png" :featured? false :feature-order 0}
+   {:id 3589491522 :title "SCLDF Glee Siphon Invoice" :category "SCLDF" :src "/graphics/SCLDF/SCLDF_Glee_Siphon_Invoice.png" :featured? false :feature-order 0}
+   {:id 3950507659 :title "SCLDF Hegemony Invoice" :category "SCLDF" :src "/graphics/SCLDF/SCLDF_Hegemony_Invoice.png" :featured? false :feature-order 0}
+   {:id 3583562472 :title "SCLDF Joyous Eviction Certificate" :category "SCLDF" :src "/graphics/SCLDF/SCLDF_Joyous_Eviction_Certificate.png" :featured? false :feature-order 0}
+   {:id 2481821391 :title "SCLDF Lamination Agency Logo" :category "SCLDF" :src "/graphics/SCLDF/SCLDF_Lamination_Agency_Logo.png" :featured? false :feature-order 0}
+   {:id 544369478 :title "SCLDF Mirth Balance Sheet" :category "SCLDF" :src "/graphics/SCLDF/SCLDF_Mirth_Balance_Sheet.png" :featured? false :feature-order 0}
+   {:id 3570358640 :title "SCLDF Mirth Satiation Seal" :category "SCLDF" :src "/graphics/SCLDF/SCLDF_Mirth_Satiation_Seal.png" :featured? false :feature-order 0}
+   {:id 52219584 :title "SCLDF Saturated Glee Certificate" :category "SCLDF" :src "/graphics/SCLDF/SCLDF_Saturated_Glee_Certificate.png" :featured? false :feature-order 0}
+   {:id 2959617676 :title "hi fi seal" :category "seals" :src "/graphics/seals/hi_fi_seal.svg" :featured? false :feature-order 0}
+   {:id 601621013 :title "sacred error protocol seal" :category "seals" :src "/graphics/seals/sacred_error_protocol_seal.svg" :featured? false :feature-order 0}
+   {:id 84614675 :title "symmetry break seal" :category "seals" :src "/graphics/seals/symmetry_break_seal.svg" :featured? false :feature-order 0}
+   {:id 4118265005 :title "yap seal" :category "seals" :src "/graphics/seals/yap_seal.svg" :featured? false :feature-order 0}
+   ])
 
 (def music
   [])

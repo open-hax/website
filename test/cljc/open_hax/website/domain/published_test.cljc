@@ -38,6 +38,54 @@
     (is (= "fr" (locale/language-tag (:locale/id fr))))
     (is (= "Bonjour" (:route/title (:view/route fr))))))
 
+(deftest a-cms-document-uses-its-published-locale-without-a-leading-locale-prefix
+  (let [manifest (law/decode
+                  {:manifest/version 1
+                   :manifest/routes
+                   (mapv (fn [loc]
+                           {:route/path (str "/cms/org-one/demo/" (name loc))
+                            :route/locale loc
+                            :route/document "cms.org-one/doc-demo"
+                            :route/artifact (str "artifacts/demo/" (name loc) "/rev-1.html")
+                            :route/media-type "text/html"})
+                         [:en :es])})
+        location (published/resolve-location manifest "/cms/org-one/demo/es")
+        options (published/switcher-options manifest location)]
+    (is (= :document (:view/kind location)))
+    (is (= :es (:locale/id location)))
+    (is (= "es" (locale/language-tag (:locale/id location))))
+    (is (= "/cms/org-one/demo/es" (:view/canonical-path location)))
+    (is (false? (:locale/fallback? location)))
+    (is (= [:en :es] (mapv :locale/id options)))
+    (is (= ["/cms/org-one/demo/en" "/cms/org-one/demo/es"]
+           (mapv :locale/href options)))
+    (is (= [false true] (mapv :locale/current? options)))))
+
+(deftest publication-locale-resolution-retains-prefixed-routes-and-default-fallback
+  (let [manifest (law/decode
+                  {:manifest/version 1
+                   :manifest/routes
+                   [{:route/path "/es/garden/demo"
+                     :route/locale :es
+                     :route/artifact "artifacts/garden/demo/es/rev-1.html"
+                     :route/media-type "text/html"}
+                    {:route/path "/garden/demo"
+                     :route/locale :en
+                     :route/artifact "artifacts/garden/demo/en/rev-1.html"
+                     :route/media-type "text/html"}]})]
+    (testing "the site's locale prefix still finds a published route"
+      (let [location (published/resolve-location manifest "/es/garden/demo")]
+        (is (= :document (:view/kind location)))
+        (is (= :es (:locale/id location)))
+        (is (false? (:locale/fallback? location)))
+        (is (= "/es/garden/demo" (:view/canonical-path location)))))
+    (testing "an unknown prefix still looks for the default locale's publication"
+      (let [location (published/resolve-location manifest "/pt/garden/demo")]
+        (is (= :document (:view/kind location)))
+        (is (= :en (:locale/id location)))
+        (is (true? (:locale/fallback? location)))
+        (is (= "/garden/demo" (:view/canonical-path location)))))))
+
 (deftest removing-a-document-from-the-manifest-stops-it-rendering
   (let [full (decoded :multi-locale)
         without-fr (law/decode

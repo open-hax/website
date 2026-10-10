@@ -89,13 +89,16 @@
     :document   a published document named by the manifest
     :not-found  a path with no published route behind it
 
-  An unknown locale-shaped prefix resolves to the default locale rather than
-  404ing, so `/pt/notes/hello` looks for `/notes/hello` in the default locale."
+  A matched publication owns its locale, including when its path does not use
+  the site's locale-prefix grammar. An unknown locale-shaped prefix resolves
+  to the default locale rather than 404ing, so `/pt/notes/hello` looks for
+  `/notes/hello` in the default locale."
   [decoded path]
   (let [{:keys [locale/id locale/fallback? location/path] :as resolved} (locale/resolve-path path)
         canonical (locale/localize-path id path)
         route (route-at decoded canonical)]
     (assoc resolved
+           :locale/id (or (:route/locale route) id)
            :view/kind (cond
                         route :document
                         (= "/" path) :site

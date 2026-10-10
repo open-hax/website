@@ -1,7 +1,7 @@
 {
   "name": "@open-hax/website",
   "version": "0.1.0",
-  "description": "OpenHax organization portfolio website",
+  "description": "Personal OpenHax portfolio website",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,7 +12,7 @@
     "verify:dist": "node scripts/verify-dist.mjs",
     "stage:assets": "node scripts/stage-assets.mjs",
     "gen:assets": "node scripts/scan-assets.mjs",
-    "test": "shadow-cljs compile test",
+    "test": "node --test test/scripts/*.test.mjs && shadow-cljs compile test && node target/test/website-test.cjs",
     "lint": "clj-kondo --lint src test"
   },
   "dependencies": {
@@ -23,6 +23,7 @@
     "shadow-cljs": "^2.28.22"
   },
   "devDependencies": {
+    "@xmldom/xmldom": "0.9.12",
     "autoprefixer": "^10.4.27",
     "concurrently": "^9.1.2",
     "postcss": "^8.5.9",

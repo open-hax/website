@@ -18,17 +18,17 @@
 
    ;; Document shell. Rendered into <title>/<meta> by the static build, per locale.
    :meta/title "OpenHax — Art, Music & Programs"
-   :meta/description "OpenHax organization portfolio showcasing art, music, and software projects."
+   :meta/description "The personal OpenHax portfolio: websites, open-source software, generative art, and music."
    :meta/noscript "This site needs JavaScript to show its galleries and any published documents."
 
-   :hero/tagline "Art, Music, and Programs"
-   :hero/lede "A collective of builders, artists, and musicians pushing the boundaries of creative technology."
-   :hero/cta-work "Explore Our Work"
-   :hero/cta-github "View on GitHub"
+   :hero/tagline "Websites, art, music & useful software"
+   :hero/lede "I'm a developer and artist. OpenHax is the home for my work: original visuals, creative experiments, and the software I build."
+   :hero/cta-work "Explore my work"
+   :hero/cta-github "Connect on GitHub"
 
-   :products/heading "Our Products"
-   :products/lede "Infrastructure and tools for the next generation of creative and intelligent systems."
-   :products/knoxx-description "Agent backend, frontend, and policy runtime. The central nervous system of our agent ecosystem."
+   :products/heading "Software projects"
+   :products/lede "Open-source tools I build and work on. Explore the code, ideas, and people behind each project."
+   :products/knoxx-description "An agent runtime with conversations, tools, and policy. A separate project in the OpenHax ecosystem."
    :products/proxx-description "Model proxy, federation, and credential lease broker. Route AI requests with intelligence."
    :products/openplanner-description "Memory, graph, and planning API. Connect knowledge and orchestrate complex workflows."
 
@@ -42,15 +42,32 @@
    :tag/memory "Memory"
    :tag/planning "Planning"
 
-   :graphics/heading "Graphics"
-   :graphics/lede "{count} visual experiments, generative art, and creative explorations."
+   :graphics/heading "Art & graphics"
+   :graphics/lede "{count} visual works, from geometric studies and generative patterns to digital illustrations."
+   :hero/client-lede "Have a business website in mind? I build clear, distinctive sites that give your work a home. Connect with me to discuss your project."
+   :graphics/featured "Selected work"
+   :graphics/collection "Browse the collection"
+   :graphics/search "Search artwork"
+   :graphics/all "All collections"
+   :graphics/more "Show more work"
+   :graphics/results "Showing {shown} of {count} works"
+   :graphics/empty "No artwork matches this search."
+   :graphics/open "View {title}"
+
    :graphics/close "Close"
 
    :music/heading "Music"
-   :music/lede "{count} sonic experiments and compositions."
+   :music/lede "{count} selected songs published on Suno."
+   :music/listen "Listen here"
+   :music/play "Listen to {title}"
+   :music/song-link "Open in Suno"
+   :music/player-label "Suno player for {title}"
+   :music/profile "More music from {name} on Suno"
+   :music/local-heading "From the local collection"
+   :music/local-lede "{count} additional tracks."
 
-   :nav/products "Products"
-   :nav/graphics "Graphics"
+   :nav/products "Software"
+   :nav/graphics "Art"
    :nav/music "Music"
    :nav/language "Language"
 

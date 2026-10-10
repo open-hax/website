@@ -49,9 +49,8 @@ jobs:
       - name: Test
         run: pnpm test
 
-      # No asset roots exist on a runner, so this also proves the claim that
-      # zero staged assets is a valid build: the galleries render empty rather
-      # than shipping 400 dangling references.
+      # The committed artwork snapshot must ship on a clean runner. Node
+      # integration tests separately cover explicitly absent preview roots.
       - name: Build
         run: pnpm build
 

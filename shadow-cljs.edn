@@ -44,7 +44,9 @@
   {:target :node-test
    :output-to "target/test/website-test.cjs"
    :ns-regexp "-test$"
-   :autorun true
+   ;; Run the generated Node runner explicitly in pnpm test so failures carry
+   ;; a nonzero process exit code; autorun is intended for watch mode.
+   :autorun false
    :compiler-options
    {:output-feature-set :es-next
     :source-map true}}}}

@@ -1,0 +1,7 @@
+language: en-US
+reviews:
+  # Copied artwork is inventoried by SHA-256 and exercised in the browser.
+  # Review the provenance, selection, build code and gallery; the originals
+  # remain byte-for-byte source media, rather than reviewable application code.
+  path_filters:
+    - "!assets/graphics/**"

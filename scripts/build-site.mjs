@@ -20,9 +20,10 @@ import { repoRoot, siteOutDir } from './asset-config.mjs';
 function run(command, args) {
   console.log(`\n$ ${command} ${args.join(' ')}`);
   const result = spawnSync(command, args, { cwd: repoRoot, stdio: 'inherit' });
-  if (result.status !== 0) {
+  if (result.error || result.status !== 0) {
     console.error(`\nFAILED: ${command} ${args.join(' ')}`);
-    process.exit(result.status ?? 1);
+    if (result.error) console.error(result.error.message);
+    process.exit(result.error ? 1 : (result.status ?? 1));
   }
 }
 
