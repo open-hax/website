@@ -1,10 +1,12 @@
 (ns open-hax.website.sections.graphics-test
   (:require ["react-dom/server" :as rdom-server]
+            ["react" :as react]
             [cljs.test :refer [deftest is testing]]
             [clojure.string :as str]
             [helix.core :refer [$]]
             [open-hax.website.data.assets :as assets]
             [open-hax.website.domain.copy :as copy]
+            [open-hax.website.domain.gallery :as gallery]
             [open-hax.website.sections.graphics :as graphics]))
 
 (deftest graphics-section-exists
@@ -67,6 +69,73 @@
     (is (str/includes? markup (:title artwork)))
     (is (str/includes? markup (:category artwork)))
     (is (not (str/includes? markup "opacity-0")))))
+
+(deftest show-more-clicks-extend-the-rendered-collection-through-the-last-page
+  (let [items (mapv (fn [id]
+                     (assoc artwork :id id :title (str "Study " id)
+                            :src (str "/graphics/studies/" id ".svg")))
+                   (range (+ (* 2 gallery/page-size) 3)))
+        state (atom [])
+        hook-index (atom 0)
+        dispatcher (.. react -__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED
+                       -ReactCurrentDispatcher)
+        original-dispatcher (.-current dispatcher)
+        ;; Exercise Helix's real use-state adapter. This storage implements
+        ;; React's single-action dispatch boundary, including function actions;
+        ;; replacing the Helix hook itself would miss its variadic updater law.
+        test-dispatcher #js {:useState (fn [initial]
+                                        (let [index @hook-index]
+                                          (swap! hook-index inc)
+                                          (when (= index (count @state))
+                                            (swap! state conj initial))
+                                          #js [(get @state index)
+                                               (fn [action]
+                                                 (swap! state update index
+                                                        #(if (fn? action) (action %) action)))]))
+                            :useCallback (fn [callback _deps] callback)}
+        render-section (fn []
+                         (reset! hook-index 0)
+                         (set! (.-current dispatcher) test-dispatcher)
+                         (try
+                           (graphics/GraphicsSection #js {:locale :en})
+                           (finally
+                             (set! (.-current dispatcher) original-dispatcher))))
+        children (fn [^js element]
+                   (when (.isValidElement react element)
+                     (let [^js props (.-props element)]
+                       (array-seq (.toArray (.-Children react) (.-children props))))))
+        more-button (fn [element]
+                      (some (fn [^js child]
+                              (when (and (.isValidElement react child)
+                                         (= "button" (.-type child))
+                                         (= (copy/text :en :graphics/more)
+                                            (let [^js props (.-props child)]
+                                              (.-children props))))
+                                child))
+                            (tree-seq #(.isValidElement react %) children element)))
+        displayed-images (fn [element]
+                           (mapv second
+                                 (re-seq #"<img[^>]*src=\"([^\"]+)\""
+                                         (.renderToStaticMarkup rdom-server element))))]
+    (with-redefs [assets/graphics items]
+      (let [initial (render-section)
+            ^js button (more-button initial)
+            ^js button-props (.-props button)
+            first-click (.-onClick button-props)]
+        (is (= (mapv :src (take gallery/page-size items)) (displayed-images initial)))
+        ;; Two clicks through the same rendered handler must compose against
+        ;; current state, even before another render has produced a new handler.
+        (first-click)
+        (is (= (* 2 gallery/page-size) (get @state 3)))
+        (let [second-page (render-section)]
+          (is (= (mapv :src (take (* 2 gallery/page-size) items))
+                 (displayed-images second-page)))
+          (is (some? (more-button second-page))))
+        (first-click)
+        (let [last-page (render-section)]
+          (is (= (* 3 gallery/page-size) (get @state 3)))
+          (is (= (mapv :src items) (displayed-images last-page)))
+          (is (nil? (more-button last-page))))))))
 
 (deftest an-open-lightbox-has-dialog-and-close-semantics
   (let [markup (.renderToStaticMarkup
