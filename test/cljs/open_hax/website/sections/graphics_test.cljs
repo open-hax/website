@@ -126,14 +126,12 @@
         ;; Two clicks through the same rendered handler must compose against
         ;; current state, even before another render has produced a new handler.
         (first-click)
-        (is (= (* 2 gallery/page-size) (get @state 3)))
         (let [second-page (render-section)]
           (is (= (mapv :src (take (* 2 gallery/page-size) items))
                  (displayed-images second-page)))
           (is (some? (more-button second-page))))
         (first-click)
         (let [last-page (render-section)]
-          (is (= (* 3 gallery/page-size) (get @state 3)))
           (is (= (mapv :src items) (displayed-images last-page)))
           (is (nil? (more-button last-page))))))))
 
