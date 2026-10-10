@@ -9,6 +9,16 @@
   [event]
   (= (.-target event) (.-currentTarget event)))
 
+(defn focus-collection-item!
+  "Focus an already-rendered card inside the collection, excluding featured cards."
+  [collection-id index]
+  (boolean
+   (when (and (int? index) (<= 0 index))
+     (when-let [collection (.getElementById js/document collection-id)]
+       (when-let [card (aget (.querySelectorAll collection "button") index)]
+         (.focus card)
+         true)))))
+
 (defn activate-dialog!
   "Focus the dialog, contain Tab/Escape, lock scrolling, and return cleanup.
 

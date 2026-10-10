@@ -56,9 +56,20 @@
   (let [[selected-item set-selected] (hooks/use-state nil)
         [query set-query] (hooks/use-state "")
         [category set-category] (hooks/use-state "")
-        [visible-count set-visible-count] (hooks/use-state gallery/page-size)
+        [pagination set-pagination] (hooks/use-state {:visible-count gallery/page-size
+                                                     :focus-index nil})
+        visible-count (:visible-count pagination)
+        focus-index (:focus-index pagination)
         featured (gallery/featured-items assets/graphics)
         page (gallery/collection-page assets/graphics query category visible-count)]
+    (hooks/use-effect
+     [focus-index selected-item]
+     (when (some? focus-index)
+       (when-not selected-item
+         (browser/focus-collection-item! "graphics-collection" focus-index))
+       (set-pagination #(if (= focus-index (:focus-index %))
+                          (assoc % :focus-index nil)
+                          %))))
     (d/div {:class-name "max-w-7xl mx-auto"}
            (d/div {:class-name "text-center mb-12"}
                   (d/h2 {:class-name "text-3xl sm:text-4xl font-bold text-white mb-4"}
@@ -89,7 +100,8 @@
                                    :placeholder (copy/text locale :graphics/search)
                                    :class-name "w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-slate-100 placeholder:text-slate-300 focus:outline-none focus:ring-2 focus:ring-cyan-300"
                                    :on-change #(do (set-query (browser/event-value %))
-                                                   (set-visible-count gallery/page-size))}))
+                                                   (set-pagination {:visible-count gallery/page-size
+                                                                    :focus-index nil}))}))
                   (d/div {:class-name "w-full sm:w-48"}
                          (d/label {:html-for "graphics-category"
                                    :class-name "sr-only"}
@@ -98,7 +110,8 @@
                                     :value category
                                     :class-name "w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2.5 text-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-300"
                                     :on-change #(do (set-category (browser/event-value %))
-                                                    (set-visible-count gallery/page-size))}
+                                                    (set-pagination {:visible-count gallery/page-size
+                                                                     :focus-index nil}))}
                                    (d/option {:value ""} (copy/text locale :graphics/all))
                                    (for [value (gallery/categories assets/graphics)]
                                      (d/option {:key value :value value} value)))))
@@ -107,7 +120,8 @@
                 (copy/text-with locale :graphics/results
                                 {:shown (:shown page) :count (:count page)}))
            (if (seq (:items page))
-             (d/div {:class-name "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5"}
+             (d/div {:id "graphics-collection"
+                     :class-name "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5"}
                     (for [item (:items page)]
                       ($ GalleryItem {:key (:id item)
                                       :locale locale
@@ -119,7 +133,11 @@
              (d/div {:class-name "text-center mt-8"}
                     (d/button {:type "button"
                                :class-name "rounded-lg border border-slate-600 px-6 py-3 text-slate-100 hover:border-slate-400 hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 transition"
-                               :on-click #(set-visible-count + gallery/page-size)}
+                               :on-click #(set-pagination
+                                           (fn [{:keys [visible-count focus-index] :as previous}]
+                                             (assoc previous
+                                                    :visible-count (+ visible-count gallery/page-size)
+                                                    :focus-index (or focus-index visible-count))))}
                               (copy/text locale :graphics/more))))
            ($ Lightbox {:locale locale
                         :item selected-item

@@ -56,3 +56,31 @@
         (if (some? previous-document)
           (aset js/globalThis "document" previous-document)
           (js-delete js/globalThis "document"))))))
+
+(deftest collection-focus-stays-scoped-and-refuses-missing-cards
+  (let [previous-document (aget js/globalThis "document")
+        focused (atom [])
+        lookups (atom [])
+        selected (atom [])
+        cards (mapv (fn [id] #js {:focus #(swap! focused conj id)}) (range 3))
+        collection #js {:querySelectorAll (fn [selector]
+                                           (swap! selected conj selector)
+                                           (to-array cards))}
+        document #js {:getElementById (fn [id]
+                                       (swap! lookups conj id)
+                                       (when (= id "collection") collection))}]
+    (aset js/globalThis "document" document)
+    (try
+      (is (true? (gallery/focus-collection-item! "collection" 1)))
+      (is (= [1] @focused))
+      (is (= ["collection"] @lookups))
+      (is (= ["button"] @selected) "Only the collection's buttons are searched.")
+      (is (false? (gallery/focus-collection-item! "collection" 3)))
+      (is (false? (gallery/focus-collection-item! "absent" 0)))
+      (doseq [index [-1 0.5 nil "1"]]
+        (is (false? (gallery/focus-collection-item! "collection" index))))
+      (is (= [1] @focused) "Invalid or absent targets leave current focus untouched.")
+      (finally
+        (if (some? previous-document)
+          (aset js/globalThis "document" previous-document)
+          (js-delete js/globalThis "document"))))))
