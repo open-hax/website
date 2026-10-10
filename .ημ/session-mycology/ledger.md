@@ -17,3 +17,13 @@
   spore: none
   receipt-refs: 2026-10-10T15:24:01.461550Z
   note: Keep the complete review input and extend only the upstream-declared job budget. Independently compare parsed workflow semantics and exercise the actual validator with the complete caller context; a longer budget enables an attempt and supplies no approval or completion credit. Preserve the unmerged upstream dependency and normal native gates.
+
+- ts: 2026-10-10T16:48:53.684415+00:00
+  session: /home/err/.local/share/openhax-codex/20261010/website
+  task: Contain backward focus from the gallery dialog container
+  p-efficiency: 0.94
+  p-friction: 0.17
+  p-skill-candidate: 0.26
+  spore: none
+  receipt-refs: 2026-10-10T16:48:53.684415+00:00
+  note: Reproduce the missing branch through the actual DOM adapter, then add one wrap condition. Keep the native forward path and cleanup behavior covered without moving DOM semantics inward. A new successor invalidates old-head native approval. Preserve historical dependency state and append the observed upstream merge; no new spore or promotion.

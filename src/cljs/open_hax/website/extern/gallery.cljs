@@ -36,6 +36,7 @@
                                 (do (.preventDefault event) (.focus dialog))
 
                                 (or (not (.contains dialog active))
+                                    (and backwards? (= active dialog))
                                     (and backwards? (= active first-element))
                                     (and (not backwards?) (= active last-element)))
                                 (do (.preventDefault event)
