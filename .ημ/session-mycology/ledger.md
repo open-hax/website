@@ -27,3 +27,13 @@
   spore: none
   receipt-refs: 2026-10-10T16:48:53.684415+00:00
   note: Reproduce the missing branch through the actual DOM adapter, then add one wrap condition. Keep the native forward path and cleanup behavior covered without moving DOM semantics inward. A new successor invalidates old-head native approval. Preserve historical dependency state and append the observed upstream merge; no new spore or promotion.
+
+- ts: 2026-10-10T19:05:43.595390+00:00
+  session: /home/err/.local/share/openhax-codex/20261010/website
+  task: Repair repeated local Play and validate embedded SVG resource descendants
+  p-efficiency: 0.91
+  p-friction: 0.24
+  p-skill-candidate: 0.33
+  spore: none
+  receipt-refs: 2026-10-10T19:05:43.595390+00:00
+  note: Verify the native ref API before wiring media events, preserve existing track-selection behavior, and qualify the authored controls against original source. XML parsing supplements the original artwork checks without expanding them into a general sanitizer. Keep source tests, actual browser playback and image publication as separately bound evidence. Preserve failed evidence assembly and inspect the actual audit keys; no new spore or promotion.

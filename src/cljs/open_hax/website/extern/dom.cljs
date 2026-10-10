@@ -1,5 +1,5 @@
 (ns open-hax.website.extern.dom
-  "The only namespace that mutates or reads the document outside React.
+  "Document metadata and explicit playback of mounted local audio.
 
   Three facts live above the React root and therefore cannot be rendered:
   the `lang` attribute (the static shell already carries the right one, and
@@ -9,6 +9,16 @@
   (:require [open-hax.website.domain.locale :as locale]))
 
 (def ^:private robots-meta-id "published-robots")
+
+(defn play-local-audio!
+  "Request playback on the selected mounted audio after an explicit click.
+
+  The media element resumes a paused position or restarts ended playback.
+  Handle browser playback refusals without an unhandled promise."
+  [audio-ref]
+  (when-let [element (some-> audio-ref .-current)]
+    (-> (.play element)
+        (.catch (fn [_] nil)))))
 
 (defn location-path
   []

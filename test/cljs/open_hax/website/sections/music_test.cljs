@@ -1,12 +1,13 @@
 (ns open-hax.website.sections.music-test
   (:require ["react-dom/server" :as rdom-server]
             ["react" :as react]
-            [cljs.test :refer [deftest is testing]]
+            [cljs.test :refer [async deftest is testing]]
             [clojure.string :as str]
             [helix.core :refer [$]]
             [helix.hooks :as hooks]
             [open-hax.website.data.assets :as assets]
             [open-hax.website.data.suno :as suno]
+            [open-hax.website.extern.dom :as dom]
             [open-hax.website.sections.music :as music]))
 
 (deftest music-section-exists
@@ -166,3 +167,85 @@
           (is (str/includes? (or audio "") "autoplay=\"\""))
           (is (str/includes? (or audio "") "controls=\"\""))
           (is (not (str/includes? markup "<iframe"))))))))
+
+(deftest repeated-local-play-requests-the-mounted-player
+  (let [tracks [{:id 1 :title "Local study" :src "/music/study.mp3"}
+                {:id 2 :title "Second study" :src "/music/second.mp3"}]
+        state (atom [nil nil])
+        hook-index (atom 0)
+        audio-ref #js {:current nil}
+        requests (atom [])
+        first-player #js {:paused true :ended false :currentTime 53
+                          :play #(do (swap! requests conj :first)
+                                     (js/Promise.resolve nil))}
+        second-player #js {:paused true :ended false
+                           :play #(do (swap! requests conj :second)
+                                      (js/Promise.resolve nil))}
+        children (fn [^js element]
+                   (when (.isValidElement react element)
+                     (array-seq (.toArray (.-Children react) (.. element -props -children)))))
+        elements (fn [element]
+                   (tree-seq #(.isValidElement react %) children element))
+        audio-element (fn [element]
+                        (some #(when (= "audio" (.-type ^js %)) %) (elements element)))
+        use-state (fn [initial]
+                    (let [index @hook-index]
+                      (swap! hook-index inc)
+                      [(get @state index initial) #(swap! state assoc index %)]))
+        section (fn []
+                  (reset! hook-index 0)
+                  (music/MusicSection #js {:locale :en}))
+        click-track! (fn [id]
+                       (let [^js row (some #(when (and (= music/TrackRow (.-type ^js %))
+                                                       (= id (:id (.. ^js % -props -track)))) %)
+                                            (elements (section)))
+                             ^js button (music/TrackRow (.-props row))]
+                         ((.. button -props -onClick))))]
+    ;; Drive the actual row handler and mounted React ref with synthetic media.
+    ;; This proves explicit playback requests; no browser or real audio runs.
+    (with-redefs [assets/music tracks hooks/use-state use-state
+                  hooks/use-ref (fn [_] audio-ref)]
+      (is (nil? (audio-element (section))))
+      (click-track! 1)
+      (let [^js audio (audio-element (section))]
+        (is (= (first tracks) (first @state)))
+        (is (= "/music/study.mp3" (.. audio -props -src)))
+        (is (true? (.. audio -props -autoPlay)))
+        (is (identical? audio-ref (.-ref audio)))
+        (set! (.-current audio-ref) first-player))
+      (click-track! 1)
+      (is (= [:first] @requests) "a paused selected track receives play()")
+      (is (= 53 (.-currentTime first-player)) "resume does not reset the paused position")
+      (set! (.-ended first-player) true)
+      (click-track! 1)
+      (is (= [:first :first] @requests) "an ended selected track receives a fresh play() request")
+      (is (= (first tracks) (first @state)))
+      (click-track! 2)
+      (is (= [:first :first] @requests) "changing tracks never plays the old mounted element")
+      (let [^js audio (audio-element (section))]
+        (is (= (second tracks) (first @state)))
+        (is (= "/music/second.mp3" (.. audio -props -src)))
+        (is (true? (.. audio -props -autoPlay)))
+        (is (identical? audio-ref (.-ref audio)))
+        (set! (.-current audio-ref) second-player))
+      (click-track! 2)
+      (is (= [:first :first :second] @requests) "repeat Play follows the newly mounted track"))))
+
+(deftest an-unmounted-local-player-receives-no-play-request
+  (is (nil? (dom/play-local-audio! nil)))
+  (is (nil? (dom/play-local-audio! #js {:current nil}))))
+
+(deftest a-browser-playback-refusal-is-handled
+  (async done
+         (let [requests (atom 0)
+               audio-ref #js {:current #js {:play #(do (swap! requests inc)
+                                                       (js/Promise.reject
+                                                        (js/Error. "Synthetic media refusal")))}}]
+           (-> (dom/play-local-audio! audio-ref)
+               (.then (fn [result]
+                        (is (= 1 @requests))
+                        (is (nil? result) "a refusal settles without claiming playback")
+                        (done)))
+               (.catch (fn [_]
+                         (is false "the media refusal escaped the DOM adapter")
+                         (done)))))))

@@ -6,6 +6,7 @@
             [open-hax.website.data.assets :as assets]
             [open-hax.website.data.suno :as suno]
             [open-hax.website.domain.copy :as copy]
+            [open-hax.website.extern.dom :as dom]
             [open-hax.website.extern.focus :as focus]))
 
 (defn folder-badge
@@ -68,6 +69,7 @@
 (defnc MusicSection [{:keys [locale]}]
   (let [[playing set-playing] (hooks/use-state nil)
         [active-suno set-active-suno] (hooks/use-state nil)
+        audio-ref (hooks/use-ref nil)
         published (filterv :is-public? suno/tracks)]
     (when (or (seq published) (seq assets/music))
       (d/div {:class-name "max-w-6xl mx-auto"}
@@ -103,11 +105,15 @@
                                             :locale locale
                                             :track track
                                             :index idx
-                                            :on-play #(do (set-active-suno nil) (set-playing %))})))
+                                            :on-play #(do (set-active-suno nil)
+                                                          (if (= (:id playing) (:id %))
+                                                            (dom/play-local-audio! audio-ref)
+                                                            (set-playing %)))})))
                       (when playing
                         (d/div {:class-name "mt-6 p-4 rounded-lg bg-slate-800/50 border border-slate-700"}
                                (d/p {:class-name "text-white font-medium"} (:title playing))
                                (d/audio {:key (:id playing)
+                                         :ref audio-ref
                                          :src (:src playing)
                                          :auto-play true
                                          :controls true
