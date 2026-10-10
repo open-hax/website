@@ -12,10 +12,11 @@ permissions:
 jobs:
   review:
     name: Evidence-first review (eta-mu)
-    uses: open-hax/eta-mu/.github/workflows/opencode-code-review.yml@d98ab446d56ddfd24542df49b102b851f2a767fa
+    uses: open-hax/eta-mu/.github/workflows/opencode-code-review.yml@272e80ba25cdb7874a9252478bc1d4e7c770a2ca
     with:
       pr_head_sha: ${{ github.event.pull_request.head.sha }}
       opencode_version: 1.18.31
+      review_timeout_minutes: 120
       setup_eta_mu_toolchain: false
       evidence_gates_script: |
         # The shared workflow owns full-diff custody, paging and its preview.
