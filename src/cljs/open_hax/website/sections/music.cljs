@@ -5,7 +5,8 @@
             [helix.hooks :as hooks]
             [open-hax.website.data.assets :as assets]
             [open-hax.website.data.suno :as suno]
-            [open-hax.website.domain.copy :as copy]))
+            [open-hax.website.domain.copy :as copy]
+            [open-hax.website.extern.focus :as focus]))
 
 (defn folder-badge
   [folder]
@@ -35,7 +36,9 @@
              (if active?
                (d/iframe {:src (:embed-url track)
                           :title (copy/text-with locale :music/player-label {:title (:title track)})
-                          :class-name "w-full h-64 border-0 bg-slate-950"
+                          :ref focus/focus-connected!
+                          :tab-index 0
+                          :class-name "w-full h-64 border-0 bg-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-cyan-300"
                           :allow "autoplay; encrypted-media"
                           :loading "lazy"
                           :referrer-policy "strict-origin-when-cross-origin"})

@@ -1,5 +1,6 @@
 (ns open-hax.website.sections.music-test
   (:require ["react-dom/server" :as rdom-server]
+            ["react" :as react]
             [cljs.test :refer [deftest is testing]]
             [clojure.string :as str]
             [helix.core :refer [$]]
@@ -68,6 +69,46 @@
     (is (str/includes? markup "title=\""))
     (is (not (str/includes? markup (:observed-audio-url track))))
     (is (not (str/includes? markup "autoplay=")))))
+
+(deftest activating-a-suno-cover-moves-focus-to-its-mounted-player
+  (let [track (first suno/tracks)
+        selected (atom nil)
+        focus-calls (atom 0)
+        children (fn [^js element]
+                   (when (.isValidElement react element)
+                     (array-seq (.toArray (.-Children react) (.. element -props -children)))))
+        element-of-type (fn [element kind]
+                          (some #(when (= kind (.-type ^js %)) %)
+                                (tree-seq #(.isValidElement react %) children element)))
+        render-card (fn []
+                      (music/SunoCard #js {:locale :en :track track
+                                          :active? (= (:id track) @selected)
+                                          :on-load #(reset! selected %)}))
+        initial (render-card)
+        ^js cover (element-of-type initial "button")]
+    (is (some? cover) "the native button supplies Enter/Space activation")
+    (is (nil? (element-of-type initial "iframe")) "player loading requires activation")
+    (is (zero? @focus-calls))
+    ((.. cover -props -onClick))
+    (let [active (render-card)
+          ^js player (element-of-type active "iframe")
+          mount-ref (.-ref player)
+          mounted-player #js {:isConnected true :focus #(swap! focus-calls inc)}]
+      (is (= (:id track) @selected))
+      (is (= (:embed-url track) (.. player -props -src)))
+      (is (= 0 (.. player -props -tabIndex)))
+      (is (str/includes? (.. player -props -className) "focus-visible:ring-2"))
+      (is (nil? (.. player -props -autoPlay)))
+      (is (fn? mount-ref) "focus must transfer through the actual mounted iframe ref")
+      (when (fn? mount-ref)
+        (mount-ref mounted-player)
+        (is (= 1 @focus-calls) "the actual DOM adapter focuses the connected player")
+        (let [^js rerendered (element-of-type (render-card) "iframe")]
+          (is (identical? mount-ref (.-ref rerendered))
+              "a stable ref prevents unrelated renders from reclaiming keyboard focus"))
+        (mount-ref nil)
+        (mount-ref #js {:isConnected false :focus #(swap! focus-calls inc)})
+        (is (= 1 @focus-calls) "unmounts and disconnected nodes never reclaim focus")))))
 
 (deftest an-unpublished-track-is-never-presented-as-a-public-song
   (with-redefs [suno/tracks [(assoc (first suno/tracks) :is-public? false)]
