@@ -113,6 +113,14 @@ contains exact public clip identities and normalized titles; it does not ship
 a downloaded music library. The selection and canonical Calliope metadata
 boundary are documented in [`docs/music-selection.md`](docs/music-selection.md).
 
+## Translation target
+
+This site is Knoxx's first publication target.
+[`docs/translation-target-contract.md`](docs/translation-target-contract.md)
+is the implemented contract: the manifest wire shape and its failure semantics,
+the HTTP behaviour for published paths and locale prefixes, and where each rule
+lives in source.
+
 ## Domain
 
 - Production: `open-hax.promethean.rest`
